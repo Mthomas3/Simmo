@@ -101,11 +101,15 @@
 		E9090D1024FA9F7600020390 /* ios-rentor */ = {
 			isa = PBXGroup;
 			children = (
-				E9090D1124FA9F7600020390 /* AppDelegate.swift */,
-				E9090D1324FA9F7600020390 /* SceneDelegate.swift */,
+				E9090D4A24FAA47100020390 /* Settings */,
+				E9090D4924FAA46900020390 /* Simmulator */,
+				E9090D4824FAA45D00020390 /* LaunchScreen */,
+				E9090D4724FAA24400020390 /* Extensions */,
+				E9090D4624FAA22D00020390 /* GenericViews */,
+				E9090D4524FAA21B00020390 /* GenericServices */,
+				E9090D4424FAA20D00020390 /* AppDelegates */,
 				E9090D1824FA9F7600020390 /* ContentView.swift */,
 				E9090D1A24FA9F7800020390 /* Assets.xcassets */,
-				E9090D1F24FA9F7800020390 /* LaunchScreen.storyboard */,
 				E9090D2224FA9F7800020390 /* Info.plist */,
 				E9090D1524FA9F7600020390 /* ios_rentor.xcdatamodeld */,
 				E9090D1C24FA9F7800020390 /* Preview Content */,
@@ -137,6 +141,122 @@
 				E9090D3824FA9F7800020390 /* Info.plist */,
 			);
 			path = "ios-rentorUITests";
+			sourceTree = "<group>";
+		};
+		E9090D4424FAA20D00020390 /* AppDelegates */ = {
+			isa = PBXGroup;
+			children = (
+				E9090D1124FA9F7600020390 /* AppDelegate.swift */,
+				E9090D1324FA9F7600020390 /* SceneDelegate.swift */,
+			);
+			path = AppDelegates;
+			sourceTree = "<group>";
+		};
+		E9090D4524FAA21B00020390 /* GenericServices */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = GenericServices;
+			sourceTree = "<group>";
+		};
+		E9090D4624FAA22D00020390 /* GenericViews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = GenericViews;
+			sourceTree = "<group>";
+		};
+		E9090D4724FAA24400020390 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E9090D4824FAA45D00020390 /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				E9090D1F24FA9F7800020390 /* LaunchScreen.storyboard */,
+			);
+			path = LaunchScreen;
+			sourceTree = "<group>";
+		};
+		E9090D4924FAA46900020390 /* Simmulator */ = {
+			isa = PBXGroup;
+			children = (
+				E9090D5224FAA4B000020390 /* Controller */,
+				E9090D5124FAA4A800020390 /* Presenter */,
+				E9090D5024FAA4A400020390 /* View */,
+				E9090D4F24FAA49F00020390 /* Model */,
+			);
+			path = Simmulator;
+			sourceTree = "<group>";
+		};
+		E9090D4A24FAA47100020390 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				E9090D4E24FAA49400020390 /* Controller */,
+				E9090D4D24FAA48D00020390 /* Presenter */,
+				E9090D4C24FAA48700020390 /* View */,
+				E9090D4B24FAA48000020390 /* Model */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		E9090D4B24FAA48000020390 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E9090D4C24FAA48700020390 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E9090D4D24FAA48D00020390 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		E9090D4E24FAA49400020390 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E9090D4F24FAA49F00020390 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E9090D5024FAA4A400020390 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E9090D5124FAA4A800020390 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		E9090D5224FAA4B000020390 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
