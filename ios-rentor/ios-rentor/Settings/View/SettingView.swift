@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  SettingView.swift
 //  ios-rentor
 //
 //  Created by Thomas on 29/08/2020.
@@ -8,14 +8,14 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct SettingView: View {
     var body: some View {
-        Text("Hello, World!")
+        Text("Setting View")
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct SettingView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        SettingView()
     }
 }

@@ -10,12 +10,14 @@
 		E9090D1224FA9F7600020390 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9090D1124FA9F7600020390 /* AppDelegate.swift */; };
 		E9090D1424FA9F7600020390 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9090D1324FA9F7600020390 /* SceneDelegate.swift */; };
 		E9090D1724FA9F7600020390 /* ios_rentor.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9090D1524FA9F7600020390 /* ios_rentor.xcdatamodeld */; };
-		E9090D1924FA9F7600020390 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9090D1824FA9F7600020390 /* ContentView.swift */; };
 		E9090D1B24FA9F7800020390 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9090D1A24FA9F7800020390 /* Assets.xcassets */; };
 		E9090D1E24FA9F7800020390 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9090D1D24FA9F7800020390 /* Preview Assets.xcassets */; };
 		E9090D2124FA9F7800020390 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9090D1F24FA9F7800020390 /* LaunchScreen.storyboard */; };
 		E9090D2C24FA9F7800020390 /* ios_rentorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9090D2B24FA9F7800020390 /* ios_rentorTests.swift */; };
 		E9090D3724FA9F7800020390 /* ios_rentorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9090D3624FA9F7800020390 /* ios_rentorUITests.swift */; };
+		E9D8D15D24FAF7B800DF5ABC /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D8D15C24FAF7B800DF5ABC /* MainView.swift */; };
+		E9D8D15F24FAF98300DF5ABC /* SimmulatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D8D15E24FAF98200DF5ABC /* SimmulatorView.swift */; };
+		E9D8D16124FAF9D000DF5ABC /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D8D16024FAF9D000DF5ABC /* SettingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,7 +42,6 @@
 		E9090D1124FA9F7600020390 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9090D1324FA9F7600020390 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E9090D1624FA9F7600020390 /* ios_rentor.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ios_rentor.xcdatamodel; sourceTree = "<group>"; };
-		E9090D1824FA9F7600020390 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E9090D1A24FA9F7800020390 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E9090D1D24FA9F7800020390 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E9090D2024FA9F7800020390 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +52,9 @@
 		E9090D3224FA9F7800020390 /* ios-rentorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ios-rentorUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9090D3624FA9F7800020390 /* ios_rentorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_rentorUITests.swift; sourceTree = "<group>"; };
 		E9090D3824FA9F7800020390 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E9D8D15C24FAF7B800DF5ABC /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		E9D8D15E24FAF98200DF5ABC /* SimmulatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimmulatorView.swift; sourceTree = "<group>"; };
+		E9D8D16024FAF9D000DF5ABC /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +105,7 @@
 		E9090D1024FA9F7600020390 /* ios-rentor */ = {
 			isa = PBXGroup;
 			children = (
+				E9D8D15724FAF77200DF5ABC /* Main */,
 				E9090D4A24FAA47100020390 /* Settings */,
 				E9090D4924FAA46900020390 /* Simmulator */,
 				E9090D4824FAA45D00020390 /* LaunchScreen */,
@@ -108,7 +113,6 @@
 				E9090D4624FAA22D00020390 /* GenericViews */,
 				E9090D4524FAA21B00020390 /* GenericServices */,
 				E9090D4424FAA20D00020390 /* AppDelegates */,
-				E9090D1824FA9F7600020390 /* ContentView.swift */,
 				E9090D1A24FA9F7800020390 /* Assets.xcassets */,
 				E9090D2224FA9F7800020390 /* Info.plist */,
 				E9090D1524FA9F7600020390 /* ios_rentor.xcdatamodeld */,
@@ -184,7 +188,7 @@
 		E9090D4924FAA46900020390 /* Simmulator */ = {
 			isa = PBXGroup;
 			children = (
-				E9090D5224FAA4B000020390 /* Controller */,
+				E9090D5224FAA4B000020390 /* Store */,
 				E9090D5124FAA4A800020390 /* Presenter */,
 				E9090D5024FAA4A400020390 /* View */,
 				E9090D4F24FAA49F00020390 /* Model */,
@@ -195,7 +199,7 @@
 		E9090D4A24FAA47100020390 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				E9090D4E24FAA49400020390 /* Controller */,
+				E9090D4E24FAA49400020390 /* Store */,
 				E9090D4D24FAA48D00020390 /* Presenter */,
 				E9090D4C24FAA48700020390 /* View */,
 				E9090D4B24FAA48000020390 /* Model */,
@@ -213,6 +217,7 @@
 		E9090D4C24FAA48700020390 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E9D8D16024FAF9D000DF5ABC /* SettingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -224,11 +229,11 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
-		E9090D4E24FAA49400020390 /* Controller */ = {
+		E9090D4E24FAA49400020390 /* Store */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Controller;
+			path = Store;
 			sourceTree = "<group>";
 		};
 		E9090D4F24FAA49F00020390 /* Model */ = {
@@ -241,6 +246,7 @@
 		E9090D5024FAA4A400020390 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E9D8D15E24FAF98200DF5ABC /* SimmulatorView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -252,11 +258,51 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
-		E9090D5224FAA4B000020390 /* Controller */ = {
+		E9090D5224FAA4B000020390 /* Store */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Controller;
+			path = Store;
+			sourceTree = "<group>";
+		};
+		E9D8D15724FAF77200DF5ABC /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				E9D8D15B24FAF79400DF5ABC /* Model */,
+				E9D8D15A24FAF79000DF5ABC /* View */,
+				E9D8D15924FAF78A00DF5ABC /* Presenter */,
+				E9D8D15824FAF78400DF5ABC /* Store */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		E9D8D15824FAF78400DF5ABC /* Store */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
+		E9D8D15924FAF78A00DF5ABC /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		E9D8D15A24FAF79000DF5ABC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E9D8D15C24FAF7B800DF5ABC /* MainView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E9D8D15B24FAF79400DF5ABC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -390,10 +436,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9D8D15D24FAF7B800DF5ABC /* MainView.swift in Sources */,
 				E9090D1224FA9F7600020390 /* AppDelegate.swift in Sources */,
 				E9090D1724FA9F7600020390 /* ios_rentor.xcdatamodeld in Sources */,
-				E9090D1924FA9F7600020390 /* ContentView.swift in Sources */,
+				E9D8D16124FAF9D000DF5ABC /* SettingView.swift in Sources */,
 				E9090D1424FA9F7600020390 /* SceneDelegate.swift in Sources */,
+				E9D8D15F24FAF98300DF5ABC /* SimmulatorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
