@@ -13,10 +13,12 @@ struct MainView: View {
         TabView {
             SimmulatorView()
             .tabItem {
+                Image("sliders")
                 Text("Simulations")
             }
             SettingView()
             .tabItem {
+                Image("settings")
                 Text("Settings")
             }
         }
