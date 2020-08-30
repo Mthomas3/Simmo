@@ -10,7 +10,7 @@ import SwiftUI
 
 struct SimmulatorView: View {
     var body: some View {
-        Text("Inside Simmulator View")
+        Text("Create a new Simmulation view")
     }
 }
 
