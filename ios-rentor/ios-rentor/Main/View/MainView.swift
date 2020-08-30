@@ -12,11 +12,24 @@ struct MainView: View {
     
     @State var index = 0
     var body: some View {
-        VStack {
-            Spacer()
+        VStack(spacing: 0) {
+            ZStack {
+                
+                if self.index == 0 {
+                    Color.black.opacity(0.05).edgesIgnoringSafeArea(.top)
+                } else if self.index == 1 {
+                    Color.red.edgesIgnoringSafeArea(.top)
+                } else if self.index == 2 {
+                    Color.green.edgesIgnoringSafeArea(.top)
+                } else if self.index == 3 {
+                    Color.blue.edgesIgnoringSafeArea(.top)
+                }
+                
+            }.padding(.bottom, -35)
+            
+            
             CustomTabs(index: self.$index)
         }
-        .background(Color.black.opacity(0.04).edgesIgnoringSafeArea(.top))
     }
 }
 
@@ -39,12 +52,13 @@ struct CustomTabs: View {
                 
             }, label: {Image("settings")})
                 .foregroundColor(Color.black.opacity(self.index == 1 ? 1 : 0.2))
+                .offset(x: 10)
             
             Spacer(minLength: 0)
             
             Button(action: {},
-                   label: { Image("add-circle").renderingMode(.original)})
-                .offset(y: -20)
+                   label: { Image("plus-circle-light").renderingMode(.original)})
+                .offset(y: -30)
                 
             
             Spacer(minLength: 0)
@@ -54,19 +68,38 @@ struct CustomTabs: View {
 
             }, label: {Image("sliders")})
                 .foregroundColor(Color.black.opacity(self.index == 2 ? 1 : 0.2))
+                .offset(x: -10)
             
             Spacer(minLength: 0)
             
             Button(action: {
-                   self.index = 2
+                   self.index = 3
 
-               }, label: {Image("sliders")})
-                   .foregroundColor(Color.black.opacity(self.index == 2 ? 1 : 0.2))
+               }, label: {Image("settings")})
+                   .foregroundColor(Color.black.opacity(self.index == 3 ? 1 : 0.2))
             
         }
         .padding(.horizontal, 35)
+        .padding(.top, 35)
         .padding(.vertical, 5)
         .background(Color.white)
+        .clipShape(CShape())
+    }
+}
+
+struct CShape: Shape {
+    func path(in rect: CGRect) -> Path {
+        return Path {path in
+            path.move(to: CGPoint(x: 0, y: 35))
+            path.addLine(to: CGPoint(x: 0, y: rect.height))
+            path.addLine(to: CGPoint(x: rect.width, y: rect.height))
+            path.addLine(to: CGPoint(x: rect.width, y: 35))
+            
+            path.addArc(center: CGPoint(x: (rect.width / 2), y: 35), radius: 35, startAngle: .zero,
+                        endAngle: .init(degrees: 180), clockwise: true)
+            
+            
+        }
     }
 }
 
