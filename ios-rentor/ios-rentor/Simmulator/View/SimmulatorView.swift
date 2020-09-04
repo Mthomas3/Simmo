@@ -10,7 +10,17 @@ import SwiftUI
 
 struct SimmulatorView: View {
     var body: some View {
-        Text("Create a new Simmulation view")
+        NavigationView {
+            VStack {
+                Text("Create a new Simmulation view")
+                Button(action: {
+                    print("yo?")
+                }) {
+                    Text("Hello?")
+                }
+            }
+            .navigationBarTitle(Text("Simmulator"))
+        }
     }
 }
 

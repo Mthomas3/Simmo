@@ -15,6 +15,10 @@
 		E9090D2124FA9F7800020390 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9090D1F24FA9F7800020390 /* LaunchScreen.storyboard */; };
 		E9090D2C24FA9F7800020390 /* ios_rentorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9090D2B24FA9F7800020390 /* ios_rentorTests.swift */; };
 		E9090D3724FA9F7800020390 /* ios_rentorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9090D3624FA9F7800020390 /* ios_rentorUITests.swift */; };
+		E9665536250033B2003BC212 /* RentorEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9665535250033B2003BC212 /* RentorEntity.swift */; };
+		E99042CA2502A16C0062B493 /* RentalEntityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99042C92502A16C0062B493 /* RentalEntityView.swift */; };
+		E9B45C9E24FD381200A79ECC /* GenericShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B45C9D24FD381200A79ECC /* GenericShapes.swift */; };
+		E9B45CA124FD5ED400A79ECC /* rentorCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9B45C9F24FD5ED400A79ECC /* rentorCoreData.xcdatamodeld */; };
 		E9D8D15D24FAF7B800DF5ABC /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D8D15C24FAF7B800DF5ABC /* MainView.swift */; };
 		E9D8D15F24FAF98300DF5ABC /* SimmulatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D8D15E24FAF98200DF5ABC /* SimmulatorView.swift */; };
 		E9D8D16124FAF9D000DF5ABC /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D8D16024FAF9D000DF5ABC /* SettingView.swift */; };
@@ -53,6 +57,10 @@
 		E9090D3224FA9F7800020390 /* ios-rentorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ios-rentorUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9090D3624FA9F7800020390 /* ios_rentorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_rentorUITests.swift; sourceTree = "<group>"; };
 		E9090D3824FA9F7800020390 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E9665535250033B2003BC212 /* RentorEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentorEntity.swift; sourceTree = "<group>"; };
+		E99042C92502A16C0062B493 /* RentalEntityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentalEntityView.swift; sourceTree = "<group>"; };
+		E9B45C9D24FD381200A79ECC /* GenericShapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericShapes.swift; sourceTree = "<group>"; };
+		E9B45CA024FD5ED400A79ECC /* Simmulations.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Simmulations.xcdatamodel; sourceTree = "<group>"; };
 		E9D8D15C24FAF7B800DF5ABC /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		E9D8D15E24FAF98200DF5ABC /* SimmulatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimmulatorView.swift; sourceTree = "<group>"; };
 		E9D8D16024FAF9D000DF5ABC /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
@@ -107,6 +115,8 @@
 		E9090D1024FA9F7600020390 /* ios-rentor */ = {
 			isa = PBXGroup;
 			children = (
+				E9B45CA224FD5EDE00A79ECC /* CoreData */,
+				E9B45C9C24FD37EF00A79ECC /* GenericShapes */,
 				E9D8D15724FAF77200DF5ABC /* Main */,
 				E9090D4A24FAA47100020390 /* Settings */,
 				E9090D4924FAA46900020390 /* Simmulator */,
@@ -241,6 +251,7 @@
 		E9090D4F24FAA49F00020390 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E9665535250033B2003BC212 /* RentorEntity.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -250,6 +261,7 @@
 			children = (
 				E9D8D15E24FAF98200DF5ABC /* SimmulatorView.swift */,
 				E9D8D16224FC353700DF5ABC /* DisplaySimulations.swift */,
+				E99042C92502A16C0062B493 /* RentalEntityView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -266,6 +278,22 @@
 			children = (
 			);
 			path = Store;
+			sourceTree = "<group>";
+		};
+		E9B45C9C24FD37EF00A79ECC /* GenericShapes */ = {
+			isa = PBXGroup;
+			children = (
+				E9B45C9D24FD381200A79ECC /* GenericShapes.swift */,
+			);
+			path = GenericShapes;
+			sourceTree = "<group>";
+		};
+		E9B45CA224FD5EDE00A79ECC /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				E9B45C9F24FD5ED400A79ECC /* rentorCoreData.xcdatamodeld */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		E9D8D15724FAF77200DF5ABC /* Main */ = {
@@ -443,9 +471,13 @@
 				E9D8D15D24FAF7B800DF5ABC /* MainView.swift in Sources */,
 				E9090D1224FA9F7600020390 /* AppDelegate.swift in Sources */,
 				E9090D1724FA9F7600020390 /* ios_rentor.xcdatamodeld in Sources */,
+				E9665536250033B2003BC212 /* RentorEntity.swift in Sources */,
 				E9D8D16124FAF9D000DF5ABC /* SettingView.swift in Sources */,
+				E9B45CA124FD5ED400A79ECC /* rentorCoreData.xcdatamodeld in Sources */,
 				E9090D1424FA9F7600020390 /* SceneDelegate.swift in Sources */,
 				E9D8D15F24FAF98300DF5ABC /* SimmulatorView.swift in Sources */,
+				E9B45C9E24FD381200A79ECC /* GenericShapes.swift in Sources */,
+				E99042CA2502A16C0062B493 /* RentalEntityView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -779,6 +811,16 @@
 			);
 			currentVersion = E9090D1624FA9F7600020390 /* ios_rentor.xcdatamodel */;
 			path = ios_rentor.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		E9B45C9F24FD5ED400A79ECC /* rentorCoreData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E9B45CA024FD5ED400A79ECC /* Simmulations.xcdatamodel */,
+			);
+			currentVersion = E9B45CA024FD5ED400A79ECC /* Simmulations.xcdatamodel */;
+			path = rentorCoreData.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
