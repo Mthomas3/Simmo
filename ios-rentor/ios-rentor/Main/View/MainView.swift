@@ -44,7 +44,7 @@ struct CustomTabs: View {
             
             Button(action: { self.index = 1 },
                    label: { Image("plus-circle-light").renderingMode(.original)})
-                .offset(y: -30)
+                .offset(y: -25)
                 
             Spacer(minLength: 0)
             
@@ -54,8 +54,8 @@ struct CustomTabs: View {
                    .foregroundColor(Color.black.opacity(self.index == 2 ? 1 : 0.2))
         }
         .padding(.horizontal, 70)
-        .padding(.top, 35)
-        .padding(.vertical, 5)
+        //.padding(.top, 35)
+        //.padding(.vertical, 5)
         .background(Color.white)
         //.clipShape(CShape())
     }

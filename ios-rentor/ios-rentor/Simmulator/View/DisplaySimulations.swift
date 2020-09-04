@@ -24,31 +24,6 @@ struct DisplaySimulations: View {
     var body: some View {
         NavigationView {
             List {
-                Section(header: Text("Rental Adding")) {
-                    HStack {
-                        TextField("new Item", text: self.$newRentalName)
-                        Button(action: {
-                            let rentalItem = RentorEntity(context: self.managedObjectContext)
-                            rentalItem.name = self.newRentalName
-                            rentalItem.createDate = Date()
-                            
-                            do {
-                                try self.managedObjectContext.save()
-                            } catch {
-                                print(error)
-                            }
-                            
-                            self.newRentalName = ""
-                            
-                        }) {
-                            Image(systemName: "plus.circle.fill")
-                            .foregroundColor(.green)
-                            .imageScale(.large)
-                        }
-                    }.font(.headline)
-                }
-                
-                
                 Section(header: Text("To do's")) {
                     ForEach(self.simmulationsData) { item in
                         RentalEntityView(title: item.name!, createDate: "\(item.createDate!)")
