@@ -8,23 +8,35 @@
 
 import SwiftUI
 
+
 struct MainView: View {
-    @State var index = 0
     
+    private enum Tabs: Int {
+        case Home = 0
+        case SimmulatorView
+        case SettingView
+    }
+    
+    @State var index = 0
     var body: some View {
-            
         VStack(spacing: 0) {
             ZStack {
-                if self.index == 0 {
-                    Home()
-                } else if self.index == 1 {
-                    SimmulatorView()
-                } else if self.index == 2 {
-                    SettingView()
-                }
-                
+                self.containerView(index: self.index)
             }.padding(.bottom, -35)
             CustomTabs(index: self.$index)
+        }
+    }
+    
+    func containerView(index: Int) -> AnyView {
+        switch(Tabs(rawValue: index)) {
+            case .Home:
+                return AnyView(Home())
+            case .SimmulatorView:
+                return AnyView(SimmulatorView())
+            case .SettingView:
+                return AnyView(SettingView())
+            case .none:
+                return AnyView(Home())
         }
     }
 }
