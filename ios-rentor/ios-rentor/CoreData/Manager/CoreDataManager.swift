@@ -17,7 +17,6 @@ internal final class CoreDataManager {
     
     private init() {
         self.coreDataContainer = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
-        print("inside init **")
     }
     
     private var context: NSManagedObjectContext {
@@ -51,9 +50,7 @@ internal final class CoreDataManager {
         try self.context.save()
     }
     
-    public func updateRental(with name: String) {
-        
-    }
+    public func updateRental(with name: String) { }
     
     public func fetchRental() -> NSFetchRequest<RentorEntity>  {
         

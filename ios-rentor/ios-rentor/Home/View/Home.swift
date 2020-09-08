@@ -9,18 +9,13 @@
 import SwiftUI
 import CoreData
 
-struct DisplaySimulations: View {
-    
-    @Environment(\.managedObjectContext) var managedObjectContext
-    @FetchRequest(fetchRequest: RentorEntity.getAllRentorEntities()) var simmulationsData: FetchedResults<RentorEntity>
-    @FetchRequest(fetchRequest: CoreDataManager.sharedInstance.fetchRental()) var fetchRentalProperties: FetchedResults<RentorEntity>
-    
-    @State private var newRentalName = ""
+struct Home: View {
+    @FetchRequest(fetchRequest: CoreDataManager.sharedInstance.fetchRental())
+        private var fetchRentalProperties: FetchedResults<RentorEntity>
     
     init() {
         UITableView.appearance().backgroundColor = .clear
         UITableViewCell.appearance().backgroundColor = .clear
-
     }
     
     var body: some View {
@@ -30,12 +25,13 @@ struct DisplaySimulations: View {
                     ForEach(self.fetchRentalProperties) { item in
                         RentalEntityView(title: item.name!, createDate: "\(item.createDate!)")
                     }.onDelete { indexSet in
-                        let deleteItem = self.simmulationsData[indexSet.first!]
-                        self.managedObjectContext.delete(deleteItem)
-                        do {
-                            try self.managedObjectContext.save()
-                        } catch {
-                            print(error)
+                        
+                        if let currentIndex = indexSet.first {
+                            do {
+                                try CoreDataManager.sharedInstance.deleteRental(with: self.fetchRentalProperties[currentIndex])
+                            } catch {
+                                print(error)
+                            }
                         }
                     }
                 }.font(.headline)
@@ -49,6 +45,6 @@ struct DisplaySimulations: View {
 
 struct DisplaySimulations_Previews: PreviewProvider {
     static var previews: some View {
-        DisplaySimulations()
+        Home()
     }
 }

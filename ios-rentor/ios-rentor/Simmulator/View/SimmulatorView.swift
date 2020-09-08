@@ -40,6 +40,7 @@ struct SimmulatorView: View {
                 .navigationBarTitle(Text("Simmulator"))
                 .padding(.leading, 10)
                 .padding(.trailing, 10)
+                .background(Color.black.opacity(0.05).edgesIgnoringSafeArea(.top))
         }
     }
 }

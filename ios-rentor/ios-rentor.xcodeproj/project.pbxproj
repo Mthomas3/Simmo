@@ -23,7 +23,7 @@
 		E9D8D15D24FAF7B800DF5ABC /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D8D15C24FAF7B800DF5ABC /* MainView.swift */; };
 		E9D8D15F24FAF98300DF5ABC /* SimmulatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D8D15E24FAF98200DF5ABC /* SimmulatorView.swift */; };
 		E9D8D16124FAF9D000DF5ABC /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D8D16024FAF9D000DF5ABC /* SettingView.swift */; };
-		E9D8D16324FC353700DF5ABC /* DisplaySimulations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D8D16224FC353700DF5ABC /* DisplaySimulations.swift */; };
+		E9D8D16324FC353700DF5ABC /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D8D16224FC353700DF5ABC /* Home.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,7 +66,7 @@
 		E9D8D15C24FAF7B800DF5ABC /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		E9D8D15E24FAF98200DF5ABC /* SimmulatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimmulatorView.swift; sourceTree = "<group>"; };
 		E9D8D16024FAF9D000DF5ABC /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
-		E9D8D16224FC353700DF5ABC /* DisplaySimulations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplaySimulations.swift; sourceTree = "<group>"; };
+		E9D8D16224FC353700DF5ABC /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +120,7 @@
 				E9B45CA224FD5EDE00A79ECC /* CoreData */,
 				E9B45C9C24FD37EF00A79ECC /* GenericShapes */,
 				E9D8D15724FAF77200DF5ABC /* Main */,
+				E9EF29B8250824DC00B97676 /* Home */,
 				E9090D4A24FAA47100020390 /* Settings */,
 				E9090D4924FAA46900020390 /* Simmulator */,
 				E9090D4824FAA45D00020390 /* LaunchScreen */,
@@ -202,10 +203,10 @@
 		E9090D4924FAA46900020390 /* Simmulator */ = {
 			isa = PBXGroup;
 			children = (
+				E9EF29BC2508250300B97676 /* Model */,
 				E9090D5224FAA4B000020390 /* Store */,
 				E9090D5124FAA4A800020390 /* Presenter */,
 				E9090D5024FAA4A400020390 /* View */,
-				E9090D4F24FAA49F00020390 /* Model */,
 			);
 			path = Simmulator;
 			sourceTree = "<group>";
@@ -261,9 +262,8 @@
 		E9090D5024FAA4A400020390 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E9EF29BE2508257D00B97676 /* Cells */,
 				E9D8D15E24FAF98200DF5ABC /* SimmulatorView.swift */,
-				E9D8D16224FC353700DF5ABC /* DisplaySimulations.swift */,
-				E99042C92502A16C0062B493 /* RentalEntityView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -293,8 +293,8 @@
 		E9B45CA224FD5EDE00A79ECC /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				E9B45C9F24FD5ED400A79ECC /* rentorCoreData.xcdatamodeld */,
-				E99042CB25043BBA0062B493 /* CoreDataManager.swift */,
+				E9EF29B7250824CC00B97676 /* Manager */,
+				E9090D4F24FAA49F00020390 /* Model */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -337,6 +337,70 @@
 			children = (
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		E9EF29B7250824CC00B97676 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				E9B45C9F24FD5ED400A79ECC /* rentorCoreData.xcdatamodeld */,
+				E99042CB25043BBA0062B493 /* CoreDataManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		E9EF29B8250824DC00B97676 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				E9EF29BD2508250800B97676 /* Model */,
+				E9EF29BB250824F400B97676 /* Store */,
+				E9EF29BA250824EA00B97676 /* View */,
+				E9EF29B9250824E400B97676 /* Presenter */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		E9EF29B9250824E400B97676 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		E9EF29BA250824EA00B97676 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E9D8D16224FC353700DF5ABC /* Home.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E9EF29BB250824F400B97676 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
+		E9EF29BC2508250300B97676 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E9EF29BD2508250800B97676 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E9EF29BE2508257D00B97676 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E99042C92502A16C0062B493 /* RentalEntityView.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -470,7 +534,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E9D8D16324FC353700DF5ABC /* DisplaySimulations.swift in Sources */,
+				E9D8D16324FC353700DF5ABC /* Home.swift in Sources */,
 				E99042CC25043BBA0062B493 /* CoreDataManager.swift in Sources */,
 				E9D8D15D24FAF7B800DF5ABC /* MainView.swift in Sources */,
 				E9090D1224FA9F7600020390 /* AppDelegate.swift in Sources */,
