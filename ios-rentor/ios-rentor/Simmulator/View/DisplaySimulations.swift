@@ -13,19 +13,21 @@ struct DisplaySimulations: View {
     
     @Environment(\.managedObjectContext) var managedObjectContext
     @FetchRequest(fetchRequest: RentorEntity.getAllRentorEntities()) var simmulationsData: FetchedResults<RentorEntity>
+    @FetchRequest(fetchRequest: CoreDataManager.sharedInstance.fetchRental()) var fetchRentalProperties: FetchedResults<RentorEntity>
     
     @State private var newRentalName = ""
     
     init() {
         UITableView.appearance().backgroundColor = .clear
         UITableViewCell.appearance().backgroundColor = .clear
+
     }
     
     var body: some View {
         NavigationView {
             List {
                 Section(header: Text("To do's")) {
-                    ForEach(self.simmulationsData) { item in
+                    ForEach(self.fetchRentalProperties) { item in
                         RentalEntityView(title: item.name!, createDate: "\(item.createDate!)")
                     }.onDelete { indexSet in
                         let deleteItem = self.simmulationsData[indexSet.first!]
