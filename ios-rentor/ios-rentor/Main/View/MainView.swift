@@ -8,10 +8,9 @@
 
 import SwiftUI
 
-
 struct MainView: View {
     
-    private enum Tabs: Int {
+    fileprivate enum TabState: Int {
         case Home = 0
         case SimmulatorView
         case SettingView
@@ -28,7 +27,7 @@ struct MainView: View {
     }
     
     func containerView(index: Int) -> AnyView {
-        switch(Tabs(rawValue: index)) {
+        switch(TabState(rawValue: index)) {
             case .Home:
                 return AnyView(Home())
             case .SimmulatorView:
@@ -41,43 +40,34 @@ struct MainView: View {
     }
 }
 
+struct Tab: View {
+    @Binding var index: Int
+    fileprivate var tabState: MainView.TabState
+    var imageName: String
+    var tabName: String
+    
+    var body: some View {
+        Button(action: {
+            self.index = self.tabState.rawValue
+           }, label: {
+            VStack(alignment: .center, spacing: 0) {
+                Image(self.imageName)
+                Text(self.tabName).font(.system(size: 12))
+            }
+        }).foregroundColor(Color.black.opacity(self.index == self.tabState.rawValue ? 1 : 0.2))
+    }
+}
+
 struct CustomTabs: View {
     @Binding var index: Int
     
     var body: some View {
         HStack {
-            Button(action: {
-                self.index = 0
-                
-            }, label: {
-                VStack(alignment: .center, spacing: 0) {
-                    Image("home")
-                    Text("Home").font(.system(size: 12))
-                }
-                
-            }).foregroundColor(Color.black.opacity(self.index == 0 ? 1 : 0.2))
-            
+            Tab(index: self.$index, tabState: .Home, imageName: "home", tabName: "Home")
             Spacer(minLength: 0)
-            
-            Button(action: {
-                   self.index = 1
-               }, label: {
-                VStack(alignment: .center, spacing: 0) {
-                    Image("plus")
-                    Text("Simmulations").font(.system(size: 12))
-                }
-            }).foregroundColor(Color.black.opacity(self.index == 1 ? 1 : 0.2))
-                
+            Tab(index: self.$index, tabState: .SimmulatorView, imageName: "plus", tabName: "Simmulations")
             Spacer(minLength: 0)
-            
-            Button(action: {
-                   self.index = 2
-               }, label: {
-                VStack(alignment: .center, spacing: 0) {
-                    Image("settings")
-                    Text("Settings").font(.system(size: 12))
-                }
-            }).foregroundColor(Color.black.opacity(self.index == 2 ? 1 : 0.2))
+            Tab(index: self.$index, tabState: .SettingView, imageName: "settings", tabName: "Settings")
         }
         .padding(.top, 10)
         .padding(.horizontal, 40)

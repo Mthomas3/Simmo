@@ -53,12 +53,8 @@ internal final class CoreDataManager {
     public func updateRental(with name: String) { }
     
     public func fetchRental() -> NSFetchRequest<RentorEntity>  {
-        
         let request: NSFetchRequest<RentorEntity> = RentorEntity.fetchRequest() as! NSFetchRequest<RentorEntity>
-        
-        let sortDescriptor = NSSortDescriptor(key: "createDate", ascending: true)
-        request.sortDescriptors = [sortDescriptor]
-        
+        request.sortDescriptors = [NSSortDescriptor(key: "createDate", ascending: true)]
         return request
     }
 

@@ -262,7 +262,6 @@
 		E9090D5024FAA4A400020390 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E9EF29BE2508257D00B97676 /* Cells */,
 				E9D8D15E24FAF98200DF5ABC /* SimmulatorView.swift */,
 			);
 			path = View;
@@ -369,6 +368,7 @@
 		E9EF29BA250824EA00B97676 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E9EF29BE2508257D00B97676 /* Cells */,
 				E9D8D16224FC353700DF5ABC /* Home.swift */,
 			);
 			path = View;

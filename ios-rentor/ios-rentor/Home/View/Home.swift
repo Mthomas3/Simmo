@@ -14,33 +14,39 @@ struct Home: View {
         private var fetchRentalProperties: FetchedResults<RentorEntity>
     
     init() {
-        UITableView.appearance().backgroundColor = .clear
+        UITableView.appearance().backgroundColor = UIColor.black.withAlphaComponent(0.05)
         UITableViewCell.appearance().backgroundColor = .clear
+        
     }
     
     var body: some View {
         NavigationView {
             List {
-                Section(header: Text("To do's")) {
-                    ForEach(self.fetchRentalProperties) { item in
-                        RentalEntityView(title: item.name!, createDate: "\(item.createDate!)")
-                    }.onDelete { indexSet in
-                        
-                        if let currentIndex = indexSet.first {
-                            do {
-                                try CoreDataManager.sharedInstance.deleteRental(with: self.fetchRentalProperties[currentIndex])
-                            } catch {
-                                print(error)
-                            }
-                        }
-                    }
-                }.font(.headline)
-                
-            }.background(Color.black.opacity(0.05).edgesIgnoringSafeArea(.top))
-            .navigationBarTitle(Text("Simmulations"))
+                ForEach(self.fetchRentalProperties) { rentalProperty in
+                    RentalEntityView(title: rentalProperty.name ?? "", createDate: "\(rentalProperty.createDate ?? Date())")
+                }
+            }.navigationBarTitle(Text("Simmulations"), displayMode: .automatic)
             .navigationBarItems(trailing: EditButton())
+            .listStyle(GroupedListStyle())
+             //.frame(maxWidth: .infinity, alignment: .center)
+                
+//                Section {
+//                    ForEach(self.fetchRentalProperties) { item in
+//                        RentalEntityView(title: item.name!, createDate: "\(item.createDate!)")
+//                    }.onDelete { indexSet in
+//                        if let currentIndex = indexSet.first {
+//                            do {
+//                                try CoreDataManager.sharedInstance.deleteRental(with: self.fetchRentalProperties[currentIndex])
+//                            } catch {
+//                                print(error)
+//                            }
+//                        }
+//                    }
+//                }.font(.headline)
+//
+            }
         }
-    }
+    
 }
 
 struct DisplaySimulations_Previews: PreviewProvider {
