@@ -50,9 +50,11 @@ struct Tab: View {
         Button(action: {
             self.index = self.tabState.rawValue
            }, label: {
-            VStack(alignment: .center, spacing: 0) {
-                Image(self.imageName)
-                Text(self.tabName).font(.system(size: 12))
+            VStack(alignment: .center, spacing: 5) {
+                Image(systemName: imageName)
+                    .font(.system(size: 18.0))
+                Text(self.tabName)
+                    .font(.system(size: 12))
             }
         }).foregroundColor(Color.black.opacity(self.index == self.tabState.rawValue ? 1 : 0.2))
     }
@@ -63,11 +65,11 @@ struct CustomTabs: View {
     
     var body: some View {
         HStack {
-            Tab(index: self.$index, tabState: .Home, imageName: "home", tabName: "Home")
+            Tab(index: self.$index, tabState: .Home, imageName: "house", tabName: "Home")
             Spacer(minLength: 0)
-            Tab(index: self.$index, tabState: .SimmulatorView, imageName: "plus", tabName: "Simmulations")
+            Tab(index: self.$index, tabState: .SimmulatorView, imageName: "plus.circle", tabName: "Simmulations")
             Spacer(minLength: 0)
-            Tab(index: self.$index, tabState: .SettingView, imageName: "settings", tabName: "Settings")
+            Tab(index: self.$index, tabState: .SettingView, imageName: "person", tabName: "Settings")
         }
         .padding(.top, 10)
         .padding(.horizontal, 40)
