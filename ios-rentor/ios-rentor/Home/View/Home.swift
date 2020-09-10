@@ -15,7 +15,7 @@ struct Home: View {
     
     init() {
         UITableView.appearance().backgroundColor = UIColor.black.withAlphaComponent(0.05)
-        UITableViewCell.appearance().backgroundColor = .clear
+        UITableViewCell.appearance().backgroundColor = UIColor.clear
         
     }
     
@@ -23,7 +23,7 @@ struct Home: View {
         NavigationView {
             List {
                 ForEach(self.fetchRentalProperties) { rentalProperty in
-                    RentalEntityView(title: rentalProperty.name ?? "", createDate: "\(rentalProperty.createDate ?? Date())")
+                    RentalEntityView(rentor: rentalProperty)
                 }
             }.navigationBarTitle(Text("Simmulations"), displayMode: .automatic)
             .navigationBarItems(trailing: EditButton())

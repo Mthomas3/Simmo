@@ -9,28 +9,35 @@
 import SwiftUI
 
 struct RentalEntityView: View {
-    var title: String
-    var createDate: String
+    var rentor: RentorEntity
     
     var body: some View {
-        VStack(spacing: 5) {
-            HStack {
-                Text(title)
-                    .font(.custom("HelveticaNeue-Medium", size: 14))
-                    .foregroundColor(.black)
-                    .frame(maxWidth: .infinity, alignment: .center)
-                
-                Text(createDate)
-                    .font(.custom("HelveticaNeue-Medium", size: 14))
-                    .foregroundColor(.black)
-                    .frame(maxWidth: .infinity, alignment: .center)
-            }.background(Color.red)
-        }.background(Color.black)
+        
+        HStack(spacing: 18) {
+            Image(systemName: "house").font(.system(size: 30)).foregroundColor(Color.black.opacity(0.7))
+            VStack(alignment: .leading) {
+                Text("Prix d'acquisition:")
+                Text("Loyer mensuel:")
+                Text("Cash-flow mensuel")
+                Text("Rendement Brut:")
+            }
+            Spacer()
+            VStack {
+                Text(rentor.price ?? "")
+                Text(rentor.cashFlow ?? "").foregroundColor(.green)
+                Text(rentor.cashFlow ?? "").foregroundColor(.green)
+                Text(rentor.percentageEffiency ?? "").foregroundColor(.green)
+            }
+        }
+        .padding()
+        .background(Color.white)
+        .cornerRadius(20)
     }
 }
 
-struct RentalEntityView_Previews: PreviewProvider {
-    static var previews: some View {
-        RentalEntityView(title: "Test", createDate: "12-03-2002")
-    }
-}
+//struct RentalEntityView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let rentor = RentorEntity(
+//        RentalEntityView(rentor: <#RentorEntity#>, title: "Test", createDate: "12-03-2002")
+//    }
+//}
