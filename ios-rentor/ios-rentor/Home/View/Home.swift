@@ -24,10 +24,13 @@ struct Home: View {
             List {
                 ForEach(self.fetchRentalProperties) { rentalProperty in
                     RentalEntityView(rentor: rentalProperty)
+                }.onDelete { indexSet in
+                    
                 }
-            }.navigationBarTitle(Text("Simmulations"), displayMode: .automatic)
+            }.navigationBarTitle(Text("Home"), displayMode: .automatic)
             .navigationBarItems(trailing: EditButton())
             .listStyle(GroupedListStyle())
+            
              //.frame(maxWidth: .infinity, alignment: .center)
                 
 //                Section {

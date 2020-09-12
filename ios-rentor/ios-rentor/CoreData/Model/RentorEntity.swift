@@ -12,10 +12,10 @@ import CoreData
 public class RentorEntity: NSManagedObject, Identifiable {
     @NSManaged public var createDate: Date?
     @NSManaged public var name: String?
-    @NSManaged public var price: String?
-    @NSManaged public var rentPrice: String?
-    @NSManaged public var cashFlow: String?
-    @NSManaged public var percentageEffiency: String?
+    @NSManaged public var price: Double
+    @NSManaged public var rentPrice: Double
+    @NSManaged public var cashFlow: Double
+    @NSManaged public var percentageEffiency: Double
 }
 
 extension RentorEntity {

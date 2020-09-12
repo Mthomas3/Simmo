@@ -17,13 +17,15 @@ struct SimmulatorView: View {
         NavigationView {
             HStack {
                 TextField("new Item", text: self.$newRentalName)
+                
                 Button(action: {
+                    
                     let rentalItem = RentorEntity(context: self.managedObjectContext)
-                            rentalItem.name = self.newRentalName
-                            rentalItem.createDate = Date()
-                            
+                    rentalItem.name = self.newRentalName
+                    rentalItem.createDate = Date()
+                    
                     do {
-                        try self.managedObjectContext.save()
+                        try CoreDataManager.sharedInstance.createRental(with: rentalItem)
                     } catch {
                         print(error)
                     }
