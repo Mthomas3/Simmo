@@ -26,7 +26,7 @@ internal final class CoreDataManager {
     private func isExist(with name: String) throws -> Bool {
         let fetchRequest = RentorEntity.fetchRequest() as NSFetchRequest<NSFetchRequestResult>
         fetchRequest.predicate = NSPredicate(format: "name == %@", name)
-        return try self.context.fetch(fetchRequest).count > 0 ? true : false
+        return try self.context.fetch(fetchRequest).count > 0 ? false : true
     }
 
     internal func createRental(with rental: RentorEntity) throws {
@@ -38,9 +38,8 @@ internal final class CoreDataManager {
             rental.percentageEffiency = 6.8
             rental.rentPrice = 850.0
             
-            print(rental)
-            
             self.context.insert(rental)
+            try self.context.save()
         }
     }
     

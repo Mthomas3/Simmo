@@ -10,22 +10,11 @@ import Foundation
 
 extension String {
     
-    func concat(string: String) -> String{
-        return "\(self)\(string)"
-    }
+    private func getLocaleCurrency() -> String { Locale.current.currencySymbol ?? "€" }
     
-    func currencyFormatting(formatterDigit: Int) -> String {
-        if let value = Double(self) {
-            let formatter = NumberFormatter()
-            formatter.maximumFractionDigits = formatterDigit
-            formatter.minimumFractionDigits = formatterDigit
-            formatter.numberStyle = .decimal
-            if let str = formatter.string(for: value) {
-                return str.concat(string: " $")
-            }
-        }
-        return ""
-    }
+    func concat(string: String) -> String{ "\(self)\(string)" }
+    
+    func currencyFormatting() -> String { self.concat(string: " ").concat(string: self.getLocaleCurrency()) }
     
     func numberFormatting(formatterDigit: Int, isDecimal: Bool) -> String {
         if let value = Double(self) {
