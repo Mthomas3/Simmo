@@ -32,7 +32,7 @@ internal final class CoreDataManager {
     private func isExist<T: NSManagedObject>(type: T.Type, item: T) throws -> Bool {
         let fetchRequest = T.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "%@ == %@", item)
-        return try self.context.fetch(fetchRequest).count > 0 ? false : true
+        return try self.context.fetch(fetchRequest).count > 0
     }
 
     internal func createData<T: NSManagedObject>(type: T.Type, with data: T) -> AnyPublisher<Void, CoreDataError> {
