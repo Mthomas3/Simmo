@@ -57,7 +57,7 @@ internal final class CoreDataManager {
     
     internal func fetchData<T: NSManagedObject>(type: T.Type) -> AnyPublisher<[T]?, CoreDataError> {
         do {
-            return Just(try self.context.fetch(self.fetchRequest(type: RentorEntity.self)) as? [T])
+            return Just(try self.context.fetch(self.fetchRequest(type: T.self)))
                     .retry(2)
                     .mapError { _ in CoreDataError.fetchError }
                     .eraseToAnyPublisher()
