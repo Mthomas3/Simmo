@@ -11,6 +11,8 @@ import CoreData
 
 struct Home: View {
     @ObservedObject private var homeViewModel = HomeViewModel()
+    private let navigationBarTitle: String = "Home"
+    private let alertErrorTitle: String = "An error occured"
     
     init() {
         UITableView.appearance().backgroundColor = UIColor.black.withAlphaComponent(0.05)
@@ -26,9 +28,9 @@ struct Home: View {
                         self.homeViewModel.deleteRentals(with: currentIndex)
                     }
                 }.alert(isPresented: Binding<Bool>.constant(self.homeViewModel.shouldDisplayError.value)) {
-                    Alert(title: Text("An error occured"), message: Text(self.homeViewModel.messageDisplayError.value))
+                    Alert(title: Text(self.alertErrorTitle), message: Text(self.homeViewModel.messageDisplayError.value))
                 }
-            }.navigationBarTitle(Text("Home"), displayMode: .automatic)
+            }.navigationBarTitle(Text(self.navigationBarTitle), displayMode: .automatic)
             .navigationBarItems(trailing: EditButton())
             .listStyle(GroupedListStyle())
             .onAppear {
