@@ -9,89 +9,70 @@
 import SwiftUI
 import Combine
 
-fileprivate struct HeaderView: View {
-    private let name: String
-    
-    init(name: String) {
-        self.name = name
-    }
-    
-    var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            Text(self.name)
-            Divider().frame(height: 2).background(Color.black.opacity(0.2))
-                .padding(.top, 5)
-                .padding(.bottom, 5)
-        }
-    }
-}
-
-fileprivate struct ContentView: View {
-    private let entity: RentorEntity
-    
-    init(rentor: RentorEntity) {
-        self.entity = rentor
-    }
-    
-    var body: some View {
-        HStack(spacing: 0) {
-            Image(systemName: "house").font(.system(size: 26))
-                .foregroundColor(Color.black.opacity(0.7))
-                .padding(.trailing, 13)
-                
-            VStack(alignment: .leading) {
-                Text("Prix d'acquisition:")
-                Text("Loyer mensuel:")
-                Text("Cash-flow mensuel:")
-                Text("Rendement Brut:")
-            }
-            
-            Spacer()
-            
-            VStack(alignment: .trailing) {
-                Text("\(self.entity.price)"
-                    .numberFormatting(formatterDigit: 2, isDecimal: true)
-                    .currencyFormatting())
-                    
-                
-                Text("\(self.entity.rentPrice)"
-                    .numberFormatting(formatterDigit: 2, isDecimal: true)
-                    .currencyFormatting())
-                    .foregroundColor(.green)
-                
-                Text("\(self.entity.cashFlow)"
-                    .numberFormatting(formatterDigit: 2, isDecimal: true)
-                    .currencyFormatting())
-                    .foregroundColor(.green)
-                
-                Text("\(self.entity.percentageEffiency)"
-                    .numberFormatting(formatterDigit: 2, isDecimal: true)
-                    .currencyFormatting())
-                    .foregroundColor(.green)
-            }
-        }
-    }
-}
-
 struct RentalContentView: View {
     private let rentalData: RentorEntity
+    
+    //MARK: Drawing Constants
+    private let priceTitle: String = "Prix d'acquisition:"
+    private let rentPriceTitle: String = "Loyer mensuel:"
+    private let cashFlowTitle: String = "Cash-flow mensuel:"
+    private let percentageTitle: String = "Rendement Brut:"
     
     init(with rental: RentorEntity) {
         self.rentalData = rental
     }
     
     var body: some View {
-        
         VStack(alignment: .leading, spacing: 0) {
-            HeaderView(name: self.rentalData.name ?? "")
-            ContentView(rentor: self.rentalData)
-        }
-        .padding(.leading, 15)
-        .padding(.trailing, 8)
-        .padding(.top)
-        .padding(.bottom)
-        .background(Color.white)
-        .cornerRadius(20)
-    
+            self.HeaderCell(with: self.rentalData.name ?? "")
+            self.ContentCell(with: self.rentalData)
+        }.padding(.leading, 15)
+         .padding(.trailing, 8)
+         .padding(.top)
+         .padding(.bottom)
+         .background(Color.white)
+         .cornerRadius(20)
     }
+    
+    private func HeaderCell(with name: String) -> some View {
+        VStack(alignment: .leading, spacing: 0) {
+            Text(name)
+            Divider().frame(height: 2).background(Color.black.opacity(0.2))
+                .padding(.top, 5)
+                .padding(.bottom, 5)
+        }
+    }
+    
+    private func ContentCell(with rental: RentorEntity) -> some View {
+        HStack {
+            Image(systemName: "house").font(.system(size: 26))
+                .foregroundColor(Color.black.opacity(0.7))
+                .padding(.trailing, 13)
+            VStack(alignment: .leading) {
+                Text(self.priceTitle)
+                Text(self.rentPriceTitle)
+                Text(self.cashFlowTitle)
+                Text(self.percentageTitle)
+            }
+            Spacer()
+            VStack(alignment: .trailing) {
+                Text("\(rental.price)"
+                    .numberFormatting(formatterDigit: 2, isDecimal: true)
+                    .currencyFormatting())
+                Text("\(rental.rentPrice)"
+                    .numberFormatting(formatterDigit: 2, isDecimal: true)
+                    .currencyFormatting())
+                    .foregroundColor(.green)
+                Text("\(rental.cashFlow)"
+                    .numberFormatting(formatterDigit: 2, isDecimal: true)
+                    .currencyFormatting())
+                    .foregroundColor(.green)
+                Text("\(rental.percentageEffiency)"
+                    .numberFormatting(formatterDigit: 2, isDecimal: true)
+                    .currencyFormatting())
+                    .foregroundColor(.green)
+            }
+        }
+    }
+    
 }

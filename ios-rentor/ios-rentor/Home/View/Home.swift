@@ -11,6 +11,8 @@ import CoreData
 
 struct Home: View {
     @ObservedObject private var homeViewModel = HomeViewModel()
+    
+    //MARK: Drawing Constants
     private let navigationBarTitle: String = "Home"
     private let alertErrorTitle: String = "An error occured"
     
