@@ -53,7 +53,7 @@ internal final class CoreDataManager {
     
     internal func fetchData<T: NSManagedObject>(type: T.Type) -> AnyPublisher<[T]?, CoreDataError> {
         do {
-            return Just(try self.context.fetch(T.fetchRequest()) as? [T])
+            return Just(try self.context.fetch(self.fetchRequest(type: RentorEntity.self)) as? [T])
                     .retry(2)
                     .mapError { _ in CoreDataError.createError }
                     .eraseToAnyPublisher()
@@ -78,13 +78,12 @@ internal final class CoreDataManager {
         }
     }
     
-    internal func deleteRental(with rental: RentorEntity) throws {
-        self.context.delete(rental)
-        try self.context.save()
+    internal func updateData<T>(with item: T) {
+        fatalError("updateData not implemented")
     }
     
-    internal func deleteRental(with name: String) throws {
-        let fetchRequest = RentorEntity.fetchRequest() as NSFetchRequest<NSFetchRequestResult>
+    internal func deleteRental<T: NSManagedObject>(type: T.Type, with name: String) throws {
+        let fetchRequest = T.fetchRequest() as NSFetchRequest<NSFetchRequestResult>
         fetchRequest.predicate = NSPredicate(format: "id == %@", name)
         
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
@@ -92,10 +91,9 @@ internal final class CoreDataManager {
         try self.context.save()
     }
     
-    internal func updateRental(with name: String) { }
     
-    internal func fetchRental() -> NSFetchRequest<RentorEntity>  {
-        let request: NSFetchRequest<RentorEntity> = RentorEntity.fetchRequest() as! NSFetchRequest<RentorEntity>
+    private func fetchRequest<T: NSManagedObject>(type: T.Type) -> NSFetchRequest<T>  {
+        let request: NSFetchRequest<T> = T.fetchRequest() as! NSFetchRequest<T>
         request.sortDescriptors = [NSSortDescriptor(key: "createDate", ascending: true)]
         return request
     }
