@@ -12,25 +12,23 @@ import CoreData
 struct Home: View {
     @State private var shouldDisplayError: Bool = false
     
-    @FetchRequest(fetchRequest: CoreDataManager.sharedInstance.fetchRental())
-        private var fetchRentalProperties: FetchedResults<RentorEntity>
+    @ObservedObject private var homeViewModel = HomeViewModel()
     
     init() {
         UITableView.appearance().backgroundColor = UIColor.black.withAlphaComponent(0.05)
-        UITableViewCell.appearance().backgroundColor = UIColor.clear   
+        UITableViewCell.appearance().backgroundColor = UIColor.clear
     }
     
     var body: some View {
         NavigationView {
             List {
-                ForEach(self.fetchRentalProperties) { rentalProperty in
+                ForEach(self.homeViewModel.dataSources) { rentalProperty in
                     RentalEntityView(rentor: rentalProperty)
-                    
-                    
                 }.onDelete { indexSet in
                     if let currentIndex = indexSet.first {
                         do {
-                            try CoreDataManager.sharedInstance.deleteRental(with: self.fetchRentalProperties[currentIndex])
+//                            try CoreDataManager.sharedInstance.deleteRental(with:
+//                                self.fetchRentalProperties[currentIndex])
                         } catch {
                             self.shouldDisplayError = true
                         }
@@ -41,6 +39,9 @@ struct Home: View {
             }.navigationBarTitle(Text("Home"), displayMode: .automatic)
             .navigationBarItems(trailing: EditButton())
             .listStyle(GroupedListStyle())
+            .onAppear {
+                
+            }
         }
     }
 }

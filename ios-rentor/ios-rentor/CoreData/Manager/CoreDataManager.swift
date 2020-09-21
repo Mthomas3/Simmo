@@ -9,6 +9,14 @@
 import Foundation
 import CoreData
 import SwiftUI
+import Combine
+
+internal enum CoreDataError: Error {
+    case fetchError
+    case updateError
+    case deleteError
+    case createError
+}
 
 internal final class CoreDataManager {
     
@@ -41,6 +49,24 @@ internal final class CoreDataManager {
             self.context.insert(rental)
             try self.context.save()
         }
+    }
+    
+    internal func fetchTest<T>(t: T) -> T {
+        return t
+    }
+    
+    internal func fetchData<T>(type: T.Type) -> AnyPublisher<[T]?, CoreDataError> {
+        do {
+            let rentals = try self.context.fetch(RentorEntity.fetchRequest())
+            return Just(rentals as? [T])
+                    .retry(2)
+                    .mapError { _ in CoreDataError.createError }
+                    .eraseToAnyPublisher()
+            
+        } catch {
+            return Just([]).mapError { _ in CoreDataError.createError }.eraseToAnyPublisher()
+        }
+
     }
     
     internal func deleteRental(with rental: RentorEntity) throws {

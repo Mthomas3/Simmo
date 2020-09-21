@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Combine
 
 fileprivate struct HeaderView: View {
     private let name: String
@@ -18,12 +19,9 @@ fileprivate struct HeaderView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             Text(self.name)
-            GeometryReader { geometry in
-                Path { path in
-                    path.move(to: CGPoint(x: geometry.size.width, y: 0))
-                    path.addLine(to: CGPoint(x: 0, y: 0))
-                }.stroke()
-            }
+            Divider().frame(height: 2).background(Color.black.opacity(0.2))
+                .padding(.top, 5)
+                .padding(.bottom, 5)
         }
     }
 }
@@ -93,10 +91,3 @@ struct RentalEntityView: View {
     
     }
 }
-
-//struct RentalEntityView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        let rentor = RentorEntity(
-//        RentalEntityView(rentor: <#RentorEntity#>, title: "Test", createDate: "12-03-2002")
-//    }
-//}
