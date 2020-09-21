@@ -18,24 +18,26 @@ struct Home: View {
         UITableView.appearance().backgroundColor = UIColor.black.withAlphaComponent(0.05)
         UITableViewCell.appearance().backgroundColor = UIColor.clear
     }
+    
     var body: some View {
         NavigationView {
             List {
-                ForEach(self.homeViewModel.dataSources) { rentalProperty in
-                    RentalEntityView(rentor: rentalProperty)
-                }.onDelete { indexSet in
-                    if let currentIndex = indexSet.first {
-                        self.homeViewModel.deleteRentals(with: currentIndex)
-                    }
-                }.alert(isPresented: Binding<Bool>.constant(self.homeViewModel.shouldDisplayError.value)) {
-                    Alert(title: Text(self.alertErrorTitle), message: Text(self.homeViewModel.messageDisplayError.value))
-                }
+                self.displayBody()
             }.navigationBarTitle(Text(self.navigationBarTitle), displayMode: .automatic)
             .navigationBarItems(trailing: EditButton())
             .listStyle(GroupedListStyle())
-            .onAppear {
-                
+        }
+    }
+    
+    private func displayBody() -> some View {
+        ForEach(self.homeViewModel.dataSources) { rentalProperty in
+            RentalEntityView(rentor: rentalProperty)
+        }.onDelete { indexSet in
+            if let currentIndex = indexSet.first {
+                self.homeViewModel.deleteRentals(with: currentIndex)
             }
+        }.alert(isPresented: Binding<Bool>.constant(self.homeViewModel.shouldDisplayError.value)) {
+            Alert(title: Text(self.alertErrorTitle), message: Text(self.homeViewModel.messageDisplayError.value))
         }
     }
 }
