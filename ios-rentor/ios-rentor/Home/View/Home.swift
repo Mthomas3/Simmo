@@ -26,12 +26,7 @@ struct Home: View {
                     RentalEntityView(rentor: rentalProperty)
                 }.onDelete { indexSet in
                     if let currentIndex = indexSet.first {
-                        do {
-//                            try CoreDataManager.sharedInstance.deleteRental(with:
-//                                self.fetchRentalProperties[currentIndex])
-                        } catch {
-                            self.shouldDisplayError = true
-                        }
+                        self.homeViewModel.deleteRentals(with: currentIndex)
                     }
                 }.alert(isPresented: self.$shouldDisplayError) {
                     Alert(title: Text("An error occured"), message: Text("Unable to fetch the necessary data. Please try again"))

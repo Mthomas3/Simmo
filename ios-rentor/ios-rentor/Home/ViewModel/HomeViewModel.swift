@@ -14,6 +14,7 @@ internal final class HomeViewModel: ObservableObject {
     
     //MARK: Public Members
     @Published private(set) var dataSources: [RentorEntity] = []
+    @Published private(set) var isDelete: RentorEntity?
     
     //MARK: Private Members
     private var disposables = Set<AnyCancellable>()
@@ -41,8 +42,21 @@ internal final class HomeViewModel: ObservableObject {
         }.store(in: &self.disposables)
     }
     
-    private func deleteRentals() {
-        
+    internal func deleteRentals(with index: Int) {
+        CoreDataManager.sharedInstance.deleteData(with: self.dataSources[index])
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { (value) in
+                switch value {
+                case .failure(let coreError):
+                    print(coreError)
+                    break
+                case .finished:
+                    break
+                }
+            }) { _ in
+                self.dataSources.remove(at: index)
+        }
+            
     }
     
 }
