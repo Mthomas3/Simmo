@@ -11,13 +11,6 @@ import CoreData
 import SwiftUI
 import Combine
 
-internal enum CoreDataError: Error {
-    case fetchError
-    case updateError
-    case deleteError
-    case createError
-}
-
 internal final class CoreDataManager {
     
     internal static let sharedInstance = CoreDataManager()

@@ -15,6 +15,7 @@ internal final class HomeViewModel: ObservableObject {
     //MARK: Public Members
     @Published private(set) var dataSources: [RentorEntity] = []
     internal let shouldDisplayError = CurrentValueSubject<Bool, Never>(false)
+    internal let messageDisplayError = CurrentValueSubject<String, Never>("")
     
     //MARK: Private Members
     private var disposables = Set<AnyCancellable>()
@@ -32,6 +33,7 @@ internal final class HomeViewModel: ObservableObject {
                 case .failure(_):
                     self.dataSources = []
                     self.shouldDisplayError.send(true)
+                    self.messageDisplayError.send("Cannot fetch rentals properties")
                     break
                 case .finished:
                     break
@@ -50,6 +52,7 @@ internal final class HomeViewModel: ObservableObject {
                 switch value {
                 case .failure(_):
                     self.shouldDisplayError.send(true)
+                    self.messageDisplayError.send("Cannot delete this rental property")
                     break
                 case .finished:
                     break
