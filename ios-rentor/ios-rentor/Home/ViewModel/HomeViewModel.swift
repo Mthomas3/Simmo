@@ -14,7 +14,7 @@ internal final class HomeViewModel: ObservableObject {
     
     //MARK: Public Members
     @Published private(set) var dataSources: [RentorEntity] = []
-    @Published private(set) var isDelete: RentorEntity?
+    internal let shouldDisplayError = CurrentValueSubject<Bool, Never>(false)
     
     //MARK: Private Members
     private var disposables = Set<AnyCancellable>()
@@ -29,34 +29,34 @@ internal final class HomeViewModel: ObservableObject {
             .sink(receiveCompletion: { [weak self] (value) in
                 guard let self = self else { return }
                 switch value {
-                case .failure(let coreError):
-                print(coreError)
-                self.dataSources = []
-                break
-            case .finished:
-                break
-            }
-        }) {[weak self] (value) in
-            guard let self = self, let val = value else { return }
-            self.dataSources = val
+                case .failure(_):
+                    self.dataSources = []
+                    self.shouldDisplayError.send(true)
+                    break
+                case .finished:
+                    break
+                }
+            }) { [weak self] (items) in
+                guard let self = self, let items = items else { return }
+                self.dataSources = items
         }.store(in: &self.disposables)
     }
     
     internal func deleteRentals(with index: Int) {
         CoreDataManager.sharedInstance.deleteData(with: self.dataSources[index])
             .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { (value) in
+            .sink(receiveCompletion: { [weak self] (value) in
+                guard let self = self else { return }
                 switch value {
-                case .failure(let coreError):
-                    print(coreError)
+                case .failure(_):
+                    self.shouldDisplayError.send(true)
                     break
                 case .finished:
                     break
                 }
-            }) { _ in
+            }) { [weak self] _ in
+                guard let self = self else { return }
                 self.dataSources.remove(at: index)
-        }
-            
+        }.store(in: &self.disposables)
     }
-    
 }

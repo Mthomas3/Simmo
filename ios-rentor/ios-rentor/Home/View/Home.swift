@@ -10,17 +10,17 @@ import SwiftUI
 import CoreData
 
 struct Home: View {
-    @State private var shouldDisplayError: Bool = false
-    
+    @State public var shouldDisplayError: Bool = false
     @ObservedObject private var homeViewModel = HomeViewModel()
     
     init() {
         UITableView.appearance().backgroundColor = UIColor.black.withAlphaComponent(0.05)
         UITableViewCell.appearance().backgroundColor = UIColor.clear
     }
-    
     var body: some View {
-        NavigationView {
+        let a = Binding<Bool>.constant(self.homeViewModel.shouldDisplayError.value)
+        
+        return NavigationView {
             List {
                 ForEach(self.homeViewModel.dataSources) { rentalProperty in
                     RentalEntityView(rentor: rentalProperty)
@@ -28,8 +28,9 @@ struct Home: View {
                     if let currentIndex = indexSet.first {
                         self.homeViewModel.deleteRentals(with: currentIndex)
                     }
-                }.alert(isPresented: self.$shouldDisplayError) {
-                    Alert(title: Text("An error occured"), message: Text("Unable to fetch the necessary data. Please try again"))
+                }.alert(isPresented: a) {
+                    Alert(title: Text("An error occured"),
+                          message: Text("Unable to fetch the necessary data. Please try again"))
                 }
             }.navigationBarTitle(Text("Home"), displayMode: .automatic)
             .navigationBarItems(trailing: EditButton())

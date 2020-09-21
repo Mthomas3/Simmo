@@ -150,6 +150,26 @@ internal struct SimmulatorView: View {
     
     private func handleEditEvent() {
         print("* Handle Save here *")
+        let newItem = RentorEntity(context: self.managedObjectContext)
+        newItem.name = "Test A"
+        newItem.cashFlow = 850.0
+        newItem.price = 150000.0
+        newItem.rentPrice = 850.0
+        newItem.percentageEffiency = 7.90
+        newItem.createDate = Date()
+        CoreDataManager.sharedInstance.createData(type: RentorEntity.self, with: newItem)
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { (value) in
+                switch value {
+                case .failure(let coreError):
+                    print(coreError)
+                    break
+                case .finished:
+                    break
+                }
+            }) { _ in
+                print("created")
+        }
     }
 }
 
