@@ -73,14 +73,18 @@ fileprivate struct ContentView: View {
     }
 }
 
-struct RentalEntityView: View {
-    var rentor: RentorEntity
+struct RentalContentView: View {
+    private let rentalData: RentorEntity
+    
+    init(with rental: RentorEntity) {
+        self.rentalData = rental
+    }
     
     var body: some View {
         
         VStack(alignment: .leading, spacing: 0) {
-            HeaderView(name: rentor.name ?? "")
-            ContentView(rentor: self.rentor)
+            HeaderView(name: self.rentalData.name ?? "")
+            ContentView(rentor: self.rentalData)
         }
         .padding(.leading, 15)
         .padding(.trailing, 8)

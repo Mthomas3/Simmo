@@ -22,16 +22,16 @@ struct Home: View {
     var body: some View {
         NavigationView {
             List {
-                self.displayBody()
+                self.displayRentalProperties()
             }.navigationBarTitle(Text(self.navigationBarTitle), displayMode: .automatic)
             .navigationBarItems(trailing: EditButton())
             .listStyle(GroupedListStyle())
         }
     }
     
-    private func displayBody() -> some View {
+    private func displayRentalProperties() -> some View {
         ForEach(self.homeViewModel.dataSources) { rentalProperty in
-            RentalEntityView(rentor: rentalProperty)
+            RentalContentView(with: rentalProperty)
         }.onDelete { indexSet in
             if let currentIndex = indexSet.first {
                 self.homeViewModel.deleteRentals(with: currentIndex)
