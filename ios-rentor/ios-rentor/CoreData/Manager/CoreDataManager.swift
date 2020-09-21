@@ -51,22 +51,31 @@ internal final class CoreDataManager {
         }
     }
     
-    internal func fetchTest<T>(t: T) -> T {
-        return t
-    }
-    
-    internal func fetchData<T>(type: T.Type) -> AnyPublisher<[T]?, CoreDataError> {
+    internal func fetchData<T: NSManagedObject>(type: T.Type) -> AnyPublisher<[T]?, CoreDataError> {
         do {
-            let rentals = try self.context.fetch(RentorEntity.fetchRequest())
-            return Just(rentals as? [T])
+            return Just(try self.context.fetch(T.fetchRequest()) as? [T])
                     .retry(2)
                     .mapError { _ in CoreDataError.createError }
                     .eraseToAnyPublisher()
-            
         } catch {
-            return Just([]).mapError { _ in CoreDataError.createError }.eraseToAnyPublisher()
+            return Just([])
+                .mapError { _ in CoreDataError.createError }
+                .eraseToAnyPublisher()
         }
-
+    }
+    
+    internal func deleteData<T: NSManagedObject>(with data: T) -> AnyPublisher<Void, CoreDataError> {
+        do {
+            self.context.delete(data)
+            return Just(try self.context.save() as Void)
+                .retry(2)
+                .mapError {_ in CoreDataError.deleteError }
+                .eraseToAnyPublisher()
+        } catch {
+            return Just(())
+                .mapError {_ in CoreDataError.deleteError }
+                .eraseToAnyPublisher()
+        }
     }
     
     internal func deleteRental(with rental: RentorEntity) throws {

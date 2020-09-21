@@ -41,4 +41,8 @@ internal final class HomeViewModel: ObservableObject {
         }.store(in: &self.disposables)
     }
     
+    private func deleteRentals() {
+        
+    }
+    
 }

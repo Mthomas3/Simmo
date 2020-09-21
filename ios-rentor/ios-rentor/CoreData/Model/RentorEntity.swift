@@ -9,23 +9,11 @@
 import Foundation
 import CoreData
 
-public class RentorEntity: NSManagedObject, Identifiable {
+internal final class RentorEntity: NSManagedObject, Identifiable {
     @NSManaged public var createDate: Date?
     @NSManaged public var name: String?
     @NSManaged public var price: Double
     @NSManaged public var rentPrice: Double
     @NSManaged public var cashFlow: Double
     @NSManaged public var percentageEffiency: Double
-}
-
-extension RentorEntity {
-    static func getAllRentorEntities() -> NSFetchRequest<RentorEntity> {
-        
-        let request: NSFetchRequest<RentorEntity> = RentorEntity.fetchRequest() as! NSFetchRequest<RentorEntity>
-        
-        let sortDescriptor = NSSortDescriptor(key: "createDate", ascending: true)
-        request.sortDescriptors = [sortDescriptor]
-        
-        return request
-    }
 }
