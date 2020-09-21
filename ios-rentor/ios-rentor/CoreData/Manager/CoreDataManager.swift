@@ -27,27 +27,31 @@ internal final class CoreDataManager {
         self.coreDataContainer = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
     }
     
-    private var context: NSManagedObjectContext {
-        return self.coreDataContainer.viewContext
-    }
+    private var context: NSManagedObjectContext { self.coreDataContainer.viewContext }
     
-    private func isExist(with name: String) throws -> Bool {
-        let fetchRequest = RentorEntity.fetchRequest() as NSFetchRequest<NSFetchRequestResult>
-        fetchRequest.predicate = NSPredicate(format: "name == %@", name)
+    private func isExist<T: NSManagedObject>(type: T.Type, item: T) throws -> Bool {
+        let fetchRequest = T.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "%@ == %@", item)
         return try self.context.fetch(fetchRequest).count > 0 ? false : true
     }
 
-    internal func createRental(with rental: RentorEntity) throws {
-        let result = try self.isExist(with: rental.name ?? "")
-        if (!result) {
+    internal func createData<T: NSManagedObject>(type: T.Type, with data: T) -> AnyPublisher<Void, CoreDataError> {
+        do {
+            let isExist = try self.isExist(type: T.self, item: data)
             
-            rental.cashFlow = 850.0
-            rental.price = 150000.0
-            rental.percentageEffiency = 6.8
-            rental.rentPrice = 850.0
-            
-            self.context.insert(rental)
-            try self.context.save()
+            if (!isExist) {
+                self.context.insert(data)
+                return Just(try self.context.save() as Void)
+                    .retry(2)
+                    .mapError { _ in CoreDataError.createError}
+                    .eraseToAnyPublisher()
+            } else {
+                throw CoreDataError.createError
+            }
+        } catch {
+            return Just(())
+                .mapError { _ in CoreDataError.createError }
+                .eraseToAnyPublisher()
         }
     }
     
@@ -55,11 +59,11 @@ internal final class CoreDataManager {
         do {
             return Just(try self.context.fetch(self.fetchRequest(type: RentorEntity.self)) as? [T])
                     .retry(2)
-                    .mapError { _ in CoreDataError.createError }
+                    .mapError { _ in CoreDataError.fetchError }
                     .eraseToAnyPublisher()
         } catch {
             return Just([])
-                .mapError { _ in CoreDataError.createError }
+                .mapError { _ in CoreDataError.fetchError }
                 .eraseToAnyPublisher()
         }
     }
@@ -90,7 +94,6 @@ internal final class CoreDataManager {
         try self.context.execute(deleteRequest)
         try self.context.save()
     }
-    
     
     private func fetchRequest<T: NSManagedObject>(type: T.Type) -> NSFetchRequest<T>  {
         let request: NSFetchRequest<T> = T.fetchRequest() as! NSFetchRequest<T>
