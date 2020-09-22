@@ -76,28 +76,12 @@ fileprivate struct ContentBodyView: View {
     }
 }
 
-
-fileprivate struct ContentViewCell: View {
-    
-    private let name: String
-    
-    init(name: String) {
-        self.name = name
-    }
-    
-    var body: some View {
-        HStack(alignment: .center, spacing: 0) {
-            TitleBodyView(label: self.name)
-            Spacer()
-            ContentBodyView().frame(width: 80, alignment: .trailing)
-        }
-    }
-}
-
 internal struct SimmulatorView: View {
     @State private var eventTrigger: EditEvent = { }
     @Environment(\.managedObjectContext) private var managedObjectContext
     @State private var newRentalName: String = ""
+    
+    @ObservedObject private var simmulatorViewModel = SimmulatorViewModel()
     
     //MARK: Drawing Constants
     private let priceTitle: String = "Prix d'achat:"
@@ -105,6 +89,7 @@ internal struct SimmulatorView: View {
     private let percentageTitle: String = "Charges locatives:"
     private let headerTitle: String = "Charges annuelles:"
     private let fontScaleFactor: CGFloat = 0.04
+    private let navigationBarTitle: String = "Simmulations"
     
     init() {
         UITableView.appearance().backgroundColor = UIColor.black.withAlphaComponent(0.05)
@@ -115,7 +100,7 @@ internal struct SimmulatorView: View {
         NavigationView {
             GeometryReader { geometry in
                 self.body(with: geometry.size)
-            }.navigationBarTitle(Text("Simmulations"))
+            }.navigationBarTitle(Text(self.navigationBarTitle))
             .navigationBarItems(trailing: CustomNavigationBarItems(event: self.$eventTrigger))
         }
     }
@@ -127,22 +112,29 @@ internal struct SimmulatorView: View {
     private func body(with size: CGSize) -> some View {
         List {
             Section {
-                ContentViewCell(name: self.priceTitle)
-                ContentViewCell(name: self.rentTitle)
-                ContentViewCell(name: self.percentageTitle)
+                self.bodyContentCell(with: self.priceTitle)
+                self.bodyContentCell(with: self.rentTitle)
+                self.bodyContentCell(with: self.percentageTitle)
             }
             Section(header: Text(self.headerTitle)) {
-                ContentViewCell(name: self.percentageTitle)
+                self.bodyContentCell(with: self.percentageTitle)
             }
             Section(header: Text(self.headerTitle)) {
-                ContentViewCell(name: self.percentageTitle)
+                self.bodyContentCell(with: self.percentageTitle)
             }
-        }.navigationBarTitle(Text("Home"), displayMode: .automatic)
-        .navigationBarItems(trailing: EditButton())
+        }.navigationBarItems(trailing: EditButton())
         .listStyle(GroupedListStyle())
         .font(Font.system(size: self.fontSize(for: size)))
         .onAppear {
             self.eventTrigger = self.handleEditEvent
+        }
+    }
+    
+    private func bodyContentCell(with name: String) -> some View {
+        HStack(alignment: .center, spacing: 0) {
+            TitleBodyView(label: name)
+            Spacer()
+            ContentBodyView().frame(width: 80, alignment: .trailing)
         }
     }
     
