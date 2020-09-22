@@ -15,6 +15,7 @@ struct Home: View {
     //MARK: Drawing Constants
     private let navigationBarTitle: String = "Home"
     private let alertErrorTitle: String = "An error occured"
+    private let fontScaleFactor: CGFloat = 0.04
     
     init() {
         UITableView.appearance().backgroundColor = UIColor.black.withAlphaComponent(0.05)
@@ -23,12 +24,23 @@ struct Home: View {
     
     var body: some View {
         NavigationView {
-            List {
-                self.displayRentalProperties()
-            }.navigationBarTitle(Text(self.navigationBarTitle), displayMode: .automatic)
-            .navigationBarItems(trailing: EditButton())
-            .listStyle(GroupedListStyle())
+            GeometryReader { geometry in
+                self.body(with: geometry.size)
+            }
         }
+    }
+    
+    private func fontSize(for size: CGSize) -> CGFloat {
+        min(size.width, size.height) * self.fontScaleFactor
+    }
+    
+    private func body(with size: CGSize) -> some View {
+        List {
+            self.displayRentalProperties()
+        }.navigationBarTitle(Text(self.navigationBarTitle), displayMode: .automatic)
+        .navigationBarItems(trailing: EditButton())
+        .listStyle(GroupedListStyle())
+            .font(Font.system(size: self.fontSize(for: size)))
     }
     
     private func displayRentalProperties() -> some View {
