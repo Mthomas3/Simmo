@@ -76,12 +76,6 @@ fileprivate struct ContentBodyView: View {
     }
 }
 
-/*.padding(.leading, 15)
-.padding(.trailing, 8)
-.padding(.top)
-.padding(.bottom)
-.background(Color.white)
-.cornerRadius(20)*/
 
 fileprivate struct ContentViewCell: View {
     
@@ -100,9 +94,17 @@ fileprivate struct ContentViewCell: View {
     }
 }
 
-fileprivate struct ContentView: View {
+internal struct SimmulatorView: View {
+    @State private var eventTrigger: EditEvent = { }
+    @Environment(\.managedObjectContext) private var managedObjectContext
+    @State private var newRentalName: String = ""
     
-    @State private var value: String = ""
+    //MARK: Drawing Constants
+    private let priceTitle: String = "Prix d'achat:"
+    private let rentTitle: String = "Loyer mensuel:"
+    private let percentageTitle: String = "Charges locatives:"
+    private let headerTitle: String = "Charges annuelles:"
+    private let fontScaleFactor: CGFloat = 0.04
     
     init() {
         UITableView.appearance().backgroundColor = UIColor.black.withAlphaComponent(0.05)
@@ -110,77 +112,41 @@ fileprivate struct ContentView: View {
     }
     
     var body: some View {
+        NavigationView {
+            GeometryReader { geometry in
+                self.body(with: geometry.size)
+            }.navigationBarTitle(Text("Simmulations"))
+            .navigationBarItems(trailing: CustomNavigationBarItems(event: self.$eventTrigger))
+        }
+    }
+    
+    private func fontSize(for size: CGSize) -> CGFloat {
+        min(size.width, size.height) * self.fontScaleFactor
+    }
+    
+    private func body(with size: CGSize) -> some View {
         List {
             Section {
-                ContentViewCell(name: "Prix d'achat:")
-                ContentViewCell(name: "Loyer mensuel:")
-                ContentViewCell(name: "Charges locatives")
+                ContentViewCell(name: self.priceTitle)
+                ContentViewCell(name: self.rentTitle)
+                ContentViewCell(name: self.percentageTitle)
             }
-            
-            
-            Section(header: Text("Charges annuelles:")) {
-                ContentViewCell(name: "Charges locatives")
+            Section(header: Text(self.headerTitle)) {
+                ContentViewCell(name: self.percentageTitle)
             }
-            
-            Section(header: Text("Taxes:")) {
-                ContentViewCell(name: "Charges locatives")
+            Section(header: Text(self.headerTitle)) {
+                ContentViewCell(name: self.percentageTitle)
             }
-            
         }.navigationBarTitle(Text("Home"), displayMode: .automatic)
         .navigationBarItems(trailing: EditButton())
         .listStyle(GroupedListStyle())
-        
-    }
-}
-
-internal struct SimmulatorView: View {
-    @State private var eventTrigger: EditEvent = { }
-    @Environment(\.managedObjectContext) private var managedObjectContext
-    @State private var newRentalName: String = ""
-    
-    var body: some View {
-        NavigationView {
-                ContentView()
-                    .navigationBarTitle(Text("Simmulations"))
-                    .navigationBarItems(trailing: CustomNavigationBarItems(event: self.$eventTrigger))
-                }.onAppear {
+        .font(Font.system(size: self.fontSize(for: size)))
+        .onAppear {
             self.eventTrigger = self.handleEditEvent
         }
     }
     
     private func handleEditEvent() {
-        print("* Handle Save here *")
-        let newItem = RentorEntity(context: self.managedObjectContext)
-        newItem.name = "Test A"
-        newItem.cashFlow = 850.0
-        newItem.price = 150000.0
-        newItem.rentPrice = 850.0
-        newItem.percentageEffiency = 7.90
-        newItem.createDate = Date()
-        CoreDataManager.sharedInstance.createData(type: RentorEntity.self, with: newItem)
-            .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { (value) in
-                switch value {
-                case .failure(let coreError):
-                    print(coreError)
-                    break
-                case .finished:
-                    break
-                }
-            }) { _ in
-                print("created")
-        }
+        print("* handle event *")
     }
 }
-
-//let rentalItem = RentorEntity(context: self.managedObjectContext)
-//rentalItem.name = self.newRentalName
-//rentalItem.createDate = Date()
-//
-//do {
-//    try CoreDataManager.sharedInstance.createRental(with: rentalItem)
-//} catch {
-//    print(error)
-//}
-//
-//self.newRentalName = ""
