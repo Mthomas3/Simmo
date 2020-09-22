@@ -22,31 +22,50 @@ fileprivate struct CustomNavigationBarItems: View {
     }
 }
 
-fileprivate struct TitleBodyView: View {
-    @State private var value: String = ""
-    private let label: String
-    
-    init(label: String) {
-        self.label = label
-    }
-
-    var body: some View {
-        VStack(alignment: .trailing) {
-            Text(self.label)
-        }
-    }
-}
-
-fileprivate struct ContentButton: View {
+internal struct SimmulatorCellView: View {
     private let name: String
+    @State private var value: String = ""
     
-    init(systemName name: String) {
+    //MARK: Drawing Constants
+    private let imageSystemNameLeft: String = "plus"
+    private let imageSystemNameRight: String = "minus"
+    private let bodyViewPlaceHolder: String = "100000€"
+    
+    
+    init(with name: String) {
         self.name = name
     }
     
     var body: some View {
+        HStack(alignment: .center) {
+            self.headerViewCell(with: name)
+            Spacer()
+            self.bodyViewCell()
+                .frame(width: 80, alignment: .trailing)
+        }
+    }
+    
+    private func headerViewCell(with name: String) -> some View {
+        VStack(alignment: .trailing) {
+            Text(name)
+        }
+    }
+    
+    private func bodyViewCell() -> some View {
+        HStack(alignment: .center, spacing: 0) {
+            self.bodyViewButton(image: self.imageSystemNameLeft)
+            TextField(self.bodyViewPlaceHolder, text: self.$value)
+                .multilineTextAlignment(.trailing)
+                .frame(width: 80, alignment: .center)
+                .padding(.leading, 4)
+                .padding(.trailing, 4)
+            self.bodyViewButton(image: self.imageSystemNameRight)
+        }.overlay ( RoundedRectangle(cornerRadius: 8) .stroke(Color.black.opacity(0.05), lineWidth: 2) )
+    }
+    
+    private func bodyViewButton(image name: String) -> some View {
         Button(action: { }) {
-            Image(systemName: self.name).font(.system(size: 24))
+            Image(systemName: name).font(.system(size: 24))
                 .foregroundColor(Color.black.opacity(0.7))
         }.padding(.leading, 8)
          .padding(.trailing, 8)
@@ -54,25 +73,6 @@ fileprivate struct ContentButton: View {
          .padding(.bottom, 4)
          .background(Color.black.opacity(0.05))
         .cornerRadius(8)
-    }
-}
-
-fileprivate struct ContentBodyView: View {
-    @State private var value: String = ""
-    var body: some View {
-        HStack(alignment: .center, spacing: 0) {
-            
-            ContentButton(systemName: "plus")
-
-            TextField("100000€", text: self.$value)
-                .multilineTextAlignment(.trailing)
-                .frame(width: 80, alignment: .center)
-                .padding(.leading, 4)
-                .padding(.trailing, 4)
-            
-           ContentButton(systemName: "minus")
-             
-        }.overlay ( RoundedRectangle(cornerRadius: 8) .stroke(Color.black.opacity(0.05), lineWidth: 2) )
     }
 }
 
@@ -131,11 +131,7 @@ internal struct SimmulatorView: View {
     }
     
     private func bodyContentCell(with name: String) -> some View {
-        HStack(alignment: .center, spacing: 0) {
-            TitleBodyView(label: name)
-            Spacer()
-            ContentBodyView().frame(width: 80, alignment: .trailing)
-        }
+        SimmulatorCellView(with: name)
     }
     
     private func handleEditEvent() {
