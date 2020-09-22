@@ -34,6 +34,7 @@ internal struct SimmulatorCellView: View {
     
     init(with name: String) {
         self.name = name
+        UITableViewCell.appearance().selectionStyle = .none
     }
     
     var body: some View {
@@ -114,15 +115,31 @@ internal struct SimmulatorView: View {
     private func body(with size: CGSize) -> some View {
         Form {
             Section(footer: self.displayErrorMessage(with: self.simmulatorViewModel.formErrorMessage)) {
-                self.bodyContentCell(with: self.priceTitle)
-                self.bodyContentCell(with: self.rentTitle)
-                self.bodyContentCell(with: self.percentageTitle)
+                VStack {
+                    self.bodyContentCell(with: self.priceTitle)
+                    self.bodyContentCell(with: self.rentTitle)
+                    self.bodyContentCell(with: self.percentageTitle)
+                    self.bodyContentCell(with: self.percentageTitle)
+                }
+                .padding()
+                .background(Color.white)
+                .cornerRadius(16)
             }
             Section(header: Text(self.headerTitle), footer: self.displayErrorMessage(with: self.simmulatorViewModel.formErrorMessage)) {
-                self.bodyContentCell(with: self.percentageTitle)
+                VStack {
+                    self.bodyContentCell(with: self.percentageTitle)
+                    self.bodyContentCell(with: self.percentageTitle)
+                }.padding()
+                .background(Color.white)
+                .cornerRadius(16)
             }
             Section(header: Text(self.headerTitle), footer: self.displayErrorMessage(with: self.simmulatorViewModel.formErrorMessage)) {
-                self.bodyContentCell(with: self.percentageTitle)
+                VStack {
+                    self.bodyContentCell(with: self.percentageTitle)
+                    self.bodyContentCell(with: self.percentageTitle)
+                }.padding()
+                .background(Color.white)
+                .cornerRadius(16)
             }
             Section {
                 Button(action: {
