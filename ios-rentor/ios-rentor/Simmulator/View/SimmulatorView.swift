@@ -55,6 +55,7 @@ internal struct SimmulatorCellView: View {
         HStack(alignment: .center, spacing: 0) {
             self.bodyViewButton(image: self.imageSystemNameLeft)
             TextField(self.bodyViewPlaceHolder, text: self.$value)
+                .autocapitalization(.none)
                 .multilineTextAlignment(.trailing)
                 .frame(width: 80, alignment: .center)
                 .padding(.leading, 4)
@@ -90,6 +91,7 @@ internal struct SimmulatorView: View {
     private let headerTitle: String = "Charges annuelles:"
     private let fontScaleFactor: CGFloat = 0.04
     private let navigationBarTitle: String = "Simmulations"
+    private let saveButtonTitle: String = "Done"
     
     init() {
         UITableView.appearance().backgroundColor = UIColor.black.withAlphaComponent(0.05)
@@ -110,25 +112,32 @@ internal struct SimmulatorView: View {
     }
     
     private func body(with size: CGSize) -> some View {
-        List {
-            Section {
+        Form {
+            Section(footer: self.displayErrorMessage(with: self.simmulatorViewModel.formErrorMessage)) {
                 self.bodyContentCell(with: self.priceTitle)
                 self.bodyContentCell(with: self.rentTitle)
                 self.bodyContentCell(with: self.percentageTitle)
             }
-            Section(header: Text(self.headerTitle)) {
+            Section(header: Text(self.headerTitle), footer: self.displayErrorMessage(with: self.simmulatorViewModel.formErrorMessage)) {
                 self.bodyContentCell(with: self.percentageTitle)
             }
-            Section(header: Text(self.headerTitle)) {
+            Section(header: Text(self.headerTitle), footer: self.displayErrorMessage(with: self.simmulatorViewModel.formErrorMessage)) {
                 self.bodyContentCell(with: self.percentageTitle)
             }
-        }.navigationBarItems(trailing: EditButton())
-        .listStyle(GroupedListStyle())
-        .font(Font.system(size: self.fontSize(for: size)))
-        .onAppear {
+            Section {
+                Button(action: {
+                    print("need to be valid")
+                }){
+                    Text(self.saveButtonTitle)
+                }.disabled(!self.simmulatorViewModel.isFormValid)
+            }
+        }.font(Font.system(size: self.fontSize(for: size)))
+         .onAppear {
             self.eventTrigger = self.handleEditEvent
         }
     }
+    
+    private func displayErrorMessage(with error: String) -> some View { Text(error).foregroundColor(Color.red) }
     
     private func bodyContentCell(with name: String) -> some View {
         SimmulatorCellView(with: name)

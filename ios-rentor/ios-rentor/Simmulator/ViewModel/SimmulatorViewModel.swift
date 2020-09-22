@@ -16,7 +16,8 @@ internal final class SimmulatorViewModel: ObservableObject {
     @Published var percentage: String = ""
     
     //MARK: Output
-    @Published var isFormValid = false
+    @Published var isFormValid: Bool = false
+    @Published var formErrorMessage: String = ""
     
     init() { }
     
