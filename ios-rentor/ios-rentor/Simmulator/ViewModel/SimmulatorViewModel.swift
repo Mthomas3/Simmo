@@ -11,7 +11,7 @@ import Foundation
 internal final class SimmulatorViewModel: ObservableObject {
     
     //MARK: Input
-    @Published var price: String = ""
+    @Published var price: Int = 0
     @Published var rent: String = ""
     @Published var percentage: String = ""
     
@@ -19,7 +19,11 @@ internal final class SimmulatorViewModel: ObservableObject {
     @Published var isFormValid: Bool = false
     @Published var formErrorMessage: String = ""
     
-    init() { }
+    init() {
+        $price.sink { (value) in
+            print("vm = \(value)")
+        }
+    }
     
     internal func createSimmulation() { }
 }

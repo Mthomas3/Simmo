@@ -25,6 +25,7 @@ fileprivate struct CustomNavigationBarItems: View {
 internal struct SimmulatorCellView: View {
     private let name: String
     @State private var value: String = ""
+    @ObservedObject private var viewModel: SimmulatorViewModel
     
     //MARK: Drawing Constants
     private let imageSystemNameLeft: String = "plus"
@@ -32,8 +33,10 @@ internal struct SimmulatorCellView: View {
     private let bodyViewPlaceHolder: String = "100000€"
     
     
-    init(with name: String) {
+    init(with name: String, with vm: SimmulatorViewModel) {
         self.name = name
+        self.viewModel = vm
+        
         UITableViewCell.appearance().selectionStyle = .none
     }
     
@@ -52,10 +55,12 @@ internal struct SimmulatorCellView: View {
         }
     }
     
+    @State var toto: Int = 0
+    
     private func bodyViewCell() -> some View {
         HStack(alignment: .center, spacing: 0) {
             self.bodyViewButton(image: self.imageSystemNameLeft)
-            TextField(self.bodyViewPlaceHolder, text: self.$value)
+            TextField("", value: self.$viewModel.price, formatter: NumberFormatter())
                 .autocapitalization(.none)
                 .multilineTextAlignment(.trailing)
                 .frame(width: 80, alignment: .center)
@@ -66,7 +71,9 @@ internal struct SimmulatorCellView: View {
     }
     
     private func bodyViewButton(image name: String) -> some View {
-        Button(action: { }) {
+        Button(action: {
+            self.viewModel.price += 2
+        }) {
             Image(systemName: name).font(.system(size: 24))
                 .foregroundColor(Color.black.opacity(0.7))
         }.padding(.leading, 8)
@@ -157,7 +164,7 @@ internal struct SimmulatorView: View {
     private func displayErrorMessage(with error: String) -> some View { Text(error).foregroundColor(Color.red) }
     
     private func bodyContentCell(with name: String) -> some View {
-        SimmulatorCellView(with: name)
+        SimmulatorCellView(with: name, with: self.simmulatorViewModel)
     }
     
     private func handleEditEvent() {
