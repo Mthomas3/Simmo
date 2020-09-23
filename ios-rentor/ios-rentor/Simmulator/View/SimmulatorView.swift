@@ -28,8 +28,8 @@ internal struct SimmulatorCellView: View {
     private let name: String
     private let currentCell: SimmulatorFormCellData
     
-    private let increaseEvent = CurrentValueSubject<SimmulatorFormCellData?, Never>(nil)
-    private let decreaseEvent = CurrentValueSubject<SimmulatorFormCellData?, Never>(nil)
+    private let increaseEvent = PassthroughSubject<SimmulatorFormCellData, Never>()
+    private let decreaseEvent = PassthroughSubject<SimmulatorFormCellData, Never>()
     private let viewModel: SimmulatorViewModel
     
     @State private var stateTextField: Int = 0
@@ -109,6 +109,7 @@ internal struct SimmulatorView: View {
     
     private let simmulatorViewModel: SimmulatorViewModel
     private let output: SimmulatorViewModel.Output
+    private let doneEvent = PassthroughSubject<Void, Never>()
     
     //MARK: Drawing Constants
     private let fontScaleFactor: CGFloat = 0.04
@@ -117,7 +118,7 @@ internal struct SimmulatorView: View {
     
     init() {
         self.simmulatorViewModel = SimmulatorViewModel()
-        self.output = self.simmulatorViewModel.transform(SimmulatorViewModel.Input())
+        self.output = self.simmulatorViewModel.transform(SimmulatorViewModel.Input(doneForm: self.doneEvent.eraseToAnyPublisher()))
         
         UITableView.appearance().backgroundColor = UIColor.black.withAlphaComponent(0.05)
         UITableViewCell.appearance().backgroundColor = UIColor.clear
@@ -137,13 +138,13 @@ internal struct SimmulatorView: View {
     }
     
     private func shouldRenderText(with title: String?) -> some View {
-        title == nil ? AnyView(EmptyView()) : AnyView(Text(title ?? ""))
+        title == nil || title == "" ? AnyView(EmptyView()) : AnyView(Text(title ?? ""))
     }
     
     private func body(with size: CGSize) -> some View {
         return Form {
             ForEach(self.dataSources, id: \.id) { section in
-                Section(header: self.shouldRenderText(with: section.header), footer: Text("_ Temporary Footer _")) {
+                Section(header: self.shouldRenderText(with: section.header), footer: self.shouldRenderText(with: section.errorMessage.value).foregroundColor(Color.red)) {
                     VStack {
                         ForEach(section.data, id: \.id) { cell in
                             self.bodyContentCell(with: cell.name, and: cell)
@@ -155,7 +156,7 @@ internal struct SimmulatorView: View {
             }
             Section {
                 Button(action: {
-                    print("has to be valid")
+                    self.doneEvent.send(())
                 }) {
                     Text(self.saveButtonTitle)
                 }.disabled(!self.isFormValid)
@@ -167,8 +168,6 @@ internal struct SimmulatorView: View {
             self.dataSources = dataSources
         }
     }
-    
-    private func displayErrorMessage(with error: String) -> some View { Text(error).foregroundColor(Color.red) }
     
     private func bodyContentCell(with name: String, and cell: SimmulatorFormCellData) -> some View {
         SimmulatorCellView(with: name, with: self.simmulatorViewModel, and: cell)

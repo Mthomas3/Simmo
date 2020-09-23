@@ -15,8 +15,9 @@ internal final class SimmulatorViewModel: ObservableObject, ViewModelProtocol {
 
     //MARK: Input
     struct Input {
-        var increaseEvent: AnyPublisher<SimmulatorFormCellData?, Never>?
-        var decreaseEvent: AnyPublisher<SimmulatorFormCellData?, Never>?
+        var increaseEvent: AnyPublisher<SimmulatorFormCellData, Never>?
+        var decreaseEvent: AnyPublisher<SimmulatorFormCellData, Never>?
+        var doneForm: AnyPublisher<Void, Never>?
     }
     
     //MARK: Output
@@ -37,14 +38,17 @@ internal final class SimmulatorViewModel: ObservableObject, ViewModelProtocol {
         
         input.increaseEvent?.receive(on: DispatchQueue.main)
             .sink(receiveValue: { cell in
-                guard let cell = cell else { return }
                 self.increaseCurrentValue(with: cell)
             }).store(in: &self.disposables)
         
         input.decreaseEvent?.receive(on: DispatchQueue.main)
             .sink(receiveValue: { (cell) in
-                guard let cell = cell else { return }
                 self.decreaseCurrentValue(with: cell)
+            }).store(in: &self.disposables)
+        
+        input.doneForm?.receive(on: DispatchQueue.main)
+            .sink(receiveValue: { _ in
+                print("** handle done **")
             }).store(in: &self.disposables)
         
         return Output(dataSources: dataSources, isFormValid: isFormValid)
