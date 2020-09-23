@@ -24,19 +24,22 @@ fileprivate struct CustomNavigationBarItems: View {
 
 internal struct SimmulatorCellView: View {
     private let name: String
-    @State private var value: String = ""
     @ObservedObject private var viewModel: SimmulatorViewModel
+    private let currentCell: SimmulatorFormCellData
     
     //MARK: Drawing Constants
     private let imageSystemNameLeft: String = "plus"
     private let imageSystemNameRight: String = "minus"
-    private let bodyViewPlaceHolder: String = "100000€"
     
+    private enum actionType: Int {
+        case increase
+        case decrease
+    }
     
-    init(with name: String, with vm: SimmulatorViewModel) {
+    init(with name: String, with vm: SimmulatorViewModel, and cell: SimmulatorFormCellData) {
         self.name = name
         self.viewModel = vm
-        
+        self.currentCell = cell
         UITableViewCell.appearance().selectionStyle = .none
     }
     
@@ -44,7 +47,7 @@ internal struct SimmulatorCellView: View {
         HStack(alignment: .center) {
             self.headerViewCell(with: name)
             Spacer()
-            self.bodyViewCell()
+            self.bodyViewCell(with: self.currentCell)
                 .frame(width: 80, alignment: .trailing)
         }
     }
@@ -54,25 +57,34 @@ internal struct SimmulatorCellView: View {
             Text(name)
         }
     }
-    
-    @State var toto: Int = 0
-    
-    private func bodyViewCell() -> some View {
+    @State var stateTextField: Int = 0
+    private func bodyViewCell(with value: SimmulatorFormCellData) -> some View {
         HStack(alignment: .center, spacing: 0) {
-            self.bodyViewButton(image: self.imageSystemNameLeft)
-            TextField("", value: self.$viewModel.price, formatter: NumberFormatter())
+            self.bodyViewButton(image: self.imageSystemNameLeft, with: value, type: .increase)
+            TextField("", value: self.$stateTextField, formatter: NumberFormatter())
                 .autocapitalization(.none)
                 .multilineTextAlignment(.trailing)
                 .frame(width: 80, alignment: .center)
                 .padding(.leading, 4)
                 .padding(.trailing, 4)
-            self.bodyViewButton(image: self.imageSystemNameRight)
-        }.overlay ( RoundedRectangle(cornerRadius: 8) .stroke(Color.black.opacity(0.05), lineWidth: 2) )
+            .buttonStyle(BorderlessButtonStyle())
+            .onReceive(currentCell.value) { value in
+                self.stateTextField = value
+                print(value)
+            }
+            self.bodyViewButton(image: self.imageSystemNameRight, with: value, type: .decrease)
+        }
+
+        .overlay ( RoundedRectangle(cornerRadius: 8) .stroke(Color.black.opacity(0.05), lineWidth: 2) )
     }
     
-    private func bodyViewButton(image name: String) -> some View {
+    private func bodyViewButton(image name: String, with cell: SimmulatorFormCellData, type: actionType) -> some View {
         Button(action: {
-            self.viewModel.price += 2
+            if type == .increase {
+                self.viewModel.increaseCurrentValue(with: cell)
+            } else {
+                self.viewModel.decreaseCurrentValue(with: cell)
+            }
         }) {
             Image(systemName: name).font(.system(size: 24))
                 .foregroundColor(Color.black.opacity(0.7))
@@ -82,13 +94,12 @@ internal struct SimmulatorCellView: View {
          .padding(.bottom, 4)
          .background(Color.black.opacity(0.05))
         .cornerRadius(8)
+        .buttonStyle(BorderlessButtonStyle())
     }
 }
 
 internal struct SimmulatorView: View {
     @State private var eventTrigger: EditEvent = { }
-    @Environment(\.managedObjectContext) private var managedObjectContext
-    @State private var newRentalName: String = ""
     
     @ObservedObject private var simmulatorViewModel = SimmulatorViewModel()
     
@@ -120,33 +131,17 @@ internal struct SimmulatorView: View {
     }
     
     private func body(with size: CGSize) -> some View {
-        Form {
-            Section(footer: self.displayErrorMessage(with: self.simmulatorViewModel.formErrorMessage)) {
-                VStack {
-                    self.bodyContentCell(with: self.priceTitle)
-                    self.bodyContentCell(with: self.rentTitle)
-                    self.bodyContentCell(with: self.percentageTitle)
-                    self.bodyContentCell(with: self.percentageTitle)
+        return Form {
+            ForEach(0..<self.simmulatorViewModel.dataSources.count) { section in
+                Section(header: Text(self.simmulatorViewModel.dataSources[section].header ?? "")) {
+                    VStack {
+                        ForEach(0..<self.simmulatorViewModel.dataSources[section].data.count) { cellIndex in
+                            self.bodyContentCell(with: self.simmulatorViewModel.dataSources[section].data[cellIndex].name, and: self.simmulatorViewModel.dataSources[section].data[cellIndex])
+                        }
+                    }.padding()
+                    .background(Color.white)
+                    .cornerRadius(16)
                 }
-                .padding()
-                .background(Color.white)
-                .cornerRadius(16)
-            }
-            Section(header: Text(self.headerTitle), footer: self.displayErrorMessage(with: self.simmulatorViewModel.formErrorMessage)) {
-                VStack {
-                    self.bodyContentCell(with: self.percentageTitle)
-                    self.bodyContentCell(with: self.percentageTitle)
-                }.padding()
-                .background(Color.white)
-                .cornerRadius(16)
-            }
-            Section(header: Text(self.headerTitle), footer: self.displayErrorMessage(with: self.simmulatorViewModel.formErrorMessage)) {
-                VStack {
-                    self.bodyContentCell(with: self.percentageTitle)
-                    self.bodyContentCell(with: self.percentageTitle)
-                }.padding()
-                .background(Color.white)
-                .cornerRadius(16)
             }
             Section {
                 Button(action: {
@@ -163,8 +158,8 @@ internal struct SimmulatorView: View {
     
     private func displayErrorMessage(with error: String) -> some View { Text(error).foregroundColor(Color.red) }
     
-    private func bodyContentCell(with name: String) -> some View {
-        SimmulatorCellView(with: name, with: self.simmulatorViewModel)
+    private func bodyContentCell(with name: String, and cell: SimmulatorFormCellData) -> some View {
+        SimmulatorCellView(with: name, with: self.simmulatorViewModel, and: cell)
     }
     
     private func handleEditEvent() {

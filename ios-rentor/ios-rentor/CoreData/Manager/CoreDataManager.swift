@@ -28,6 +28,7 @@ internal final class CoreDataManager {
         return try self.context.fetch(fetchRequest).count > 0
     }
 
+    //MARK: Todo change anyPublisher to Future which is like single (but a lil bit diff tho) in rxS 👀
     internal func createData<T: NSManagedObject>(type: T.Type, with data: T) -> AnyPublisher<Void, CoreDataError> {
         do {
             let isExist = try self.isExist(type: T.self, item: data)
