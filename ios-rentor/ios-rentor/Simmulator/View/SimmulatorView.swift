@@ -104,10 +104,6 @@ internal struct SimmulatorView: View {
     @ObservedObject private var simmulatorViewModel = SimmulatorViewModel()
     
     //MARK: Drawing Constants
-    private let priceTitle: String = "Prix d'achat:"
-    private let rentTitle: String = "Loyer mensuel:"
-    private let percentageTitle: String = "Charges locatives:"
-    private let headerTitle: String = "Charges annuelles:"
     private let fontScaleFactor: CGFloat = 0.04
     private let navigationBarTitle: String = "Simmulations"
     private let saveButtonTitle: String = "Done"
@@ -130,10 +126,15 @@ internal struct SimmulatorView: View {
         min(size.width, size.height) * self.fontScaleFactor
     }
     
+    private func shouldRenderHeader(with title: String?) -> some View {
+        title == nil ? AnyView(EmptyView()) : AnyView(Text(title ?? ""))
+    }
+    
     private func body(with size: CGSize) -> some View {
         return Form {
             ForEach(0..<self.simmulatorViewModel.dataSources.count) { section in
-                Section(header: Text(self.simmulatorViewModel.dataSources[section].header ?? "")) {
+                Section(header: self.shouldRenderHeader(with: self.simmulatorViewModel.dataSources[section].header),
+                    footer: Text("hello bro")) {
                     VStack {
                         ForEach(0..<self.simmulatorViewModel.dataSources[section].data.count) { cellIndex in
                             self.bodyContentCell(with: self.simmulatorViewModel.dataSources[section].data[cellIndex].name, and: self.simmulatorViewModel.dataSources[section].data[cellIndex])
@@ -150,7 +151,8 @@ internal struct SimmulatorView: View {
                     Text(self.saveButtonTitle)
                 }.disabled(!self.simmulatorViewModel.isFormValid)
             }
-        }.font(Font.system(size: self.fontSize(for: size)))
+            }
+        .font(Font.system(size: self.fontSize(for: size)))
          .onAppear {
             self.eventTrigger = self.handleEditEvent
         }
