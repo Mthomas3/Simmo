@@ -9,13 +9,6 @@
 import Foundation
 import Combine
 
-protocol ViewModelProtocol {
-    associatedtype Output
-    associatedtype Input
-    
-    func transform(_ input: Input) -> Output
-}
-
 internal final class SimmulatorViewModel: ObservableObject, ViewModelProtocol {
     
     private var disposables = Set<AnyCancellable>()
