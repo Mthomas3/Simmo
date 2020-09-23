@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Combine
 
 fileprivate typealias EditEvent = (() -> ())
 
@@ -23,9 +24,15 @@ fileprivate struct CustomNavigationBarItems: View {
 }
 
 internal struct SimmulatorCellView: View {
+    
     private let name: String
-    @ObservedObject private var viewModel: SimmulatorViewModel
     private let currentCell: SimmulatorFormCellData
+    
+    private let increaseEvent = CurrentValueSubject<SimmulatorFormCellData?, Never>(nil)
+    private let decreaseEvent = CurrentValueSubject<SimmulatorFormCellData?, Never>(nil)
+    private let viewModel: SimmulatorViewModel
+    
+    @State private var stateTextField: Int = 0
     
     //MARK: Drawing Constants
     private let imageSystemNameLeft: String = "plus"
@@ -40,6 +47,10 @@ internal struct SimmulatorCellView: View {
         self.name = name
         self.viewModel = vm
         self.currentCell = cell
+        _ = self.viewModel.transform(SimmulatorViewModel.Input(increaseEvent:
+            self.increaseEvent.eraseToAnyPublisher(), decreaseEvent:
+            self.decreaseEvent.eraseToAnyPublisher()))
+        
         UITableViewCell.appearance().selectionStyle = .none
     }
     
@@ -57,7 +68,7 @@ internal struct SimmulatorCellView: View {
             Text(name)
         }
     }
-    @State var stateTextField: Int = 0
+    
     private func bodyViewCell(with value: SimmulatorFormCellData) -> some View {
         HStack(alignment: .center, spacing: 0) {
             self.bodyViewButton(image: self.imageSystemNameLeft, with: value, type: .increase)
@@ -70,21 +81,14 @@ internal struct SimmulatorCellView: View {
             .buttonStyle(BorderlessButtonStyle())
             .onReceive(currentCell.value) { value in
                 self.stateTextField = value
-                print(value)
             }
             self.bodyViewButton(image: self.imageSystemNameRight, with: value, type: .decrease)
-        }
-
-        .overlay ( RoundedRectangle(cornerRadius: 8) .stroke(Color.black.opacity(0.05), lineWidth: 2) )
+        }.overlay ( RoundedRectangle(cornerRadius: 8).stroke(Color.black.opacity(0.05), lineWidth: 2) )
     }
     
     private func bodyViewButton(image name: String, with cell: SimmulatorFormCellData, type: actionType) -> some View {
         Button(action: {
-            if type == .increase {
-                self.viewModel.increaseCurrentValue(with: cell)
-            } else {
-                self.viewModel.decreaseCurrentValue(with: cell)
-            }
+            type == .increase ? self.increaseEvent.send(cell) : self.decreaseEvent.send(cell)
         }) {
             Image(systemName: name).font(.system(size: 24))
                 .foregroundColor(Color.black.opacity(0.7))
@@ -100,8 +104,11 @@ internal struct SimmulatorCellView: View {
 
 internal struct SimmulatorView: View {
     @State private var eventTrigger: EditEvent = { }
+    @State private var dataSources: [GlobalFormCell] = []
+    @State private var isFormValid: Bool = false
     
-    @ObservedObject private var simmulatorViewModel = SimmulatorViewModel()
+    private let simmulatorViewModel: SimmulatorViewModel
+    private let output: SimmulatorViewModel.Output
     
     //MARK: Drawing Constants
     private let fontScaleFactor: CGFloat = 0.04
@@ -109,6 +116,9 @@ internal struct SimmulatorView: View {
     private let saveButtonTitle: String = "Done"
     
     init() {
+        self.simmulatorViewModel = SimmulatorViewModel()
+        self.output = self.simmulatorViewModel.transform(SimmulatorViewModel.Input())
+        
         UITableView.appearance().backgroundColor = UIColor.black.withAlphaComponent(0.05)
         UITableViewCell.appearance().backgroundColor = UIColor.clear
     }
@@ -126,18 +136,17 @@ internal struct SimmulatorView: View {
         min(size.width, size.height) * self.fontScaleFactor
     }
     
-    private func shouldRenderHeader(with title: String?) -> some View {
+    private func shouldRenderText(with title: String?) -> some View {
         title == nil ? AnyView(EmptyView()) : AnyView(Text(title ?? ""))
     }
     
     private func body(with size: CGSize) -> some View {
         return Form {
-            ForEach(0..<self.simmulatorViewModel.dataSources.count) { section in
-                Section(header: self.shouldRenderHeader(with: self.simmulatorViewModel.dataSources[section].header),
-                    footer: Text("hello bro")) {
+            ForEach(self.dataSources, id: \.id) { section in
+                Section(header: self.shouldRenderText(with: section.header), footer: Text("_ Temporary Footer _")) {
                     VStack {
-                        ForEach(0..<self.simmulatorViewModel.dataSources[section].data.count) { cellIndex in
-                            self.bodyContentCell(with: self.simmulatorViewModel.dataSources[section].data[cellIndex].name, and: self.simmulatorViewModel.dataSources[section].data[cellIndex])
+                        ForEach(section.data, id: \.id) { cell in
+                            self.bodyContentCell(with: cell.name, and: cell)
                         }
                     }.padding()
                     .background(Color.white)
@@ -146,15 +155,16 @@ internal struct SimmulatorView: View {
             }
             Section {
                 Button(action: {
-                    print("need to be valid")
-                }){
+                    print("has to be valid")
+                }) {
                     Text(self.saveButtonTitle)
-                }.disabled(!self.simmulatorViewModel.isFormValid)
+                }.disabled(!self.isFormValid)
+                    .onReceive(self.output.isFormValid) { isValid in
+                    self.isFormValid = isValid
+                }
             }
-            }
-        .font(Font.system(size: self.fontSize(for: size)))
-         .onAppear {
-            self.eventTrigger = self.handleEditEvent
+        }.onReceive(self.output.dataSources) { dataSources in
+            self.dataSources = dataSources
         }
     }
     

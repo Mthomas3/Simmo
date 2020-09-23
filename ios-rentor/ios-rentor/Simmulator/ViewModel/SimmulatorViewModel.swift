@@ -9,18 +9,52 @@
 import Foundation
 import Combine
 
-internal final class SimmulatorViewModel: ObservableObject {
-    //MARK: Input
-    @Published var dataSources: [GlobalFormCell] = []
-
-    //MARK: Output
-    @Published var isFormValid: Bool = false
-    @Published var formErrorMessage: String = ""
+protocol ViewModelProtocol {
+    associatedtype Output
+    associatedtype Input
     
-    enum actionEvent: Int {
-        case price
-        case rent
-        case percentage
+    func transform(_ input: Input) -> Output
+}
+
+internal final class SimmulatorViewModel: ObservableObject, ViewModelProtocol {
+    
+    private var disposables = Set<AnyCancellable>()
+
+    //MARK: Input
+    struct Input {
+        var increaseEvent: AnyPublisher<SimmulatorFormCellData?, Never>?
+        var decreaseEvent: AnyPublisher<SimmulatorFormCellData?, Never>?
+    }
+    
+    //MARK: Output
+    struct Output {
+        var dataSources: AnyPublisher<[GlobalFormCell], Never>
+        var isFormValid: AnyPublisher<Bool, Never>
+    }
+    
+    internal func transform(_ input: Input) -> Output {
+        
+        let dataSources = Just(self.initFormViewData())
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+        
+        let isFormValid = Just(false)
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+        
+        input.increaseEvent?.receive(on: DispatchQueue.main)
+            .sink(receiveValue: { cell in
+                guard let cell = cell else { return }
+                self.increaseCurrentValue(with: cell)
+            }).store(in: &self.disposables)
+        
+        input.decreaseEvent?.receive(on: DispatchQueue.main)
+            .sink(receiveValue: { (cell) in
+                guard let cell = cell else { return }
+                self.decreaseCurrentValue(with: cell)
+            }).store(in: &self.disposables)
+        
+        return Output(dataSources: dataSources, isFormValid: isFormValid)
     }
     
     private func initFormViewData() -> [GlobalFormCell] {
@@ -34,20 +68,13 @@ internal final class SimmulatorViewModel: ObservableObject {
                      .init(cell: "Assurance propriétaire")])]
     }
     
-    init() {
-        self.dataSources = self.initFormViewData()
-    }
-    
-    internal func createSimmulation() { }
-    
-    internal func increaseCurrentValue(with cell: SimmulatorFormCellData) {
+    private func increaseCurrentValue(with cell: SimmulatorFormCellData) {
         cell.value.send(cell.value.value + 1)
     }
     
-    internal func decreaseCurrentValue(with cell: SimmulatorFormCellData) {
+    private func decreaseCurrentValue(with cell: SimmulatorFormCellData) {
         if cell.value.value > 0 {
             cell.value.send(cell.value.value - 1)
         }
     }
-    
 }
