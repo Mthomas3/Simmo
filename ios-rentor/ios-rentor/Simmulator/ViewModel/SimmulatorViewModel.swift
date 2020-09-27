@@ -25,6 +25,17 @@ internal final class SimmulatorViewModel: ObservableObject, ViewModelProtocol {
         var isFormValid: AnyPublisher<Bool, Never>
     }
     
+    private func initFormViewData() -> [GlobalFormCell] {
+         [.init(data: [.init(cell: "Prix d'achat"),
+                       .init(cell: "Loyer mensuel")]),
+        .init(header: "Charges annuelles",
+              data: [.init(cell: "Charges locatives"),
+                     .init(cell: "Taxe foncière"),
+                     .init(cell: "Charges de copropriété"),
+                     .init(cell: "Entretien"),
+                     .init(cell: "Assurance propriétaire")])]
+    }
+    
     internal func transform(_ input: Input) -> Output {
         let dataSources = Just(self.initFormViewData())
             .receive(on: DispatchQueue.main)
@@ -46,16 +57,5 @@ internal final class SimmulatorViewModel: ObservableObject, ViewModelProtocol {
             .eraseToAnyPublisher()
         
         return Output(dataSources: dataSources, isFormValid: isFormValid)
-    }
-    
-    private func initFormViewData() -> [GlobalFormCell] {
-         [.init(data: [.init(cell: "Prix d'achat"),
-                       .init(cell: "Loyer mensuel")]),
-        .init(header: "Charges annuelles",
-              data: [.init(cell: "Charges locatives"),
-                     .init(cell: "Taxe foncière"),
-                     .init(cell: "Charges de copropriété"),
-                     .init(cell: "Entretien"),
-                     .init(cell: "Assurance propriétaire")])]
     }
 }

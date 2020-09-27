@@ -30,8 +30,7 @@ internal struct SimmulatorCellView: View {
     //MARK: ViewModel
     private let increaseEvent = PassthroughSubject<SimmulatorFormCellData, Never>()
     private let decreaseEvent = PassthroughSubject<SimmulatorFormCellData, Never>()
-    private let viewModel: SimmulatorViewModel
-    private let newViewModel: SimmulatorCellViewModel = SimmulatorCellViewModel()
+    private let viewModel: SimmulatorCellViewModel = SimmulatorCellViewModel()
     private let refreshEvent: PassthroughSubject<Void, Never>
  
     private let name: String
@@ -46,17 +45,12 @@ internal struct SimmulatorCellView: View {
         case decrease
     }
     
-    init(with name: String, with vm: SimmulatorViewModel, and cell: SimmulatorFormCellData, with refresh: PassthroughSubject<Void, Never>) {
+    init(with name: String, and cell: SimmulatorFormCellData, with refresh: PassthroughSubject<Void, Never>) {
         self.name = name
-        self.viewModel = vm
         self.currentCell = cell
         self.refreshEvent = refresh
         
-        //_ = self.viewModel.transform(SimmulatorViewModel.Input(increaseEvent:
-            //self.increaseEvent.eraseToAnyPublisher(), decreaseEvent:
-            //self.decreaseEvent.eraseToAnyPublisher()))
-        
-        _ = self.newViewModel.transform(SimmulatorCellViewModel.Input(increaseEvent:
+        _ = self.viewModel.transform(SimmulatorCellViewModel.Input(increaseEvent:
             self.increaseEvent.eraseToAnyPublisher(), decreaseEvent:
             self.decreaseEvent.eraseToAnyPublisher()))
         
@@ -176,7 +170,6 @@ internal struct SimmulatorView: View {
                     Text(self.saveButtonTitle)
                 }.disabled(!self.isFormValid)
                 .onReceive(self.output.isFormValid) { isValid in
-                    //print("On Receive View = \(isValid)")
                     self.isFormValid = isValid
                 }
             }
@@ -186,7 +179,7 @@ internal struct SimmulatorView: View {
     }
     
     private func bodyContentCell(with name: String, and cell: SimmulatorFormCellData) -> some View {
-        SimmulatorCellView(with: name, with: self.simmulatorViewModel, and: cell, with: self.refreshEvent)
+        SimmulatorCellView(with: name, and: cell, with: self.refreshEvent)
     }
     
     private func handleEditEvent() {
