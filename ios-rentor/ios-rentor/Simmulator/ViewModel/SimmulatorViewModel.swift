@@ -12,12 +12,11 @@ import Combine
 internal final class SimmulatorViewModel: ObservableObject, ViewModelProtocol {
     
     private var disposables = Set<AnyCancellable>()
-
+    
     //MARK: Input
     struct Input {
-        var increaseEvent: AnyPublisher<SimmulatorFormCellData, Never>?
-        var decreaseEvent: AnyPublisher<SimmulatorFormCellData, Never>?
-        var doneForm: AnyPublisher<Void, Never>?
+        var doneForm: AnyPublisher<Void, Never>
+        var refreshEvent: AnyPublisher<Void, Never>
     }
     
     //MARK: Output
@@ -27,51 +26,36 @@ internal final class SimmulatorViewModel: ObservableObject, ViewModelProtocol {
     }
     
     internal func transform(_ input: Input) -> Output {
-        
         let dataSources = Just(self.initFormViewData())
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
         
-        let isFormValid = Just(false)
+        var isFormValid = Just(false)
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
         
-        input.increaseEvent?.receive(on: DispatchQueue.main)
-            .sink(receiveValue: { cell in
-                self.increaseCurrentValue(with: cell)
-            }).store(in: &self.disposables)
-        
-        input.decreaseEvent?.receive(on: DispatchQueue.main)
-            .sink(receiveValue: { (cell) in
-                self.decreaseCurrentValue(with: cell)
-            }).store(in: &self.disposables)
-        
-        input.doneForm?.receive(on: DispatchQueue.main)
+        input.doneForm.receive(on: DispatchQueue.main)
             .sink(receiveValue: { _ in
-                print("** handle done **")
+                //print("Input done trigger")
             }).store(in: &self.disposables)
+        
+        isFormValid = Publishers.CombineLatest(input.refreshEvent, dataSources)
+            .debounce(for: 0.1, scheduler: DispatchQueue.main)
+            .map { !($0.1.filter { $0.data.filter { $0.value.value == 0 }.count > 0 }.count > 0)
+            }.receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
         
         return Output(dataSources: dataSources, isFormValid: isFormValid)
     }
     
     private func initFormViewData() -> [GlobalFormCell] {
-        [.init(data: [.init(cell: "Prix d'achat"),
-                     .init(cell: "Loyer mensuel")]),
+         [.init(data: [.init(cell: "Prix d'achat"),
+                       .init(cell: "Loyer mensuel")]),
         .init(header: "Charges annuelles",
               data: [.init(cell: "Charges locatives"),
                      .init(cell: "Taxe foncière"),
                      .init(cell: "Charges de copropriété"),
                      .init(cell: "Entretien"),
                      .init(cell: "Assurance propriétaire")])]
-    }
-    
-    private func increaseCurrentValue(with cell: SimmulatorFormCellData) {
-        cell.value.send(cell.value.value + 1)
-    }
-    
-    private func decreaseCurrentValue(with cell: SimmulatorFormCellData) {
-        if cell.value.value > 0 {
-            cell.value.send(cell.value.value - 1)
-        }
     }
 }

@@ -24,15 +24,18 @@ fileprivate struct CustomNavigationBarItems: View {
 }
 
 internal struct SimmulatorCellView: View {
+    //MARK: State
+    @State private var stateTextField: Int = 0
     
-    private let name: String
-    private let currentCell: SimmulatorFormCellData
-    
+    //MARK: ViewModel
     private let increaseEvent = PassthroughSubject<SimmulatorFormCellData, Never>()
     private let decreaseEvent = PassthroughSubject<SimmulatorFormCellData, Never>()
     private let viewModel: SimmulatorViewModel
-    
-    @State private var stateTextField: Int = 0
+    private let newViewModel: SimmulatorCellViewModel = SimmulatorCellViewModel()
+    private let refreshEvent: PassthroughSubject<Void, Never>
+ 
+    private let name: String
+    private let currentCell: SimmulatorFormCellData
     
     //MARK: Drawing Constants
     private let imageSystemNameLeft: String = "plus"
@@ -43,11 +46,17 @@ internal struct SimmulatorCellView: View {
         case decrease
     }
     
-    init(with name: String, with vm: SimmulatorViewModel, and cell: SimmulatorFormCellData) {
+    init(with name: String, with vm: SimmulatorViewModel, and cell: SimmulatorFormCellData, with refresh: PassthroughSubject<Void, Never>) {
         self.name = name
         self.viewModel = vm
         self.currentCell = cell
-        _ = self.viewModel.transform(SimmulatorViewModel.Input(increaseEvent:
+        self.refreshEvent = refresh
+        
+        //_ = self.viewModel.transform(SimmulatorViewModel.Input(increaseEvent:
+            //self.increaseEvent.eraseToAnyPublisher(), decreaseEvent:
+            //self.decreaseEvent.eraseToAnyPublisher()))
+        
+        _ = self.newViewModel.transform(SimmulatorCellViewModel.Input(increaseEvent:
             self.increaseEvent.eraseToAnyPublisher(), decreaseEvent:
             self.decreaseEvent.eraseToAnyPublisher()))
         
@@ -89,9 +98,12 @@ internal struct SimmulatorCellView: View {
     private func bodyViewButton(image name: String, with cell: SimmulatorFormCellData, type: actionType) -> some View {
         Button(action: {
             type == .increase ? self.increaseEvent.send(cell) : self.decreaseEvent.send(cell)
+            self.refreshEvent.send(())
         }) {
-            Image(systemName: name).font(.system(size: 24))
+            Image(systemName: name)
+                .font(.system(size: 24))
                 .foregroundColor(Color.black.opacity(0.7))
+            
         }.padding(.leading, 8)
          .padding(.trailing, 8)
          .padding(.top, 4)
@@ -103,13 +115,16 @@ internal struct SimmulatorCellView: View {
 }
 
 internal struct SimmulatorView: View {
+    //MARK: State
     @State private var eventTrigger: EditEvent = { }
     @State private var dataSources: [GlobalFormCell] = []
     @State private var isFormValid: Bool = false
     
+    //MARK: ViewModel Related
     private let simmulatorViewModel: SimmulatorViewModel
     private let output: SimmulatorViewModel.Output
     private let doneEvent = PassthroughSubject<Void, Never>()
+    private let refreshEvent = PassthroughSubject<Void, Never>()
     
     //MARK: Drawing Constants
     private let fontScaleFactor: CGFloat = 0.04
@@ -118,7 +133,7 @@ internal struct SimmulatorView: View {
     
     init() {
         self.simmulatorViewModel = SimmulatorViewModel()
-        self.output = self.simmulatorViewModel.transform(SimmulatorViewModel.Input(doneForm: self.doneEvent.eraseToAnyPublisher()))
+        self.output = self.simmulatorViewModel.transform(SimmulatorViewModel.Input(doneForm: self.doneEvent.eraseToAnyPublisher(), refreshEvent: self.refreshEvent.eraseToAnyPublisher()))
         
         UITableView.appearance().backgroundColor = UIColor.black.withAlphaComponent(0.05)
         UITableViewCell.appearance().backgroundColor = UIColor.clear
@@ -142,7 +157,7 @@ internal struct SimmulatorView: View {
     }
     
     private func body(with size: CGSize) -> some View {
-        return Form {
+        Form {
             ForEach(self.dataSources, id: \.id) { section in
                 Section(header: self.shouldRenderText(with: section.header), footer: self.shouldRenderText(with: section.errorMessage.value).foregroundColor(Color.red)) {
                     VStack {
@@ -160,7 +175,8 @@ internal struct SimmulatorView: View {
                 }) {
                     Text(self.saveButtonTitle)
                 }.disabled(!self.isFormValid)
-                    .onReceive(self.output.isFormValid) { isValid in
+                .onReceive(self.output.isFormValid) { isValid in
+                    //print("On Receive View = \(isValid)")
                     self.isFormValid = isValid
                 }
             }
@@ -170,7 +186,7 @@ internal struct SimmulatorView: View {
     }
     
     private func bodyContentCell(with name: String, and cell: SimmulatorFormCellData) -> some View {
-        SimmulatorCellView(with: name, with: self.simmulatorViewModel, and: cell)
+        SimmulatorCellView(with: name, with: self.simmulatorViewModel, and: cell, with: self.refreshEvent)
     }
     
     private func handleEditEvent() {
