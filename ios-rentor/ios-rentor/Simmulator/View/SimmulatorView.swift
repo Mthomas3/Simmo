@@ -65,15 +65,12 @@ internal struct SimmulatorView: View {
             }
             Section {
                 Button(action: {
-                        self.doneEvent.send(())
-                }) {
-                    Text(self.saveButtonTitle)
-                    }
+                    self.doneEvent.send(())
+                }) { Text(self.saveButtonTitle) }
                 .disabled(!self.isFormValid)
                 .onReceive(self.output.isFormValid) { isValid in
                     self.isFormValid = isValid
-                }
-            .buttonStyle(BlueButtonStyle(disabled: !self.isFormValid))
+                }.buttonStyle(BlueButtonStyle(disabled: !self.isFormValid))
             }
         }.onReceive(self.output.dataSources) { dataSources in
             self.dataSources = dataSources
