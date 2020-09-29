@@ -10,12 +10,14 @@ import Foundation
 import Combine
 
 internal struct SimmulatorFormCellData: Identifiable {
+    let id: UUID = UUID()
     let name: String
     let value = CurrentValueSubject<Int, Never>(0)
-    let id: UUID = UUID()
+    let sumIndicator: Int
     
-    init(cell name: String) {
+    init(cell name: String, with sumIndicator: Int = 100) {
         self.name = name
+        self.sumIndicator = sumIndicator
     }
 }
 

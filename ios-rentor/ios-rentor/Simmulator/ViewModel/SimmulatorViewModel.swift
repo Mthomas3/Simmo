@@ -26,14 +26,17 @@ internal final class SimmulatorViewModel: ObservableObject, ViewModelProtocol {
     }
     
     private func initFormViewData() -> [GlobalFormCell] {
-         [.init(data: [.init(cell: "Prix d'achat"),
+        [.init(data: [.init(cell: "Prix d'achat", with: 10000),
                        .init(cell: "Loyer mensuel")]),
         .init(header: "Charges annuelles",
               data: [.init(cell: "Charges locatives"),
                      .init(cell: "Taxe foncière"),
                      .init(cell: "Charges de copropriété"),
                      .init(cell: "Entretien"),
-                     .init(cell: "Assurance propriétaire")])]
+                     .init(cell: "Assurance propriétaire")]),
+        .init(header: "Taxes annuelles",
+              data: [.init(cell: "Charges"),
+                     .init(cell: "Entretien")])]
     }
     
     internal func transform(_ input: Input) -> Output {

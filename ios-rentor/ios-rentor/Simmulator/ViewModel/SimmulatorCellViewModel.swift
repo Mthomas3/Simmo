@@ -38,12 +38,12 @@ internal class SimmulatorCellViewModel: ViewModelProtocol {
     }
     
     private func increaseCell(with cell: SimmulatorFormCellData) {
-        cell.value.send(cell.value.value + 1)
+        cell.value.send(cell.value.value + cell.sumIndicator)
     }
     
     private func decreaseCell(with cell: SimmulatorFormCellData) {
         if cell.value.value > 0 {
-            cell.value.send(cell.value.value - 1)
+            cell.value.send(cell.value.value - cell.sumIndicator)
         }
     }
 }

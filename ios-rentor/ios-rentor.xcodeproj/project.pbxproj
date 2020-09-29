@@ -15,6 +15,7 @@
 		E9090D2124FA9F7800020390 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9090D1F24FA9F7800020390 /* LaunchScreen.storyboard */; };
 		E9090D2C24FA9F7800020390 /* ios_rentorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9090D2B24FA9F7800020390 /* ios_rentorTests.swift */; };
 		E9090D3724FA9F7800020390 /* ios_rentorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9090D3624FA9F7800020390 /* ios_rentorUITests.swift */; };
+		E9209C9325227E8700EDC0A9 /* SimmulatorCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9209C9225227E8700EDC0A9 /* SimmulatorCellView.swift */; };
 		E9665536250033B2003BC212 /* RentorEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9665535250033B2003BC212 /* RentorEntity.swift */; };
 		E9878556250BB0C200CF8519 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9878555250BB0C200CF8519 /* String+Ext.swift */; };
 		E99042CA2502A16C0062B493 /* RentalEntityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99042C92502A16C0062B493 /* RentalEntityView.swift */; };
@@ -64,6 +65,7 @@
 		E9090D3224FA9F7800020390 /* ios-rentorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ios-rentorUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9090D3624FA9F7800020390 /* ios_rentorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_rentorUITests.swift; sourceTree = "<group>"; };
 		E9090D3824FA9F7800020390 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E9209C9225227E8700EDC0A9 /* SimmulatorCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimmulatorCellView.swift; sourceTree = "<group>"; };
 		E9665535250033B2003BC212 /* RentorEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentorEntity.swift; sourceTree = "<group>"; };
 		E9878555250BB0C200CF8519 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		E99042C92502A16C0062B493 /* RentalEntityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentalEntityView.swift; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 			isa = PBXGroup;
 			children = (
 				E9D8D15E24FAF98200DF5ABC /* SimmulatorView.swift */,
+				E9209C9225227E8700EDC0A9 /* SimmulatorCellView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -532,6 +535,7 @@
 				E99042CC25043BBA0062B493 /* CoreDataManager.swift in Sources */,
 				E9D8D15D24FAF7B800DF5ABC /* MainView.swift in Sources */,
 				E9878556250BB0C200CF8519 /* String+Ext.swift in Sources */,
+				E9209C9325227E8700EDC0A9 /* SimmulatorCellView.swift in Sources */,
 				E9090D1224FA9F7600020390 /* AppDelegate.swift in Sources */,
 				E9AAA95525210CF1009841B8 /* SimmulatorCellViewModel.swift in Sources */,
 				E9090D1724FA9F7600020390 /* ios_rentor.xcdatamodeld in Sources */,
