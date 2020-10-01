@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 import Combine
 
-internal final class HomeViewModel: ObservableObject {
+internal final class HomeViewModel: ObservableObject, ViewModelProtocol {
     
     //MARK: Public Members
     @Published private(set) var dataSources: [RentorEntity] = []
@@ -20,8 +20,32 @@ internal final class HomeViewModel: ObservableObject {
     //MARK: Private Members
     private var disposables = Set<AnyCancellable>()
     
+    struct Input { }
+    
+    struct Output {
+        var dataSources: AnyPublisher<[RentorEntity], Never>
+//        var shouldDisplayError: AnyPublisher<Bool, Never>
+//        var messageError: AnyPublisher<String, Never>
+    }
+    
     init() {
         self.fetchRentals()
+    }
+    
+    internal func transform(_ input: Input) -> Output {
+        
+        let dataSources = self.fetchRentals2()
+        
+        return Output(dataSources: dataSources)
+    }
+    
+    private func fetchRentals2() -> AnyPublisher<[RentorEntity], Never> {
+        CoreDataManager.sharedInstance.fetchData(type: RentorEntity.self)
+            .receive(on: DispatchQueue.main)
+            .map({ $0 ?? [] })
+            .catch { (error) -> AnyPublisher<[RentorEntity], Never> in
+                return Just([]).eraseToAnyPublisher()
+            }.eraseToAnyPublisher()
     }
     
     private func fetchRentals() {
@@ -31,6 +55,7 @@ internal final class HomeViewModel: ObservableObject {
                 guard let self = self else { return }
                 switch value {
                 case .failure(_):
+                    print("test")
                     self.dataSources = []
                     self.shouldDisplayError.send(true)
                     self.messageDisplayError.send("Cannot fetch rentals properties")

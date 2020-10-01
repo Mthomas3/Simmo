@@ -8,6 +8,7 @@
 
 import Foundation
 import Combine
+import SwiftUI
 
 internal final class SimmulatorViewModel: ObservableObject, ViewModelProtocol {
     
@@ -50,7 +51,7 @@ internal final class SimmulatorViewModel: ObservableObject, ViewModelProtocol {
         
         input.doneForm.receive(on: DispatchQueue.main)
             .sink(receiveValue: { _ in
-                //print("Input done trigger")
+                self.handleDoneFormEvent()
             }).store(in: &self.disposables)
         
         isFormValid = Publishers.CombineLatest(input.refreshEvent, dataSources)
@@ -60,5 +61,17 @@ internal final class SimmulatorViewModel: ObservableObject, ViewModelProtocol {
             .eraseToAnyPublisher()
         
         return Output(dataSources: dataSources, isFormValid: isFormValid)
+    }
+    
+    private func handleDoneFormEvent() {
+        
+        let a = RentorEntity(context: ((UIApplication.shared.delegate as! AppDelegate).persistentContainer).viewContext)
+        a.name = "yo"
+        a.cashFlow = 1000.0
+        a.createDate = Date()
+        a.percentageEffiency = 10.0
+        a.rentPrice = 10000.0
+        
+        CoreDataManager.sharedInstance.createData(type: RentorEntity.self, with: a)
     }
 }

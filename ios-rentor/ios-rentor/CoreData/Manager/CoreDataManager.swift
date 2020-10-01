@@ -24,24 +24,18 @@ internal final class CoreDataManager {
     
     private func isExist<T: NSManagedObject>(type: T.Type, item: T) throws -> Bool {
         let fetchRequest = T.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "%@ == %@", item)
+        fetchRequest.predicate = NSPredicate(format: "id == %@", item)
         return try self.context.fetch(fetchRequest).count > 0
     }
 
     //MARK: Todo change anyPublisher to Future which is like single (but a lil bit diff tho) in rxS 👀
     internal func createData<T: NSManagedObject>(type: T.Type, with data: T) -> AnyPublisher<Void, CoreDataError> {
         do {
-            let isExist = try self.isExist(type: T.self, item: data)
-            
-            if (!isExist) {
-                self.context.insert(data)
-                return Just(try self.context.save() as Void)
-                    .retry(2)
-                    .mapError { _ in CoreDataError.createError}
-                    .eraseToAnyPublisher()
-            } else {
-                throw CoreDataError.createError
-            }
+            self.context.insert(data)
+            return Just(try self.context.save() as Void)
+                .retry(2)
+                .mapError { _ in CoreDataError.createError}
+                .eraseToAnyPublisher()
         } catch {
             return Just(())
                 .mapError { _ in CoreDataError.createError }
