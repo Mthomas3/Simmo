@@ -56,6 +56,7 @@ internal final class HomeViewModel: ObservableObject, ViewModelProtocol {
                 switch value {
                 case .failure(_):
                     print("test")
+                    print("test 2")
                     self.dataSources = []
                     self.shouldDisplayError.send(true)
                     self.messageDisplayError.send("Cannot fetch rentals properties")
