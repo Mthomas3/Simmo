@@ -12,12 +12,10 @@ import Combine
 
 internal final class HomeViewModel: ObservableObject, ViewModelProtocol {
     
-    //MARK: Public Members
-    private let shouldDisplayError = CurrentValueSubject<Bool, Never>(false)
-    private let messageDisplayError = CurrentValueSubject<String, Never>("")
-    
     //MARK: Private Members
     private var disposables = Set<AnyCancellable>()
+    private let shouldDisplayError = CurrentValueSubject<Bool, Never>(false)
+    private let messageDisplayError = CurrentValueSubject<String, Never>("")
     
     struct Input {
         var onDeleteSource: AnyPublisher<RentorEntity, Never>
