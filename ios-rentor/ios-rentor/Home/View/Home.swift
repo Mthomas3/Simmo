@@ -8,9 +8,18 @@
 
 import SwiftUI
 import CoreData
+import Combine
 
 struct Home: View {
-    @ObservedObject private var homeViewModel = HomeViewModel()
+    //MARK: State
+    @State private var dataSources: [RentorEntity] = []
+    @State private var displayAlert: Bool = false
+    @State private var messageAlert: String = ""
+    
+    //MARK: ViewModel
+    private let homeViewModel: HomeViewModel
+    private let output: HomeViewModel.Output
+    private let onDelete: PassthroughSubject<RentorEntity, Never>
     
     //MARK: Drawing Constants
     private let navigationBarTitle: String = "Home"
@@ -18,6 +27,12 @@ struct Home: View {
     private let fontScaleFactor: CGFloat = 0.04
     
     init() {
+        
+        self.onDelete = PassthroughSubject<RentorEntity, Never>()
+        self.homeViewModel = HomeViewModel()
+        self.output = self.homeViewModel.transform(
+            HomeViewModel.Input(onDeleteSource: self.onDelete.eraseToAnyPublisher()))
+        
         UITableView.appearance().backgroundColor = UIColor.black.withAlphaComponent(0.05)
         UITableViewCell.appearance().backgroundColor = UIColor.clear
     }
@@ -40,18 +55,26 @@ struct Home: View {
         }.navigationBarTitle(Text(self.navigationBarTitle), displayMode: .automatic)
         .navigationBarItems(trailing: EditButton())
         .listStyle(GroupedListStyle())
-            .font(Font.system(size: self.fontSize(for: size)))
+        .font(Font.system(size: self.fontSize(for: size)))
     }
     
     private func displayRentalProperties() -> some View {
-        ForEach(self.homeViewModel.dataSources) { rentalProperty in
+        ForEach(self.dataSources) { rentalProperty in
             RentalContentView(with: rentalProperty)
         }.onDelete { indexSet in
             if let currentIndex = indexSet.first {
-                self.homeViewModel.deleteRentals(with: currentIndex)
+                self.onDelete.send(self.dataSources[currentIndex])
             }
-        }.alert(isPresented: Binding<Bool>.constant(self.homeViewModel.shouldDisplayError.value)) {
-            Alert(title: Text(self.alertErrorTitle), message: Text(self.homeViewModel.messageDisplayError.value))
+        }.alert(isPresented: self.$displayAlert) {
+            Alert(title: Text(self.alertErrorTitle),
+                  message: Text(self.messageAlert),
+                  primaryButton: .cancel(), secondaryButton: .destructive(Text("Retry")))
+        }.onReceive(self.output.shouldDisplayError) { shouldDisplayValue in
+            self.displayAlert = shouldDisplayValue
+        }.onReceive(self.output.messageError) { messageValue in
+            self.messageAlert = messageValue
+        }.onReceive(self.output.dataSources) { dataSources in
+            self.dataSources = dataSources
         }
     }
 }

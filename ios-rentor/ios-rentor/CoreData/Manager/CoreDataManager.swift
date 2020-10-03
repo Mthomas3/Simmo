@@ -83,6 +83,11 @@ internal final class CoreDataManager {
         try self.context.save()
     }
     
+    internal func deleteRental<T: NSManagedObject>(type: T.Type, with item: T) throws {
+        self.context.delete(item)
+        try self.context.save()
+    }
+    
     private func fetchRequest<T: NSManagedObject>(type: T.Type) -> NSFetchRequest<T>  {
         let request: NSFetchRequest<T> = T.fetchRequest() as! NSFetchRequest<T>
         request.sortDescriptors = [NSSortDescriptor(key: "createDate", ascending: true)]

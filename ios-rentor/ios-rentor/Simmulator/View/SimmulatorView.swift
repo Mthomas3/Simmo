@@ -14,7 +14,7 @@ internal struct SimmulatorView: View {
     @State private var dataSources: [GlobalFormCell] = []
     @State private var isFormValid: Bool = false
     
-    //MARK: ViewModel Related
+    //MARK: ViewModel
     private let simmulatorViewModel: SimmulatorViewModel
     private let output: SimmulatorViewModel.Output
     private let doneEvent = PassthroughSubject<Void, Never>()
