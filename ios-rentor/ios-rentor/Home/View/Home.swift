@@ -59,7 +59,9 @@ struct Home: View {
     
     private func displayRentalProperties() -> some View {
         ForEach(self.dataSources) { rentalProperty in
-            RentalContentView(with: rentalProperty)
+            RentalContentView(with: rentalProperty).onTapGesture {
+                print("YOLO MDR = \(rentalProperty)")
+            }
         }.onDelete { indexSet in
             if let currentIndex = indexSet.first {
                 self.onDelete.send(self.dataSources[currentIndex])

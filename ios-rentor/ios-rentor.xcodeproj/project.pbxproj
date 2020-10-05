@@ -142,6 +142,7 @@
 				E9D8D15724FAF77200DF5ABC /* Main */,
 				E9EF29B8250824DC00B97676 /* Home */,
 				E9090D4A24FAA47100020390 /* Settings */,
+				E98C2575252B8B6D00E06E73 /* HomeDetail */,
 				E9090D4924FAA46900020390 /* Simmulator */,
 				E9090D4824FAA45D00020390 /* LaunchScreen */,
 				E9090D4424FAA20D00020390 /* AppDelegates */,
@@ -277,6 +278,37 @@
 				E985821C25238CD600F5BC7F /* BlueButtonStyle.swift */,
 			);
 			path = "New Group";
+			sourceTree = "<group>";
+		};
+		E98C2575252B8B6D00E06E73 /* HomeDetail */ = {
+			isa = PBXGroup;
+			children = (
+				E98C2578252B8B8800E06E73 /* View */,
+				E98C2577252B8B8300E06E73 /* Model */,
+				E98C2576252B8B7D00E06E73 /* ViewModel */,
+			);
+			path = HomeDetail;
+			sourceTree = "<group>";
+		};
+		E98C2576252B8B7D00E06E73 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		E98C2577252B8B8300E06E73 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E98C2578252B8B8800E06E73 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		E9A8C6642516AC8D000E8A28 /* ViewModel */ = {
