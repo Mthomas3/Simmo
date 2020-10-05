@@ -17,6 +17,7 @@ internal final class HomeViewModel: ObservableObject, ViewModelProtocol {
     private let shouldDisplayError = CurrentValueSubject<Bool, Never>(false)
     private let messageDisplayError = CurrentValueSubject<String, Never>("")
     
+    //MARK: Public Members
     struct Input {
         var onDeleteSource: AnyPublisher<RentorEntity, Never>
     }

@@ -9,14 +9,39 @@
 import SwiftUI
 
 struct HomeDetailView: View {
+    //MARK: State
     private let rentalSelected: RentorEntity
+    
+    //MARK: ViewModel
+    private let homeDetailViewModel: HomeDetailViewModel
+    private let output: HomeDetailViewModel.Output
+    
+    //MARK: Drawing Constants
+    private let navigationBarTitle: String = "House Detail"
+    private let fontScaleFactor: CGFloat = 0.04
     
     init(with rental: RentorEntity) {
         self.rentalSelected = rental
+        
+        self.homeDetailViewModel = HomeDetailViewModel()
+        self.output = self.homeDetailViewModel.transform(HomeDetailViewModel.Input())
     }
     
     var body: some View {
-        Text("SELECTED = \(self.rentalSelected.name ?? "")")
+        NavigationView {
+            GeometryReader { geometry in
+                self.body(with: geometry.size)
+            }
+        }
+    }
+    
+    private func fontSize(for size: CGSize) -> CGFloat {
+        min(size.width, size.height) * self.fontScaleFactor
+    }
+    
+    private func body(with size: CGSize) -> some View {
+        Text("RENTOR = \(self.rentalSelected.name ?? "not found")")
+            .font(Font.system(size: self.fontSize(for: size)))
     }
 }
 
