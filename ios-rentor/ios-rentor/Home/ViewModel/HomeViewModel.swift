@@ -29,7 +29,7 @@ internal final class HomeViewModel: ObservableObject, ViewModelProtocol {
     
     init() { }
     
-    private func fetchRentalsData() -> AnyPublisher<[RentorEntity], Never> {
+    private func fetchingRentals() -> AnyPublisher<[RentorEntity], Never> {
         CoreDataManager.sharedInstance.fetchData(type: RentorEntity.self)
             .receive(on: DispatchQueue.main)
             .map { $0 ?? [] }
@@ -42,7 +42,7 @@ internal final class HomeViewModel: ObservableObject, ViewModelProtocol {
     
     internal func transform(_ input: Input) -> Output {
         
-        let dataSources = self.fetchRentalsData()
+        let dataSources = self.fetchingRentals()
         
         let onDeleteSources = input.onDeleteSource
             .receive(on: DispatchQueue.main)
@@ -52,7 +52,7 @@ internal final class HomeViewModel: ObservableObject, ViewModelProtocol {
                 } catch {
                     print("Error on fetch rentals catch = \(error)")
                 }
-                return self.fetchRentalsData()
+                return self.fetchingRentals()
         }
         
         let mergedDataSources = Publishers.Merge(dataSources, onDeleteSources).eraseToAnyPublisher()
@@ -60,14 +60,5 @@ internal final class HomeViewModel: ObservableObject, ViewModelProtocol {
         return Output(dataSources: mergedDataSources,
                       shouldDisplayError: self.shouldDisplayError,
                       messageError: self.messageDisplayError)
-    }
-    
-    private func fetchingRentals() -> AnyPublisher<[RentorEntity], Never> {
-        CoreDataManager.sharedInstance.fetchData(type: RentorEntity.self)
-            .receive(on: DispatchQueue.main)
-            .map({ $0 ?? [] })
-            .catch { (error) -> AnyPublisher<[RentorEntity], Never> in
-                return Just([]).eraseToAnyPublisher()
-            }.eraseToAnyPublisher()
     }
 }

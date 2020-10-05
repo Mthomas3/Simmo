@@ -34,14 +34,14 @@ struct Home: View {
             HomeViewModel.Input(onDeleteSource: self.onDelete.eraseToAnyPublisher()))
         
         UITableView.appearance().backgroundColor = UIColor.black.withAlphaComponent(0.05)
-        UITableViewCell.appearance().backgroundColor = UIColor.clear
     }
-    
+
     var body: some View {
         NavigationView {
             GeometryReader { geometry in
                 self.body(with: geometry.size)
-            }
+            }.navigationBarTitle(Text(self.navigationBarTitle))
+            .navigationBarItems(trailing: EditButton())
         }
     }
     
@@ -52,9 +52,8 @@ struct Home: View {
     private func body(with size: CGSize) -> some View {
         List {
             self.displayRentalProperties()
-        }.navigationBarTitle(Text(self.navigationBarTitle), displayMode: .automatic)
-        .navigationBarItems(trailing: EditButton())
-        .listStyle(GroupedListStyle())
+                .listRowBackground(Color.black.opacity(0.05))
+        }.listStyle(PlainListStyle())
         .font(Font.system(size: self.fontSize(for: size)))
     }
     

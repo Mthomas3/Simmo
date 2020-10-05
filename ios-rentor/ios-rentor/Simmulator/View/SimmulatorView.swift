@@ -31,7 +31,6 @@ internal struct SimmulatorView: View {
         
         UITableView.appearance().backgroundColor = UIColor.black.withAlphaComponent(0.05)
         UITableViewCell.appearance().backgroundColor = UIColor.clear
-        UITableView.appearance().separatorStyle = .none
     }
     
     var body: some View {
@@ -62,7 +61,7 @@ internal struct SimmulatorView: View {
                     .background(Color.white)
                     .cornerRadius(16)
                 }
-            }
+            }.listRowInsets(EdgeInsets())
             Section {
                 Button(action: {
                     self.doneEvent.send(())

@@ -26,13 +26,10 @@ struct RentalContentView: View {
         VStack(alignment: .leading, spacing: 0) {
             self.HeaderCell(with: self.rentalData.name ?? "")
             self.ContentCell(with: self.rentalData)
-        }.padding(.leading, 15)
-        .padding(.trailing, 8)
-        .padding(.top)
-        .padding(.bottom)
+        }
+        .padding()
         .background(Color.white)
         .cornerRadius(20)
-    
     }
     
     private func HeaderCell(with name: String) -> some View {

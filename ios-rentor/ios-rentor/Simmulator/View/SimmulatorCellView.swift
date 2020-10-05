@@ -40,7 +40,9 @@ internal struct SimmulatorCellView: View {
             self.increaseEvent.eraseToAnyPublisher(), decreaseEvent:
             self.decreaseEvent.eraseToAnyPublisher()))
         
-        UITableViewCell.appearance().selectionStyle = .none
+        //UITableViewCell.appearance().selectionStyle = .none
+        
+        UITableView.appearance().separatorColor = .red
     }
     
     var body: some View {
