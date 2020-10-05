@@ -59,14 +59,18 @@ struct Home: View {
     
     private func displayRentalProperties() -> some View {
         ForEach(self.dataSources) { rentalProperty in
-            RentalContentView(with: rentalProperty).onTapGesture {
-                print("YOLO MDR = \(rentalProperty)")
+            ZStack {
+                RentalContentView(with: rentalProperty)
+                NavigationLink(destination: HomeDetailView(with: rentalProperty)) {
+                    EmptyView()
+                }.buttonStyle(PlainButtonStyle())
             }
         }.onDelete { indexSet in
             if let currentIndex = indexSet.first {
                 self.onDelete.send(self.dataSources[currentIndex])
             }
-        }.alert(isPresented: self.$displayAlert) {
+        }
+        .alert(isPresented: self.$displayAlert) {
             Alert(title: Text(self.alertErrorTitle),
                   message: Text(self.messageAlert),
                   primaryButton: .cancel(), secondaryButton: .destructive(Text("Retry")))

@@ -19,6 +19,7 @@
 		E9665536250033B2003BC212 /* RentorEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9665535250033B2003BC212 /* RentorEntity.swift */; };
 		E985821D25238CD600F5BC7F /* BlueButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E985821C25238CD600F5BC7F /* BlueButtonStyle.swift */; };
 		E9878556250BB0C200CF8519 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9878555250BB0C200CF8519 /* String+Ext.swift */; };
+		E98C257D252B922000E06E73 /* HomeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98C257C252B922000E06E73 /* HomeDetailView.swift */; };
 		E99042CA2502A16C0062B493 /* RentalEntityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99042C92502A16C0062B493 /* RentalEntityView.swift */; };
 		E99042CC25043BBA0062B493 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99042CB25043BBA0062B493 /* CoreDataManager.swift */; };
 		E9A8C6692517B4BC000E8A28 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A8C6682517B4BC000E8A28 /* HomeViewModel.swift */; };
@@ -70,6 +71,7 @@
 		E9665535250033B2003BC212 /* RentorEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentorEntity.swift; sourceTree = "<group>"; };
 		E985821C25238CD600F5BC7F /* BlueButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueButtonStyle.swift; sourceTree = "<group>"; };
 		E9878555250BB0C200CF8519 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		E98C257C252B922000E06E73 /* HomeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailView.swift; sourceTree = "<group>"; };
 		E99042C92502A16C0062B493 /* RentalEntityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentalEntityView.swift; sourceTree = "<group>"; };
 		E99042CB25043BBA0062B493 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		E9A8C6682517B4BC000E8A28 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 		E98C2578252B8B8800E06E73 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E98C257C252B922000E06E73 /* HomeDetailView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -583,6 +586,7 @@
 				E9AAA95525210CF1009841B8 /* SimmulatorCellViewModel.swift in Sources */,
 				E9090D1724FA9F7600020390 /* ios_rentor.xcdatamodeld in Sources */,
 				E9A8C66E25194095000E8A28 /* Errors.swift in Sources */,
+				E98C257D252B922000E06E73 /* HomeDetailView.swift in Sources */,
 				E9665536250033B2003BC212 /* RentorEntity.swift in Sources */,
 				E9D8D16124FAF9D000DF5ABC /* SettingView.swift in Sources */,
 				E9A8C6692517B4BC000E8A28 /* HomeViewModel.swift in Sources */,
