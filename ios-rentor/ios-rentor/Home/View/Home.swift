@@ -52,7 +52,7 @@ struct Home: View {
     private func body(with size: CGSize) -> some View {
         List {
             self.displayRentalProperties()
-                .listRowBackground(Color.black.opacity(0.05))
+                .listRowBackground(Color.clear)
         }.listStyle(PlainListStyle())
         .font(Font.system(size: self.fontSize(for: size)))
     }

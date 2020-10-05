@@ -17,13 +17,32 @@ struct MainView: View {
         case SettingView
     }
     
+    init() {
+    }
+    
     var body: some View {
-        VStack(spacing: 0) {
-            ZStack {
-                self.containerView(index: self.index)
-            }.padding(.bottom, -35)
-            CustomTabs(index: self.$index)
-        }        
+//        VStack(spacing: 0) {
+//            ZStack {
+//                self.containerView(index: self.index)
+//            }.padding(.bottom, -35)
+//            CustomTabs(index: self.$index)
+//        }
+        TabView {
+            Home().tabItem {
+                Image(systemName: "house")
+                Text("house")
+            }.accentColor(.blue)
+            
+            SimmulatorView().tabItem {
+                Image(systemName: "plus.circle")
+                Text("Simm")
+            }.accentColor(.blue)
+            
+            SettingView().tabItem {
+                Image(systemName: "person")
+                Text("Setting")
+            }.accentColor(.blue)
+        }.accentColor(Color.orange)
     }
 
     
