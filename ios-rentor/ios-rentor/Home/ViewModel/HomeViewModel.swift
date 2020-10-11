@@ -26,6 +26,7 @@ internal final class HomeViewModel: ObservableObject, ViewModelProtocol {
         var dataSources: AnyPublisher<[RentorEntity], Never>
         var shouldDisplayError: CurrentValueSubject<Bool, Never>
         var messageError: CurrentValueSubject<String, Never>
+        var headerListValue: AnyPublisher<String, Never>
     }
     
     init() { }
@@ -58,8 +59,14 @@ internal final class HomeViewModel: ObservableObject, ViewModelProtocol {
         
         let mergedDataSources = Publishers.Merge(dataSources, onDeleteSources).eraseToAnyPublisher()
         
+        let headerListValue = Just("740")
+            .map { val in
+              "740,00"
+            }.eraseToAnyPublisher()
+        
         return Output(dataSources: mergedDataSources,
                       shouldDisplayError: self.shouldDisplayError,
-                      messageError: self.messageDisplayError)
+                      messageError: self.messageDisplayError,
+                      headerListValue: headerListValue)
     }
 }

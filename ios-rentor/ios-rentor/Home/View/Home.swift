@@ -16,6 +16,7 @@ struct Home: View {
     @State private var dataSources: [RentorEntity] = []
     @State private var displayAlert: Bool = false
     @State private var messageAlert: String = ""
+    @State private var headerList: String = ""
     
     //MARK: ViewModel
     private let homeViewModel: HomeViewModel
@@ -66,12 +67,17 @@ struct Home: View {
             }
     }
     
+    private func headerListView() -> some View {
+        Text(self.headerList.concat(string: "$US / month 💵"))
+            .onReceive(self.output.headerListValue) { (value) in
+                self.headerList = value
+        }.foregroundColor(Color.init("LightBlue"))
+        .font(.system(size: 16, weight: .bold))
+    }
+    
     private func body(with size: CGSize) -> some View {
         List {
-            Section(header: Text("770,42$US / month 💰")
-                        .foregroundColor(Color.init("LightBlue"))
-                        .font(.system(size: 16))
-                        .fontWeight(.bold)) {
+            Section(header: self.headerListView()) {
                 self.displayRentalProperties()
                     .listRowBackground(Color.clear)
             }
