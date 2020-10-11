@@ -9,6 +9,7 @@
 import SwiftUI
 import CoreData
 import Combine
+import MapKit
 
 struct Home: View {
     //MARK: State
@@ -40,21 +41,44 @@ struct Home: View {
         NavigationView {
             GeometryReader { geometry in
                 self.body(with: geometry.size)
-            }.navigationBarTitle(Text(self.navigationBarTitle))
-            .navigationBarItems(trailing: EditButton())
+            }
         }
+    }
+    
+    private func eventAddSimmulations() {
+        
     }
     
     private func fontSize(for size: CGSize) -> CGFloat {
         min(size.width, size.height) * self.fontScaleFactor
     }
     
+    private func displayBackgroundImage(with name: String) -> some View {
+        Image(name).resizable().edgesIgnoringSafeArea(.top).frame(height: 150)
+    }
+    @State var showingDetails = false
+    private func navigationBarAdd() -> some View {
+        Image(systemName: "plus")
+            .imageScale(.large)
+            .foregroundColor(Color.init("LightBlue"))
+            .sheet(isPresented: $showingDetails) {
+                SimmulatorView()
+            }
+    }
+    
     private func body(with size: CGSize) -> some View {
         List {
-            self.displayRentalProperties()
-                .listRowBackground(Color.clear)
-        }.listStyle(PlainListStyle())
-        .font(Font.system(size: self.fontSize(for: size)))
+            Section(header: Text("770,42$US / month 💰")
+                        .foregroundColor(Color.init("LightBlue"))
+                        .fontWeight(.bold)) {
+                self.displayRentalProperties()
+                    .listRowBackground(Color.clear)
+            }
+        }.font(Font.system(size: self.fontSize(for: size)))
+        .navigationBarTitle(Text("Home 🏡"))
+        .navigationBarItems(trailing: self.navigationBarAdd())
+        .listStyle(GroupedListStyle())
+        
     }
     
     private func displayRentalProperties() -> some View {
@@ -81,11 +105,5 @@ struct Home: View {
         }.onReceive(self.output.dataSources) { dataSources in
             self.dataSources = dataSources
         }
-    }
-}
-
-struct DisplaySimulations_Previews: PreviewProvider {
-    static var previews: some View {
-        Home()
     }
 }

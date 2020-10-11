@@ -42,7 +42,7 @@ struct MainView: View {
                 Image(systemName: "person")
                 Text("Setting")
             }.accentColor(.blue)
-        }.accentColor(Color.orange)
+        }.accentColor(Color.init("LightBlue"))
     }
 
     

@@ -33,9 +33,11 @@ struct RentalContentView: View {
     
     private func HeaderCell(with name: String) -> some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text(name)
+            Text("\(name) 👏")
+                .font(.system(size: 18))
+                .fontWeight(.bold)
             Divider()
-                .frame(height: 2).background(Color.black.opacity(0.2))
+                .frame(height: 2).background(Color.init("Blue").opacity(0.5))
                 .padding(.top, 5)
                 .padding(.bottom, 5)
         }
@@ -43,32 +45,32 @@ struct RentalContentView: View {
     
     private func ContentCell(with rental: RentorEntity) -> some View {
         HStack {
-            Image(systemName: "house").font(.system(size: 26))
-                .foregroundColor(Color.black.opacity(0.7))
-                .padding(.trailing, 13)
             VStack(alignment: .leading) {
                 Text(self.priceTitle)
                 Text(self.rentPriceTitle)
-                Text(self.cashFlowTitle)
                 Text(self.percentageTitle)
+                Text(self.cashFlowTitle)
+                    .fontWeight(.medium)
             }
             Spacer()
             VStack(alignment: .trailing) {
                 Text("\(rental.price)"
                     .numberFormatting(formatterDigit: 2, isDecimal: true)
                     .currencyFormatting())
+                    
                 Text("\(rental.rentPrice)"
                     .numberFormatting(formatterDigit: 2, isDecimal: true)
                     .currencyFormatting())
-                    .foregroundColor(.green)
+                
+                Text("\(rental.percentageEffiency)"
+                    .numberFormatting(formatterDigit: 2, isDecimal: true)
+                    .currencyFormatting())
+                
                 Text("\(rental.cashFlow)"
                     .numberFormatting(formatterDigit: 2, isDecimal: true)
                     .currencyFormatting())
                     .foregroundColor(.green)
-                Text("\(rental.percentageEffiency)"
-                    .numberFormatting(formatterDigit: 2, isDecimal: true)
-                    .currencyFormatting())
-                    .foregroundColor(.green)
+                    .fontWeight(.bold)
             }
         }
     }
