@@ -70,6 +70,7 @@ struct Home: View {
         List {
             Section(header: Text("770,42$US / month 💰")
                         .foregroundColor(Color.init("LightBlue"))
+                        .font(.system(size: 16))
                         .fontWeight(.bold)) {
                 self.displayRentalProperties()
                     .listRowBackground(Color.clear)
