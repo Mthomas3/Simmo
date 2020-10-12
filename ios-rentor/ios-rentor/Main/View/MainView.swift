@@ -33,11 +33,6 @@ struct MainView: View {
                 Text("house")
             }.accentColor(.blue)
             
-            SimmulatorView().tabItem {
-                Image(systemName: "plus.circle")
-                Text("Simm")
-            }.accentColor(.blue)
-            
             SettingView().tabItem {
                 Image(systemName: "person")
                 Text("Setting")
@@ -45,19 +40,6 @@ struct MainView: View {
         }.accentColor(Color.init("LightBlue"))
     }
 
-    
-    func containerView(index: Int) -> AnyView {
-        switch(TabState(rawValue: index)) {
-            case .Home:
-                return AnyView(Home())
-            case .SimmulatorView:
-                return AnyView(SimmulatorView())
-            case .SettingView:
-                return AnyView(SettingView())
-            case .none:
-                return AnyView(Home())
-        }
-    }
 }
 
 struct Tab: View {

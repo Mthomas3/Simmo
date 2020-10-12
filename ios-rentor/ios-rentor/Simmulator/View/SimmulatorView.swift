@@ -13,6 +13,7 @@ internal struct SimmulatorView: View {
     //MARK: State
     @State private var dataSources: [GlobalFormCell] = []
     @State private var isFormValid: Bool = false
+    @Binding internal var isViewOpen: Bool
     
     //MARK: ViewModel
     private let simmulatorViewModel: SimmulatorViewModel
@@ -22,10 +23,11 @@ internal struct SimmulatorView: View {
     
     //MARK: Drawing Constants
     private let fontScaleFactor: CGFloat = 0.04
-    private let navigationBarTitle: String = "Simmulations"
+    private let navigationBarTitle: String = "Simmulations 🏗"
     private let saveButtonTitle: String = "Done"
     
-    init() {
+    init(_ isViewOpen: Binding<Bool>) {
+        _isViewOpen = isViewOpen
         self.simmulatorViewModel = SimmulatorViewModel()
         self.output = self.simmulatorViewModel.transform(SimmulatorViewModel.Input(doneForm: self.doneEvent.eraseToAnyPublisher(), refreshEvent: self.refreshEvent.eraseToAnyPublisher()))
         
@@ -37,7 +39,19 @@ internal struct SimmulatorView: View {
         NavigationView {
             GeometryReader { geometry in
                 self.body(with: geometry.size)
-            }.navigationBarTitle(Text(self.navigationBarTitle))
+            }.navigationBarTitle(Text(self.navigationBarTitle), displayMode: .inline)
+            .navigationBarItems(leading:
+               Button("Cancel") {
+                self.isViewOpen = false
+               }, trailing:
+               Button("Done") {
+                self.doneEvent.send(())
+                self.isViewOpen = false
+               }.disabled(!self.isFormValid)
+                .onReceive(self.output.isFormValid) { isValid in
+                    self.isFormValid = isValid
+                }
+            )
         }
     }
     
@@ -62,15 +76,15 @@ internal struct SimmulatorView: View {
                     .cornerRadius(16)
                 }
             }.listRowInsets(EdgeInsets())
-            Section {
-                Button(action: {
-                    self.doneEvent.send(())
-                }) { Text(self.saveButtonTitle) }
-                .disabled(!self.isFormValid)
-                .onReceive(self.output.isFormValid) { isValid in
-                    self.isFormValid = isValid
-                }.buttonStyle(BlueButtonStyle(disabled: !self.isFormValid))
-            }
+//            Section {
+//                Button(action: {
+//                    self.doneEvent.send(())
+//                }) { Text(self.saveButtonTitle) }
+//                .disabled(!self.isFormValid)
+//                .onReceive(self.output.isFormValid) { isValid in
+//                    self.isFormValid = isValid
+//                }.buttonStyle(BlueButtonStyle(disabled: !self.isFormValid))
+//            }
         }.onReceive(self.output.dataSources) { dataSources in
             self.dataSources = dataSources
         }

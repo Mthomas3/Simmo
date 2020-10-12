@@ -17,6 +17,7 @@ struct Home: View {
     @State private var displayAlert: Bool = false
     @State private var messageAlert: String = ""
     @State private var headerList: String = ""
+    @State private var showingSimmualatorView: Bool = false
     
     //MARK: ViewModel
     private let homeViewModel: HomeViewModel
@@ -46,10 +47,6 @@ struct Home: View {
         }
     }
     
-    private func eventAddSimmulations() {
-        
-    }
-    
     private func fontSize(for size: CGSize) -> CGFloat {
         min(size.width, size.height) * self.fontScaleFactor
     }
@@ -57,14 +54,17 @@ struct Home: View {
     private func displayBackgroundImage(with name: String) -> some View {
         Image(name).resizable().edgesIgnoringSafeArea(.top).frame(height: 150)
     }
-    @State var showingDetails = false
+
     private func navigationBarAdd() -> some View {
-        Image(systemName: "plus")
-            .imageScale(.large)
-            .foregroundColor(Color.init("LightBlue"))
-            .sheet(isPresented: $showingDetails) {
-                SimmulatorView()
-            }
+        Button(action: {
+            self.showingSimmualatorView.toggle()
+        }) {
+            Image(systemName: "plus")
+                .imageScale(.large)
+                .foregroundColor(Color.init("LightBlue"))
+        }.sheet(isPresented: $showingSimmualatorView) {
+            SimmulatorView(self.$showingSimmualatorView)
+        }
     }
     
     private func headerListView() -> some View {
@@ -79,13 +79,17 @@ struct Home: View {
         List {
             Section(header: self.headerListView()) {
                 self.displayRentalProperties()
-                    .listRowBackground(Color.clear)
+                    .padding(.leading, 8)
+                    .padding(.trailing, 8)
+                    .padding(.bottom, 4)
+                    .padding(.top, 4)
+                    .listRowInsets(EdgeInsets())
+                    .listRowBackground(Color.black.opacity(0.05))
             }
         }.font(Font.system(size: self.fontSize(for: size)))
         .navigationBarTitle(Text("Home 🏡"))
         .navigationBarItems(trailing: self.navigationBarAdd())
         .listStyle(GroupedListStyle())
-        
     }
     
     private func displayRentalProperties() -> some View {

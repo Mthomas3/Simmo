@@ -66,8 +66,9 @@ internal final class SimmulatorViewModel: ObservableObject, ViewModelProtocol {
     private func handleDoneFormEvent() {
         
         let a = RentorEntity(context: ((UIApplication.shared.delegate as! AppDelegate).persistentContainer).viewContext)
-        a.name = "yo"
+        a.name = "Je suis un jolie Test"
         a.cashFlow = 1000.0
+        a.price = 10000000
         a.createDate = Date()
         a.percentageEffiency = 10.0
         a.rentPrice = 10000.0
