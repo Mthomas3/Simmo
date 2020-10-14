@@ -23,7 +23,7 @@ internal final class CoreDataManager {
     
     private var context: NSManagedObjectContext { self.coreDataContainer.viewContext }
     
-    private func isExist<T: NSManagedObject>(type: T.Type, item: T) throws -> Bool {
+    private func isExist<T: NSManagedObject>(item: T) throws -> Bool {
         let fetchRequest = T.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "id == %@", item)
         return try self.context.fetch(fetchRequest).count > 0
