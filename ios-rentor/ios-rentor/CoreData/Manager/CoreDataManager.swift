@@ -15,6 +15,7 @@ internal final class CoreDataManager {
     
     internal static let sharedInstance = CoreDataManager()
     private let coreDataContainer: NSPersistentContainer
+    //private let itemUpdate = PassthroughSubject<, Never>()
     
     private init() {
         self.coreDataContainer = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
@@ -29,7 +30,7 @@ internal final class CoreDataManager {
     }
 
     //MARK: Todo change anyPublisher to Future which is like single (but a lil bit diff tho) in rxS 👀
-    internal func createData<T: NSManagedObject>(type: T.Type, with data: T) -> AnyPublisher<Void, CoreDataError> {
+    internal func createData<T: NSManagedObject>(with data: T) -> AnyPublisher<Void, CoreDataError> {
         do {
             self.context.insert(data)
             return Just(try self.context.save() as Void)
@@ -43,9 +44,9 @@ internal final class CoreDataManager {
         }
     }
     
-    internal func fetchData<T: NSManagedObject>(type: T.Type) -> AnyPublisher<[T]?, CoreDataError> {
+    internal func fetchData<T: NSManagedObject>() -> AnyPublisher<[T]?, CoreDataError> {
         do {
-            return Just(try self.context.fetch(self.fetchRequest(type: T.self)))
+            return Just(try self.context.fetch(self.fetchRequest()))
                     .retry(2)
                     .mapError { _ in CoreDataError.fetchError }
                     .eraseToAnyPublisher()
@@ -83,12 +84,12 @@ internal final class CoreDataManager {
         try self.context.save()
     }
     
-    internal func deleteRental<T: NSManagedObject>(type: T.Type, with item: T) throws {
+    internal func deleteRental<T: NSManagedObject>(with item: T) throws {
         self.context.delete(item)
         try self.context.save()
     }
     
-    private func fetchRequest<T: NSManagedObject>(type: T.Type) -> NSFetchRequest<T>  {
+    private func fetchRequest<T: NSManagedObject>() -> NSFetchRequest<T>  {
         let request: NSFetchRequest<T> = T.fetchRequest() as! NSFetchRequest<T>
         request.sortDescriptors = [NSSortDescriptor(key: "createDate", ascending: true)]
         return request

@@ -32,7 +32,7 @@ internal final class HomeViewModel: ObservableObject, ViewModelProtocol {
     init() { }
     
     private func fetchingRentals() -> AnyPublisher<[RentorEntity], Never> {
-        CoreDataManager.sharedInstance.fetchData(type: RentorEntity.self)
+        CoreDataManager.sharedInstance.fetchData()
             .receive(on: DispatchQueue.main)
             .map { $0 ?? [] }
             .catch { [weak self] (error) -> AnyPublisher<[RentorEntity], Never> in
@@ -50,7 +50,7 @@ internal final class HomeViewModel: ObservableObject, ViewModelProtocol {
             .receive(on: DispatchQueue.main)
             .flatMap { (item) -> AnyPublisher<[RentorEntity], Never> in
                 do {
-                    try CoreDataManager.sharedInstance.deleteRental(type: RentorEntity.self, with: item)
+                    try CoreDataManager.sharedInstance.deleteRental(with: item)
                 } catch {
                     print("Error on fetch rentals catch = \(error)")
                 }
