@@ -27,6 +27,7 @@ internal final class HomeViewModel: ObservableObject, ViewModelProtocol {
         var shouldDisplayError: CurrentValueSubject<Bool, Never>
         var messageError: CurrentValueSubject<String, Never>
         var headerListValue: AnyPublisher<String, Never>
+        var onUpdate: AnyPublisher<RentorEntity, Never>
     }
     
     init() { }
@@ -34,7 +35,6 @@ internal final class HomeViewModel: ObservableObject, ViewModelProtocol {
     private func fetchingRentals() -> AnyPublisher<[RentorEntity], Never> {
         CoreDataRental.sharedInstance.fetch()
             .receive(on: DispatchQueue.main)
-            .map { $0 ?? [] }
             .catch { [weak self] (error) -> AnyPublisher<[RentorEntity], Never> in
                 self?.shouldDisplayError.send(true)
                 self?.messageDisplayError.send("An error occured in the fetch")
@@ -65,9 +65,12 @@ internal final class HomeViewModel: ObservableObject, ViewModelProtocol {
               "740,00"
             }.eraseToAnyPublisher()
         
+        let onUpdate = CoreDataRental.sharedInstance.onUpdate()
+        
         return Output(dataSources: mergedDataSources,
                       shouldDisplayError: self.shouldDisplayError,
                       messageError: self.messageDisplayError,
-                      headerListValue: headerListValue)
+                      headerListValue: headerListValue,
+                      onUpdate: onUpdate)
     }
 }

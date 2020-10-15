@@ -115,6 +115,8 @@ struct Home: View {
             self.messageAlert = messageValue
         }.onReceive(self.output.dataSources) { dataSources in
             self.dataSources = dataSources
+        }.onReceive(self.output.onUpdate) { updateValue in
+            self.dataSources.append(updateValue)
         }
     }
 }
