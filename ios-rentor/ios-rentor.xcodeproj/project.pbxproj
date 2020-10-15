@@ -17,6 +17,7 @@
 		E9090D3724FA9F7800020390 /* ios_rentorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9090D3624FA9F7800020390 /* ios_rentorUITests.swift */; };
 		E9209C9325227E8700EDC0A9 /* SimmulatorCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9209C9225227E8700EDC0A9 /* SimmulatorCellView.swift */; };
 		E936BFB92538992800ED3269 /* CoreDataRental.swift in Sources */ = {isa = PBXBuildFile; fileRef = E936BFB82538992800ED3269 /* CoreDataRental.swift */; };
+		E936BFBF25389E0E00ED3269 /* CoreDataObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E936BFBE25389E0E00ED3269 /* CoreDataObject.swift */; };
 		E9665536250033B2003BC212 /* RentorEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9665535250033B2003BC212 /* RentorEntity.swift */; };
 		E985821D25238CD600F5BC7F /* BlueButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E985821C25238CD600F5BC7F /* BlueButtonStyle.swift */; };
 		E9878556250BB0C200CF8519 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9878555250BB0C200CF8519 /* String+Ext.swift */; };
@@ -71,6 +72,7 @@
 		E9090D3824FA9F7800020390 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9209C9225227E8700EDC0A9 /* SimmulatorCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimmulatorCellView.swift; sourceTree = "<group>"; };
 		E936BFB82538992800ED3269 /* CoreDataRental.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRental.swift; sourceTree = "<group>"; };
+		E936BFBE25389E0E00ED3269 /* CoreDataObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataObject.swift; sourceTree = "<group>"; };
 		E9665535250033B2003BC212 /* RentorEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentorEntity.swift; sourceTree = "<group>"; };
 		E985821C25238CD600F5BC7F /* BlueButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueButtonStyle.swift; sourceTree = "<group>"; };
 		E9878555250BB0C200CF8519 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
@@ -286,6 +288,14 @@
 			path = Entities;
 			sourceTree = "<group>";
 		};
+		E936BFBD25389E0300ED3269 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				E936BFBE25389E0E00ED3269 /* CoreDataObject.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		E985821B25238CC900F5BC7F /* New Group */ = {
 			isa = PBXGroup;
 			children = (
@@ -377,6 +387,7 @@
 		E9B45CA224FD5EDE00A79ECC /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				E936BFBD25389E0300ED3269 /* Protocols */,
 				E936BFB72538991600ED3269 /* Entities */,
 				E9EF29B7250824CC00B97676 /* Manager */,
 				E9090D4F24FAA49F00020390 /* Model */,
@@ -592,6 +603,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9D8D16324FC353700DF5ABC /* Home.swift in Sources */,
+				E936BFBF25389E0E00ED3269 /* CoreDataObject.swift in Sources */,
 				E99042CC25043BBA0062B493 /* CoreDataManager.swift in Sources */,
 				E9D8D15D24FAF7B800DF5ABC /* MainView.swift in Sources */,
 				E9878556250BB0C200CF8519 /* String+Ext.swift in Sources */,
