@@ -73,6 +73,6 @@ internal final class SimmulatorViewModel: ObservableObject, ViewModelProtocol {
         a.percentageEffiency = 10.0
         a.rentPrice = 10000.0
         
-        CoreDataManager.sharedInstance.createData(with: a)
+        CoreDataRental.sharedInstance.create(with: a)
     }
 }
