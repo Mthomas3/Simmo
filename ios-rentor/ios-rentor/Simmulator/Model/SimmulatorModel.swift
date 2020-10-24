@@ -14,10 +14,12 @@ internal struct SimmulatorFormCellData: Identifiable {
     let name: String
     let value = CurrentValueSubject<Int, Never>(0)
     let sumIndicator: Int
+    let isPercentage: Bool
     
-    init(cell name: String, with sumIndicator: Int = 100) {
+    init(cell name: String, with sumIndicator: Int = 100, isPercentage percentage: Bool) {
         self.name = name
         self.sumIndicator = sumIndicator
+        self.isPercentage = percentage
     }
 }
 

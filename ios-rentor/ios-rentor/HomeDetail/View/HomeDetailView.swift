@@ -28,19 +28,18 @@ struct HomeDetailView: View {
     }
     
     var body: some View {
-        NavigationView {
-            GeometryReader { geometry in
-                self.body(with: geometry.size)
-            }
+        GeometryReader { geometry in
+            self.body(with: geometry.size)
         }
+        .navigationBarTitle(Text(self.navigationBarTitle), displayMode: .inline)
     }
-    
+
     private func fontSize(for size: CGSize) -> CGFloat {
         min(size.width, size.height) * self.fontScaleFactor
     }
     
     private func body(with size: CGSize) -> some View {
-        Text("RENTOR = \(self.rentalSelected.name ?? "not found")")
+        Text("RENTOR HERE = \(self.rentalSelected.name ?? "not found")")
             .font(Font.system(size: self.fontSize(for: size)))
     }
 }

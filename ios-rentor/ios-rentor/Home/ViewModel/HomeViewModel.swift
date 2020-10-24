@@ -50,7 +50,6 @@ internal final class HomeViewModel: ObservableObject, ViewModelProtocol {
             .receive(on: DispatchQueue.main)
             .flatMap { (item) -> AnyPublisher<[RentorEntity], Never> in
                 do {
-                    //try CoreDataManager.de sharedInstance.deleteRental(with: item)
                     try CoreDataRental.sharedInstance.delete(with: item)
                 } catch {
                     print("Error on fetch rentals catch = \(error)")

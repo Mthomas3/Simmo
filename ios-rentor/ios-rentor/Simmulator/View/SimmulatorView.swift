@@ -76,15 +76,6 @@ internal struct SimmulatorView: View {
                     .cornerRadius(16)
                 }
             }.listRowInsets(EdgeInsets())
-//            Section {
-//                Button(action: {
-//                    self.doneEvent.send(())
-//                }) { Text(self.saveButtonTitle) }
-//                .disabled(!self.isFormValid)
-//                .onReceive(self.output.isFormValid) { isValid in
-//                    self.isFormValid = isValid
-//                }.buttonStyle(BlueButtonStyle(disabled: !self.isFormValid))
-//            }
         }.onReceive(self.output.dataSources) { dataSources in
             self.dataSources = dataSources
         }

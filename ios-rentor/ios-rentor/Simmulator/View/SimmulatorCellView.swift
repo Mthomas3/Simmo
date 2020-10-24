@@ -23,8 +23,8 @@ internal struct SimmulatorCellView: View {
     private let currentCell: SimmulatorFormCellData
     
     //MARK: Drawing Constants
-    private let imageSystemNameLeft: String = "plus"
-    private let imageSystemNameRight: String = "minus"
+    private let imageSystemNameLeft: String = "minus"
+    private let imageSystemNameRight: String = "plus"
     
     private enum actionType: Int {
         case increase
@@ -39,15 +39,11 @@ internal struct SimmulatorCellView: View {
         _ = self.viewModel.transform(SimmulatorCellViewModel.Input(increaseEvent:
             self.increaseEvent.eraseToAnyPublisher(), decreaseEvent:
             self.decreaseEvent.eraseToAnyPublisher()))
-        
-        //UITableViewCell.appearance().selectionStyle = .none
-        
-        UITableView.appearance().separatorColor = .red
     }
     
     var body: some View {
         HStack(alignment: .center) {
-            self.headerViewCell(with: name)
+            self.headerViewCell(with: name).padding(.trailing, 30   )
             Spacer()
             self.bodyViewCell(with: self.currentCell)
                 .frame(width: 80, alignment: .trailing)
@@ -57,12 +53,17 @@ internal struct SimmulatorCellView: View {
     private func headerViewCell(with name: String) -> some View {
         VStack(alignment: .trailing) {
             Text(name)
-        }
+                .font(.body)
+                .fontWeight(.light)
+                .truncationMode(.tail)
+                
+        }.padding(.trailing, 40)
+        
     }
     
     private func bodyViewCell(with value: SimmulatorFormCellData) -> some View {
         HStack(alignment: .center, spacing: 0) {
-            self.bodyViewButton(image: self.imageSystemNameLeft, with: value, type: .increase)
+            self.bodyViewButton(image: self.imageSystemNameLeft, with: value, type: .decrease)
             TextField("", value: self.$stateTextField, formatter: NumberFormatter())
                 .autocapitalization(.none)
                 .multilineTextAlignment(.trailing)
@@ -73,7 +74,7 @@ internal struct SimmulatorCellView: View {
             .onReceive(currentCell.value) { value in
                 self.stateTextField = value
             }
-            self.bodyViewButton(image: self.imageSystemNameRight, with: value, type: .decrease)
+            self.bodyViewButton(image: self.imageSystemNameRight, with: value, type: .increase)
         }.overlay ( RoundedRectangle(cornerRadius: 8).stroke(Color.black.opacity(0.05), lineWidth: 2) )
     }
     
@@ -85,7 +86,7 @@ internal struct SimmulatorCellView: View {
             Image(systemName: name)
                 .font(.system(size: 24))
                 .foregroundColor(Color.black.opacity(0.7))
-            
+                .frame(height: 20)
         }.padding(.leading, 8)
          .padding(.trailing, 8)
          .padding(.top, 4)
@@ -99,6 +100,6 @@ internal struct SimmulatorCellView: View {
 struct SimmulatorCellView_Previews: PreviewProvider {
     static var previews: some View {
         let refreshEvent = PassthroughSubject<Void, Never>()
-        return SimmulatorCellView(with: "test A", and: SimmulatorFormCellData(cell: "Cell B"), with: refreshEvent)
+        return SimmulatorCellView(with: "test A", and: SimmulatorFormCellData(cell: "Cell B", isPercentage: false), with: refreshEvent)
     }
 }
