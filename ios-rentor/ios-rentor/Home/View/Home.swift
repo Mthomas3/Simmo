@@ -25,7 +25,7 @@ struct Home: View {
     private let onDelete: PassthroughSubject<RentorEntity, Never>
     
     //MARK: Drawing Constants
-    private let navigationBarTitle: String = "Home"
+    private let navigationBarTitle: String = "Home 🏡"
     private let alertErrorTitle: String = "An error occured"
     private let fontScaleFactor: CGFloat = 0.04
     
@@ -87,7 +87,7 @@ struct Home: View {
                     .listRowBackground(Color.black.opacity(0.05))
             }
         }.font(Font.system(size: self.fontSize(for: size)))
-        .navigationBarTitle(Text("Home 🏡"))
+        .navigationBarTitle(Text(self.navigationBarTitle))
         .navigationBarItems(trailing: self.navigationBarAdd())
         .listStyle(GroupedListStyle())
     }

@@ -26,21 +26,40 @@ struct HomeDetailView: View {
         self.homeDetailViewModel = HomeDetailViewModel()
         self.output = self.homeDetailViewModel.transform(HomeDetailViewModel.Input())
     }
+
+    private func navigationBarAdd() -> some View {
+        Button(action: {
+            print("export action needed")
+        }) {
+            Text("Version PDF")
+        }
+    }
     
     var body: some View {
         GeometryReader { geometry in
             self.body(with: geometry.size)
-        }
-        .navigationBarTitle(Text(self.navigationBarTitle), displayMode: .inline)
+        }.navigationBarTitle(Text(self.navigationBarTitle),
+                             displayMode: .inline)
+        .navigationBarItems(trailing: self.navigationBarAdd())
     }
 
     private func fontSize(for size: CGSize) -> CGFloat {
         min(size.width, size.height) * self.fontScaleFactor
     }
     
+    private func displayHeader() -> some View {
+        Section(header: Text("Editions")) {
+            
+        }
+    }
+    
     private func body(with size: CGSize) -> some View {
-        Text("RENTOR HERE = \(self.rentalSelected.name ?? "not found")")
-            .font(Font.system(size: self.fontSize(for: size)))
+        VStack {
+            List {
+                self.displayHeader()
+            }.font(Font.system(size: self.fontSize(for: size)))
+            .listStyle(GroupedListStyle())
+        }
     }
 }
 

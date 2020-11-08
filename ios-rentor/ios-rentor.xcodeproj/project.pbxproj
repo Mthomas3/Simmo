@@ -32,6 +32,9 @@
 		E9AAA953251BDA4B009841B8 /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AAA952251BDA4B009841B8 /* ViewModelProtocol.swift */; };
 		E9AAA95525210CF1009841B8 /* SimmulatorCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AAA95425210CF1009841B8 /* SimmulatorCellViewModel.swift */; };
 		E9B45CA124FD5ED400A79ECC /* rentorCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9B45C9F24FD5ED400A79ECC /* rentorCoreData.xcdatamodeld */; };
+		E9C3A0AE25570A1D003BF79F /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C3A0AD25570A1D003BF79F /* SettingViewModel.swift */; };
+		E9C3A0B425570D43003BF79F /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C3A0B325570D43003BF79F /* SettingCell.swift */; };
+		E9C3A0C125585F18003BF79F /* SettingCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C3A0C025585F18003BF79F /* SettingCellData.swift */; };
 		E9D8D15D24FAF7B800DF5ABC /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D8D15C24FAF7B800DF5ABC /* MainView.swift */; };
 		E9D8D15F24FAF98300DF5ABC /* SimmulatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D8D15E24FAF98200DF5ABC /* SimmulatorView.swift */; };
 		E9D8D16124FAF9D000DF5ABC /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D8D16024FAF9D000DF5ABC /* SettingView.swift */; };
@@ -87,6 +90,9 @@
 		E9AAA952251BDA4B009841B8 /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
 		E9AAA95425210CF1009841B8 /* SimmulatorCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimmulatorCellViewModel.swift; sourceTree = "<group>"; };
 		E9B45CA024FD5ED400A79ECC /* Simmulations.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Simmulations.xcdatamodel; sourceTree = "<group>"; };
+		E9C3A0AD25570A1D003BF79F /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
+		E9C3A0B325570D43003BF79F /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
+		E9C3A0C025585F18003BF79F /* SettingCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCellData.swift; sourceTree = "<group>"; };
 		E9D8D15C24FAF7B800DF5ABC /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		E9D8D15E24FAF98200DF5ABC /* SimmulatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimmulatorView.swift; sourceTree = "<group>"; };
 		E9D8D16024FAF9D000DF5ABC /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
@@ -251,6 +257,7 @@
 		E9090D4B24FAA48000020390 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E9C3A0C025585F18003BF79F /* SettingCellData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -258,6 +265,7 @@
 		E9090D4C24FAA48700020390 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E9C3A0B225570D2F003BF79F /* Cells */,
 				E9D8D16024FAF9D000DF5ABC /* SettingView.swift */,
 			);
 			path = View;
@@ -347,6 +355,7 @@
 		E9A8C6652517B2A1000E8A28 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				E9C3A0AD25570A1D003BF79F /* SettingViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -393,6 +402,14 @@
 				E9090D4F24FAA49F00020390 /* Model */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		E9C3A0B225570D2F003BF79F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E9C3A0B325570D43003BF79F /* SettingCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		E9D8D15724FAF77200DF5ABC /* Main */ = {
@@ -607,9 +624,11 @@
 				E99042CC25043BBA0062B493 /* CoreDataManager.swift in Sources */,
 				E9D8D15D24FAF7B800DF5ABC /* MainView.swift in Sources */,
 				E9878556250BB0C200CF8519 /* String+Ext.swift in Sources */,
+				E9C3A0AE25570A1D003BF79F /* SettingViewModel.swift in Sources */,
 				E9209C9325227E8700EDC0A9 /* SimmulatorCellView.swift in Sources */,
 				E936BFB92538992800ED3269 /* CoreDataRental.swift in Sources */,
 				E9090D1224FA9F7600020390 /* AppDelegate.swift in Sources */,
+				E9C3A0C125585F18003BF79F /* SettingCellData.swift in Sources */,
 				E9AAA95525210CF1009841B8 /* SimmulatorCellViewModel.swift in Sources */,
 				E9090D1724FA9F7600020390 /* ios_rentor.xcdatamodeld in Sources */,
 				E98C2582252B96E700E06E73 /* HomeDetailViewModel.swift in Sources */,
@@ -621,6 +640,7 @@
 				E9B45CA124FD5ED400A79ECC /* rentorCoreData.xcdatamodeld in Sources */,
 				E9090D1424FA9F7600020390 /* SceneDelegate.swift in Sources */,
 				E9D8D15F24FAF98300DF5ABC /* SimmulatorView.swift in Sources */,
+				E9C3A0B425570D43003BF79F /* SettingCell.swift in Sources */,
 				E99042CA2502A16C0062B493 /* RentalEntityView.swift in Sources */,
 				E9AAA950251B9244009841B8 /* SimmulatorModel.swift in Sources */,
 				E985821D25238CD600F5BC7F /* BlueButtonStyle.swift in Sources */,
