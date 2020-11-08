@@ -19,16 +19,13 @@ internal final class SettingViewModel: ObservableObject, ViewModelProtocol {
     }
     
     struct Output {
-        var dataSources: AnyPublisher<[SettingCellData], Never>
+        var dataSources: AnyPublisher<[GlobalFormCell], Never>
     }
     
-    private func createSettingView() -> [SettingCellData] {
-        var data: [SettingCellData] = []
-        
-        data.append(SettingCellData(with: "TEST A"))
-        data.append(SettingCellData(with: "TEST B"))
-        
-        return data
+    private func createSettingView() -> [GlobalFormCell] {
+        [.init(header: "CONFIGURATIOn", data: [.init(cell: "Taux des prélèvements sociax", with: 20, isPercentage: true),
+                                               .init(cell: "Taux de TVA", with: 20, isPercentage: true),
+                                               .init(cell: "Taux de TVA", with: 20, isPercentage: true)])]
     }
     
     func transform(_ input: Input) -> Output {
