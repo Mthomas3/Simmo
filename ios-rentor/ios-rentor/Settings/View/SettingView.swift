@@ -26,6 +26,9 @@ struct SettingView: View {
     init() {
         self.settingViewModel = SettingViewModel()
         self.output = self.settingViewModel.transform(SettingViewModel.Input())
+        
+        UITableView.appearance().backgroundColor = UIColor.black.withAlphaComponent(0.05)
+        UITableViewCell.appearance().backgroundColor = UIColor.clear
     }
     
     var body: some View {
@@ -59,7 +62,9 @@ struct SettingView: View {
                     ForEach(section.data, id: \.id) { cell in
                         SimmulatorCellView(with: cell.name, and: cell, with: self.refreshEvent)
                     }
-                }
+                }.padding()
+                .background(Color.white)
+                .cornerRadius(16)
             }
             
         }.onReceive(self.output.dataSources) { dataSources in

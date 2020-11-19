@@ -36,7 +36,9 @@ struct Home: View {
         self.output = self.homeViewModel.transform(
             HomeViewModel.Input(onDeleteSource: self.onDelete.eraseToAnyPublisher()))
         
-        UITableView.appearance().backgroundColor = UIColor.black.withAlphaComponent(0.05)
+        //UITableView.appearance().backgroundColor = UIColor.black.withAlphaComponent(0.05)
+        UITableView.appearance().backgroundColor = .clear
+        UITableViewCell.appearance().backgroundColor = .clear
     }
 
     var body: some View {
@@ -90,6 +92,7 @@ struct Home: View {
         .navigationBarTitle(Text(self.navigationBarTitle))
         .navigationBarItems(trailing: self.navigationBarAdd())
         .listStyle(GroupedListStyle())
+        .listRowBackground(Color.red)
     }
     
     private func displayRentalProperties() -> some View {
@@ -99,7 +102,7 @@ struct Home: View {
                 NavigationLink(destination: HomeDetailView(with: rentalProperty)) {
                     EmptyView()
                 }.buttonStyle(PlainButtonStyle())
-            }
+            }.listRowBackground(Color.clear)
         }.onDelete { indexSet in
             if let currentIndex = indexSet.first {
                 self.onDelete.send(self.dataSources[currentIndex])
