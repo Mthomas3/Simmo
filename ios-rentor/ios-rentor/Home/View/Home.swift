@@ -101,7 +101,9 @@ struct Home: View {
                 RentalContentView(with: rentalProperty)
                 NavigationLink(destination: HomeDetailView(with: rentalProperty)) {
                     EmptyView()
-                }.buttonStyle(PlainButtonStyle())
+                }.frame(width: 0)
+                .opacity(0)
+                .buttonStyle(PlainButtonStyle())
             }.listRowBackground(Color.clear)
         }.onDelete { indexSet in
             if let currentIndex = indexSet.first {
