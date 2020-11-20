@@ -92,7 +92,6 @@ struct Home: View {
         .navigationBarTitle(Text(self.navigationBarTitle))
         .navigationBarItems(trailing: self.navigationBarAdd())
         .listStyle(GroupedListStyle())
-        .listRowBackground(Color.red)
     }
     
     private func displayRentalProperties() -> some View {

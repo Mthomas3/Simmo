@@ -48,6 +48,7 @@ struct SettingView: View {
             self.displaySettingProperties()
         }.font(Font.system(size: self.fontSize(for: size)))
         .navigationBarTitle(Text(self.navigationBarTitle))
+        .listStyle(GroupedListStyle())
     }
     
     private func shouldRenderText(with title: String?) -> some View {
@@ -56,20 +57,22 @@ struct SettingView: View {
     
     private func displaySettingProperties() -> some View {
         ForEach(self.dataSources) { section in
-            
             Section(header: self.shouldRenderText(with: section.header), footer: self.shouldRenderText(with: section.errorMessage.value).foregroundColor(Color.red)) {
                 VStack {
                     ForEach(section.data, id: \.id) { cell in
-                        SimmulatorCellView(with: cell.name, and: cell, with: self.refreshEvent)
+                        self.bodyContentCell(with: cell.name, and: cell)
                     }
-                }.padding()
+                }.padding(.leading, 30)
                 .background(Color.white)
-                .cornerRadius(16)
+                .cornerRadius(30)
             }
-            
         }.onReceive(self.output.dataSources) { dataSources in
             self.dataSources = dataSources
         }
+    }
+    
+    private func bodyContentCell(with name: String, and cell: SimmulatorFormCellData) -> some View {
+        SimmulatorCellView(with: name, and: cell, with: self.refreshEvent)
     }
 }
 
