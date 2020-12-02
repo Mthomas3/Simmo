@@ -9,7 +9,7 @@
 import Foundation
 import Combine
 
-internal struct SharedSettingData: Identifiable {
+internal struct HelperSettingData: Identifiable {
     let id: UUID = UUID()
     let name: String
     let pathLink: String

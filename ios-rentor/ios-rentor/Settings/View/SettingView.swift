@@ -13,7 +13,7 @@ struct SettingView: View {
     
     //MARK: State
     @State private var configDataSources: [SimmulatorFormCellData] = []
-    @State private var helperDataSources: [String] = []
+    @State private var helperDataSources: [HelperSettingData] = []
     
     //MARK: ViewModel
     private let settingViewModel: SettingViewModel
@@ -57,9 +57,7 @@ struct SettingView: View {
             }.padding(.leading, 8)
             .padding(.trailing, 8)
             Section(header: Text("À PROPOS")) {
-                Text("1")
-                Text("2")
-                Text("3")
+                self.displayHelperSettingProperties()
             }
         }.font(Font.system(size: self.fontSize(for: size)))
         .navigationBarTitle(Text(self.navigationBarTitle), displayMode: .automatic)
@@ -71,7 +69,11 @@ struct SettingView: View {
     }
     
     private func displayHelperSettingProperties() -> some View {
-        ForEach
+        ForEach(self.helperDataSources) { cell in
+            Text(cell.name)
+        }.onReceive(self.output.helperDataSources) { helperDataSources in
+            self.helperDataSources = helperDataSources
+        }
     }
     
     private func displayConfigSettingProperties() -> some View {

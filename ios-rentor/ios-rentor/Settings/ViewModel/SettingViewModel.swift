@@ -20,7 +20,7 @@ internal final class SettingViewModel: ObservableObject, ViewModelProtocol {
     
     struct Output {
         var configDataSources: AnyPublisher<[SimmulatorFormCellData], Never>
-        var helperDataSources: AnyPublisher<[String], Never>
+        var helperDataSources: AnyPublisher<[HelperSettingData], Never>
     }
     
     private func createSettingView() -> [SimmulatorFormCellData] {
@@ -29,8 +29,11 @@ internal final class SettingViewModel: ObservableObject, ViewModelProtocol {
                                                .init(cell: "Taux de TVA", with: 20, isPercentage: true)]
     }
     
-    private func createHelperSettingView() -> [String] {
-        return ["TEST A", "TEST B", "TEST C"]
+    private func createHelperSettingView() -> [HelperSettingData] {
+        [.init(with: "Partager", with: "https://mthomas3.github.io"),
+         .init(with: "Noter l'application", with: "https://mthomas3.github.io"),
+         .init(with: "Nous contacter", with: "https://mthomas3.github.io"),
+         .init(with: "Confidentialité", with: "https://mthomas3.github.io")]
     }
     
     func transform(_ input: Input) -> Output {

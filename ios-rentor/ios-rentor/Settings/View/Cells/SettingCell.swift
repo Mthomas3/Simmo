@@ -9,9 +9,9 @@
 import SwiftUI
 
 struct SettingCell: View {
-    let settingData: SharedSettingData
+    let settingData: HelperSettingData
     
-    init(with setting: SharedSettingData) {
+    init(with setting: HelperSettingData) {
         self.settingData = setting
     }
     
@@ -22,6 +22,6 @@ struct SettingCell: View {
 
 struct SettingCell_Previews: PreviewProvider {
     static var previews: some View {
-        SettingCell(with: SharedSettingData(with: "Test A", with: "test/"))
+        SettingCell(with: HelperSettingData(with: "Test A", with: "test/"))
     }
 }
