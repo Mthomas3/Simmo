@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct SettingCell: View {
+struct HelperSettingCell: View {
     let settingData: HelperSettingData
     
     init(with setting: HelperSettingData) {
@@ -16,12 +16,12 @@ struct SettingCell: View {
     }
     
     var body: some View {
-        Text("HERE = \(self.settingData.name)")
+        Text(self.settingData.name)
     }
 }
 
 struct SettingCell_Previews: PreviewProvider {
     static var previews: some View {
-        SettingCell(with: HelperSettingData(with: "Test A", with: "test/"))
+        HelperSettingCell(with: HelperSettingData(with: "Test A", with: "test/"))
     }
 }

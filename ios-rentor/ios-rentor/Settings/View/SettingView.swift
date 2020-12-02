@@ -70,7 +70,7 @@ struct SettingView: View {
     
     private func displayHelperSettingProperties() -> some View {
         ForEach(self.helperDataSources) { cell in
-            Text(cell.name)
+            HelperSettingCell(with: cell)
         }.onReceive(self.output.helperDataSources) { helperDataSources in
             self.helperDataSources = helperDataSources
         }
@@ -78,14 +78,10 @@ struct SettingView: View {
     
     private func displayConfigSettingProperties() -> some View {
         ForEach(self.configDataSources) { cell in
-            self.bodyContentCell(with: cell.name, and: cell)
+            SimmulatorCellView(with: cell.name, and: cell, with: self.refreshEvent)
         }.onReceive(self.output.configDataSources) { configDataSources in
             self.configDataSources = configDataSources
         }
-    }
-    
-    private func bodyContentCell(with name: String, and cell: SimmulatorFormCellData) -> some View {
-        SimmulatorCellView(with: name, and: cell, with: self.refreshEvent)
     }
 }
 
