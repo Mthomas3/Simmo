@@ -19,20 +19,26 @@ internal final class SettingViewModel: ObservableObject, ViewModelProtocol {
     }
     
     struct Output {
-        var dataSources: AnyPublisher<[GlobalFormCell], Never>
+        var configDataSources: AnyPublisher<[SimmulatorFormCellData], Never>
+        var helperDataSources: AnyPublisher<[String], Never>
     }
     
-    private func createSettingView() -> [GlobalFormCell] {
-        [.init(header: "CONFIGURATIOn", data: [.init(cell: "Taux des prélèvements sociax", with: 20, isPercentage: true),
+    private func createSettingView() -> [SimmulatorFormCellData] {
+        [.init(cell: "Taux des prélèvements sociax", with: 20, isPercentage: true),
                                                .init(cell: "Taux de TVA", with: 20, isPercentage: true),
-                                               .init(cell: "Taux de TVA", with: 20, isPercentage: true)])]
+                                               .init(cell: "Taux de TVA", with: 20, isPercentage: true)]
+    }
+    
+    private func createHelperSettingView() -> [String] {
+        return ["TEST A", "TEST B", "TEST C"]
     }
     
     func transform(_ input: Input) -> Output {
         
-        let dataSources = Just(self.createSettingView())
-            .eraseToAnyPublisher()
+        let configDataSources = Just(self.createSettingView()).eraseToAnyPublisher()
         
-        return Output(dataSources: dataSources)
+        let helperDataSources = Just(self.createHelperSettingView()).eraseToAnyPublisher()
+        
+        return Output(configDataSources: configDataSources, helperDataSources: helperDataSources)
     }
 }

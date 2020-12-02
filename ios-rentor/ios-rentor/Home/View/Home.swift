@@ -39,6 +39,8 @@ struct Home: View {
         //UITableView.appearance().backgroundColor = UIColor.black.withAlphaComponent(0.05)
         UITableView.appearance().backgroundColor = .clear
         UITableViewCell.appearance().backgroundColor = .clear
+        
+        
     }
 
     var body: some View {
@@ -89,9 +91,9 @@ struct Home: View {
                     .listRowBackground(Color.black.opacity(0.05))
             }
         }.font(Font.system(size: self.fontSize(for: size)))
-        .navigationBarTitle(Text(self.navigationBarTitle))
         .navigationBarItems(trailing: self.navigationBarAdd())
         .listStyle(GroupedListStyle())
+        .navigationBarTitle(Text(self.navigationBarTitle), displayMode: .automatic)
     }
     
     private func displayRentalProperties() -> some View {

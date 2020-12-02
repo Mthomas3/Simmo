@@ -12,7 +12,8 @@ import Combine
 struct SettingView: View {
     
     //MARK: State
-    @State private var dataSources: [GlobalFormCell] = []
+    @State private var configDataSources: [SimmulatorFormCellData] = []
+    @State private var helperDataSources: [String] = []
     
     //MARK: ViewModel
     private let settingViewModel: SettingViewModel
@@ -45,9 +46,23 @@ struct SettingView: View {
     
     private func body(with size: CGSize) -> some View {
         List {
-            self.displaySettingProperties()
+            Section(header: Text("CONFIGURATION")) {
+                VStack {
+                    self.displayConfigSettingProperties()
+                }.listRowInsets(EdgeInsets())
+                .listRowBackground(Color.clear)
+                .padding()
+                .background(Color.white)
+                .cornerRadius(16)
+            }.padding(.leading, 8)
+            .padding(.trailing, 8)
+            Section(header: Text("À PROPOS")) {
+                Text("1")
+                Text("2")
+                Text("3")
+            }
         }.font(Font.system(size: self.fontSize(for: size)))
-        .navigationBarTitle(Text(self.navigationBarTitle))
+        .navigationBarTitle(Text(self.navigationBarTitle), displayMode: .automatic)
         .listStyle(GroupedListStyle())
     }
     
@@ -55,19 +70,15 @@ struct SettingView: View {
         title == nil || title == "" ? AnyView(EmptyView()) : AnyView(Text(title ?? ""))
     }
     
-    private func displaySettingProperties() -> some View {
-        ForEach(self.dataSources) { section in
-            Section(header: self.shouldRenderText(with: section.header), footer: self.shouldRenderText(with: section.errorMessage.value).foregroundColor(Color.red)) {
-                VStack {
-                    ForEach(section.data, id: \.id) { cell in
-                        self.bodyContentCell(with: cell.name, and: cell)
-                    }
-                }.padding(.leading, 30)
-                .background(Color.white)
-                .cornerRadius(30)
-            }
-        }.onReceive(self.output.dataSources) { dataSources in
-            self.dataSources = dataSources
+    private func displayHelperSettingProperties() -> some View {
+        ForEach
+    }
+    
+    private func displayConfigSettingProperties() -> some View {
+        ForEach(self.configDataSources) { cell in
+            self.bodyContentCell(with: cell.name, and: cell)
+        }.onReceive(self.output.configDataSources) { configDataSources in
+            self.configDataSources = configDataSources
         }
     }
     
