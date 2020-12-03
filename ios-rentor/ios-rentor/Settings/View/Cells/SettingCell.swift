@@ -16,12 +16,16 @@ struct HelperSettingCell: View {
     }
     
     var body: some View {
-        Text(self.settingData.name)
+        HStack {
+            Image(systemName: self.settingData.image)
+                .foregroundColor(self.settingData.iconColor)
+            Text(self.settingData.name)
+        }
     }
 }
 
 struct SettingCell_Previews: PreviewProvider {
     static var previews: some View {
-        HelperSettingCell(with: HelperSettingData(with: "Test A", with: "test/"))
+        HelperSettingCell(with: HelperSettingData(with: "Test A", with: "test/", and: "star", color: Color.red))
     }
 }

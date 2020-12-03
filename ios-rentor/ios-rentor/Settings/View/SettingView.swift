@@ -33,11 +33,34 @@ struct SettingView: View {
     }
     
     var body: some View {
-        NavigationView {
-            GeometryReader { geometry in
-                self.body(with: geometry.size)
+        
+//        NavigationView {
+//            GeometryReader { geometry in
+//                ZStack {
+//                    //self.body(with: geometry.size)
+//                      //  .background(Color.clear)
+//
+//                    self.testBody(with: geometry.size)
+//                }
+//            }.background(Color.blue)
+//        }
+    
+        self.testBody(with: CGSize(width: 10, height: 10))
+    }
+    
+    private func testBody(with size: CGSize) -> some View {
+        List {
+            ForEach(0..<3) { _ in
+                VStack {
+                    Text("Hello, World!").padding(.leading)
+                }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                .listRowInsets(EdgeInsets())
+                .background(Color.white)
+                .padding(.bottom, 10)
             }
-        }
+        }.cornerRadius(16)
+        .padding()
+        .background(Color.red)
     }
     
     private func fontSize(for size: CGSize) -> CGFloat {
@@ -56,6 +79,9 @@ struct SettingView: View {
                 .cornerRadius(16)
             }.padding(.leading, 8)
             .padding(.trailing, 8)
+            .padding(.top, 2)
+            .padding(.bottom, 2)
+            
             Section(header: Text("À PROPOS")) {
                 self.displayHelperSettingProperties()
             }

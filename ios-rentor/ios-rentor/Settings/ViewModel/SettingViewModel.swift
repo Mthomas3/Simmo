@@ -30,10 +30,10 @@ internal final class SettingViewModel: ObservableObject, ViewModelProtocol {
     }
     
     private func createHelperSettingView() -> [HelperSettingData] {
-        [.init(with: "Partager", with: "https://mthomas3.github.io"),
-         .init(with: "Noter l'application", with: "https://mthomas3.github.io"),
-         .init(with: "Nous contacter", with: "https://mthomas3.github.io"),
-         .init(with: "Confidentialité", with: "https://mthomas3.github.io")]
+        [.init(with: "Partager", with: "https://mthomas3.github.io", and: "square.and.arrow.up", color: .red),
+         .init(with: "Noter l'application", with: "https://mthomas3.github.io", and: "star", color: .yellow),
+         .init(with: "Nous contacter", with: "https://mthomas3.github.io", and: "square.and.pencil", color: .green),
+         .init(with: "Confidentialité", with: "https://mthomas3.github.io", and: "link", color: .gray)]
     }
     
     func transform(_ input: Input) -> Output {
