@@ -13,7 +13,7 @@ internal final class SettingViewModel: ObservableObject, ViewModelProtocol {
     
     // MARK: - Private Members
     
-    //MARK: Public members
+    // MARK: Public members
     struct Input {
         
     }

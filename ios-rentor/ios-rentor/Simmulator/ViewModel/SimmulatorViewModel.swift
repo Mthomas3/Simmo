@@ -14,7 +14,7 @@ internal final class SimmulatorViewModel: ObservableObject, ViewModelProtocol {
     
     private var disposables = Set<AnyCancellable>()
     
-    //MARK: Input
+    // MARK: Input
     struct Input {
         var doneForm: AnyPublisher<Void, Never>
         var refreshEvent: AnyPublisher<Void, Never>

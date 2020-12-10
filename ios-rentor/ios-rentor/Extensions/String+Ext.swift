@@ -12,7 +12,7 @@ extension String {
     
     private func getLocaleCurrency() -> String { Locale.current.currencySymbol ?? "€" }
     
-    func concat(string: String) -> String{ "\(self)\(string)" }
+    func concat(string: String) -> String { "\(self)\(string)" }
     
     func currencyFormatting() -> String { self.concat(string: " ").concat(string: self.getLocaleCurrency()) }
     

@@ -12,7 +12,7 @@ import Combine
 import MapKit
 
 struct Home: View {
-    //MARK: State
+    // MARK: State
     @State private var dataSources: [RentorEntity] = []
     @State private var displayAlert: Bool = false
     @State private var messageAlert: String = ""
@@ -39,7 +39,6 @@ struct Home: View {
         //UITableView.appearance().backgroundColor = UIColor.black.withAlphaComponent(0.05)
         UITableView.appearance().backgroundColor = .clear
         UITableViewCell.appearance().backgroundColor = .clear
-        
         
     }
 

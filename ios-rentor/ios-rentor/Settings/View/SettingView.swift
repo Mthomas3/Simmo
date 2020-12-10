@@ -20,7 +20,7 @@ struct SettingView: View {
     private let output: SettingViewModel.Output
     private let refreshEvent = PassthroughSubject<Void, Never>()
     
-    //MARK: Drawing Constants
+    // MARK: Drawing Constants
     private let navigationBarTitle: String = "Setting ⚙️"
     private let fontScaleFactor: CGFloat = 0.04
     

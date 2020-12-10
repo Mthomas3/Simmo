@@ -65,7 +65,7 @@ internal final class HomeViewModel: ObservableObject, ViewModelProtocol {
         let mergedDataSources = Publishers.Merge(dataSources, onDeleteSources).eraseToAnyPublisher()
         
         let headerListValue = Just("740")
-            .map { val in
+            .map { _ in
               "740,00"
             }.eraseToAnyPublisher()
         
