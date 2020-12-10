@@ -1,0 +1,6 @@
+framework module Pods_ios_rentor_ios_rentorUITests {
+  umbrella header "Pods-ios-rentor-ios-rentorUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

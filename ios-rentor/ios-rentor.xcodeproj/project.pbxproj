@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B29A54D863D0F53A08C7DD29 /* Pods_ios_rentor_ios_rentorUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FFF9E487C085CDB8686E8FE /* Pods_ios_rentor_ios_rentorUITests.framework */; };
+		D6BEDF3E343E071C4522014B /* Pods_ios_rentor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34999EE05D64EF449D01C337 /* Pods_ios_rentor.framework */; };
+		D93B6D4522CD3E6B5EF47EC2 /* Pods_ios_rentorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49A412C258E16CB033A93C28 /* Pods_ios_rentorTests.framework */; };
 		E9090D1224FA9F7600020390 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9090D1124FA9F7600020390 /* AppDelegate.swift */; };
 		E9090D1424FA9F7600020390 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9090D1324FA9F7600020390 /* SceneDelegate.swift */; };
 		E9090D1724FA9F7600020390 /* ios_rentor.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9090D1524FA9F7600020390 /* ios_rentor.xcdatamodeld */; };
@@ -15,6 +18,7 @@
 		E9090D2124FA9F7800020390 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9090D1F24FA9F7800020390 /* LaunchScreen.storyboard */; };
 		E9090D2C24FA9F7800020390 /* ios_rentorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9090D2B24FA9F7800020390 /* ios_rentorTests.swift */; };
 		E9090D3724FA9F7800020390 /* ios_rentorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9090D3624FA9F7800020390 /* ios_rentorUITests.swift */; };
+		E90986E62582500D0089525F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E90986E52582500D0089525F /* GoogleService-Info.plist */; };
 		E9209C9325227E8700EDC0A9 /* SimmulatorCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9209C9225227E8700EDC0A9 /* SimmulatorCellView.swift */; };
 		E936BFB92538992800ED3269 /* CoreDataRental.swift in Sources */ = {isa = PBXBuildFile; fileRef = E936BFB82538992800ED3269 /* CoreDataRental.swift */; };
 		E936BFBF25389E0E00ED3269 /* CoreDataObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E936BFBE25389E0E00ED3269 /* CoreDataObject.swift */; };
@@ -59,6 +63,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		174D7EFE4881A47F313FA50F /* Pods-ios-rentor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-rentor.debug.xcconfig"; path = "Target Support Files/Pods-ios-rentor/Pods-ios-rentor.debug.xcconfig"; sourceTree = "<group>"; };
+		270CB155A87B785308DED500 /* Pods-ios-rentorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-rentorTests.debug.xcconfig"; path = "Target Support Files/Pods-ios-rentorTests/Pods-ios-rentorTests.debug.xcconfig"; sourceTree = "<group>"; };
+		34999EE05D64EF449D01C337 /* Pods_ios_rentor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios_rentor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		49A412C258E16CB033A93C28 /* Pods_ios_rentorTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios_rentorTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FFF9E487C085CDB8686E8FE /* Pods_ios_rentor_ios_rentorUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios_rentor_ios_rentorUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		712F9E38E6DAD7301DFE46D1 /* Pods-ios-rentor-ios-rentorUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-rentor-ios-rentorUITests.release.xcconfig"; path = "Target Support Files/Pods-ios-rentor-ios-rentorUITests/Pods-ios-rentor-ios-rentorUITests.release.xcconfig"; sourceTree = "<group>"; };
+		7CC13E33BCFE9B753E56F557 /* Pods-ios-rentor-ios-rentorUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-rentor-ios-rentorUITests.debug.xcconfig"; path = "Target Support Files/Pods-ios-rentor-ios-rentorUITests/Pods-ios-rentor-ios-rentorUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		9D7097AF2AB88EEE5CACB1FD /* Pods-ios-rentor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-rentor.release.xcconfig"; path = "Target Support Files/Pods-ios-rentor/Pods-ios-rentor.release.xcconfig"; sourceTree = "<group>"; };
 		E9090D0E24FA9F7600020390 /* ios-rentor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-rentor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9090D1124FA9F7600020390 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9090D1324FA9F7600020390 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +85,7 @@
 		E9090D3224FA9F7800020390 /* ios-rentorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ios-rentorUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9090D3624FA9F7800020390 /* ios_rentorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_rentorUITests.swift; sourceTree = "<group>"; };
 		E9090D3824FA9F7800020390 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E90986E52582500D0089525F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E9209C9225227E8700EDC0A9 /* SimmulatorCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimmulatorCellView.swift; sourceTree = "<group>"; };
 		E936BFB82538992800ED3269 /* CoreDataRental.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRental.swift; sourceTree = "<group>"; };
 		E936BFBE25389E0E00ED3269 /* CoreDataObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataObject.swift; sourceTree = "<group>"; };
@@ -97,6 +110,7 @@
 		E9D8D15E24FAF98200DF5ABC /* SimmulatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimmulatorView.swift; sourceTree = "<group>"; };
 		E9D8D16024FAF9D000DF5ABC /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		E9D8D16224FC353700DF5ABC /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		F0B73656C48975407BCA3632 /* Pods-ios-rentorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-rentorTests.release.xcconfig"; path = "Target Support Files/Pods-ios-rentorTests/Pods-ios-rentorTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +118,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6BEDF3E343E071C4522014B /* Pods_ios_rentor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,6 +126,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D93B6D4522CD3E6B5EF47EC2 /* Pods_ios_rentorTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,12 +134,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B29A54D863D0F53A08C7DD29 /* Pods_ios_rentor_ios_rentorUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6E38F4C3E463399FD6E7A103 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				174D7EFE4881A47F313FA50F /* Pods-ios-rentor.debug.xcconfig */,
+				9D7097AF2AB88EEE5CACB1FD /* Pods-ios-rentor.release.xcconfig */,
+				7CC13E33BCFE9B753E56F557 /* Pods-ios-rentor-ios-rentorUITests.debug.xcconfig */,
+				712F9E38E6DAD7301DFE46D1 /* Pods-ios-rentor-ios-rentorUITests.release.xcconfig */,
+				270CB155A87B785308DED500 /* Pods-ios-rentorTests.debug.xcconfig */,
+				F0B73656C48975407BCA3632 /* Pods-ios-rentorTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		87DB0E7F71AC5FFEFE336A24 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				34999EE05D64EF449D01C337 /* Pods_ios_rentor.framework */,
+				4FFF9E487C085CDB8686E8FE /* Pods_ios_rentor_ios_rentorUITests.framework */,
+				49A412C258E16CB033A93C28 /* Pods_ios_rentorTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E9090D0524FA9F7600020390 = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +172,8 @@
 				E9090D2A24FA9F7800020390 /* ios-rentorTests */,
 				E9090D3524FA9F7800020390 /* ios-rentorUITests */,
 				E9090D0F24FA9F7600020390 /* Products */,
+				6E38F4C3E463399FD6E7A103 /* Pods */,
+				87DB0E7F71AC5FFEFE336A24 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -162,6 +205,7 @@
 				E9090D4424FAA20D00020390 /* AppDelegates */,
 				E9090D1A24FA9F7800020390 /* Assets.xcassets */,
 				E9090D2224FA9F7800020390 /* Info.plist */,
+				E90986E52582500D0089525F /* GoogleService-Info.plist */,
 				E9090D1524FA9F7600020390 /* ios_rentor.xcdatamodeld */,
 				E9090D1C24FA9F7800020390 /* Preview Content */,
 			);
@@ -495,9 +539,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E9090D3B24FA9F7800020390 /* Build configuration list for PBXNativeTarget "ios-rentor" */;
 			buildPhases = (
+				8D662FA16408A58A0C541393 /* [CP] Check Pods Manifest.lock */,
 				E9090D0A24FA9F7600020390 /* Sources */,
 				E9090D0B24FA9F7600020390 /* Frameworks */,
 				E9090D0C24FA9F7600020390 /* Resources */,
+				3DC5285128C28F5FA82334F3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -512,6 +558,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E9090D3E24FA9F7800020390 /* Build configuration list for PBXNativeTarget "ios-rentorTests" */;
 			buildPhases = (
+				A8D1ECE1E1B2CBB19F4979D2 /* [CP] Check Pods Manifest.lock */,
 				E9090D2324FA9F7800020390 /* Sources */,
 				E9090D2424FA9F7800020390 /* Frameworks */,
 				E9090D2524FA9F7800020390 /* Resources */,
@@ -530,9 +577,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E9090D4124FA9F7800020390 /* Build configuration list for PBXNativeTarget "ios-rentorUITests" */;
 			buildPhases = (
+				853A1B05F0E3735E8B7D4611 /* [CP] Check Pods Manifest.lock */,
 				E9090D2E24FA9F7800020390 /* Sources */,
 				E9090D2F24FA9F7800020390 /* Frameworks */,
 				E9090D3024FA9F7800020390 /* Resources */,
+				5B87850D7DE5C82A13D24E84 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -593,6 +642,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9090D2124FA9F7800020390 /* LaunchScreen.storyboard in Resources */,
+				E90986E62582500D0089525F /* GoogleService-Info.plist in Resources */,
 				E9090D1E24FA9F7800020390 /* Preview Assets.xcassets in Resources */,
 				E9090D1B24FA9F7800020390 /* Assets.xcassets in Resources */,
 			);
@@ -613,6 +663,109 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3DC5285128C28F5FA82334F3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ios-rentor/Pods-ios-rentor-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ios-rentor/Pods-ios-rentor-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ios-rentor/Pods-ios-rentor-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5B87850D7DE5C82A13D24E84 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ios-rentor-ios-rentorUITests/Pods-ios-rentor-ios-rentorUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ios-rentor-ios-rentorUITests/Pods-ios-rentor-ios-rentorUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ios-rentor-ios-rentorUITests/Pods-ios-rentor-ios-rentorUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		853A1B05F0E3735E8B7D4611 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ios-rentor-ios-rentorUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8D662FA16408A58A0C541393 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ios-rentor-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A8D1ECE1E1B2CBB19F4979D2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ios-rentorTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E9090D0A24FA9F7600020390 /* Sources */ = {
@@ -808,6 +961,7 @@
 		};
 		E9090D3C24FA9F7800020390 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 174D7EFE4881A47F313FA50F /* Pods-ios-rentor.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -819,7 +973,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mthomas3.ios-rentor";
+				PRODUCT_BUNDLE_IDENTIFIER = com.simmoApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -828,6 +982,7 @@
 		};
 		E9090D3D24FA9F7800020390 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9D7097AF2AB88EEE5CACB1FD /* Pods-ios-rentor.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -839,7 +994,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mthomas3.ios-rentor";
+				PRODUCT_BUNDLE_IDENTIFIER = com.simmoApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -848,6 +1003,7 @@
 		};
 		E9090D3F24FA9F7800020390 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 270CB155A87B785308DED500 /* Pods-ios-rentorTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -870,6 +1026,7 @@
 		};
 		E9090D4024FA9F7800020390 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F0B73656C48975407BCA3632 /* Pods-ios-rentorTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -892,6 +1049,7 @@
 		};
 		E9090D4224FA9F7800020390 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7CC13E33BCFE9B753E56F557 /* Pods-ios-rentor-ios-rentorUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -912,6 +1070,7 @@
 		};
 		E9090D4324FA9F7800020390 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 712F9E38E6DAD7301DFE46D1 /* Pods-ios-rentor-ios-rentorUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
