@@ -11,11 +11,11 @@ import Combine
 
 struct SettingView: View {
     
-    //MARK: State
+    // MARK: State
     @State private var configDataSources: [SimmulatorFormCellData] = []
     @State private var helperDataSources: [HelperSettingData] = []
     
-    //MARK: ViewModel
+    // MARK: ViewModel
     private let settingViewModel: SettingViewModel
     private let output: SettingViewModel.Output
     private let refreshEvent = PassthroughSubject<Void, Never>()

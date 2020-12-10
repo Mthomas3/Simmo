@@ -1,0 +1,16 @@
+included:
+  - ios-rentor
+
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - Pods
+  - force_cast
+    
+# Configuring rule severity
+force_cast: warning
+force_try: warning
+line_length:
+  warning: 120
+  error: 99999
+disabled_rules:
+  - identifier_name
+  - trailing_whitespace

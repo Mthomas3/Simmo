@@ -14,7 +14,7 @@ struct HomeDetailView: View {
     
     //MARK: ViewModel
     private let homeDetailViewModel: HomeDetailViewModel
-    private let output: HomeDetailViewModel.Output
+    private let output: HomeDetailViewModel.Output?
     
     //MARK: Drawing Constants
     private let navigationBarTitle: String = "House Detail"

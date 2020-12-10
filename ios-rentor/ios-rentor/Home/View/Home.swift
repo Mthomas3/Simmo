@@ -19,12 +19,12 @@ struct Home: View {
     @State private var headerList: String = ""
     @State private var showingSimmualatorView: Bool = false
     
-    //MARK: ViewModel
+    // MARK: ViewModel
     private let homeViewModel: HomeViewModel
     private let output: HomeViewModel.Output
     private let onDelete: PassthroughSubject<RentorEntity, Never>
     
-    //MARK: Drawing Constants
+    // MARK: Drawing Constants
     private let navigationBarTitle: String = "Home 🏡"
     private let alertErrorTitle: String = "An error occured"
     private let fontScaleFactor: CGFloat = 0.04

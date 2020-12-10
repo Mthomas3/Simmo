@@ -7,6 +7,7 @@ target 'ios-rentor' do
 
   # Pods for ios-rentor
   pod 'Firebase/Analytics'
+  pod 'SwiftLint'
 
 
   target 'ios-rentorTests' do

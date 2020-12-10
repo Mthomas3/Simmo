@@ -17,17 +17,20 @@ internal final class CoreDataRental: CoreDataObject {
     internal typealias Entity = RentorEntity
     internal static let sharedInstance = CoreDataRental()
     
-    private init() {
-        let request: NSFetchRequest<RentorEntity> = RentorEntity.fetchRequest() as! NSFetchRequest<RentorEntity>
+    private init?() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate,
+              let request = RentorEntity.fetchRequest() as? NSFetchRequest<RentorEntity> else {
+            return nil
+        }
         request.sortDescriptors = [NSSortDescriptor(key: "createDate", ascending: true)]
-        let coreDataContainer = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
-        self.coreDataManager = CoreDataManager<RentorEntity>(request: request, context: coreDataContainer.viewContext)
+        self.coreDataManager = CoreDataManager<RentorEntity>(request: request,
+                                                             context: appDelegate.persistentContainer.viewContext)
     }
     
     internal func create(with item: RentorEntity) -> AnyPublisher<Void, CoreDataError> {
         return self.coreDataManager.create(with: item)
     }
-    
+
     func onUpdate() -> AnyPublisher<RentorEntity, Never> {
         return self.coreDataManager.onUpdate()
     }

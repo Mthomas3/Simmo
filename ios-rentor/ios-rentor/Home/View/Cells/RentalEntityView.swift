@@ -12,7 +12,7 @@ import Combine
 struct RentalContentView: View {
     private let rentalData: RentorEntity
     
-    //MARK: Drawing Constants
+    // MARK: Drawing Constants
     private let priceTitle: String = "Prix d'acquisition:"
     private let rentPriceTitle: String = "Loyer mensuel:"
     private let cashFlowTitle: String = "Cash-flow mensuel:"
@@ -24,14 +24,14 @@ struct RentalContentView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            self.HeaderCell(with: self.rentalData.name ?? "")
-            self.ContentCell(with: self.rentalData)
+            self.headerCell(with: self.rentalData.name ?? "")
+            self.contentCell(with: self.rentalData)
         }.padding()
         .background(Color.white)
         .cornerRadius(20)
     }
     
-    private func HeaderCell(with name: String) -> some View {
+    private func headerCell(with name: String) -> some View {
         VStack(alignment: .leading, spacing: 0) {
             Text("\(name) 👏")
                 .font(.system(size: 18))
@@ -43,7 +43,7 @@ struct RentalContentView: View {
         }
     }
     
-    private func ContentCell(with rental: RentorEntity) -> some View {
+    private func contentCell(with rental: RentorEntity) -> some View {
         HStack {
             VStack(alignment: .leading) {
                 Text(self.priceTitle)

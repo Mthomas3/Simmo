@@ -12,12 +12,12 @@ import Combine
 
 internal final class HomeViewModel: ObservableObject, ViewModelProtocol {
     
-    //MARK: Private Members
+    // MARK: Private Members
     private var disposables = Set<AnyCancellable>()
     private let shouldDisplayError = CurrentValueSubject<Bool, Never>(false)
     private let messageDisplayError = CurrentValueSubject<String, Never>("")
     
-    //MARK: Public Members
+    // MARK: Public Members
     struct Input {
         var onDeleteSource: AnyPublisher<RentorEntity, Never>
     }
@@ -32,10 +32,10 @@ internal final class HomeViewModel: ObservableObject, ViewModelProtocol {
     
     init() { }
     
-    private func fetchingRentals() -> AnyPublisher<[RentorEntity], Never> {
-        CoreDataRental.sharedInstance.fetch()
+    private func fetchingRentals(with rentalCore: CoreDataRental) -> AnyPublisher<[RentorEntity], Never> {
+        rentalCore.fetch()
             .receive(on: DispatchQueue.main)
-            .catch { [weak self] (error) -> AnyPublisher<[RentorEntity], Never> in
+            .catch { [weak self] (_) -> AnyPublisher<[RentorEntity], Never> in
                 self?.shouldDisplayError.send(true)
                 self?.messageDisplayError.send("An error occured in the fetch")
                 return Just([]).eraseToAnyPublisher()
@@ -44,17 +44,22 @@ internal final class HomeViewModel: ObservableObject, ViewModelProtocol {
     
     internal func transform(_ input: Input) -> Output {
         
-        let dataSources = self.fetchingRentals()
+        guard let rentalCore = CoreDataRental.sharedInstance else {
+            
+            return self.transform(input)
+        }
+        
+        let dataSources = self.fetchingRentals(with: rentalCore)
         
         let onDeleteSources = input.onDeleteSource
             .receive(on: DispatchQueue.main)
             .flatMap { (item) -> AnyPublisher<[RentorEntity], Never> in
                 do {
-                    try CoreDataRental.sharedInstance.delete(with: item)
+                    try CoreDataRental.sharedInstance?.delete(with: item)
                 } catch {
                     print("Error on fetch rentals catch = \(error)")
                 }
-                return self.fetchingRentals()
+                return self.fetchingRentals(with: rentalCore)
         }
         
         let mergedDataSources = Publishers.Merge(dataSources, onDeleteSources).eraseToAnyPublisher()
@@ -64,7 +69,7 @@ internal final class HomeViewModel: ObservableObject, ViewModelProtocol {
               "740,00"
             }.eraseToAnyPublisher()
         
-        let onUpdate = CoreDataRental.sharedInstance.onUpdate()
+        let onUpdate = rentalCore.onUpdate()
         
         return Output(dataSources: mergedDataSources,
                       shouldDisplayError: self.shouldDisplayError,

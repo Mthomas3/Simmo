@@ -16,7 +16,8 @@ struct BlueButtonStyle: ButtonStyle {
         .font(.headline)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
         .contentShape(Rectangle())
-        .background(configuration.isPressed ? Color.blue.opacity(0.5) : (disabled ? Color.blue.opacity(0.5) : Color.blue))
+        .background(configuration.isPressed ? Color.blue.opacity(0.5) :
+                        (disabled ? Color.blue.opacity(0.5) : Color.blue))
         .foregroundColor(configuration.isPressed ? Color.white.opacity(0.5) : Color.white)
         .cornerRadius(8)
   }

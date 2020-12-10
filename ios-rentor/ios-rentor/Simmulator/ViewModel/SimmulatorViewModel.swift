@@ -44,22 +44,18 @@ internal final class SimmulatorViewModel: ObservableObject, ViewModelProtocol {
         let dataSources = Just(self.initFormViewData())
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
-        
         var isFormValid = Just(false)
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
-        
         input.doneForm.receive(on: DispatchQueue.main)
             .sink(receiveValue: { _ in
                 self.handleDoneFormEvent()
             }).store(in: &self.disposables)
-        
         isFormValid = Publishers.CombineLatest(input.refreshEvent, dataSources)
             .debounce(for: 0.1, scheduler: DispatchQueue.main)
             .map { !($0.1.filter { $0.data.filter { $0.value.value == 0 }.count > 0 }.count > 0)
             }.receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
-        
         return Output(dataSources: dataSources, isFormValid: isFormValid)
     }
     
@@ -73,6 +69,6 @@ internal final class SimmulatorViewModel: ObservableObject, ViewModelProtocol {
         a.percentageEffiency = 10.0
         a.rentPrice = 10000.0
         
-        CoreDataRental.sharedInstance.create(with: a)
+        _ = CoreDataRental.sharedInstance?.create(with: a)
     }
 }

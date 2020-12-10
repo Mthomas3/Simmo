@@ -34,7 +34,7 @@ internal final class CoreDataManager<Entity> where Entity: NSManagedObject {
         } catch {
             return Just([])
                 .retry(2)
-                .mapError{ _ in CoreDataError.fetchError }
+                .mapError { _ in CoreDataError.fetchError }
                 .eraseToAnyPublisher()
         }
     }

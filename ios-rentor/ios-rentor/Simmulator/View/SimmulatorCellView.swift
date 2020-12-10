@@ -10,10 +10,10 @@ import SwiftUI
 import Combine
 
 internal struct SimmulatorCellView: View {
-    //MARK: State
+    // MARK: State
     @State private var stateTextField: Int = 0
     
-    //MARK: ViewModel
+    // MARK: ViewModel
     private let increaseEvent = PassthroughSubject<SimmulatorFormCellData, Never>()
     private let decreaseEvent = PassthroughSubject<SimmulatorFormCellData, Never>()
     private let viewModel: SimmulatorCellViewModel = SimmulatorCellViewModel()
@@ -22,11 +22,11 @@ internal struct SimmulatorCellView: View {
     private let name: String
     private let currentCell: SimmulatorFormCellData
     
-    //MARK: Drawing Constants
+    // MARK: Drawing Constants
     private let imageSystemNameLeft: String = "minus"
     private let imageSystemNameRight: String = "plus"
     
-    private enum actionType: Int {
+    private enum ActionType: Int {
         case increase
         case decrease
     }
@@ -78,7 +78,7 @@ internal struct SimmulatorCellView: View {
         }.overlay ( RoundedRectangle(cornerRadius: 8).stroke(Color.black.opacity(0.05), lineWidth: 2) )
     }
     
-    private func bodyViewButton(image name: String, with cell: SimmulatorFormCellData, type: actionType) -> some View {
+    private func bodyViewButton(image name: String, with cell: SimmulatorFormCellData, type: ActionType) -> some View {
         Button(action: {
             type == .increase ? self.increaseEvent.send(cell) : self.decreaseEvent.send(cell)
             self.refreshEvent.send(())

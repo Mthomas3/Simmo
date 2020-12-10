@@ -10,6 +10,7 @@ import Foundation
 import Combine
 
 protocol CoreDataObject {
+    
     associatedtype Entity
     
     func create(with item: Entity) -> AnyPublisher<Void, CoreDataError>

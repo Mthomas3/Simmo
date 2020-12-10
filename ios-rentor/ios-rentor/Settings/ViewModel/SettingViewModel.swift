@@ -11,7 +11,7 @@ import Combine
 
 internal final class SettingViewModel: ObservableObject, ViewModelProtocol {
     
-    //MARK: Private Members
+    // MARK: - Private Members
     
     //MARK: Public members
     struct Input {
