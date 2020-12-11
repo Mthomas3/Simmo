@@ -35,7 +35,6 @@
 		E9AAA953251BDA4B009841B8 /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AAA952251BDA4B009841B8 /* ViewModelProtocol.swift */; };
 		E9AAA95525210CF1009841B8 /* SimmulatorCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AAA95425210CF1009841B8 /* SimmulatorCellViewModel.swift */; };
 		E9B45CA124FD5ED400A79ECC /* rentorCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9B45C9F24FD5ED400A79ECC /* rentorCoreData.xcdatamodeld */; };
-		E9C0D40225836C4300CAA6EA /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C0D40125836C4300CAA6EA /* test.swift */; };
 		E9C3A0AE25570A1D003BF79F /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C3A0AD25570A1D003BF79F /* SettingViewModel.swift */; };
 		E9C3A0B425570D43003BF79F /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C3A0B325570D43003BF79F /* SettingCell.swift */; };
 		E9C3A0C125585F18003BF79F /* SettingCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C3A0C025585F18003BF79F /* SettingCellData.swift */; };
@@ -102,7 +101,6 @@
 		E9AAA952251BDA4B009841B8 /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
 		E9AAA95425210CF1009841B8 /* SimmulatorCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimmulatorCellViewModel.swift; sourceTree = "<group>"; };
 		E9B45CA024FD5ED400A79ECC /* Simmulations.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Simmulations.xcdatamodel; sourceTree = "<group>"; };
-		E9C0D40125836C4300CAA6EA /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = test.swift; path = "ios-rentor/GenericServices/New Group/test.swift"; sourceTree = SOURCE_ROOT; };
 		E9C3A0AD25570A1D003BF79F /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		E9C3A0B325570D43003BF79F /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		E9C3A0C025585F18003BF79F /* SettingCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCellData.swift; sourceTree = "<group>"; };
@@ -249,7 +247,6 @@
 		E9090D4524FAA21B00020390 /* GenericServices */ = {
 			isa = PBXGroup;
 			children = (
-				E9C0D40025836C3600CAA6EA /* New Group */,
 			);
 			path = GenericServices;
 			sourceTree = "<group>";
@@ -437,15 +434,6 @@
 				E9090D4F24FAA49F00020390 /* Model */,
 			);
 			path = CoreData;
-			sourceTree = "<group>";
-		};
-		E9C0D40025836C3600CAA6EA /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-				E9C0D40125836C4300CAA6EA /* test.swift */,
-			);
-			name = "New Group";
-			path = "ios-rentor/GenericServices/New Group";
 			sourceTree = "<group>";
 		};
 		E9C3A0B225570D2F003BF79F /* Cells */ = {
@@ -812,7 +800,6 @@
 				E9090D1424FA9F7600020390 /* SceneDelegate.swift in Sources */,
 				E9D8D15F24FAF98300DF5ABC /* SimmulatorView.swift in Sources */,
 				E9C3A0B425570D43003BF79F /* SettingCell.swift in Sources */,
-				E9C0D40225836C4300CAA6EA /* test.swift in Sources */,
 				E99042CA2502A16C0062B493 /* RentalEntityView.swift in Sources */,
 				E9AAA950251B9244009841B8 /* SimmulatorModel.swift in Sources */,
 				E9AAA953251BDA4B009841B8 /* ViewModelProtocol.swift in Sources */,
