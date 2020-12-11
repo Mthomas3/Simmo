@@ -23,7 +23,6 @@
 		E936BFB92538992800ED3269 /* CoreDataRental.swift in Sources */ = {isa = PBXBuildFile; fileRef = E936BFB82538992800ED3269 /* CoreDataRental.swift */; };
 		E936BFBF25389E0E00ED3269 /* CoreDataObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E936BFBE25389E0E00ED3269 /* CoreDataObject.swift */; };
 		E9665536250033B2003BC212 /* RentorEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9665535250033B2003BC212 /* RentorEntity.swift */; };
-		E985821D25238CD600F5BC7F /* BlueButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E985821C25238CD600F5BC7F /* BlueButtonStyle.swift */; };
 		E9878556250BB0C200CF8519 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9878555250BB0C200CF8519 /* String+Ext.swift */; };
 		E98C257D252B922000E06E73 /* HomeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98C257C252B922000E06E73 /* HomeDetailView.swift */; };
 		E98C2582252B96E700E06E73 /* HomeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98C2581252B96E700E06E73 /* HomeDetailViewModel.swift */; };
@@ -90,7 +89,6 @@
 		E936BFB82538992800ED3269 /* CoreDataRental.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRental.swift; sourceTree = "<group>"; };
 		E936BFBE25389E0E00ED3269 /* CoreDataObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataObject.swift; sourceTree = "<group>"; };
 		E9665535250033B2003BC212 /* RentorEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentorEntity.swift; sourceTree = "<group>"; };
-		E985821C25238CD600F5BC7F /* BlueButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueButtonStyle.swift; sourceTree = "<group>"; };
 		E9878555250BB0C200CF8519 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		E98C257C252B922000E06E73 /* HomeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailView.swift; sourceTree = "<group>"; };
 		E98C2581252B96E700E06E73 /* HomeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailViewModel.swift; sourceTree = "<group>"; };
@@ -189,8 +187,8 @@
 		E9090D1024FA9F7600020390 /* ios-rentor */ = {
 			isa = PBXGroup;
 			children = (
-				E9AAA951251BDA3A009841B8 /* Protocols */,
-				E9A8C66C2519407B000E8A28 /* Enums */,
+				E9AAA951251BDA3A009841B8 /* GenericProtocols */,
+				E9A8C66C2519407B000E8A28 /* GenericEnums */,
 				E9090D4624FAA22D00020390 /* GenericViews */,
 				E9090D4524FAA21B00020390 /* GenericServices */,
 				E9090D4724FAA24400020390 /* Extensions */,
@@ -256,7 +254,6 @@
 		E9090D4624FAA22D00020390 /* GenericViews */ = {
 			isa = PBXGroup;
 			children = (
-				E985821B25238CC900F5BC7F /* New Group */,
 			);
 			path = GenericViews;
 			sourceTree = "<group>";
@@ -347,14 +344,6 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
-		E985821B25238CC900F5BC7F /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-				E985821C25238CD600F5BC7F /* BlueButtonStyle.swift */,
-			);
-			path = "New Group";
-			sourceTree = "<group>";
-		};
 		E98C2575252B8B6D00E06E73 /* HomeDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -420,20 +409,20 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		E9A8C66C2519407B000E8A28 /* Enums */ = {
+		E9A8C66C2519407B000E8A28 /* GenericEnums */ = {
 			isa = PBXGroup;
 			children = (
 				E9A8C66D25194095000E8A28 /* Errors.swift */,
 			);
-			path = Enums;
+			path = GenericEnums;
 			sourceTree = "<group>";
 		};
-		E9AAA951251BDA3A009841B8 /* Protocols */ = {
+		E9AAA951251BDA3A009841B8 /* GenericProtocols */ = {
 			isa = PBXGroup;
 			children = (
 				E9AAA952251BDA4B009841B8 /* ViewModelProtocol.swift */,
 			);
-			path = Protocols;
+			path = GenericProtocols;
 			sourceTree = "<group>";
 		};
 		E9B45CA224FD5EDE00A79ECC /* CoreData */ = {
@@ -813,7 +802,6 @@
 				E9C3A0B425570D43003BF79F /* SettingCell.swift in Sources */,
 				E99042CA2502A16C0062B493 /* RentalEntityView.swift in Sources */,
 				E9AAA950251B9244009841B8 /* SimmulatorModel.swift in Sources */,
-				E985821D25238CD600F5BC7F /* BlueButtonStyle.swift in Sources */,
 				E9AAA953251BDA4B009841B8 /* ViewModelProtocol.swift in Sources */,
 				E9AAA94E251A1031009841B8 /* SimmulatorViewModel.swift in Sources */,
 			);
