@@ -75,7 +75,7 @@ internal struct SimmulatorCellView: View {
                 self.stateTextField = value
             }
             self.bodyViewButton(image: self.imageSystemNameRight, with: value, type: .increase)
-        }.overlay ( RoundedRectangle(cornerRadius: 8).stroke(Color.black.opacity(0.05), lineWidth: 2) )
+        }.overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.black.opacity(0.05), lineWidth: 2))
     }
     
     private func bodyViewButton(image name: String, with cell: SimmulatorFormCellData, type: ActionType) -> some View {
@@ -100,6 +100,8 @@ internal struct SimmulatorCellView: View {
 struct SimmulatorCellView_Previews: PreviewProvider {
     static var previews: some View {
         let refreshEvent = PassthroughSubject<Void, Never>()
-        return SimmulatorCellView(with: "test A", and: SimmulatorFormCellData(cell: "Cell B", isPercentage: false), with: refreshEvent)
+        return SimmulatorCellView(with: "test A",
+                                  and: SimmulatorFormCellData(cell: "Cell B",
+                                                              isPercentage: false), with: refreshEvent)
     }
 }

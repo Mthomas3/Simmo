@@ -10,10 +10,7 @@ import Foundation
 
 internal final class HomeDetailViewModel: ViewModelProtocol {
     
-    //MARK: Private Members
-    
-    
-    //MARK: Public Members
+    // MARK: Public Members
     struct Input {}
     struct Output {}
     

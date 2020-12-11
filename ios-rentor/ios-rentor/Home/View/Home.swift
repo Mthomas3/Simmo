@@ -59,9 +59,9 @@ struct Home: View {
     }
 
     private func navigationBarAdd() -> some View {
-        Button(action: {
+        Button {
             self.showingSimmualatorView.toggle()
-        }) {
+        } label: {
             Image(systemName: "plus")
                 .imageScale(.large)
                 .foregroundColor(Color.init("LightBlue"))

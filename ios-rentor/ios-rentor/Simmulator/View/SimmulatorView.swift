@@ -10,18 +10,18 @@ import SwiftUI
 import Combine
 
 internal struct SimmulatorView: View {
-    //MARK: State
+    // MARK: State
     @State private var dataSources: [GlobalFormCell] = []
     @State private var isFormValid: Bool = false
     @Binding internal var isViewOpen: Bool
     
-    //MARK: ViewModel
+    // MARK: ViewModel
     private let simmulatorViewModel: SimmulatorViewModel
     private let output: SimmulatorViewModel.Output
     private let doneEvent = PassthroughSubject<Void, Never>()
     private let refreshEvent = PassthroughSubject<Void, Never>()
     
-    //MARK: Drawing Constants
+    // MARK: Drawing Constants
     private let fontScaleFactor: CGFloat = 0.04
     private let navigationBarTitle: String = "Simmulations 🏗"
     private let saveButtonTitle: String = "Done"
@@ -29,8 +29,10 @@ internal struct SimmulatorView: View {
     init(_ isViewOpen: Binding<Bool>) {
         _isViewOpen = isViewOpen
         self.simmulatorViewModel = SimmulatorViewModel()
-        self.output = self.simmulatorViewModel.transform(SimmulatorViewModel.Input(doneForm: self.doneEvent.eraseToAnyPublisher(), refreshEvent: self.refreshEvent.eraseToAnyPublisher()))
-        
+        self.output = self.simmulatorViewModel
+            .transform(SimmulatorViewModel.Input(doneForm:
+                                                    self.doneEvent.eraseToAnyPublisher(), refreshEvent:
+                                                        self.refreshEvent.eraseToAnyPublisher()))
         UITableView.appearance().backgroundColor = UIColor.black.withAlphaComponent(0.05)
         UITableViewCell.appearance().backgroundColor = UIColor.clear
     }
@@ -66,7 +68,8 @@ internal struct SimmulatorView: View {
     private func body(with size: CGSize) -> some View {
         Form {
             ForEach(self.dataSources, id: \.id) { section in
-                Section(header: self.shouldRenderText(with: section.header), footer: self.shouldRenderText(with: section.errorMessage.value).foregroundColor(Color.red)) {
+                Section(header: self.shouldRenderText(with: section.header),
+                        footer: self.shouldRenderText(with: section.errorMessage.value).foregroundColor(Color.red)) {
                     VStack {
                         ForEach(section.data, id: \.id) { cell in
                             self.bodyContentCell(with: cell.name, and: cell)

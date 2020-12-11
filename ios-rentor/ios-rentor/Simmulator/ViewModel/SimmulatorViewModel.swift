@@ -20,7 +20,7 @@ internal final class SimmulatorViewModel: ObservableObject, ViewModelProtocol {
         var refreshEvent: AnyPublisher<Void, Never>
     }
     
-    //MARK: Output
+    // MARK: Output
     struct Output {
         var dataSources: AnyPublisher<[GlobalFormCell], Never>
         var isFormValid: AnyPublisher<Bool, Never>
@@ -61,14 +61,16 @@ internal final class SimmulatorViewModel: ObservableObject, ViewModelProtocol {
     
     private func handleDoneFormEvent() {
         
-        let a = RentorEntity(context: ((UIApplication.shared.delegate as! AppDelegate).persistentContainer).viewContext)
-        a.name = "Je suis un jolie Test"
-        a.cashFlow = 1000.0
-        a.price = 10000000
-        a.createDate = Date()
-        a.percentageEffiency = 10.0
-        a.rentPrice = 10000.0
-        
-        _ = CoreDataRental.sharedInstance?.create(with: a)
+        if let delegate = UIApplication.shared.delegate as? AppDelegate {
+            let a = RentorEntity(context: delegate.persistentContainer.viewContext)
+            
+            a.name = "Je suis un jolie Test"
+            a.cashFlow = 1000.0
+            a.price = 10000000
+            a.createDate = Date()
+            a.percentageEffiency = 10.0
+            a.rentPrice = 10000.0
+            _ = CoreDataRental.sharedInstance?.create(with: a)
+        }
     }
 }

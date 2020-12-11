@@ -9,14 +9,14 @@
 import SwiftUI
 
 struct HomeDetailView: View {
-    //MARK: State
+    // MARK: State
     private let rentalSelected: RentorEntity
     
-    //MARK: ViewModel
+    // MARK: ViewModel
     private let homeDetailViewModel: HomeDetailViewModel
     private let output: HomeDetailViewModel.Output?
     
-    //MARK: Drawing Constants
+    // MARK: Drawing Constants
     private let navigationBarTitle: String = "House Detail"
     private let fontScaleFactor: CGFloat = 0.04
     
