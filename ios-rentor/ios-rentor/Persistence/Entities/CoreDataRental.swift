@@ -31,11 +31,11 @@ internal final class CoreDataRental: CoreDataObject {
         return self.coreDataManager.create(with: item)
     }
 
-    func refresh() -> AnyPublisher<RentorEntity, Never> {
+    internal func refresh() -> AnyPublisher<RentorEntity, Never> {
         return self.coreDataManager.onUpdate()
     }
     
-    func update(with item: RentorEntity) {
+    internal func update(with item: RentorEntity) {
         fatalError("[CoreDataRental][update] Not implemented yet")
     }
     
