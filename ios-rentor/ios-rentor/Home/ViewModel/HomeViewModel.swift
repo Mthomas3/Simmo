@@ -32,8 +32,8 @@ internal final class HomeViewModel: ObservableObject, ViewModelProtocol {
     
     init() { }
     
-    private func fetchingRentals(with rentalCore: CoreDataRental) -> AnyPublisher<[RentorEntity], Never> {
-        rentalCore.fetch()
+    private func fetchingRentals() -> AnyPublisher<[RentorEntity], Never> {
+        CoreDataRental.sharedInstance.fetch()
             .receive(on: DispatchQueue.main)
             .catch { [weak self] (_) -> AnyPublisher<[RentorEntity], Never> in
                 self?.shouldDisplayError.send(true)
@@ -44,22 +44,17 @@ internal final class HomeViewModel: ObservableObject, ViewModelProtocol {
     
     internal func transform(_ input: Input) -> Output {
         
-        guard let rentalCore = CoreDataRental.sharedInstance else {
-            
-            return self.transform(input)
-        }
-        
-        let dataSources = self.fetchingRentals(with: rentalCore)
+        let dataSources = self.fetchingRentals()
         
         let onDeleteSources = input.onDeleteSource
             .receive(on: DispatchQueue.main)
             .flatMap { (item) -> AnyPublisher<[RentorEntity], Never> in
                 do {
-                    try CoreDataRental.sharedInstance?.delete(with: item)
+                    try CoreDataRental.sharedInstance.delete(with: item)
                 } catch {
                     print("Error on fetch rentals catch = \(error)")
                 }
-                return self.fetchingRentals(with: rentalCore)
+                return self.fetchingRentals()
         }
         
         let mergedDataSources = Publishers.Merge(dataSources, onDeleteSources).eraseToAnyPublisher()
@@ -69,7 +64,7 @@ internal final class HomeViewModel: ObservableObject, ViewModelProtocol {
               "740,00"
             }.eraseToAnyPublisher()
         
-        let onUpdate = rentalCore.onUpdate()
+        let onUpdate = CoreDataRental.sharedInstance.refresh()
         
         return Output(dataSources: mergedDataSources,
                       shouldDisplayError: self.shouldDisplayError,

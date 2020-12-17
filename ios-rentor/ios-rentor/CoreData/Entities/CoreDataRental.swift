@@ -17,10 +17,10 @@ internal final class CoreDataRental: CoreDataObject {
     internal typealias Entity = RentorEntity
     internal static let sharedInstance = CoreDataRental()
     
-    private init?() {
+    private init() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate,
               let request = RentorEntity.fetchRequest() as? NSFetchRequest<RentorEntity> else {
-            return nil
+            fatalError("[SIMMO][ERROR] AppDelegate failed CoreDataRental")
         }
         request.sortDescriptors = [NSSortDescriptor(key: "createDate", ascending: true)]
         self.coreDataManager = CoreDataManager<RentorEntity>(request: request,
@@ -31,16 +31,16 @@ internal final class CoreDataRental: CoreDataObject {
         return self.coreDataManager.create(with: item)
     }
 
-    func onUpdate() -> AnyPublisher<RentorEntity, Never> {
+    func refresh() -> AnyPublisher<RentorEntity, Never> {
         return self.coreDataManager.onUpdate()
+    }
+    
+    func update(with item: RentorEntity) {
+        fatalError("[CoreDataRental][update] Not implemented yet")
     }
     
     internal func delete(with item: RentorEntity) throws {
         return try self.coreDataManager.delete(with: item)
-    }
-    
-    internal func update(with item: RentorEntity) {
-        fatalError()
     }
     
     internal func fetch() -> AnyPublisher<[RentorEntity], CoreDataError> {

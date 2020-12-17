@@ -15,6 +15,7 @@ force_try: warning
 line_length:
   warning: 120
   error: 99999
+
 disabled_rules:
   - identifier_name
   - trailing_whitespace

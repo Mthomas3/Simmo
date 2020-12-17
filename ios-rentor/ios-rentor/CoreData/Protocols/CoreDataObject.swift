@@ -17,7 +17,6 @@ protocol CoreDataObject {
     func delete(with item: Entity) throws
     func update(with item: Entity)
     func fetch() -> AnyPublisher<[Entity], CoreDataError>
-    
+    func refresh() -> AnyPublisher<Entity, Never>
     func deleteOn(with item: Entity) -> AnyPublisher<Void, CoreDataError>
-    func onUpdate() -> AnyPublisher<Entity, Never>
 }
