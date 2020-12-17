@@ -9,7 +9,7 @@
 import Foundation
 import Combine
 
-internal class SimmulatorCellViewModel: ViewModelProtocol {
+internal class SimmulatorCellViewModel: InteractorProtocol {
     
     private var disposables = Set<AnyCancellable>()
     

@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 import Combine
 
-internal final class HomeViewModel: ObservableObject, ViewModelProtocol {
+internal final class HomeViewModel: ObservableObject, InteractorProtocol {
     
     // MARK: Private Members
     private var disposables = Set<AnyCancellable>()

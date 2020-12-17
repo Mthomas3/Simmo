@@ -31,12 +31,11 @@
 		E9A8C66E25194095000E8A28 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A8C66D25194095000E8A28 /* Errors.swift */; };
 		E9AAA94E251A1031009841B8 /* SimmulatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AAA94D251A1031009841B8 /* SimmulatorViewModel.swift */; };
 		E9AAA950251B9244009841B8 /* SimmulatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AAA94F251B9244009841B8 /* SimmulatorModel.swift */; };
-		E9AAA953251BDA4B009841B8 /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AAA952251BDA4B009841B8 /* ViewModelProtocol.swift */; };
+		E9AAA953251BDA4B009841B8 /* InteractorsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AAA952251BDA4B009841B8 /* InteractorsProtocol.swift */; };
 		E9AAA95525210CF1009841B8 /* SimmulatorCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AAA95425210CF1009841B8 /* SimmulatorCellViewModel.swift */; };
 		E9B45CA124FD5ED400A79ECC /* rentorCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9B45C9F24FD5ED400A79ECC /* rentorCoreData.xcdatamodeld */; };
 		E9C3A0AE25570A1D003BF79F /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C3A0AD25570A1D003BF79F /* SettingViewModel.swift */; };
 		E9C3A0B425570D43003BF79F /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C3A0B325570D43003BF79F /* SettingCell.swift */; };
-		E9C3A0C125585F18003BF79F /* SettingCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C3A0C025585F18003BF79F /* SettingCellData.swift */; };
 		E9D8D15D24FAF7B800DF5ABC /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D8D15C24FAF7B800DF5ABC /* MainView.swift */; };
 		E9D8D15F24FAF98300DF5ABC /* SimmulatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D8D15E24FAF98200DF5ABC /* SimmulatorView.swift */; };
 		E9D8D16124FAF9D000DF5ABC /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D8D16024FAF9D000DF5ABC /* SettingView.swift */; };
@@ -96,12 +95,11 @@
 		E9A8C66D25194095000E8A28 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		E9AAA94D251A1031009841B8 /* SimmulatorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimmulatorViewModel.swift; sourceTree = "<group>"; };
 		E9AAA94F251B9244009841B8 /* SimmulatorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimmulatorModel.swift; sourceTree = "<group>"; };
-		E9AAA952251BDA4B009841B8 /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
+		E9AAA952251BDA4B009841B8 /* InteractorsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractorsProtocol.swift; sourceTree = "<group>"; };
 		E9AAA95425210CF1009841B8 /* SimmulatorCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimmulatorCellViewModel.swift; sourceTree = "<group>"; };
 		E9B45CA024FD5ED400A79ECC /* Simmulations.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Simmulations.xcdatamodel; sourceTree = "<group>"; };
 		E9C3A0AD25570A1D003BF79F /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		E9C3A0B325570D43003BF79F /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
-		E9C3A0C025585F18003BF79F /* SettingCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCellData.swift; sourceTree = "<group>"; };
 		E9D8D15C24FAF7B800DF5ABC /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		E9D8D15E24FAF98200DF5ABC /* SimmulatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimmulatorView.swift; sourceTree = "<group>"; };
 		E9D8D16024FAF9D000DF5ABC /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
@@ -185,20 +183,12 @@
 		E9090D1024FA9F7600020390 /* ios-rentor */ = {
 			isa = PBXGroup;
 			children = (
+				E9449303258C094F00B94481 /* Interactors */,
+				E94492FF258C08C300B94481 /* UI */,
 				E94492ED258BEC5400B94481 /* Repositories */,
 				E94492EC258BEAD200B94481 /* System */,
-				E9AAA951251BDA3A009841B8 /* GenericProtocols */,
-				E9A8C66C2519407B000E8A28 /* GenericEnums */,
-				E9090D4624FAA22D00020390 /* GenericViews */,
-				E9090D4524FAA21B00020390 /* GenericServices */,
 				E9090D4724FAA24400020390 /* Extensions */,
 				E9B45CA224FD5EDE00A79ECC /* Persistence */,
-				E9D8D15724FAF77200DF5ABC /* Main */,
-				E9EF29B8250824DC00B97676 /* Home */,
-				E9090D4A24FAA47100020390 /* Settings */,
-				E98C2575252B8B6D00E06E73 /* HomeDetail */,
-				E9090D4924FAA46900020390 /* Simmulator */,
-				E9090D4824FAA45D00020390 /* LaunchScreen */,
 				E9090D1A24FA9F7800020390 /* Assets.xcassets */,
 				E9090D2224FA9F7800020390 /* Info.plist */,
 				E90986E52582500D0089525F /* GoogleService-Info.plist */,
@@ -234,20 +224,6 @@
 			path = "ios-rentorUITests";
 			sourceTree = "<group>";
 		};
-		E9090D4524FAA21B00020390 /* GenericServices */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = GenericServices;
-			sourceTree = "<group>";
-		};
-		E9090D4624FAA22D00020390 /* GenericViews */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = GenericViews;
-			sourceTree = "<group>";
-		};
 		E9090D4724FAA24400020390 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -264,58 +240,12 @@
 			path = LaunchScreen;
 			sourceTree = "<group>";
 		};
-		E9090D4924FAA46900020390 /* Simmulator */ = {
-			isa = PBXGroup;
-			children = (
-				E9A8C6662517B2D7000E8A28 /* ViewModel */,
-				E9EF29BC2508250300B97676 /* Model */,
-				E9090D5024FAA4A400020390 /* View */,
-			);
-			path = Simmulator;
-			sourceTree = "<group>";
-		};
-		E9090D4A24FAA47100020390 /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				E9A8C6652517B2A1000E8A28 /* ViewModel */,
-				E9090D4C24FAA48700020390 /* View */,
-				E9090D4B24FAA48000020390 /* Model */,
-			);
-			path = Settings;
-			sourceTree = "<group>";
-		};
-		E9090D4B24FAA48000020390 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				E9C3A0C025585F18003BF79F /* SettingCellData.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		E9090D4C24FAA48700020390 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				E9C3A0B225570D2F003BF79F /* Cells */,
-				E9D8D16024FAF9D000DF5ABC /* SettingView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		E9090D4F24FAA49F00020390 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				E9665535250033B2003BC212 /* RentorEntity.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		E9090D5024FAA4A400020390 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				E9D8D15E24FAF98200DF5ABC /* SimmulatorView.swift */,
-				E9209C9225227E8700EDC0A9 /* SimmulatorCellView.swift */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		E94492EC258BEAD200B94481 /* System */ = {
@@ -335,170 +265,117 @@
 			path = Repositories;
 			sourceTree = "<group>";
 		};
-		E98C2575252B8B6D00E06E73 /* HomeDetail */ = {
+		E94492FF258C08C300B94481 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				E98C2578252B8B8800E06E73 /* View */,
-				E98C2577252B8B8300E06E73 /* Model */,
-				E98C2576252B8B7D00E06E73 /* ViewModel */,
+				E9090D4824FAA45D00020390 /* LaunchScreen */,
+				E9449314258C0A2300B94481 /* HomeDetail */,
+				E9449308258C099C00B94481 /* Root */,
+				E9449302258C090B00B94481 /* Setting */,
+				E9449301258C090600B94481 /* Home */,
+				E9449300258C08F800B94481 /* Simmulator */,
 			);
-			path = HomeDetail;
+			path = UI;
 			sourceTree = "<group>";
 		};
-		E98C2576252B8B7D00E06E73 /* ViewModel */ = {
+		E9449300258C08F800B94481 /* Simmulator */ = {
 			isa = PBXGroup;
 			children = (
-				E98C2581252B96E700E06E73 /* HomeDetailViewModel.swift */,
+				E9D8D15E24FAF98200DF5ABC /* SimmulatorView.swift */,
+				E9209C9225227E8700EDC0A9 /* SimmulatorCellView.swift */,
 			);
-			path = ViewModel;
+			path = Simmulator;
 			sourceTree = "<group>";
 		};
-		E98C2577252B8B8300E06E73 /* Model */ = {
+		E9449301258C090600B94481 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				E99042C92502A16C0062B493 /* RentalEntityView.swift */,
+				E9D8D16224FC353700DF5ABC /* Home.swift */,
 			);
-			path = Model;
+			path = Home;
 			sourceTree = "<group>";
 		};
-		E98C2578252B8B8800E06E73 /* View */ = {
+		E9449302258C090B00B94481 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				E98C257C252B922000E06E73 /* HomeDetailView.swift */,
+				E9C3A0B325570D43003BF79F /* SettingCell.swift */,
+				E9D8D16024FAF9D000DF5ABC /* SettingView.swift */,
 			);
-			path = View;
+			path = Setting;
 			sourceTree = "<group>";
 		};
-		E9A8C6642516AC8D000E8A28 /* ViewModel */ = {
+		E9449303258C094F00B94481 /* Interactors */ = {
 			isa = PBXGroup;
 			children = (
+				E9AAA952251BDA4B009841B8 /* InteractorsProtocol.swift */,
+				E9449307258C097F00B94481 /* Simmulator */,
+				E9449306258C097900B94481 /* HomeDetail */,
+				E9449305258C097400B94481 /* Home */,
+				E9449304258C096F00B94481 /* Setting */,
 			);
-			path = ViewModel;
+			path = Interactors;
 			sourceTree = "<group>";
 		};
-		E9A8C6652517B2A1000E8A28 /* ViewModel */ = {
+		E9449304258C096F00B94481 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
 				E9C3A0AD25570A1D003BF79F /* SettingViewModel.swift */,
 			);
-			path = ViewModel;
+			path = Setting;
 			sourceTree = "<group>";
 		};
-		E9A8C6662517B2D7000E8A28 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				E9AAA94D251A1031009841B8 /* SimmulatorViewModel.swift */,
-				E9AAA95425210CF1009841B8 /* SimmulatorCellViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		E9A8C6672517B2F0000E8A28 /* ViewModel */ = {
+		E9449305258C097400B94481 /* Home */ = {
 			isa = PBXGroup;
 			children = (
 				E9A8C6682517B4BC000E8A28 /* HomeViewModel.swift */,
 			);
-			path = ViewModel;
+			path = Home;
 			sourceTree = "<group>";
 		};
-		E9A8C66C2519407B000E8A28 /* GenericEnums */ = {
+		E9449306258C097900B94481 /* HomeDetail */ = {
 			isa = PBXGroup;
 			children = (
-				E9A8C66D25194095000E8A28 /* Errors.swift */,
+				E98C2581252B96E700E06E73 /* HomeDetailViewModel.swift */,
 			);
-			path = GenericEnums;
+			path = HomeDetail;
 			sourceTree = "<group>";
 		};
-		E9AAA951251BDA3A009841B8 /* GenericProtocols */ = {
+		E9449307258C097F00B94481 /* Simmulator */ = {
 			isa = PBXGroup;
 			children = (
-				E9AAA952251BDA4B009841B8 /* ViewModelProtocol.swift */,
+				E9AAA94F251B9244009841B8 /* SimmulatorModel.swift */,
+				E9AAA94D251A1031009841B8 /* SimmulatorViewModel.swift */,
+				E9AAA95425210CF1009841B8 /* SimmulatorCellViewModel.swift */,
 			);
-			path = GenericProtocols;
+			path = Simmulator;
+			sourceTree = "<group>";
+		};
+		E9449308258C099C00B94481 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				E9D8D15C24FAF7B800DF5ABC /* MainView.swift */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		E9449314258C0A2300B94481 /* HomeDetail */ = {
+			isa = PBXGroup;
+			children = (
+				E98C257C252B922000E06E73 /* HomeDetailView.swift */,
+			);
+			path = HomeDetail;
 			sourceTree = "<group>";
 		};
 		E9B45CA224FD5EDE00A79ECC /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
+				E9A8C66D25194095000E8A28 /* Errors.swift */,
 				E9B45C9F24FD5ED400A79ECC /* rentorCoreData.xcdatamodeld */,
 				E99042CB25043BBA0062B493 /* CoreDataManager.swift */,
 				E9090D4F24FAA49F00020390 /* Model */,
 			);
 			path = Persistence;
-			sourceTree = "<group>";
-		};
-		E9C3A0B225570D2F003BF79F /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				E9C3A0B325570D43003BF79F /* SettingCell.swift */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
-		E9D8D15724FAF77200DF5ABC /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				E9A8C6642516AC8D000E8A28 /* ViewModel */,
-				E9D8D15B24FAF79400DF5ABC /* Model */,
-				E9D8D15A24FAF79000DF5ABC /* View */,
-			);
-			path = Main;
-			sourceTree = "<group>";
-		};
-		E9D8D15A24FAF79000DF5ABC /* View */ = {
-			isa = PBXGroup;
-			children = (
-				E9D8D15C24FAF7B800DF5ABC /* MainView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		E9D8D15B24FAF79400DF5ABC /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		E9EF29B8250824DC00B97676 /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				E9A8C6672517B2F0000E8A28 /* ViewModel */,
-				E9EF29BD2508250800B97676 /* Model */,
-				E9EF29BA250824EA00B97676 /* View */,
-			);
-			path = Home;
-			sourceTree = "<group>";
-		};
-		E9EF29BA250824EA00B97676 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				E9EF29BE2508257D00B97676 /* Cells */,
-				E9D8D16224FC353700DF5ABC /* Home.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		E9EF29BC2508250300B97676 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				E9AAA94F251B9244009841B8 /* SimmulatorModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		E9EF29BD2508250800B97676 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		E9EF29BE2508257D00B97676 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				E99042C92502A16C0062B493 /* RentalEntityView.swift */,
-			);
-			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -767,7 +644,6 @@
 				E9C3A0AE25570A1D003BF79F /* SettingViewModel.swift in Sources */,
 				E9209C9325227E8700EDC0A9 /* SimmulatorCellView.swift in Sources */,
 				E9090D1224FA9F7600020390 /* AppDelegate.swift in Sources */,
-				E9C3A0C125585F18003BF79F /* SettingCellData.swift in Sources */,
 				E9AAA95525210CF1009841B8 /* SimmulatorCellViewModel.swift in Sources */,
 				E9090D1724FA9F7600020390 /* ios_rentor.xcdatamodeld in Sources */,
 				E98C2582252B96E700E06E73 /* HomeDetailViewModel.swift in Sources */,
@@ -782,7 +658,7 @@
 				E9C3A0B425570D43003BF79F /* SettingCell.swift in Sources */,
 				E99042CA2502A16C0062B493 /* RentalEntityView.swift in Sources */,
 				E9AAA950251B9244009841B8 /* SimmulatorModel.swift in Sources */,
-				E9AAA953251BDA4B009841B8 /* ViewModelProtocol.swift in Sources */,
+				E9AAA953251BDA4B009841B8 /* InteractorsProtocol.swift in Sources */,
 				E9AAA94E251A1031009841B8 /* SimmulatorViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,7 +8,7 @@
 
 import Foundation
 
-internal final class HomeDetailViewModel: ViewModelProtocol {
+internal final class HomeDetailViewModel: InteractorProtocol {
     
     // MARK: Public Members
     struct Input {}

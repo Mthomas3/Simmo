@@ -1,5 +1,5 @@
 //
-//  ViewModelProtocol.swift
+//  InteractorsProtocol.swift
 //  ios-rentor
 //
 //  Created by Thomas on 23/09/2020.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol ViewModelProtocol {
+protocol InteractorProtocol {
     associatedtype Output
     associatedtype Input
     

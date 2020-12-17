@@ -10,7 +10,7 @@ import Foundation
 import Combine
 import SwiftUI
 
-internal final class SimmulatorViewModel: ObservableObject, ViewModelProtocol {
+internal final class SimmulatorViewModel: ObservableObject, InteractorProtocol {
     
     private var disposables = Set<AnyCancellable>()
     

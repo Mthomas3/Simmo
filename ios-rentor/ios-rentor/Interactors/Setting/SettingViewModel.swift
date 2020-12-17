@@ -8,8 +8,24 @@
 
 import Foundation
 import Combine
+import SwiftUI
 
-internal final class SettingViewModel: ObservableObject, ViewModelProtocol {
+internal struct HelperSettingData: Identifiable {
+    let id: UUID = UUID()
+    let name: String
+    let pathLink: String
+    let image: String
+    let iconColor: Color
+    
+    internal init(with name: String, with link: String, and image: String, color: Color) {
+        self.name = name
+        self.pathLink = link
+        self.image = image
+        self.iconColor = color
+    }
+}
+
+internal final class SettingViewModel: ObservableObject, InteractorProtocol {
     
     // MARK: - Private Members
     
