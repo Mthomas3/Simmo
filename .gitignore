@@ -94,5 +94,4 @@ iOSInjectionProject/
 #Firebase Google
 ios-rentor/ios-rentor/GoogleService-Info.plist
 
-.DS_Store
-ios-rentor/.DS_Store
+**/.DS_Store
