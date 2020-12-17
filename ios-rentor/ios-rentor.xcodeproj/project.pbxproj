@@ -187,6 +187,7 @@
 		E9090D1024FA9F7600020390 /* ios-rentor */ = {
 			isa = PBXGroup;
 			children = (
+				E94492EC258BEAD200B94481 /* System */,
 				E9AAA951251BDA3A009841B8 /* GenericProtocols */,
 				E9A8C66C2519407B000E8A28 /* GenericEnums */,
 				E9090D4624FAA22D00020390 /* GenericViews */,
@@ -199,7 +200,6 @@
 				E98C2575252B8B6D00E06E73 /* HomeDetail */,
 				E9090D4924FAA46900020390 /* Simmulator */,
 				E9090D4824FAA45D00020390 /* LaunchScreen */,
-				E9090D4424FAA20D00020390 /* AppDelegates */,
 				E9090D1A24FA9F7800020390 /* Assets.xcassets */,
 				E9090D2224FA9F7800020390 /* Info.plist */,
 				E90986E52582500D0089525F /* GoogleService-Info.plist */,
@@ -233,15 +233,6 @@
 				E9090D3824FA9F7800020390 /* Info.plist */,
 			);
 			path = "ios-rentorUITests";
-			sourceTree = "<group>";
-		};
-		E9090D4424FAA20D00020390 /* AppDelegates */ = {
-			isa = PBXGroup;
-			children = (
-				E9090D1124FA9F7600020390 /* AppDelegate.swift */,
-				E9090D1324FA9F7600020390 /* SceneDelegate.swift */,
-			);
-			path = AppDelegates;
 			sourceTree = "<group>";
 		};
 		E9090D4524FAA21B00020390 /* GenericServices */ = {
@@ -342,6 +333,15 @@
 				E936BFBE25389E0E00ED3269 /* CoreDataObject.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		E94492EC258BEAD200B94481 /* System */ = {
+			isa = PBXGroup;
+			children = (
+				E9090D1124FA9F7600020390 /* AppDelegate.swift */,
+				E9090D1324FA9F7600020390 /* SceneDelegate.swift */,
+			);
+			path = System;
 			sourceTree = "<group>";
 		};
 		E98C2575252B8B6D00E06E73 /* HomeDetail */ = {
