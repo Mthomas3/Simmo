@@ -33,7 +33,7 @@ internal final class HomeViewModel: ObservableObject, ViewModelProtocol {
     init() { }
     
     private func fetchingRentals() -> AnyPublisher<[RentorEntity], Never> {
-        CoreDataRental.sharedInstance.fetch()
+        RealRentalDBRepository.sharedInstance.fetch()
             .receive(on: DispatchQueue.main)
             .catch { [weak self] (_) -> AnyPublisher<[RentorEntity], Never> in
                 self?.shouldDisplayError.send(true)
@@ -50,7 +50,7 @@ internal final class HomeViewModel: ObservableObject, ViewModelProtocol {
             .receive(on: DispatchQueue.main)
             .flatMap { (item) -> AnyPublisher<[RentorEntity], Never> in
                 do {
-                    try CoreDataRental.sharedInstance.delete(with: item)
+                    try RealRentalDBRepository.sharedInstance.delete(with: item)
                 } catch {
                     print("Error on fetch rentals catch = \(error)")
                 }
@@ -64,7 +64,7 @@ internal final class HomeViewModel: ObservableObject, ViewModelProtocol {
               "740,00"
             }.eraseToAnyPublisher()
         
-        let onUpdate = CoreDataRental.sharedInstance.refresh()
+        let onUpdate = RealRentalDBRepository.sharedInstance.refresh()
         
         return Output(dataSources: mergedDataSources,
                       shouldDisplayError: self.shouldDisplayError,

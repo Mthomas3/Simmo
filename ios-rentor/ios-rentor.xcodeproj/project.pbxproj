@@ -20,8 +20,7 @@
 		E9090D3724FA9F7800020390 /* ios_rentorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9090D3624FA9F7800020390 /* ios_rentorUITests.swift */; };
 		E90986E62582500D0089525F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E90986E52582500D0089525F /* GoogleService-Info.plist */; };
 		E9209C9325227E8700EDC0A9 /* SimmulatorCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9209C9225227E8700EDC0A9 /* SimmulatorCellView.swift */; };
-		E936BFB92538992800ED3269 /* CoreDataRental.swift in Sources */ = {isa = PBXBuildFile; fileRef = E936BFB82538992800ED3269 /* CoreDataRental.swift */; };
-		E936BFBF25389E0E00ED3269 /* CoreDataObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E936BFBE25389E0E00ED3269 /* CoreDataObject.swift */; };
+		E94492EF258BEC7F00B94481 /* rentalDBRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94492EE258BEC7F00B94481 /* rentalDBRepository.swift */; };
 		E9665536250033B2003BC212 /* RentorEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9665535250033B2003BC212 /* RentorEntity.swift */; };
 		E9878556250BB0C200CF8519 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9878555250BB0C200CF8519 /* String+Ext.swift */; };
 		E98C257D252B922000E06E73 /* HomeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98C257C252B922000E06E73 /* HomeDetailView.swift */; };
@@ -86,8 +85,7 @@
 		E9090D3824FA9F7800020390 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E90986E52582500D0089525F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E9209C9225227E8700EDC0A9 /* SimmulatorCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimmulatorCellView.swift; sourceTree = "<group>"; };
-		E936BFB82538992800ED3269 /* CoreDataRental.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRental.swift; sourceTree = "<group>"; };
-		E936BFBE25389E0E00ED3269 /* CoreDataObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataObject.swift; sourceTree = "<group>"; };
+		E94492EE258BEC7F00B94481 /* rentalDBRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rentalDBRepository.swift; sourceTree = "<group>"; };
 		E9665535250033B2003BC212 /* RentorEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentorEntity.swift; sourceTree = "<group>"; };
 		E9878555250BB0C200CF8519 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		E98C257C252B922000E06E73 /* HomeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailView.swift; sourceTree = "<group>"; };
@@ -187,6 +185,7 @@
 		E9090D1024FA9F7600020390 /* ios-rentor */ = {
 			isa = PBXGroup;
 			children = (
+				E94492ED258BEC5400B94481 /* Repositories */,
 				E94492EC258BEAD200B94481 /* System */,
 				E9AAA951251BDA3A009841B8 /* GenericProtocols */,
 				E9A8C66C2519407B000E8A28 /* GenericEnums */,
@@ -319,22 +318,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		E936BFB72538991600ED3269 /* Entities */ = {
-			isa = PBXGroup;
-			children = (
-				E936BFB82538992800ED3269 /* CoreDataRental.swift */,
-			);
-			path = Entities;
-			sourceTree = "<group>";
-		};
-		E936BFBD25389E0300ED3269 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				E936BFBE25389E0E00ED3269 /* CoreDataObject.swift */,
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
 		E94492EC258BEAD200B94481 /* System */ = {
 			isa = PBXGroup;
 			children = (
@@ -342,6 +325,14 @@
 				E9090D1324FA9F7600020390 /* SceneDelegate.swift */,
 			);
 			path = System;
+			sourceTree = "<group>";
+		};
+		E94492ED258BEC5400B94481 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				E94492EE258BEC7F00B94481 /* rentalDBRepository.swift */,
+			);
+			path = Repositories;
 			sourceTree = "<group>";
 		};
 		E98C2575252B8B6D00E06E73 /* HomeDetail */ = {
@@ -428,9 +419,8 @@
 		E9B45CA224FD5EDE00A79ECC /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
-				E936BFBD25389E0300ED3269 /* Protocols */,
-				E936BFB72538991600ED3269 /* Entities */,
-				E9EF29B7250824CC00B97676 /* Manager */,
+				E9B45C9F24FD5ED400A79ECC /* rentorCoreData.xcdatamodeld */,
+				E99042CB25043BBA0062B493 /* CoreDataManager.swift */,
 				E9090D4F24FAA49F00020390 /* Model */,
 			);
 			path = Persistence;
@@ -467,15 +457,6 @@
 			children = (
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		E9EF29B7250824CC00B97676 /* Manager */ = {
-			isa = PBXGroup;
-			children = (
-				E9B45C9F24FD5ED400A79ECC /* rentorCoreData.xcdatamodeld */,
-				E99042CB25043BBA0062B493 /* CoreDataManager.swift */,
-			);
-			path = Manager;
 			sourceTree = "<group>";
 		};
 		E9EF29B8250824DC00B97676 /* Home */ = {
@@ -779,13 +760,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9D8D16324FC353700DF5ABC /* Home.swift in Sources */,
-				E936BFBF25389E0E00ED3269 /* CoreDataObject.swift in Sources */,
 				E99042CC25043BBA0062B493 /* CoreDataManager.swift in Sources */,
 				E9D8D15D24FAF7B800DF5ABC /* MainView.swift in Sources */,
 				E9878556250BB0C200CF8519 /* String+Ext.swift in Sources */,
+				E94492EF258BEC7F00B94481 /* rentalDBRepository.swift in Sources */,
 				E9C3A0AE25570A1D003BF79F /* SettingViewModel.swift in Sources */,
 				E9209C9325227E8700EDC0A9 /* SimmulatorCellView.swift in Sources */,
-				E936BFB92538992800ED3269 /* CoreDataRental.swift in Sources */,
 				E9090D1224FA9F7600020390 /* AppDelegate.swift in Sources */,
 				E9C3A0C125585F18003BF79F /* SettingCellData.swift in Sources */,
 				E9AAA95525210CF1009841B8 /* SimmulatorCellViewModel.swift in Sources */,

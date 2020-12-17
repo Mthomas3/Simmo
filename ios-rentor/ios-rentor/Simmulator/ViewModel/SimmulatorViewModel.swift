@@ -70,7 +70,7 @@ internal final class SimmulatorViewModel: ObservableObject, ViewModelProtocol {
             a.createDate = Date()
             a.percentageEffiency = 10.0
             a.rentPrice = 10000.0
-            _ = CoreDataRental.sharedInstance.create(with: a)
+            _ = RealRentalDBRepository.sharedInstance.create(with: a)
         }
     }
 }

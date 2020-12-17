@@ -6,8 +6,8 @@ included:
 excluded:
   - ios-rentor/Pods
   - force_cast
-  - ios-rentor/AppDelegates/SceneDelegate.swift
-  - ios-rentor/AppDelegates/AppDelegate.swift
+  - ios-rentor/System/SceneDelegate.swift
+  - ios-rentor/System/AppDelegate.swift
     
 # Configuring rule severity
 force_cast: warning
