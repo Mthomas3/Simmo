@@ -43,6 +43,7 @@ internal final class CoreDataManager<Entity> where Entity: NSManagedObject {
         Future<Void, CoreDataError> {
             do {
                 self.context.insert(item)
+                let map = try map(
                 self.subject.send(item)
                 $0(.success(try self.context.save() as Void))
             } catch {

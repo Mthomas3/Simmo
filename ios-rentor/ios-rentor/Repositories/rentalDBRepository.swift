@@ -25,8 +25,9 @@ protocol RentalDBRepository {
 
 internal final class RealRentalDBRepository: RentalDBRepository {
     private let coreDataManager: CoreDataManager<RentorEntity>
+    private let context: NSManagedObjectContext
     
-    internal typealias Entity = RentorEntity
+    internal typealias Entity = Rentor
     internal static let sharedInstance = RealRentalDBRepository()
     
     private init() {
@@ -34,32 +35,36 @@ internal final class RealRentalDBRepository: RentalDBRepository {
               let request = RentorEntity.fetchRequest() as? NSFetchRequest<RentorEntity> else {
             fatalError("[SIMMO][ERROR] AppDelegate failed CoreDataRental")
         }
+        self.context = appDelegate.persistentContainer.viewContext
         request.sortDescriptors = [NSSortDescriptor(key: "createDate", ascending: true)]
         self.coreDataManager = CoreDataManager<RentorEntity>(request: request,
                                                              context: appDelegate.persistentContainer.viewContext)
     }
     
-    internal func create(with item: RentorEntity) -> AnyPublisher<Void, CoreDataError> {
-        return self.coreDataManager.create(with: item)
+    internal func create(with item: Rentor) -> AnyPublisher<Void, CoreDataError> {
+        ///MARK: to be changed
+        guard let rentorEntity = item.store(in: self.context) else { fatalError() }
+        
+        return self.coreDataManager.create(with: rentorEntity)
     }
 
-    internal func refresh() -> AnyPublisher<RentorEntity, Never> {
+    internal func refresh() -> AnyPublisher<Rentor, Never> {
         return self.coreDataManager.onUpdate()
     }
     
-    internal func update(with item: RentorEntity) {
+    internal func update(with item: Rentor) {
         fatalError("[CoreDataRental][update] Not implemented yet")
     }
     
-    internal func delete(with item: RentorEntity) throws {
+    internal func delete(with item: Rentor) throws {
         return try self.coreDataManager.delete(with: item)
     }
     
-    internal func fetch() -> AnyPublisher<[RentorEntity], CoreDataError> {
+    internal func fetch() -> AnyPublisher<[Rentor], CoreDataError> {
         return self.coreDataManager.fetch()
     }
     
-    internal func deleteOn(with item: RentorEntity) -> AnyPublisher<Void, CoreDataError> {
+    internal func deleteOn(with item: Rentor) -> AnyPublisher<Void, CoreDataError> {
         return self.coreDataManager.deleteOn(with: item)
     }
 }
