@@ -13,6 +13,7 @@ import MapKit
 
 struct Home: View {
     // MARK: State
+    @State private var dataTest: Loadable<[RentorEntity]>
     @State private var dataSources: [RentorEntity] = []
     @State private var displayAlert: Bool = false
     @State private var messageAlert: String = ""
@@ -31,8 +32,12 @@ struct Home: View {
     private let alertErrorTitle: String = "An error occured"
     private let fontScaleFactor: CGFloat = 0.04
     
-    init() {
+    init(details: Loadable<[RentorEntity]> = .notRequested) {
         
+        //self.dataTest = rentals
+        
+         
+        self.dataTest = .init([])
         self.onDelete = PassthroughSubject<RentorEntity, Never>()
         self.onTestError = PassthroughSubject<Void, Never>()
         self.homeViewModel = HomeViewModel()

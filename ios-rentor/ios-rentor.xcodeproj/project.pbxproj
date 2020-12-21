@@ -33,6 +33,9 @@
 		E9AAA950251B9244009841B8 /* SimmulatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AAA94F251B9244009841B8 /* SimmulatorModel.swift */; };
 		E9AAA953251BDA4B009841B8 /* InteractorsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AAA952251BDA4B009841B8 /* InteractorsProtocol.swift */; };
 		E9AAA95525210CF1009841B8 /* SimmulatorCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AAA95425210CF1009841B8 /* SimmulatorCellViewModel.swift */; };
+		E9B20D4B25913E2100EC52D5 /* Models+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B20D4A25913E2100EC52D5 /* Models+CoreData.swift */; };
+		E9B20D502591403200EC52D5 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B20D4F2591403200EC52D5 /* Models.swift */; };
+		E9B20D552591403B00EC52D5 /* MockedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B20D542591403B00EC52D5 /* MockedData.swift */; };
 		E9B45CA124FD5ED400A79ECC /* rentorCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9B45C9F24FD5ED400A79ECC /* rentorCoreData.xcdatamodeld */; };
 		E9C3A0AE25570A1D003BF79F /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C3A0AD25570A1D003BF79F /* SettingViewModel.swift */; };
 		E9C3A0B425570D43003BF79F /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C3A0B325570D43003BF79F /* SettingCell.swift */; };
@@ -97,6 +100,9 @@
 		E9AAA94F251B9244009841B8 /* SimmulatorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimmulatorModel.swift; sourceTree = "<group>"; };
 		E9AAA952251BDA4B009841B8 /* InteractorsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractorsProtocol.swift; sourceTree = "<group>"; };
 		E9AAA95425210CF1009841B8 /* SimmulatorCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimmulatorCellViewModel.swift; sourceTree = "<group>"; };
+		E9B20D4A25913E2100EC52D5 /* Models+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Models+CoreData.swift"; sourceTree = "<group>"; };
+		E9B20D4F2591403200EC52D5 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		E9B20D542591403B00EC52D5 /* MockedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedData.swift; sourceTree = "<group>"; };
 		E9B45CA024FD5ED400A79ECC /* Simmulations.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Simmulations.xcdatamodel; sourceTree = "<group>"; };
 		E9C3A0AD25570A1D003BF79F /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		E9C3A0B325570D43003BF79F /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
@@ -183,6 +189,7 @@
 		E9090D1024FA9F7600020390 /* ios-rentor */ = {
 			isa = PBXGroup;
 			children = (
+				E9B20D4925913E1100EC52D5 /* Models */,
 				E9449303258C094F00B94481 /* Interactors */,
 				E94492FF258C08C300B94481 /* UI */,
 				E94492ED258BEC5400B94481 /* Repositories */,
@@ -365,6 +372,16 @@
 				E98C257C252B922000E06E73 /* HomeDetailView.swift */,
 			);
 			path = HomeDetail;
+			sourceTree = "<group>";
+		};
+		E9B20D4925913E1100EC52D5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E9B20D4A25913E2100EC52D5 /* Models+CoreData.swift */,
+				E9B20D4F2591403200EC52D5 /* Models.swift */,
+				E9B20D542591403B00EC52D5 /* MockedData.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		E9B45CA224FD5EDE00A79ECC /* Persistence */ = {
@@ -637,6 +654,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9D8D16324FC353700DF5ABC /* Home.swift in Sources */,
+				E9B20D502591403200EC52D5 /* Models.swift in Sources */,
 				E99042CC25043BBA0062B493 /* CoreDataManager.swift in Sources */,
 				E9D8D15D24FAF7B800DF5ABC /* MainView.swift in Sources */,
 				E9878556250BB0C200CF8519 /* String+Ext.swift in Sources */,
@@ -655,8 +673,10 @@
 				E9B45CA124FD5ED400A79ECC /* rentorCoreData.xcdatamodeld in Sources */,
 				E9090D1424FA9F7600020390 /* SceneDelegate.swift in Sources */,
 				E9D8D15F24FAF98300DF5ABC /* SimmulatorView.swift in Sources */,
+				E9B20D4B25913E2100EC52D5 /* Models+CoreData.swift in Sources */,
 				E9C3A0B425570D43003BF79F /* SettingCell.swift in Sources */,
 				E99042CA2502A16C0062B493 /* RentalEntityView.swift in Sources */,
+				E9B20D552591403B00EC52D5 /* MockedData.swift in Sources */,
 				E9AAA950251B9244009841B8 /* SimmulatorModel.swift in Sources */,
 				E9AAA953251BDA4B009841B8 /* InteractorsProtocol.swift in Sources */,
 				E9AAA94E251A1031009841B8 /* SimmulatorViewModel.swift in Sources */,

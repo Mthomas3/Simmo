@@ -7,12 +7,13 @@
 //
 
 import Foundation
+import Combine
 
 internal final class HomeDetailViewModel: InteractorProtocol {
     
     // MARK: Public Members
-    struct Input {}
-    struct Output {}
+    struct Input { }
+    struct Output { }
     
     init() { }
     

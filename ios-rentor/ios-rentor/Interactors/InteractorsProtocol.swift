@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import Combine
 
-protocol InteractorProtocol {
+internal protocol InteractorProtocol {
     associatedtype Output
     associatedtype Input
     
