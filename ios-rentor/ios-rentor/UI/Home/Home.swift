@@ -24,6 +24,8 @@ struct Home: View {
     private let output: HomeViewModel.Output
     private let onDelete: PassthroughSubject<RentorEntity, Never>
     
+    private let onTestError: PassthroughSubject<Void, Never>
+    
     // MARK: Drawing Constants
     private let navigationBarTitle: String = "Home 🏡"
     private let alertErrorTitle: String = "An error occured"
@@ -32,20 +34,22 @@ struct Home: View {
     init() {
         
         self.onDelete = PassthroughSubject<RentorEntity, Never>()
+        self.onTestError = PassthroughSubject<Void, Never>()
         self.homeViewModel = HomeViewModel()
         self.output = self.homeViewModel.transform(
-            HomeViewModel.Input(onDeleteSource: self.onDelete.eraseToAnyPublisher()))
+            HomeViewModel.Input(onDeleteSource: self.onDelete.eraseToAnyPublisher(),
+                                testError: self.onTestError.eraseToAnyPublisher()))
         
-        //UITableView.appearance().backgroundColor = UIColor.black.withAlphaComponent(0.05)
         UITableView.appearance().backgroundColor = .clear
         UITableViewCell.appearance().backgroundColor = .clear
-        
     }
 
     var body: some View {
         NavigationView {
             GeometryReader { geometry in
-                self.body(with: geometry.size)
+                
+                //TODO remove
+                self.body(with: geometry.size, and: [])
             }
         }
     }
@@ -78,8 +82,8 @@ struct Home: View {
         .font(.system(size: 16, weight: .bold))
     }
     
-    private func body(with size: CGSize) -> some View {
-        List {
+    private func body(with size: CGSize, and rental: [RentorEntity]) -> some View {
+        HStack {List {
             Section(header: self.headerListView()) {
                 self.displayRentalProperties()
                     .padding(.leading, 8)
@@ -93,6 +97,19 @@ struct Home: View {
         .navigationBarItems(trailing: self.navigationBarAdd())
         .listStyle(GroupedListStyle())
         .navigationBarTitle(Text(self.navigationBarTitle), displayMode: .automatic)
+        Button(action: {
+            print("yolo")
+            self.onTestError.send(())
+        }, label: {
+            Text("MDR?")
+        })
+        }
+        
+    }
+    
+    private func displayErrorOccured(message: String) {
+        self.displayAlert = true
+        self.messageAlert = message
     }
     
     private func displayRentalProperties() -> some View {
@@ -122,6 +139,9 @@ struct Home: View {
             self.dataSources = dataSources
         }.onReceive(self.output.onUpdate) { updateValue in
             self.dataSources.append(updateValue)
+        }.onReceive(self.output.testDisplay) { value in
+            self.displayErrorOccured(message: value)
         }
+        
     }
 }
