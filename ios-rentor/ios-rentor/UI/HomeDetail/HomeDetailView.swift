@@ -10,7 +10,7 @@ import SwiftUI
 
 struct HomeDetailView: View {
     // MARK: State
-    private let rentalSelected: RentorEntity
+    private let rentalSelected: Rentor
     
     // MARK: ViewModel
     private let homeDetailViewModel: HomeDetailViewModel
@@ -20,7 +20,7 @@ struct HomeDetailView: View {
     private let navigationBarTitle: String = "House Detail"
     private let fontScaleFactor: CGFloat = 0.04
     
-    init(with rental: RentorEntity) {
+    init(with rental: Rentor) {
         self.rentalSelected = rental
         
         self.homeDetailViewModel = HomeDetailViewModel()
@@ -65,6 +65,6 @@ struct HomeDetailView: View {
 
 struct HomeDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeDetailView(with: RentorEntity())
+        HomeDetailView(with: Rentor(date: Date(), name: "TEST A", price: 250000, rentPrice: 2500, cashFlow: 250, percentage: 25))
     }
 }

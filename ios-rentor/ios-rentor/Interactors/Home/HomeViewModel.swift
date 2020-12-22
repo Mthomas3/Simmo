@@ -64,28 +64,28 @@ internal final class HomeViewModel: ObservableObject, InteractorProtocol {
     
     // MARK: Public Members
     struct Input {
-        var onDeleteSource: AnyPublisher<RentorEntity, Never>
+        var onDeleteSource: AnyPublisher<Rentor, Never>
         
         
         var testError: AnyPublisher<Void, Never>
     }
     
     struct Output {
-        var dataSources: AnyPublisher<[RentorEntity], Never>
+        var dataSources: AnyPublisher<[Rentor], Never>
         var shouldDisplayError: CurrentValueSubject<Bool, Never>
         var messageError: CurrentValueSubject<String, Never>
         var headerListValue: AnyPublisher<String, Never>
-        var onUpdate: AnyPublisher<RentorEntity, Never>
-        var testSources: AnyPublisher<[RentorEntity], CoreDataError>
+        var onUpdate: AnyPublisher<Rentor, Never>
+        var testSources: AnyPublisher<[Rentor], CoreDataError>
         var testDisplay: AnyPublisher<String, Never>
     }
     
     init() { }
     
-    private func fetchingRentals() -> AnyPublisher<[RentorEntity], Never> {
+    private func fetchingRentals() -> AnyPublisher<[Rentor], Never> {
         RealRentalDBRepository.sharedInstance.fetch()
             .receive(on: DispatchQueue.main)
-            .catch { [weak self] (_) -> AnyPublisher<[RentorEntity], Never> in
+            .catch { [weak self] (_) -> AnyPublisher<[Rentor], Never> in
                 self?.shouldDisplayError.send(true)
                 self?.messageDisplayError.send("An error occured in the fetch")
                 return Just([]).eraseToAnyPublisher()
@@ -98,7 +98,7 @@ internal final class HomeViewModel: ObservableObject, InteractorProtocol {
         
         let onDeleteSources = input.onDeleteSource
             .receive(on: DispatchQueue.main)
-            .flatMap { (item) -> AnyPublisher<[RentorEntity], Never> in
+            .flatMap { (item) -> AnyPublisher<[Rentor], Never> in
                 do {
                     try RealRentalDBRepository.sharedInstance.delete(with: item)
                 } catch {

@@ -10,7 +10,7 @@ import SwiftUI
 import Combine
 
 struct RentalContentView: View {
-    private let rentalData: RentorEntity
+    private let rentalData: Rentor
     
     // MARK: Drawing Constants
     private let priceTitle: String = "Prix d'acquisition:"
@@ -18,7 +18,7 @@ struct RentalContentView: View {
     private let cashFlowTitle: String = "Cash-flow mensuel:"
     private let percentageTitle: String = "Rendement Brut:"
     
-    init(with rental: RentorEntity) {
+    init(with rental: Rentor) {
         self.rentalData = rental
     }
     
@@ -43,7 +43,7 @@ struct RentalContentView: View {
         }
     }
     
-    private func contentCell(with rental: RentorEntity) -> some View {
+    private func contentCell(with rental: Rentor) -> some View {
         HStack {
             VStack(alignment: .leading) {
                 Text(self.priceTitle)
@@ -62,7 +62,7 @@ struct RentalContentView: View {
                     .numberFormatting(formatterDigit: 2, isDecimal: true)
                     .currencyFormatting())
                 
-                Text("\(rental.percentageEffiency)"
+                Text("\(rental.percentage)"
                     .numberFormatting(formatterDigit: 2, isDecimal: true)
                     .currencyFormatting())
                 

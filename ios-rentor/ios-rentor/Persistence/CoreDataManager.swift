@@ -11,12 +11,12 @@ import CoreData
 import SwiftUI
 import Combine
 
-internal final class CoreDataManager<Entity> where Entity: NSManagedObject {
-    private let request: NSFetchRequest<Entity>
+internal final class CoreDataManager<Entity, T> where Entity: ModelsManagedEntity, T: NSManagedObject {
+    private let request: NSFetchRequest<T>
     private let context: NSManagedObjectContext
     private let subject: PassthroughSubject<Entity, Never>
     
-    init(request: NSFetchRequest<Entity>, context: NSManagedObjectContext) {
+    init(request: NSFetchRequest<T>, context: NSManagedObjectContext) {
         if request.sortDescriptors == nil {
             request.sortDescriptors = []
         }
@@ -28,7 +28,18 @@ internal final class CoreDataManager<Entity> where Entity: NSManagedObject {
     internal func fetch() -> AnyPublisher<[Entity], CoreDataError> {
         Future<[Entity], CoreDataError> {
             do {
-                $0(.success(try self.context.fetch(self.request)))
+                let res: [T] = try self.context.fetch(self.request)
+                var result: [Entity] = []
+                
+                res.forEach { (item) in
+                    if let value = item as? Entity.T {
+                        if let initValue = Entity(managedObject: value) {
+                            result.append(initValue)
+                        }
+                    }
+                }
+                $0(.success(result))
+                //$0(.success(try self.context.fetch(self.request)))
             } catch {
                 $0(.failure(.fetchError))
             }
@@ -42,8 +53,8 @@ internal final class CoreDataManager<Entity> where Entity: NSManagedObject {
     internal func create(with item: Entity) -> AnyPublisher<Void, CoreDataError> {
         Future<Void, CoreDataError> {
             do {
-                self.context.insert(item)
-                let map = try map(
+                let coreItem: T = item.store(in: self.context) as! T
+                self.context.insert(coreItem)
                 self.subject.send(item)
                 $0(.success(try self.context.save() as Void))
             } catch {
@@ -53,7 +64,8 @@ internal final class CoreDataManager<Entity> where Entity: NSManagedObject {
     }
     
     internal func delete(with item: Entity) throws {
-        self.context.delete(item)
+        let coreItem: T = item.store(in: self.context) as! T
+        self.context.delete(coreItem)
         try self.context.save()
     }
     

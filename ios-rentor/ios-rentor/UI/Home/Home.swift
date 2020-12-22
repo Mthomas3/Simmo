@@ -13,8 +13,8 @@ import MapKit
 
 struct Home: View {
     // MARK: State
-    @State private var dataTest: Loadable<[RentorEntity]>
-    @State private var dataSources: [RentorEntity] = []
+    //@State private var dataTest: Loadable<[Rentor]>
+    @State private var dataSources: [Rentor] = []
     @State private var displayAlert: Bool = false
     @State private var messageAlert: String = ""
     @State private var headerList: String = ""
@@ -23,7 +23,7 @@ struct Home: View {
     // MARK: ViewModel
     private let homeViewModel: HomeViewModel
     private let output: HomeViewModel.Output
-    private let onDelete: PassthroughSubject<RentorEntity, Never>
+    private let onDelete: PassthroughSubject<Rentor, Never>
     
     private let onTestError: PassthroughSubject<Void, Never>
     
@@ -32,13 +32,13 @@ struct Home: View {
     private let alertErrorTitle: String = "An error occured"
     private let fontScaleFactor: CGFloat = 0.04
     
-    init(details: Loadable<[RentorEntity]> = .notRequested) {
+    init(details: Loadable<[Rentor]> = .notRequested) {
         
         //self.dataTest = rentals
         
          
-        self.dataTest = .init([])
-        self.onDelete = PassthroughSubject<RentorEntity, Never>()
+        
+        self.onDelete = PassthroughSubject<Rentor, Never>()
         self.onTestError = PassthroughSubject<Void, Never>()
         self.homeViewModel = HomeViewModel()
         self.output = self.homeViewModel.transform(

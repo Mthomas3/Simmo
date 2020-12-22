@@ -62,15 +62,9 @@ internal final class SimmulatorViewModel: ObservableObject, InteractorProtocol {
     private func handleDoneFormEvent() {
         
         if let delegate = UIApplication.shared.delegate as? AppDelegate {
-            let a = RentorEntity(context: delegate.persistentContainer.viewContext)
             
-            a.name = "Je suis un jolie Test"
-            a.cashFlow = 1000.0
-            a.price = 10000000
-            a.createDate = Date()
-            a.percentageEffiency = 10.0
-            a.rentPrice = 10000.0
-            _ = RealRentalDBRepository.sharedInstance.create(with: a)
+            let b = Rentor(date: Date(), name: "MEGA TEST", price: 250000, rentPrice: 10000, cashFlow: 2500, percentage: 30)
+            _ = RealRentalDBRepository.sharedInstance.create(with: b)
         }
     }
 }

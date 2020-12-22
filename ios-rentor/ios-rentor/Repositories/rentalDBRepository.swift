@@ -13,21 +13,24 @@ import CoreData
 
 protocol RentalDBRepository {
     
-    associatedtype Entity
+    associatedtype CoreEntity
+    associatedtype ModelEntity
     
-    func create(with item: Entity) -> AnyPublisher<Void, CoreDataError>
-    func delete(with item: Entity) throws
-    func update(with item: Entity)
-    func fetch() -> AnyPublisher<[Entity], CoreDataError>
-    func refresh() -> AnyPublisher<Entity, Never>
-    func deleteOn(with item: Entity) -> AnyPublisher<Void, CoreDataError>
+    func create(with item: ModelEntity) -> AnyPublisher<Void, CoreDataError>
+    func delete(with item: ModelEntity) throws
+    func update(with item: ModelEntity)
+    func fetch() -> AnyPublisher<[ModelEntity], CoreDataError>
+    func refresh() -> AnyPublisher<ModelEntity, Never>
+    func deleteOn(with item: ModelEntity) -> AnyPublisher<Void, CoreDataError>
 }
 
 internal final class RealRentalDBRepository: RentalDBRepository {
-    private let coreDataManager: CoreDataManager<RentorEntity>
+    private let coreDataManager: CoreDataManager<Rentor, RentorEntity>
     private let context: NSManagedObjectContext
     
-    internal typealias Entity = Rentor
+    internal typealias CoreEntity = RentorEntity
+    internal typealias ModelEntity = Rentor
+    
     internal static let sharedInstance = RealRentalDBRepository()
     
     private init() {
@@ -37,15 +40,12 @@ internal final class RealRentalDBRepository: RentalDBRepository {
         }
         self.context = appDelegate.persistentContainer.viewContext
         request.sortDescriptors = [NSSortDescriptor(key: "createDate", ascending: true)]
-        self.coreDataManager = CoreDataManager<RentorEntity>(request: request,
+        self.coreDataManager = CoreDataManager<Rentor, RentorEntity>(request: request,
                                                              context: appDelegate.persistentContainer.viewContext)
     }
     
     internal func create(with item: Rentor) -> AnyPublisher<Void, CoreDataError> {
-        ///MARK: to be changed
-        guard let rentorEntity = item.store(in: self.context) else { fatalError() }
-        
-        return self.coreDataManager.create(with: rentorEntity)
+        return self.coreDataManager.create(with: item)
     }
 
     internal func refresh() -> AnyPublisher<Rentor, Never> {
