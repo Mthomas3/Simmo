@@ -65,6 +65,8 @@ struct HomeDetailView: View {
 
 struct HomeDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeDetailView(with: Rentor(date: Date(), name: "TEST A", price: 250000, rentPrice: 2500, cashFlow: 250, percentage: 25))
+        HomeDetailView(with: Rentor(date: Date(), name: "TEST A",
+                                    price: 250000, rentPrice: 2500,
+                                    cashFlow: 250, percentage: 25))
     }
 }
