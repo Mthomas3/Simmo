@@ -60,14 +60,9 @@ internal final class HomeViewModel: ObservableObject, InteractorProtocol {
     private var disposables = Set<AnyCancellable>()
     private let shouldDisplayError = CurrentValueSubject<Bool, Never>(false)
     private let messageDisplayError = CurrentValueSubject<String, Never>("")
-    private let shouldTestErrorDisplay = PassthroughSubject<String, Never>()
-    
     // MARK: Public Members
     struct Input {
         var onDeleteSource: AnyPublisher<Rentor, Never>
-        
-        
-        var testError: AnyPublisher<Void, Never>
     }
     
     struct Output {
@@ -76,8 +71,6 @@ internal final class HomeViewModel: ObservableObject, InteractorProtocol {
         var messageError: CurrentValueSubject<String, Never>
         var headerListValue: AnyPublisher<String, Never>
         var onUpdate: AnyPublisher<Rentor?, Never>
-        var testSources: AnyPublisher<[Rentor], CoreDataError>
-        var testDisplay: AnyPublisher<String, Never>
     }
     
     init() { }
@@ -115,23 +108,11 @@ internal final class HomeViewModel: ObservableObject, InteractorProtocol {
             }.eraseToAnyPublisher()
         
         let onUpdate = RealRentalDBRepository.sharedInstance.refresh()
-        
-        let testSources = RealRentalDBRepository.sharedInstance.fetch()
-        
-        input.testError.receive(on: DispatchQueue.main)
-            .sink(receiveValue: { (_) in
-                self.shouldTestErrorDisplay.send("THE ERORR IS HERE MDR YO")
-            }).store(in: &self.disposables)
-        
-        let errorDisplay = ErrorDisplay(display: true, messsage: "yesssssss")
-        
-        self.shouldTestErrorDisplay.send("THE ERROR IS HERE MDR YO")
-        
+                
         return Output(dataSources: mergedDataSources,
                       shouldDisplayError: self.shouldDisplayError,
                       messageError: self.messageDisplayError,
                       headerListValue: headerListValue,
-                      onUpdate: onUpdate, testSources: testSources,
-                      testDisplay: self.shouldTestErrorDisplay.eraseToAnyPublisher())
+                      onUpdate: onUpdate)
     }
 }

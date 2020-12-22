@@ -10,6 +10,7 @@ import Foundation
 import CoreData
 
 protocol ManagedEntity: NSFetchRequestResult { }
+extension RentorEntity: ManagedEntity { }
 
 protocol ModelsManagedEntity {
     
@@ -34,8 +35,6 @@ extension ManagedEntity where Self: NSManagedObject {
         return .init(entityName: entityName)
     }
 }
-
-extension RentorEntity: ManagedEntity { }
 
 extension Rentor: ModelsManagedEntity {
     

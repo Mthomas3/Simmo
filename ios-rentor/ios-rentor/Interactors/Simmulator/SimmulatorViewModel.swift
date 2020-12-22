@@ -60,9 +60,9 @@ internal final class SimmulatorViewModel: ObservableObject, InteractorProtocol {
     }
     
     private func handleDoneFormEvent() {
-        print("HERE")
-        let b = Rentor(date: Date(), name: "MEGA TEST", price: 250000, rentPrice: 10000, cashFlow: 2500, percentage: 30)
-        print("B = \(b)")
-        _ = RealRentalDBRepository.sharedInstance.create(with: b)
+        _ = RealRentalDBRepository.sharedInstance
+            .create(with:
+                        Rentor(date: Date(), name: "MEGA TEST", price: 250000,
+                               rentPrice: 10000, cashFlow: 2500, percentage: 30))
     }
 }

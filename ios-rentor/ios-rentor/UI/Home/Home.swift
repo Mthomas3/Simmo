@@ -13,7 +13,7 @@ import MapKit
 
 struct Home: View {
     // MARK: State
-    //@State private var dataTest: Loadable<[Rentor]>
+    @State private var dataTest: Loadable<[Rentor]>
     @State private var dataSources: [Rentor] = []
     @State private var displayAlert: Bool = false
     @State private var messageAlert: String = ""
@@ -32,18 +32,15 @@ struct Home: View {
     private let alertErrorTitle: String = "An error occured"
     private let fontScaleFactor: CGFloat = 0.04
     
-    init(details: Loadable<[Rentor]> = .notRequested) {
-        
-        //self.dataTest = rentals
-        
-         
+    init(rentor: Loadable<[Rentor]> = .notRequested) {
+
+        self._dataTest = .init(initialValue: rentor)
         
         self.onDelete = PassthroughSubject<Rentor, Never>()
         self.onTestError = PassthroughSubject<Void, Never>()
         self.homeViewModel = HomeViewModel()
         self.output = self.homeViewModel.transform(
-            HomeViewModel.Input(onDeleteSource: self.onDelete.eraseToAnyPublisher(),
-                                testError: self.onTestError.eraseToAnyPublisher()))
+            HomeViewModel.Input(onDeleteSource: self.onDelete.eraseToAnyPublisher()))
         
         UITableView.appearance().backgroundColor = .clear
         UITableViewCell.appearance().backgroundColor = .clear
@@ -52,10 +49,22 @@ struct Home: View {
     var body: some View {
         NavigationView {
             GeometryReader { geometry in
-                
-                //TODO remove
-                self.body(with: geometry.size, and: [])
+                self.body(with: geometry.size)
             }
+        }
+    }
+    
+    var notRequestedView: some View {
+        Text("").onAppear {
+        }
+    }
+    
+    private var content: AnyView {
+        switch self.dataTest {
+        case .notRequested: return AnyView(notRequestedView)
+        case let .isLoading(value): return AnyView(notRequestedView)
+        case let .loaded(value): return AnyView(self.displayRentals())
+        case let .failed(error): return AnyView(notRequestedView)
         }
     }
     
@@ -87,29 +96,25 @@ struct Home: View {
         .font(.system(size: 16, weight: .bold))
     }
     
-    private func body(with size: CGSize, and rental: [RentorEntity]) -> some View {
-        HStack {List {
+    private func displayRentals() -> some View {
+        self.displayRentalProperties()
+            .padding(.leading, 8)
+            .padding(.trailing, 8)
+            .padding(.bottom, 4)
+            .padding(.top, 4)
+            .listRowInsets(EdgeInsets())
+            .listRowBackground(Color.black.opacity(0.05))
+    }
+    
+    private func body(with size: CGSize) -> some View {
+        List {
             Section(header: self.headerListView()) {
-                self.displayRentalProperties()
-                    .padding(.leading, 8)
-                    .padding(.trailing, 8)
-                    .padding(.bottom, 4)
-                    .padding(.top, 4)
-                    .listRowInsets(EdgeInsets())
-                    .listRowBackground(Color.black.opacity(0.05))
+                self.displayRentals()
             }
         }.font(Font.system(size: self.fontSize(for: size)))
         .navigationBarItems(trailing: self.navigationBarAdd())
         .listStyle(GroupedListStyle())
         .navigationBarTitle(Text(self.navigationBarTitle), displayMode: .automatic)
-        Button(action: {
-            print("yolo")
-            self.onTestError.send(())
-        }, label: {
-            Text("MDR?")
-        })
-        }
-        
     }
     
     private func displayErrorOccured(message: String) {
@@ -146,9 +151,6 @@ struct Home: View {
             if let update = updateValue {
                 self.dataSources.append(update)
             }
-        }.onReceive(self.output.testDisplay) { value in
-            self.displayErrorOccured(message: value)
         }
-        
     }
 }
