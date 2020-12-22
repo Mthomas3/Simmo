@@ -115,9 +115,6 @@ internal final class HomeViewModel: ObservableObject, InteractorProtocol {
             }.eraseToAnyPublisher()
         
         let onUpdate = RealRentalDBRepository.sharedInstance.refresh()
-            .catch { (coreError) in
-                return Just(nil).eraseToAnyPublisher()
-            }.eraseToAnyPublisher()
         
         let testSources = RealRentalDBRepository.sharedInstance.fetch()
         

@@ -43,7 +43,7 @@ internal struct SimmulatorCellView: View {
     
     var body: some View {
         HStack(alignment: .center) {
-            self.headerViewCell(with: name).padding(.trailing, 30   )
+            self.headerViewCell(with: name).padding(.trailing, 30)
             Spacer()
             self.bodyViewCell(with: self.currentCell)
                 .frame(width: 80, alignment: .trailing)
