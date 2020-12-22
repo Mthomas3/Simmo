@@ -17,7 +17,7 @@ protocol RentalDBRepository {
     associatedtype ModelEntity
     
     func create(with item: ModelEntity) -> AnyPublisher<Void, CoreDataError>
-    func delete(with item: ModelEntity) throws -> AnyPublisher<Void, CoreDataError>
+    func delete(with item: ModelEntity) throws
     func update(with item: ModelEntity)
     func fetch() -> AnyPublisher<[ModelEntity], CoreDataError>
     func refresh() -> AnyPublisher<ModelEntity?, CoreDataError>
@@ -46,14 +46,17 @@ internal final class RealRentalDBRepository: RentalDBRepository {
     
     internal func create(with item: Rentor) -> AnyPublisher<Void, CoreDataError> {
         guard let rentorObject = item.store(in: self.context) else {
+            print("DO WE GET HERE? ")
             return AnyPublisher(Fail<Void, CoreDataError>(error: .createError))
         }
+        print("RENTOR = \(item)")
+        print("RENTOR OBJECT = \(rentorObject)")
         return self.coreDataManager.create(with: rentorObject)
     }
 
     internal func refresh() -> AnyPublisher<Rentor?, CoreDataError> {
         return self.coreDataManager.onUpdate()
-            .map { Rentor(managedObject: $0) }.mapError { return $0 }
+            .map { Rentor(managedObject: $0) }.mapError { $0 }
             .eraseToAnyPublisher()
     }
     
@@ -61,20 +64,28 @@ internal final class RealRentalDBRepository: RentalDBRepository {
         fatalError("[CoreDataRental][update] Not implemented yet")
     }
     
-    internal func delete(with item: Rentor) throws -> AnyPublisher<Void, CoreDataError> {
-        guard let rentorObject = item.store(in: self.context) else {
-            return AnyPublisher(Fail<Void, CoreDataError>(error: .deleteError))
+    internal func delete(with item: Rentor) throws {
+        if let rentorObject = item.store(in: self.context) {
+            try self.coreDataManager.delete(with: rentorObject)
         }
-        try self.coreDataManager.delete(with: rentorObject)
     }
     
     internal func fetch() -> AnyPublisher<[Rentor], CoreDataError> {
-        let result = self.coreDataManager.fetch().map { (rentorEntity) -> [Rentor] in
-            return Rentor(managedObject: rentorEntity)
-        }
+        return self.coreDataManager.fetch().map { (rentorEntity) -> [Rentor] in
+            var result: [Rentor] = []
+            rentorEntity.forEach { (item) in
+                if let data = Rentor(managedObject: item) {
+                    result.append(data)
+                }
+            }
+            return result
+        }.eraseToAnyPublisher()
     }
     
     internal func deleteOn(with item: Rentor) -> AnyPublisher<Void, CoreDataError> {
-        return self.coreDataManager.deleteOn(with: item)
+        guard let rentorObject = item.store(in: self.context) else {
+            return AnyPublisher(Fail<Void, CoreDataError>(error: .deleteError))
+        }
+        return self.coreDataManager.deleteOn(with: rentorObject)
     }
 }

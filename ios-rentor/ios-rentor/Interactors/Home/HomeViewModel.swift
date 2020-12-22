@@ -75,7 +75,7 @@ internal final class HomeViewModel: ObservableObject, InteractorProtocol {
         var shouldDisplayError: CurrentValueSubject<Bool, Never>
         var messageError: CurrentValueSubject<String, Never>
         var headerListValue: AnyPublisher<String, Never>
-        var onUpdate: AnyPublisher<Rentor, Never>
+        var onUpdate: AnyPublisher<Rentor?, Never>
         var testSources: AnyPublisher<[Rentor], CoreDataError>
         var testDisplay: AnyPublisher<String, Never>
     }
@@ -115,6 +115,9 @@ internal final class HomeViewModel: ObservableObject, InteractorProtocol {
             }.eraseToAnyPublisher()
         
         let onUpdate = RealRentalDBRepository.sharedInstance.refresh()
+            .catch { (coreError) in
+                return Just(nil).eraseToAnyPublisher()
+            }.eraseToAnyPublisher()
         
         let testSources = RealRentalDBRepository.sharedInstance.fetch()
         

@@ -22,7 +22,7 @@ extension ManagedEntity where Self: NSManagedObject {
     
     static var entityName: String {
         let nameMO = String(describing: Self.self)
-        let suffixIndex = nameMO.index(nameMO.endIndex, offsetBy: -2)
+        let suffixIndex = nameMO.index(nameMO.endIndex, offsetBy: 0)
         return String(nameMO[..<suffixIndex])
     }
     

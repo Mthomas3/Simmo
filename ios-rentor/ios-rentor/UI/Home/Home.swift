@@ -143,7 +143,9 @@ struct Home: View {
         }.onReceive(self.output.dataSources) { dataSources in
             self.dataSources = dataSources
         }.onReceive(self.output.onUpdate) { updateValue in
-            self.dataSources.append(updateValue)
+            if let update = updateValue {
+                self.dataSources.append(update)
+            }
         }.onReceive(self.output.testDisplay) { value in
             self.displayErrorOccured(message: value)
         }
