@@ -19,7 +19,7 @@ protocol RentalDBRepository {
     func create(with item: ModelEntity) -> AnyPublisher<Void, CoreDataError>
     func delete(with item: ModelEntity) throws
     func fetch() -> AnyPublisher<[ModelEntity], CoreDataError>
-    func refresh() -> AnyPublisher<ModelEntity?, CoreDataError>
+    func refresh() -> AnyPublisher<ModelEntity?, Never>
     func deleteOn(with item: ModelEntity) -> AnyPublisher<Void, CoreDataError>
 }
 
@@ -49,10 +49,9 @@ internal final class RealRentalDBRepository: RentalDBRepository {
         return self.coreDataManager.create(with: rentorObject)
     }
 
-    internal func refresh() -> AnyPublisher<Rentor?, CoreDataError> {
+    internal func refresh() -> AnyPublisher<Rentor?, Never> {
         return self.coreDataManager.onUpdate()
             .map { Rentor(managedObject: $0) }
-            .mapError {$0}
             .eraseToAnyPublisher()
     }
     
