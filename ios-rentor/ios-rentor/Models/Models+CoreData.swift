@@ -12,18 +12,17 @@ import CoreData
 protocol ManagedEntity: NSFetchRequestResult { }
 
 protocol ModelsManagedEntity {
-    associatedtype T
     
-    func store(in context: NSManagedObjectContext) -> T?
-    init?(managedObject: T)
+    associatedtype CoreEntity
+    
+    func store(in context: NSManagedObjectContext) -> CoreEntity?
+    init?(managedObject: CoreEntity)
 }
 
 extension ManagedEntity where Self: NSManagedObject {
     
     static var entityName: String {
-        let nameMO = String(describing: Self.self)
-        let suffixIndex = nameMO.index(nameMO.endIndex, offsetBy: 0)
-        return String(nameMO[..<suffixIndex])
+        return String(describing: Self.self)
     }
     
     static func insertNew(in context: NSManagedObjectContext) -> Self? {
@@ -38,10 +37,9 @@ extension ManagedEntity where Self: NSManagedObject {
 
 extension RentorEntity: ManagedEntity { }
 
-
 extension Rentor: ModelsManagedEntity {
     
-    internal typealias T = RentorEntity
+    internal typealias CoreEntity = RentorEntity
     
     func store(in context: NSManagedObjectContext) -> RentorEntity? {
         guard let rentor = RentorEntity.insertNew(in: context)
