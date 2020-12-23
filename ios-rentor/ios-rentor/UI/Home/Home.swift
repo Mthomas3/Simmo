@@ -54,20 +54,6 @@ struct Home: View {
         }
     }
     
-    var notRequestedView: some View {
-        Text("").onAppear {
-        }
-    }
-    
-    private var content: AnyView {
-        switch self.dataTest {
-        case .notRequested: return AnyView(notRequestedView)
-        case let .isLoading(value): return AnyView(notRequestedView)
-        case let .loaded(value): return AnyView(self.displayRentals())
-        case let .failed(error): return AnyView(notRequestedView)
-        }
-    }
-    
     private func fontSize(for size: CGSize) -> CGFloat {
         min(size.width, size.height) * self.fontScaleFactor
     }
@@ -96,20 +82,16 @@ struct Home: View {
         .font(.system(size: 16, weight: .bold))
     }
     
-    private func displayRentals() -> some View {
-        self.displayRentalProperties()
-            .padding(.leading, 8)
-            .padding(.trailing, 8)
-            .padding(.bottom, 4)
-            .padding(.top, 4)
-            .listRowInsets(EdgeInsets())
-            .listRowBackground(Color.black.opacity(0.05))
-    }
-    
     private func body(with size: CGSize) -> some View {
         List {
             Section(header: self.headerListView()) {
-                self.displayRentals()
+                self.displayRentalProperties()
+                    .padding(.leading, 8)
+                    .padding(.trailing, 8)
+                    .padding(.bottom, 4)
+                    .padding(.top, 4)
+                    .listRowInsets(EdgeInsets())
+                    .listRowBackground(Color.black.opacity(0.05))
             }
         }.font(Font.system(size: self.fontSize(for: size)))
         .navigationBarItems(trailing: self.navigationBarAdd())

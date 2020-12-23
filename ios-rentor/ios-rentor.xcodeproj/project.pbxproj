@@ -20,7 +20,7 @@
 		E9090D3724FA9F7800020390 /* ios_rentorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9090D3624FA9F7800020390 /* ios_rentorUITests.swift */; };
 		E90986E62582500D0089525F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E90986E52582500D0089525F /* GoogleService-Info.plist */; };
 		E9209C9325227E8700EDC0A9 /* SimmulatorCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9209C9225227E8700EDC0A9 /* SimmulatorCellView.swift */; };
-		E94492EF258BEC7F00B94481 /* rentalDBRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94492EE258BEC7F00B94481 /* rentalDBRepository.swift */; };
+		E94492EF258BEC7F00B94481 /* RentalDBRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94492EE258BEC7F00B94481 /* RentalDBRepository.swift */; };
 		E9665536250033B2003BC212 /* RentorEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9665535250033B2003BC212 /* RentorEntity.swift */; };
 		E9878556250BB0C200CF8519 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9878555250BB0C200CF8519 /* String+Ext.swift */; };
 		E98C257D252B922000E06E73 /* HomeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98C257C252B922000E06E73 /* HomeDetailView.swift */; };
@@ -87,7 +87,7 @@
 		E9090D3824FA9F7800020390 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E90986E52582500D0089525F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E9209C9225227E8700EDC0A9 /* SimmulatorCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimmulatorCellView.swift; sourceTree = "<group>"; };
-		E94492EE258BEC7F00B94481 /* rentalDBRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rentalDBRepository.swift; sourceTree = "<group>"; };
+		E94492EE258BEC7F00B94481 /* RentalDBRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentalDBRepository.swift; sourceTree = "<group>"; };
 		E9665535250033B2003BC212 /* RentorEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentorEntity.swift; sourceTree = "<group>"; };
 		E9878555250BB0C200CF8519 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		E98C257C252B922000E06E73 /* HomeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailView.swift; sourceTree = "<group>"; };
@@ -267,7 +267,7 @@
 		E94492ED258BEC5400B94481 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				E94492EE258BEC7F00B94481 /* rentalDBRepository.swift */,
+				E94492EE258BEC7F00B94481 /* RentalDBRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -658,7 +658,7 @@
 				E99042CC25043BBA0062B493 /* CoreDataManager.swift in Sources */,
 				E9D8D15D24FAF7B800DF5ABC /* MainView.swift in Sources */,
 				E9878556250BB0C200CF8519 /* String+Ext.swift in Sources */,
-				E94492EF258BEC7F00B94481 /* rentalDBRepository.swift in Sources */,
+				E94492EF258BEC7F00B94481 /* RentalDBRepository.swift in Sources */,
 				E9C3A0AE25570A1D003BF79F /* SettingViewModel.swift in Sources */,
 				E9209C9325227E8700EDC0A9 /* SimmulatorCellView.swift in Sources */,
 				E9090D1224FA9F7600020390 /* AppDelegate.swift in Sources */,

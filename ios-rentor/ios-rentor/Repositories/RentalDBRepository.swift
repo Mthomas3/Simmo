@@ -1,5 +1,5 @@
 //
-//  rentalDBRepository.swift
+//  RentalDBRepository.swift
 //  ios-rentor
 //
 //  Created by Thomas on 17/12/2020.
@@ -11,7 +11,7 @@ import Combine
 import UIKit
 import CoreData
 
-protocol RentalDBRepository {
+protocol DBRepositoryProtocol {
     
     associatedtype CoreEntity
     associatedtype ModelEntity
@@ -23,7 +23,7 @@ protocol RentalDBRepository {
     func deleteOn(with item: ModelEntity) -> AnyPublisher<Void, CoreDataError>
 }
 
-internal final class RealRentalDBRepository: RentalDBRepository {
+internal final class RealRentalDBRepository: DBRepositoryProtocol {
     
     private let coreDataManager: CoreDataManager<RentorEntity>
     private let context: NSManagedObjectContext
