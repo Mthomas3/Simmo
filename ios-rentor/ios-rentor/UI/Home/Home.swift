@@ -31,11 +31,11 @@ struct Home: View {
     private let navigationBarTitle: String = "Home 🏡"
     private let alertErrorTitle: String = "An error occured"
     private let fontScaleFactor: CGFloat = 0.04
-    
+        
     init(rentor: Loadable<[Rentor]> = .notRequested) {
 
         self._dataTest = .init(initialValue: rentor)
-        
+                
         self.onDelete = PassthroughSubject<Rentor, Never>()
         self.onTestError = PassthroughSubject<Void, Never>()
         self.homeViewModel = HomeViewModel()
@@ -105,10 +105,11 @@ struct Home: View {
     }
     
     private func displayRentalProperties() -> some View {
-        ForEach(self.dataSources) { rentalProperty in
+        ForEach(0 ..< self.dataSources.count, id: \.self) { (index) in
             ZStack {
-                RentalContentView(with: rentalProperty)
-                NavigationLink(destination: HomeDetailView(with: rentalProperty)) {
+                let rental = self.dataSources[index]
+                RentalContentView(with: rental)
+                NavigationLink(destination: HomeDetailView(with: rental)) {
                     EmptyView()
                 }.frame(width: 0)
                 .opacity(0)
@@ -118,12 +119,12 @@ struct Home: View {
             if let currentIndex = indexSet.first {
                 self.onDelete.send(self.dataSources[currentIndex])
             }
-        }
-        .alert(isPresented: self.$displayAlert) {
+        }.alert(isPresented: self.$displayAlert) {
             Alert(title: Text(self.alertErrorTitle),
-                  message: Text(self.messageAlert),
-                  primaryButton: .cancel(), secondaryButton: .destructive(Text("Retry")))
-        }.onReceive(self.output.shouldDisplayError) { shouldDisplayValue in
+            message: Text(self.messageAlert),
+            primaryButton: .cancel(), secondaryButton: .destructive(Text("Retry")))
+        }
+        .onReceive(self.output.shouldDisplayError) { shouldDisplayValue in
             self.displayAlert = shouldDisplayValue
         }.onReceive(self.output.messageError) { messageValue in
             self.messageAlert = messageValue

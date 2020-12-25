@@ -59,6 +59,7 @@ internal final class CoreDataManager<Entity> where Entity: NSManagedObject {
     internal func deleteOn(with data: Entity) -> AnyPublisher<Void, CoreDataError> {
         Future<Void, CoreDataError> {
             do {
+                self.context.delete(data)
                 $0(.success(try self.context.save() as Void))
             } catch {
                 $0(.failure(.deleteError))
