@@ -49,7 +49,7 @@ struct HomeDetailView: View {
     
     private func displayHeader() -> some View {
         Section(header: Text("Editions")) {
-            
+
         }
     }
     

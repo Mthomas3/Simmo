@@ -50,7 +50,7 @@ internal final class CoreDataManager<Entity> where Entity: NSManagedObject {
             }
         }.eraseToAnyPublisher()
     }
-    
+        
     internal func delete(with item: Entity) throws {
         self.context.delete(item)
         try self.context.save()

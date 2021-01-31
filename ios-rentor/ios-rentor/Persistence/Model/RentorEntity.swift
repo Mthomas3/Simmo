@@ -16,4 +16,5 @@ internal final class RentorEntity: NSManagedObject, Identifiable {
     @NSManaged public var rentPrice: Double
     @NSManaged public var cashFlow: Double
     @NSManaged public var percentageEffiency: Double
+    @NSManaged public var id: UUID
 }

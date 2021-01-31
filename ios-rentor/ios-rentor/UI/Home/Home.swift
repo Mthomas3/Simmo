@@ -123,8 +123,7 @@ struct Home: View {
             Alert(title: Text(self.alertErrorTitle),
             message: Text(self.messageAlert),
             primaryButton: .cancel(), secondaryButton: .destructive(Text("Retry")))
-        }
-        .onReceive(self.output.shouldDisplayError) { shouldDisplayValue in
+        }.onReceive(self.output.shouldDisplayError) { shouldDisplayValue in
             self.displayAlert = shouldDisplayValue
         }.onReceive(self.output.messageError) { messageValue in
             self.messageAlert = messageValue

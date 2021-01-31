@@ -56,8 +56,11 @@ internal final class RealRentalDBRepository: DBRepositoryProtocol {
     }
     
     internal func delete(with item: Rentor) throws {
-        if let rentorObject = item.store(in: self.context) {
-            try self.coreDataManager.delete(with: rentorObject)
+        if let request = RentorEntity.fetchRequest() as? NSFetchRequest<RentorEntity> {
+            request.predicate = NSPredicate(format: "name == %@", item.name ?? "")
+            if let item = try self.context.fetch(request).first {
+                try self.coreDataManager.delete(with: item)
+            }
         }
     }
     
