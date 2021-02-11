@@ -9,7 +9,15 @@
 import SwiftUI
 
 struct MainView: View {
-    @State private var index = 0
+    
+    private let store = AppStore(initialState: .init(homeState: HomeState()),
+                                 reducer: appReducer,
+                                 middlewares: [homeMiddleware(service:
+                                                                RealRentalDBRepository()),
+                                                                logMiddleware()])
+    init() {
+        self.store.dispatch(.home(action: .fetch))
+    }
     
     var body: some View {
         TabView {
@@ -17,6 +25,7 @@ struct MainView: View {
                 Image(systemName: "house")
                 Text("house")
             }.accentColor(.blue)
+            .environmentObject(store)
             
             SettingView().tabItem {
                 Image(systemName: "person")

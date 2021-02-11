@@ -8,9 +8,10 @@
 
 import Foundation
 
-internal enum CoreDataError: Error {
+internal enum CoreDataError: Error, CaseIterable {
     case fetchError
     case updateError
     case deleteError
     case createError
+    case unknown
 }

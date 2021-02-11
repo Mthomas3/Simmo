@@ -18,6 +18,11 @@ struct Home: View {
     @State private var headerList: String = ""
     @State private var showingSimmualatorView: Bool = false
     
+    //NEW***
+    @EnvironmentObject var store: AppStore
+    
+    //**END
+    
     // MARK: ViewModel
     private let homeViewModel: HomeViewModel
     private let output: HomeViewModel.Output
@@ -41,10 +46,42 @@ struct Home: View {
     var body: some View {
         NavigationView {
             GeometryReader { geometry in
-                self.body(with: geometry.size)
+                //self.body(with: geometry.size)
+                self.nRenderBody(with: geometry.size)
             }
         }
 
+    }
+    
+    func reloadView() {
+        self.store.dispatch(.home(action: .fetch))
+    }
+    
+    private func nRenderBody(with size: CGSize) -> some View {
+        
+        let shouldDisplayError = Binding<Bool>(
+            get: { self.store.state.homeState.fetchError != nil },
+            set: { _ in self.store.dispatch(.home(action: .fetchError(error: nil))) }
+        )
+        
+        return ZStack {
+            if self.store.state.homeState.fetchInProgress {
+                ProgressView("Fetching database...")
+            } else {
+                VStack {
+                    List {
+                        ForEach(self.store.state.homeState.current) { property in
+                            Text(property.name ?? "")
+                        }
+                    }
+                    Button("Tap me", action: { self.reloadView() })
+                }
+            }
+        }.alert(isPresented: shouldDisplayError) {
+            Alert(title: Text("An error has Ocurred"),
+                  message: Text(store.state.homeState.fetchError ?? ""),
+                  dismissButton: .default(Text("Got it!")))
+        }
     }
     
     private func fontSize(for size: CGSize) -> CGFloat {
@@ -129,7 +166,7 @@ struct Home: View {
                 .opacity(0)
                 .buttonStyle(PlainButtonStyle())
             }.listRowBackground(Color.clear)
-        }   .onDelete { indexSet in
+        }.onDelete { indexSet in
             if let currentIndex = indexSet.first {
                 self.onDelete.send(self.dataSources[currentIndex])
             }

@@ -31,7 +31,7 @@ internal final class RealRentalDBRepository: DBRepositoryProtocol {
     internal typealias CoreEntity = RentorEntity
     internal static let sharedInstance = RealRentalDBRepository()
     
-    private init() {
+    init() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate,
               let request = RentorEntity.fetchRequest() as? NSFetchRequest<RentorEntity> else {
             fatalError("[SIMMO][ERROR] AppDelegate failed CoreDataRental")

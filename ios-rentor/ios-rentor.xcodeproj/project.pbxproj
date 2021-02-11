@@ -20,7 +20,15 @@
 		E9090D3724FA9F7800020390 /* ios_rentorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9090D3624FA9F7800020390 /* ios_rentorUITests.swift */; };
 		E90986E62582500D0089525F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E90986E52582500D0089525F /* GoogleService-Info.plist */; };
 		E9209C9325227E8700EDC0A9 /* SimmulatorCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9209C9225227E8700EDC0A9 /* SimmulatorCellView.swift */; };
+		E923EDE125D5B33A0076DD92 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E923EDE025D5B33A0076DD92 /* AppState.swift */; };
+		E923EDE625D5B3E00076DD92 /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E923EDE525D5B3E00076DD92 /* AppStore.swift */; };
+		E923EDEC25D5B4810076DD92 /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E923EDEB25D5B4810076DD92 /* AppReducer.swift */; };
+		E923EDF225D5B4BD0076DD92 /* AppAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E923EDF125D5B4BD0076DD92 /* AppAction.swift */; };
+		E923EDF725D5B4DE0076DD92 /* HomeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E923EDF625D5B4DE0076DD92 /* HomeAction.swift */; };
+		E923EDFD25D5B51E0076DD92 /* LogMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = E923EDFC25D5B51E0076DD92 /* LogMiddleware.swift */; };
+		E923EE0525D5B57A0076DD92 /* HomeMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = E923EE0425D5B57A0076DD92 /* HomeMiddleware.swift */; };
 		E94492EF258BEC7F00B94481 /* RentalDBRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94492EE258BEC7F00B94481 /* RentalDBRepository.swift */; };
+		E960CF4225D5F0920037A26B /* HomeReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E960CF4125D5F0920037A26B /* HomeReducer.swift */; };
 		E9665536250033B2003BC212 /* RentorEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9665535250033B2003BC212 /* RentorEntity.swift */; };
 		E9878556250BB0C200CF8519 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9878555250BB0C200CF8519 /* String+Ext.swift */; };
 		E98C257D252B922000E06E73 /* HomeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98C257C252B922000E06E73 /* HomeDetailView.swift */; };
@@ -87,7 +95,15 @@
 		E9090D3824FA9F7800020390 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E90986E52582500D0089525F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E9209C9225227E8700EDC0A9 /* SimmulatorCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimmulatorCellView.swift; sourceTree = "<group>"; };
+		E923EDE025D5B33A0076DD92 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		E923EDE525D5B3E00076DD92 /* AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
+		E923EDEB25D5B4810076DD92 /* AppReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
+		E923EDF125D5B4BD0076DD92 /* AppAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAction.swift; sourceTree = "<group>"; };
+		E923EDF625D5B4DE0076DD92 /* HomeAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAction.swift; sourceTree = "<group>"; };
+		E923EDFC25D5B51E0076DD92 /* LogMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogMiddleware.swift; sourceTree = "<group>"; };
+		E923EE0425D5B57A0076DD92 /* HomeMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMiddleware.swift; sourceTree = "<group>"; };
 		E94492EE258BEC7F00B94481 /* RentalDBRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentalDBRepository.swift; sourceTree = "<group>"; };
+		E960CF4125D5F0920037A26B /* HomeReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeReducer.swift; sourceTree = "<group>"; };
 		E9665535250033B2003BC212 /* RentorEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentorEntity.swift; sourceTree = "<group>"; };
 		E9878555250BB0C200CF8519 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		E98C257C252B922000E06E73 /* HomeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailView.swift; sourceTree = "<group>"; };
@@ -189,6 +205,10 @@
 		E9090D1024FA9F7600020390 /* ios-rentor */ = {
 			isa = PBXGroup;
 			children = (
+				E923EDFB25D5B50E0076DD92 /* Middleware */,
+				E923EDF025D5B4B30076DD92 /* Actions */,
+				E923EDEA25D5B4670076DD92 /* Reducers */,
+				E923EDDF25D5B3320076DD92 /* AppState */,
 				E9B20D4925913E1100EC52D5 /* Models */,
 				E9449303258C094F00B94481 /* Interactors */,
 				E94492FF258C08C300B94481 /* UI */,
@@ -253,6 +273,42 @@
 				E9665535250033B2003BC212 /* RentorEntity.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		E923EDDF25D5B3320076DD92 /* AppState */ = {
+			isa = PBXGroup;
+			children = (
+				E923EDE025D5B33A0076DD92 /* AppState.swift */,
+				E923EDE525D5B3E00076DD92 /* AppStore.swift */,
+			);
+			path = AppState;
+			sourceTree = "<group>";
+		};
+		E923EDEA25D5B4670076DD92 /* Reducers */ = {
+			isa = PBXGroup;
+			children = (
+				E923EDEB25D5B4810076DD92 /* AppReducer.swift */,
+				E960CF4125D5F0920037A26B /* HomeReducer.swift */,
+			);
+			path = Reducers;
+			sourceTree = "<group>";
+		};
+		E923EDF025D5B4B30076DD92 /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				E923EDF125D5B4BD0076DD92 /* AppAction.swift */,
+				E923EDF625D5B4DE0076DD92 /* HomeAction.swift */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+		E923EDFB25D5B50E0076DD92 /* Middleware */ = {
+			isa = PBXGroup;
+			children = (
+				E923EDFC25D5B51E0076DD92 /* LogMiddleware.swift */,
+				E923EE0425D5B57A0076DD92 /* HomeMiddleware.swift */,
+			);
+			path = Middleware;
 			sourceTree = "<group>";
 		};
 		E94492EC258BEAD200B94481 /* System */ = {
@@ -660,6 +716,7 @@
 				E9878556250BB0C200CF8519 /* String+Ext.swift in Sources */,
 				E94492EF258BEC7F00B94481 /* RentalDBRepository.swift in Sources */,
 				E9C3A0AE25570A1D003BF79F /* SettingViewModel.swift in Sources */,
+				E923EDF225D5B4BD0076DD92 /* AppAction.swift in Sources */,
 				E9209C9325227E8700EDC0A9 /* SimmulatorCellView.swift in Sources */,
 				E9090D1224FA9F7600020390 /* AppDelegate.swift in Sources */,
 				E9AAA95525210CF1009841B8 /* SimmulatorCellViewModel.swift in Sources */,
@@ -670,14 +727,21 @@
 				E9665536250033B2003BC212 /* RentorEntity.swift in Sources */,
 				E9D8D16124FAF9D000DF5ABC /* SettingView.swift in Sources */,
 				E9A8C6692517B4BC000E8A28 /* HomeViewModel.swift in Sources */,
+				E923EDF725D5B4DE0076DD92 /* HomeAction.swift in Sources */,
 				E9B45CA124FD5ED400A79ECC /* rentorCoreData.xcdatamodeld in Sources */,
 				E9090D1424FA9F7600020390 /* SceneDelegate.swift in Sources */,
 				E9D8D15F24FAF98300DF5ABC /* SimmulatorView.swift in Sources */,
+				E960CF4225D5F0920037A26B /* HomeReducer.swift in Sources */,
 				E9B20D4B25913E2100EC52D5 /* Models+CoreData.swift in Sources */,
 				E9C3A0B425570D43003BF79F /* SettingCell.swift in Sources */,
 				E99042CA2502A16C0062B493 /* RentalEntityView.swift in Sources */,
+				E923EDE125D5B33A0076DD92 /* AppState.swift in Sources */,
+				E923EDFD25D5B51E0076DD92 /* LogMiddleware.swift in Sources */,
+				E923EDEC25D5B4810076DD92 /* AppReducer.swift in Sources */,
 				E9B20D552591403B00EC52D5 /* MockedData.swift in Sources */,
 				E9AAA950251B9244009841B8 /* SimmulatorModel.swift in Sources */,
+				E923EE0525D5B57A0076DD92 /* HomeMiddleware.swift in Sources */,
+				E923EDE625D5B3E00076DD92 /* AppStore.swift in Sources */,
 				E9AAA953251BDA4B009841B8 /* InteractorsProtocol.swift in Sources */,
 				E9AAA94E251A1031009841B8 /* SimmulatorViewModel.swift in Sources */,
 			);
