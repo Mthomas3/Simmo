@@ -9,11 +9,9 @@
 import SwiftUI
 import CoreData
 import Combine
-import MapKit
 
 struct Home: View {
     // MARK: State
-    @State private var dataTest: Loadable<[Rentor]>
     @State private var dataSources: [Rentor] = []
     @State private var displayAlert: Bool = false
     @State private var messageAlert: String = ""
@@ -24,20 +22,14 @@ struct Home: View {
     private let homeViewModel: HomeViewModel
     private let output: HomeViewModel.Output
     private let onDelete: PassthroughSubject<Rentor, Never>
-    
-    private let onTestError: PassthroughSubject<Void, Never>
-    
+        
     // MARK: Drawing Constants
     private let navigationBarTitle: String = "Home 🏡"
     private let alertErrorTitle: String = "An error occured"
     private let fontScaleFactor: CGFloat = 0.04
         
-    init(rentor: Loadable<[Rentor]> = .notRequested) {
-
-        self._dataTest = .init(initialValue: rentor)
-                
+    init() {
         self.onDelete = PassthroughSubject<Rentor, Never>()
-        self.onTestError = PassthroughSubject<Void, Never>()
         self.homeViewModel = HomeViewModel()
         self.output = self.homeViewModel.transform(
             HomeViewModel.Input(onDeleteSource: self.onDelete.eraseToAnyPublisher()))
@@ -52,6 +44,7 @@ struct Home: View {
                 self.body(with: geometry.size)
             }
         }
+
     }
     
     private func fontSize(for size: CGSize) -> CGFloat {
@@ -69,6 +62,10 @@ struct Home: View {
             Image(systemName: "plus")
                 .imageScale(.large)
                 .foregroundColor(Color.init("LightBlue"))
+//        }.sheet(isPresented: $showingSimmualatorView) {
+//            SimmulatorView(self.$showingSimmualatorView)
+//            //TestImageView(isViewOpen: self.$showingSimmualatorView)
+//        }
         }.sheet(isPresented: $showingSimmualatorView) {
             SimmulatorView(self.$showingSimmualatorView)
         }
@@ -104,6 +101,23 @@ struct Home: View {
         self.messageAlert = message
     }
     
+    private func nDisplayRentalProperties() -> some View {
+        ForEach(self.dataSources) { property in
+            ZStack {
+                RentalContentView(with: property)
+                NavigationLink(
+                    destination: HomeDetailView(with: property)) { EmptyView() }
+                    .frame(width: 0)
+                    .opacity(0)
+                    .buttonStyle(PlainButtonStyle())
+            }.listRowBackground(Color.clear)
+        }.onDelete { deleteIndex in
+            if let currentIndex = deleteIndex.first {
+                self.onDelete.send(self.dataSources[currentIndex])
+            }
+        }
+    }
+    
     private func displayRentalProperties() -> some View {
         ForEach(0 ..< self.dataSources.count, id: \.self) { (index) in
             ZStack {
@@ -115,7 +129,7 @@ struct Home: View {
                 .opacity(0)
                 .buttonStyle(PlainButtonStyle())
             }.listRowBackground(Color.clear)
-        }.onDelete { indexSet in
+        }   .onDelete { indexSet in
             if let currentIndex = indexSet.first {
                 self.onDelete.send(self.dataSources[currentIndex])
             }
@@ -123,13 +137,10 @@ struct Home: View {
             Alert(title: Text(self.alertErrorTitle),
             message: Text(self.messageAlert),
             primaryButton: .cancel(), secondaryButton: .destructive(Text("Retry")))
-        }.onReceive(self.output.shouldDisplayError) { shouldDisplayValue in
-            self.displayAlert = shouldDisplayValue
-        }.onReceive(self.output.messageError) { messageValue in
+        }.onReceive(self.output.errorMessage) { messageValue in
             self.messageAlert = messageValue
-        }.onReceive(self.output.dataSources) { dataSources in
-            self.dataSources = dataSources
-        }.onReceive(self.output.onUpdate) { updateValue in
+        }.onReceive(self.output.dataSources) { self.dataSources = $0 }
+        .onReceive(self.output.onUpdate) { updateValue in
             if let update = updateValue {
                 self.dataSources.append(update)
             }

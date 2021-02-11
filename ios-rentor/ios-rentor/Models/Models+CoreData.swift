@@ -59,6 +59,8 @@ extension Rentor: ModelsManagedEntity {
                   price: managedObject.price,
                   rentPrice: managedObject.rentPrice,
                   cashFlow: managedObject.cashFlow,
-                  percentage: managedObject.percentageEffiency)
+                  percentage: managedObject.percentageEffiency,
+                  offset: 0,
+                  isSwiped: false)
     }
 }

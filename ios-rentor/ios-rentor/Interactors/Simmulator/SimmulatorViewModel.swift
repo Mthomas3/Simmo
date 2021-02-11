@@ -63,6 +63,6 @@ internal final class SimmulatorViewModel: ObservableObject, InteractorProtocol {
         _ = RealRentalDBRepository.sharedInstance
             .create(with:
                         Rentor(date: Date(), name: "MEGA TEST", price: 250000,
-                               rentPrice: 10000, cashFlow: 2500, percentage: 30))
+                               rentPrice: 10000, cashFlow: 2500, percentage: 30, offset: 0, isSwiped: false))
     }
 }

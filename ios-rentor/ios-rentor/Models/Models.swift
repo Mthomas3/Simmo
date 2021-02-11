@@ -7,14 +7,17 @@
 //
 
 import Foundation
+import SwiftUI
 
-internal struct Rentor: Codable {
+internal struct Rentor: Codable, Hashable {
     let date: Date?
     let name: String?
     let price: Double
     let rentPrice: Double
     let cashFlow: Double
     let percentage: Double
+    var offset: CGFloat
+    var isSwiped: Bool
 }
 
 extension Rentor: Identifiable {
