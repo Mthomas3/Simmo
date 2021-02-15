@@ -11,11 +11,6 @@ import Combine
 
 internal typealias Middleware<State, Action> = (State, Action) -> AnyPublisher<Action, Never>?
 
-internal enum MiddlewareError: Error {
-    case unknown
-    case networkError
-}
-
 internal protocol MiddlewareProtocol {
     associatedtype EntityService: DBRepositoryProtocol
     

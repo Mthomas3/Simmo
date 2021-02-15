@@ -52,6 +52,7 @@
 		E9D8D15F24FAF98300DF5ABC /* SimmulatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D8D15E24FAF98200DF5ABC /* SimmulatorView.swift */; };
 		E9D8D16124FAF9D000DF5ABC /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D8D16024FAF9D000DF5ABC /* SettingView.swift */; };
 		E9D8D16324FC353700DF5ABC /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D8D16224FC353700DF5ABC /* Home.swift */; };
+		E9DE7BE325DABECD00EB68A2 /* MiddlewareError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DE7BE225DABECD00EB68A2 /* MiddlewareError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,6 +129,7 @@
 		E9D8D15E24FAF98200DF5ABC /* SimmulatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimmulatorView.swift; sourceTree = "<group>"; };
 		E9D8D16024FAF9D000DF5ABC /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		E9D8D16224FC353700DF5ABC /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		E9DE7BE225DABECD00EB68A2 /* MiddlewareError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiddlewareError.swift; sourceTree = "<group>"; };
 		F0B73656C48975407BCA3632 /* Pods-ios-rentorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-rentorTests.release.xcconfig"; path = "Target Support Files/Pods-ios-rentorTests/Pods-ios-rentorTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -310,6 +312,7 @@
 				E923EDFC25D5B51E0076DD92 /* LogMiddleware.swift */,
 				E923EE0425D5B57A0076DD92 /* HomeMiddleware.swift */,
 				E9C47BA825D6E5520082C0D6 /* Middleware.swift */,
+				E9DE7BE225DABECD00EB68A2 /* MiddlewareError.swift */,
 			);
 			path = Middleware;
 			sourceTree = "<group>";
@@ -720,6 +723,7 @@
 				E94492EF258BEC7F00B94481 /* RentalDBRepository.swift in Sources */,
 				E9C3A0AE25570A1D003BF79F /* SettingViewModel.swift in Sources */,
 				E923EDF225D5B4BD0076DD92 /* AppAction.swift in Sources */,
+				E9DE7BE325DABECD00EB68A2 /* MiddlewareError.swift in Sources */,
 				E9209C9325227E8700EDC0A9 /* SimmulatorCellView.swift in Sources */,
 				E9C47BA925D6E5520082C0D6 /* Middleware.swift in Sources */,
 				E9090D1224FA9F7600020390 /* AppDelegate.swift in Sources */,

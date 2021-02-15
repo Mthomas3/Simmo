@@ -24,7 +24,6 @@ final class HomeMiddleware: MiddlewareProtocol {
                     return Just(AppAction.action(action: .fetchError(error: MiddlewareError.unknown)))
                 }
             }.eraseToAnyPublisher()
-            
     }
     
     internal func middleware(service: RealRentalDBRepository) -> Middleware<AppState, AppAction> {

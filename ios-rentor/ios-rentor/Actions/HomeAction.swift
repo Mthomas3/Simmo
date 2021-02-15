@@ -15,6 +15,7 @@ internal protocol HomeActionProtocol {
 
 internal enum HomeAction: HomeActionProtocol {
     case fetch
-    case fetchComplete(home: [Rentor])
     case fetchError(error: MiddlewareError?)
+    
+    case fetchComplete(home: [Rentor])
 }
