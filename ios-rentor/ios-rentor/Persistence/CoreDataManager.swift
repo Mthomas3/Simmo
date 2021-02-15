@@ -44,15 +44,36 @@ internal final class CoreDataManager<Entity> where Entity: NSManagedObject {
         }.eraseToAnyPublisher()
     }
     
-    internal func fetch() -> AnyPublisher<[Entity], CoreDataError> {
-        return self.fetchTest()
-        /*Future<[Entity], CoreDataError> {
+    private func fetchCoreMocked() -> AnyPublisher<[Entity], CoreDataError> {
+        let randomLoadingTime = Double.random(in: 0..<5)
+        
+        return Future<[Entity], CoreDataError> { promise in
+            DispatchQueue.main.asyncAfter(deadline: .now() + randomLoadingTime) {
+                let generateRandomError = Int.random(in: 0..<2)
+                if generateRandomError == 0 {
+                    do {
+                        
+                        let path = Bundle.main.path(forResource: "Home", ofType: "json")
+                        
+                        print("SHOWING PATH = \(path)")
+                        
+                        promise(.success(try self.context.fetch(self.request)))
+                    } catch { promise(.failure(.fetchError)) }
+                }
+            }
+        }.eraseToAnyPublisher()
+    }
+    
+    private func fetchCore() -> AnyPublisher<[Entity], CoreDataError> {
+        Future<[Entity], CoreDataError> {
             do {
                 $0(.success(try self.context.fetch(self.request)))
-            } catch {
-                $0(.failure(.fetchError))
-            }
-        }.eraseToAnyPublisher()*/
+            } catch { $0(.failure(.fetchError)) }
+        }.eraseToAnyPublisher()
+    }
+    
+    internal func fetch() -> AnyPublisher<[Entity], CoreDataError> {
+        UserDefaults.standard.bool(forKey: "DEBUG") ? self.fetchCoreMocked() : self.fetchCore()
     }
     
     internal func onUpdate() -> AnyPublisher<Entity, Never> {

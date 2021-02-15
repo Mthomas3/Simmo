@@ -9,7 +9,6 @@
 import Foundation
 
 #if DEBUG
-
 extension Rentor {
     static let mockedData: [Rentor] = [
         Rentor(date: Date(), name: "Flat Simmulation",

@@ -45,9 +45,12 @@ struct Home: View {
 
     var body: some View {
         NavigationView {
-            GeometryReader { geometry in
-                //self.body(with: geometry.size)
-                self.nRenderBody(with: geometry.size)
+            if self.store.state.homeState.fetchInProgress {
+                ProgressView("Loading...")
+            } else {
+                GeometryReader { geometry in
+                    self.body(with: geometry.size)
+                }
             }
         }
 

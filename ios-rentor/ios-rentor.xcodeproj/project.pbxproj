@@ -53,6 +53,7 @@
 		E9D8D16124FAF9D000DF5ABC /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D8D16024FAF9D000DF5ABC /* SettingView.swift */; };
 		E9D8D16324FC353700DF5ABC /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D8D16224FC353700DF5ABC /* Home.swift */; };
 		E9DE7BE325DABECD00EB68A2 /* MiddlewareError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DE7BE225DABECD00EB68A2 /* MiddlewareError.swift */; };
+		E9F40B4725DADC6B008BA828 /* Home.json in Resources */ = {isa = PBXBuildFile; fileRef = E9F40B4625DADC6B008BA828 /* Home.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,6 +131,7 @@
 		E9D8D16024FAF9D000DF5ABC /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		E9D8D16224FC353700DF5ABC /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		E9DE7BE225DABECD00EB68A2 /* MiddlewareError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiddlewareError.swift; sourceTree = "<group>"; };
+		E9F40B4625DADC6B008BA828 /* Home.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Home.json; sourceTree = "<group>"; };
 		F0B73656C48975407BCA3632 /* Pods-ios-rentorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-rentorTests.release.xcconfig"; path = "Target Support Files/Pods-ios-rentorTests/Pods-ios-rentorTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -209,6 +211,7 @@
 		E9090D1024FA9F7600020390 /* ios-rentor */ = {
 			isa = PBXGroup;
 			children = (
+				E9DE7C1225DADBF900EB68A2 /* Mocks */,
 				E923EDFB25D5B50E0076DD92 /* Middleware */,
 				E923EDF025D5B4B30076DD92 /* Actions */,
 				E923EDEA25D5B4670076DD92 /* Reducers */,
@@ -457,6 +460,14 @@
 			path = Persistence;
 			sourceTree = "<group>";
 		};
+		E9DE7C1225DADBF900EB68A2 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				E9F40B4625DADC6B008BA828 /* Home.json */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -569,6 +580,7 @@
 			files = (
 				E9090D2124FA9F7800020390 /* LaunchScreen.storyboard in Resources */,
 				E90986E62582500D0089525F /* GoogleService-Info.plist in Resources */,
+				E9F40B4725DADC6B008BA828 /* Home.json in Resources */,
 				E9090D1E24FA9F7800020390 /* Preview Assets.xcassets in Resources */,
 				E9090D1B24FA9F7800020390 /* Assets.xcassets in Resources */,
 			);
