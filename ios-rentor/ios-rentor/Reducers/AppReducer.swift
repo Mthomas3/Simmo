@@ -25,7 +25,6 @@ internal final class AppReducer: AppReducerProtocol {
         switch action {
         case .action(action: let action):
             self.homeReducer.reducer(state: &state.homeState, action: action)
-
         }
     }
 }
