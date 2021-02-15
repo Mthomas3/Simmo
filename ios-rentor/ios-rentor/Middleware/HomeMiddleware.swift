@@ -9,35 +9,33 @@
 import Foundation
 import Combine
 
-internal enum HomeMiddlewareError: Error {
-    case unknown
-    case networkError
-}
-
-func homeMiddleware(service: RealRentalDBRepository) -> Middleware<AppState, AppAction> {
-    return { state, action in
-        switch action {
-        case .home(action: .fetch):
-            return service.fetch()
-                .subscribe(on: DispatchQueue.main)
-                .map { AppAction.home(action: .fetchComplete(home: $0)) }
-                .catch { (error: CoreDataError) -> Just<AppAction> in
-                    switch error {
-                    case .unknown:
-                        return Just(AppAction.home(action: .fetchError(error: HomeMiddlewareError.unknown)))
-                    case .fetchError:
-                        return Just(AppAction.home(action: .fetchError(error: HomeMiddlewareError.networkError)))
-                    case .updateError:
-                        return Just(AppAction.home(action: .fetchError(error: HomeMiddlewareError.networkError)))
-                    case .deleteError:
-                        return Just(AppAction.home(action: .fetchError(error: HomeMiddlewareError.networkError)))
-                    case .createError:
-                        return Just(AppAction.home(action: .fetchError(error: HomeMiddlewareError.networkError)))
-                    }
-                }.eraseToAnyPublisher()
-        default:
-            break
+final class HomeMiddleware: MiddlewareProtocol {
+    internal typealias EntityService = RealRentalDBRepository
+    
+    private func fetchHome(with service: RealRentalDBRepository) -> AnyPublisher<AppAction, Never> {
+        return service.fetch()
+            .subscribe(on: DispatchQueue.main)
+            .map { AppAction.action(action: .fetchComplete(home: $0))}
+            .catch {(error: CoreDataError) -> Just<AppAction> in
+                switch error {
+                case .fetchError:
+                    return Just(AppAction.action(action: .fetchError(error: MiddlewareError.unknown)))
+                default:
+                    return Just(AppAction.action(action: .fetchError(error: MiddlewareError.unknown)))
+                }
+            }.eraseToAnyPublisher()
+            
+    }
+    
+    internal func middleware(service: RealRentalDBRepository) -> Middleware<AppState, AppAction> {
+        return { state, action in
+            switch action {
+            case .action(action: .fetch):
+                return self.fetchHome(with: service)
+            default:
+                break
+            }
+            return Empty().eraseToAnyPublisher()
         }
-        return Empty().eraseToAnyPublisher()
     }
 }

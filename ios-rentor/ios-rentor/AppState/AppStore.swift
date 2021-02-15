@@ -9,7 +9,6 @@
 import Foundation
 import Combine
 
-typealias Middleware<State, Action> = (State, Action) -> AnyPublisher<Action, Never>?
 typealias AppStore = Store<AppState, AppAction>
 
 final class Store<State, Action>: ObservableObject {

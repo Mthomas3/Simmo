@@ -54,14 +54,14 @@ struct Home: View {
     }
     
     func reloadView() {
-        self.store.dispatch(.home(action: .fetch))
+        self.store.dispatch(.action(action: .fetch))
     }
     
     private func nRenderBody(with size: CGSize) -> some View {
         
         let shouldDisplayError = Binding<Bool>(
             get: { self.store.state.homeState.fetchError != nil },
-            set: { _ in self.store.dispatch(.home(action: .fetchError(error: nil))) }
+            set: { _ in self.store.dispatch(.action(action: .fetchError(error: nil))) }
         )
         
         return ZStack {
@@ -80,7 +80,9 @@ struct Home: View {
         }.alert(isPresented: shouldDisplayError) {
             Alert(title: Text("An error has Ocurred"),
                   message: Text(store.state.homeState.fetchError ?? ""),
-                  dismissButton: .default(Text("Got it!")))
+                  dismissButton: .default(Text("Retry...")) {
+                    self.reloadView()
+                  })
         }
     }
     

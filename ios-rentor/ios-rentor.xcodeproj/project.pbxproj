@@ -47,6 +47,7 @@
 		E9B45CA124FD5ED400A79ECC /* rentorCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9B45C9F24FD5ED400A79ECC /* rentorCoreData.xcdatamodeld */; };
 		E9C3A0AE25570A1D003BF79F /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C3A0AD25570A1D003BF79F /* SettingViewModel.swift */; };
 		E9C3A0B425570D43003BF79F /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C3A0B325570D43003BF79F /* SettingCell.swift */; };
+		E9C47BA925D6E5520082C0D6 /* Middleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C47BA825D6E5520082C0D6 /* Middleware.swift */; };
 		E9D8D15D24FAF7B800DF5ABC /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D8D15C24FAF7B800DF5ABC /* MainView.swift */; };
 		E9D8D15F24FAF98300DF5ABC /* SimmulatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D8D15E24FAF98200DF5ABC /* SimmulatorView.swift */; };
 		E9D8D16124FAF9D000DF5ABC /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D8D16024FAF9D000DF5ABC /* SettingView.swift */; };
@@ -122,6 +123,7 @@
 		E9B45CA024FD5ED400A79ECC /* Simmulations.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Simmulations.xcdatamodel; sourceTree = "<group>"; };
 		E9C3A0AD25570A1D003BF79F /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		E9C3A0B325570D43003BF79F /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
+		E9C47BA825D6E5520082C0D6 /* Middleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Middleware.swift; sourceTree = "<group>"; };
 		E9D8D15C24FAF7B800DF5ABC /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		E9D8D15E24FAF98200DF5ABC /* SimmulatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimmulatorView.swift; sourceTree = "<group>"; };
 		E9D8D16024FAF9D000DF5ABC /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 			children = (
 				E923EDFC25D5B51E0076DD92 /* LogMiddleware.swift */,
 				E923EE0425D5B57A0076DD92 /* HomeMiddleware.swift */,
+				E9C47BA825D6E5520082C0D6 /* Middleware.swift */,
 			);
 			path = Middleware;
 			sourceTree = "<group>";
@@ -718,6 +721,7 @@
 				E9C3A0AE25570A1D003BF79F /* SettingViewModel.swift in Sources */,
 				E923EDF225D5B4BD0076DD92 /* AppAction.swift in Sources */,
 				E9209C9325227E8700EDC0A9 /* SimmulatorCellView.swift in Sources */,
+				E9C47BA925D6E5520082C0D6 /* Middleware.swift in Sources */,
 				E9090D1224FA9F7600020390 /* AppDelegate.swift in Sources */,
 				E9AAA95525210CF1009841B8 /* SimmulatorCellViewModel.swift in Sources */,
 				E9090D1724FA9F7600020390 /* ios_rentor.xcdatamodeld in Sources */,

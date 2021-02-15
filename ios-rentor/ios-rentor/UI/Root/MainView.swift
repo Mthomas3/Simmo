@@ -10,13 +10,20 @@ import SwiftUI
 
 struct MainView: View {
     
-    private let store = AppStore(initialState: .init(homeState: HomeState()),
-                                 reducer: appReducer,
-                                 middlewares: [homeMiddleware(service:
-                                                                RealRentalDBRepository()),
-                                                                logMiddleware()])
+    private let homeMiddleware: HomeMiddleware
+    private let store: AppStore
+    private let appReducer: AppReducer
+    
     init() {
-        self.store.dispatch(.home(action: .fetch))
+        self.homeMiddleware = HomeMiddleware()
+        self.appReducer = AppReducer()
+        
+        self.store = AppStore(initialState: .init(homeState: HomeState()),
+                              reducer: self.appReducer.reducer(state:action:),
+                               middlewares: [self.homeMiddleware.middleware(service: RealRentalDBRepository()),
+                                             MiddlewareHelper.logMiddleware()])
+        
+        self.store.dispatch(.action(action: .fetch))
     }
     
     var body: some View {
@@ -25,7 +32,7 @@ struct MainView: View {
                 Image(systemName: "house")
                 Text("house")
             }.accentColor(.blue)
-            .environmentObject(store)
+            .environmentObject(self.store)
             
             SettingView().tabItem {
                 Image(systemName: "person")

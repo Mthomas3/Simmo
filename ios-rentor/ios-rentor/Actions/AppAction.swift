@@ -8,6 +8,10 @@
 
 import Foundation
 
-internal enum AppAction {
-    case home(action: HomeAction)
+internal protocol ActionProtocol {
+    static func action(action: HomeAction) -> Self
+}
+
+internal enum AppAction: ActionProtocol {
+    case action(action: HomeAction)
 }

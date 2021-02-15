@@ -25,14 +25,34 @@ internal final class CoreDataManager<Entity> where Entity: NSManagedObject {
         self.subject = PassthroughSubject<Entity, Never>()
     }
     
+    internal func fetchTest() -> AnyPublisher<[Entity], CoreDataError> {
+        let number = Double.random(in: 0..<5)
+        
+        return Future<[Entity], CoreDataError> { promise in
+            DispatchQueue.main.asyncAfter(deadline: .now() + number) {
+                let randomError = Int.random(in: 0..<2)
+                if randomError == 0 {
+                    do {
+                        promise(.success(try self.context.fetch(self.request)))
+                    } catch {
+                        promise(.failure(.fetchError))
+                    }
+                } else {
+                    promise(.failure(.fetchError))
+                }
+            }
+        }.eraseToAnyPublisher()
+    }
+    
     internal func fetch() -> AnyPublisher<[Entity], CoreDataError> {
-        Future<[Entity], CoreDataError> {
+        return self.fetchTest()
+        /*Future<[Entity], CoreDataError> {
             do {
                 $0(.success(try self.context.fetch(self.request)))
             } catch {
                 $0(.failure(.fetchError))
             }
-        }.eraseToAnyPublisher()
+        }.eraseToAnyPublisher()*/
     }
     
     internal func onUpdate() -> AnyPublisher<Entity, Never> {

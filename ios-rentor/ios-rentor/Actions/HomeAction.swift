@@ -8,8 +8,13 @@
 
 import Foundation
 
-internal enum HomeAction {
+internal protocol HomeActionProtocol {
+    static var fetch: Self { get }
+    static func fetchError(error: MiddlewareError?) -> Self
+}
+
+internal enum HomeAction: HomeActionProtocol {
     case fetch
     case fetchComplete(home: [Rentor])
-    case fetchError(error: HomeMiddlewareError?)
+    case fetchError(error: MiddlewareError?)
 }

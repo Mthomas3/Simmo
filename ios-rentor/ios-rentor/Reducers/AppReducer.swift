@@ -10,9 +10,22 @@ import Foundation
 
 typealias Reducer<State, Action> = (inout State, Action) -> Void
 
-func appReducer(state: inout AppState, action: AppAction) {
-    switch action {
-    case .home(let action):
-        homeReducer(state: &state.homeState, action: action)
+internal protocol AppReducerProtocol {
+    func reducer(state: inout AppState, action: AppAction)
+}
+
+internal final class AppReducer: AppReducerProtocol {
+    private let reducer: HomeReducer
+    
+    init() {
+        self.homeReducer = HomeReducer()
+    }
+    
+    func reducer(state: inout AppState, action: AppAction) {
+        switch action {
+        case .action(action: let action):
+            self.homeReducer.reducer(state: &state.homeState, action: action)
+
+        }
     }
 }
