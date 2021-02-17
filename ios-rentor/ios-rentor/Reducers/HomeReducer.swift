@@ -30,6 +30,7 @@ final class HomeReducer: ReducerProtocol {
         case .fetchComplete(let home):
             state.fetchInProgress = false
             state.current = home
+            state.headerTitle = "20.0$"
             
         case .fetchError(let error):
             state.fetchInProgress = false

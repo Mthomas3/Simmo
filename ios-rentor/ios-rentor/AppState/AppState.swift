@@ -14,6 +14,7 @@ struct AppState {
 
 struct HomeState {
     var current: [Rentor] = []
+    var headerTitle: String = "0"
     var fetchError: String?
     var fetchInProgress: Bool = false
 }

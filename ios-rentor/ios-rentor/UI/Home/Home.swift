@@ -44,22 +44,20 @@ struct Home: View {
         self.homeViewModel = nil
         self.onDelete = nil
         self.output = nil
-        
-        //self.store.dispatch(.action(action: .fetch))
     }
 
     var body: some View {
         NavigationView {
             if self.store.state.homeState.fetchInProgress {
                 ProgressView("Loading...")
-                    .onAppear {
-                        self.triggerLoadingData()
-                    }
             } else {
                 GeometryReader { geometry in
-                    self.body(with: geometry.size)
+                    //self.body(with: geometry.size)
+                    self.newerBody(with: geometry.size)
                 }
             }
+        }.onAppear {
+            self.store.dispatch(.action(action: .fetch))
         }
 
     }
@@ -133,6 +131,23 @@ struct Home: View {
         .font(.system(size: 16, weight: .bold))
     }
     
+    private func newerBody(with size: CGSize) -> some View {
+        List {
+            Section(header: Text(self.store.state.homeState.headerTitle)) {
+                self.newerDisplayRentalProperties()
+                    .padding(.leading, 8)
+                    .padding(.trailing, 8)
+                    .padding(.bottom, 4)
+                    .padding(.top, 4)
+                    .listRowInsets(EdgeInsets())
+                    .listRowBackground(Color.black.opacity(0.05))
+            }
+        }.font(Font.system(size: self.fontSize(for: size)))
+        .navigationBarItems(trailing: self.navigationBarAdd())
+        .listStyle(GroupedListStyle())
+        .navigationBarTitle(Text(self.navigationBarTitle), displayMode: .automatic)
+    }
+    
     private func body(with size: CGSize) -> some View {
         List {
             Section(header: self.headerListView()) {
@@ -169,6 +184,20 @@ struct Home: View {
             if let currentIndex = deleteIndex.first {
                 self.onDelete!.send(self.dataSources[currentIndex])
             }
+        }
+    }
+        
+    private func newerDisplayRentalProperties() -> some View {
+        ForEach(0 ..< self.store.state.homeState.current.count) { indexProperty in
+            ZStack {
+                let rental = self.store.state.homeState.current[indexProperty]
+                RentalContentView(with: rental)
+                NavigationLink(destination: HomeDetailView(with: rental)) {
+                    EmptyView()
+                }.frame(width: 0)
+                .opacity(0)
+                .buttonStyle(PlainButtonStyle())
+            }.listRowBackground(Color.clear)
         }
     }
     

@@ -29,6 +29,8 @@
 		E923EDFD25D5B51E0076DD92 /* LogMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = E923EDFC25D5B51E0076DD92 /* LogMiddleware.swift */; };
 		E923EE0525D5B57A0076DD92 /* HomeMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = E923EE0425D5B57A0076DD92 /* HomeMiddleware.swift */; };
 		E94492EF258BEC7F00B94481 /* RentalDBRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94492EE258BEC7F00B94481 /* RentalDBRepository.swift */; };
+		E95ECF4A25DD80BA0071C97D /* HomeContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95ECF4925DD80BA0071C97D /* HomeContainerView.swift */; };
+		E95ECF4F25DD81230071C97D /* HomeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95ECF4E25DD81230071C97D /* HomeListView.swift */; };
 		E960CF4225D5F0920037A26B /* HomeReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E960CF4125D5F0920037A26B /* HomeReducer.swift */; };
 		E9665536250033B2003BC212 /* RentorEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9665535250033B2003BC212 /* RentorEntity.swift */; };
 		E9878556250BB0C200CF8519 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9878555250BB0C200CF8519 /* String+Ext.swift */; };
@@ -108,6 +110,8 @@
 		E923EDFC25D5B51E0076DD92 /* LogMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogMiddleware.swift; sourceTree = "<group>"; };
 		E923EE0425D5B57A0076DD92 /* HomeMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMiddleware.swift; sourceTree = "<group>"; };
 		E94492EE258BEC7F00B94481 /* RentalDBRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentalDBRepository.swift; sourceTree = "<group>"; };
+		E95ECF4925DD80BA0071C97D /* HomeContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContainerView.swift; sourceTree = "<group>"; };
+		E95ECF4E25DD81230071C97D /* HomeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListView.swift; sourceTree = "<group>"; };
 		E960CF4125D5F0920037A26B /* HomeReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeReducer.swift; sourceTree = "<group>"; };
 		E9665535250033B2003BC212 /* RentorEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentorEntity.swift; sourceTree = "<group>"; };
 		E9878555250BB0C200CF8519 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
@@ -366,6 +370,8 @@
 			children = (
 				E99042C92502A16C0062B493 /* RentalEntityView.swift */,
 				E9D8D16224FC353700DF5ABC /* Home.swift */,
+				E95ECF4925DD80BA0071C97D /* HomeContainerView.swift */,
+				E95ECF4E25DD81230071C97D /* HomeListView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -753,6 +759,7 @@
 				E923EDF725D5B4DE0076DD92 /* HomeAction.swift in Sources */,
 				E9B45CA124FD5ED400A79ECC /* rentorCoreData.xcdatamodeld in Sources */,
 				E9090D1424FA9F7600020390 /* SceneDelegate.swift in Sources */,
+				E95ECF4A25DD80BA0071C97D /* HomeContainerView.swift in Sources */,
 				E9190C7725DD321500C804B5 /* CoreMockedManager.swift in Sources */,
 				E9D8D15F24FAF98300DF5ABC /* SimmulatorView.swift in Sources */,
 				E960CF4225D5F0920037A26B /* HomeReducer.swift in Sources */,
@@ -766,6 +773,7 @@
 				E9AAA950251B9244009841B8 /* SimmulatorModel.swift in Sources */,
 				E923EE0525D5B57A0076DD92 /* HomeMiddleware.swift in Sources */,
 				E923EDE625D5B3E00076DD92 /* AppStore.swift in Sources */,
+				E95ECF4F25DD81230071C97D /* HomeListView.swift in Sources */,
 				E9AAA953251BDA4B009841B8 /* InteractorsProtocol.swift in Sources */,
 				E9AAA94E251A1031009841B8 /* SimmulatorViewModel.swift in Sources */,
 			);

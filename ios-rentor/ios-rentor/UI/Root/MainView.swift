@@ -21,15 +21,23 @@ struct MainView: View {
                               reducer: self.appReducer.reducer(state:action:),
                                middlewares: [self.homeMiddleware.middleware(service: RealRentalDBRepository()),
                                              MiddlewareHelper.logMiddleware()])
+        
+        self.store.dispatch(.action(action: .fetch))
     }
     
     var body: some View {
         TabView {
-            Home().tabItem {
+            HomeContainerView().tabItem {
                 Image(systemName: "house")
                 Text("house")
             }.accentColor(.blue)
-            .environmentObject(self.store)
+            .environmentObject(store)
+            
+//            Home().tabItem {
+//                Image(systemName: "house")
+//                Text("house")
+//            }.accentColor(.blue)
+//            .environmentObject(self.store)
             
             SettingView().tabItem {
                 Image(systemName: "person")
