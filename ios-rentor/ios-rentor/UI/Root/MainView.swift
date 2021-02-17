@@ -17,13 +17,10 @@ struct MainView: View {
     init() {
         self.homeMiddleware = HomeMiddleware()
         self.appReducer = AppReducer()
-        
         self.store = AppStore(initialState: .init(homeState: HomeState()),
                               reducer: self.appReducer.reducer(state:action:),
                                middlewares: [self.homeMiddleware.middleware(service: RealRentalDBRepository()),
                                              MiddlewareHelper.logMiddleware()])
-        
-        self.store.dispatch(.action(action: .fetch))
     }
     
     var body: some View {

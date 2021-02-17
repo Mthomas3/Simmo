@@ -15,20 +15,23 @@ protocol DBRepositoryProtocol {
     
     associatedtype CoreEntity
     associatedtype ModelEntity
+    associatedtype MockedCoreEntity
     
-    func create(with item: ModelEntity) -> AnyPublisher<Void, CoreDataError>
+    func create(with item: ModelEntity) -> AnyPublisher<Void, CoreError>
     func delete(with item: ModelEntity) throws
-    func fetch() -> AnyPublisher<[ModelEntity], CoreDataError>
+    func fetch() -> AnyPublisher<[ModelEntity], CoreError>
     func refresh() -> AnyPublisher<ModelEntity?, Never>
-    func deleteOn(with item: ModelEntity) -> AnyPublisher<Void, CoreDataError>
+    func deleteOn(with item: ModelEntity) -> AnyPublisher<Void, CoreError>
 }
 
 internal final class RealRentalDBRepository: DBRepositoryProtocol {
     
     private let coreDataManager: CoreDataManager<RentorEntity>
     private let context: NSManagedObjectContext
+    private let coreMockedManager: CoreMockedManager<Rentor>
     
     internal typealias CoreEntity = RentorEntity
+    internal typealias MockedCoreEntity = Rentor
     internal static let sharedInstance = RealRentalDBRepository()
     
     init() {
@@ -36,15 +39,16 @@ internal final class RealRentalDBRepository: DBRepositoryProtocol {
               let request = RentorEntity.fetchRequest() as? NSFetchRequest<RentorEntity> else {
             fatalError("[SIMMO][ERROR] AppDelegate failed CoreDataRental")
         }
+        self.coreMockedManager = CoreMockedManager<Rentor>(with: "Home")
         self.context = appDelegate.persistentContainer.viewContext
         request.sortDescriptors = [NSSortDescriptor(key: "createDate", ascending: true)]
         self.coreDataManager = CoreDataManager<RentorEntity>(request: request,
                                                              context: appDelegate.persistentContainer.viewContext)
     }
     
-    internal func create(with item: Rentor) -> AnyPublisher<Void, CoreDataError> {
+    internal func create(with item: Rentor) -> AnyPublisher<Void, CoreError> {
         guard let rentorObject = item.store(in: self.context) else {
-            return AnyPublisher(Fail<Void, CoreDataError>(error: .createError))
+            return AnyPublisher(Fail<Void, CoreError>(error: .createCoreError))
         }
         return self.coreDataManager.create(with: rentorObject)
     }
@@ -64,7 +68,7 @@ internal final class RealRentalDBRepository: DBRepositoryProtocol {
         }
     }
     
-    internal func fetch() -> AnyPublisher<[Rentor], CoreDataError> {
+    private func fetchFromCore() -> AnyPublisher<[Rentor], CoreError> {
         return self.coreDataManager.fetch().map { (rentorEntity) -> [Rentor] in
             return rentorEntity.map {
                 return Rentor(managedObject: $0)
@@ -72,9 +76,23 @@ internal final class RealRentalDBRepository: DBRepositoryProtocol {
         }.eraseToAnyPublisher()
     }
     
-    internal func deleteOn(with item: Rentor) -> AnyPublisher<Void, CoreDataError> {
+    private func fetchFromMocked() -> AnyPublisher<[Rentor], CoreError> {
+        self.coreMockedManager.fetchMocked()
+    }
+    
+    internal func fetch() -> AnyPublisher<[Rentor], CoreError> {
+        if UserDefaults.standard.bool(forKey: "DEBUG") {
+            print("** fetching from mocked **")
+            return self.fetchFromMocked()
+        } else {
+            print("** fetching from core **")
+            return self.fetchFromCore()
+        }
+    }
+    
+    internal func deleteOn(with item: Rentor) -> AnyPublisher<Void, CoreError> {
         guard let rentorObject = item.store(in: self.context) else {
-            return AnyPublisher(Fail<Void, CoreDataError>(error: .deleteError))
+            return AnyPublisher(Fail<Void, CoreError>(error: .deleteCoreError))
         }
         return self.coreDataManager.deleteOn(with: rentorObject)
     }

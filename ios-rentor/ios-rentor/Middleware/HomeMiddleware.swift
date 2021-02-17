@@ -15,11 +15,14 @@ final class HomeMiddleware: MiddlewareProtocol {
     private func fetchHome(with service: RealRentalDBRepository) -> AnyPublisher<AppAction, Never> {
         return service.fetch()
             .subscribe(on: DispatchQueue.main)
-            .map { AppAction.action(action: .fetchComplete(home: $0))}
-            .catch {(error: CoreDataError) -> Just<AppAction> in
+            .map {
+                print("[SERVICE] = complete ")
+                return AppAction.action(action: .fetchComplete(home: $0))
+            }
+            .catch {(error: CoreError) -> Just<AppAction> in
                 switch error {
-                case .fetchError:
-                    return Just(AppAction.action(action: .fetchError(error: MiddlewareError.unknown)))
+                case .fetchCoreError, .fetchMockedError:
+                    return Just(AppAction.action(action: .fetchError(error: MiddlewareError.networkError)))
                 default:
                     return Just(AppAction.action(action: .fetchError(error: MiddlewareError.unknown)))
                 }
@@ -30,6 +33,7 @@ final class HomeMiddleware: MiddlewareProtocol {
         return { state, action in
             switch action {
             case .action(action: .fetch):
+                print("MIDDLE WARE ACTION = \(action)")
                 return self.fetchHome(with: service)
             default:
                 break

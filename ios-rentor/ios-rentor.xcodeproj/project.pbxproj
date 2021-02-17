@@ -19,6 +19,7 @@
 		E9090D2C24FA9F7800020390 /* ios_rentorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9090D2B24FA9F7800020390 /* ios_rentorTests.swift */; };
 		E9090D3724FA9F7800020390 /* ios_rentorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9090D3624FA9F7800020390 /* ios_rentorUITests.swift */; };
 		E90986E62582500D0089525F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E90986E52582500D0089525F /* GoogleService-Info.plist */; };
+		E9190C7725DD321500C804B5 /* CoreMockedManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9190C7625DD321500C804B5 /* CoreMockedManager.swift */; };
 		E9209C9325227E8700EDC0A9 /* SimmulatorCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9209C9225227E8700EDC0A9 /* SimmulatorCellView.swift */; };
 		E923EDE125D5B33A0076DD92 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E923EDE025D5B33A0076DD92 /* AppState.swift */; };
 		E923EDE625D5B3E00076DD92 /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E923EDE525D5B3E00076DD92 /* AppStore.swift */; };
@@ -97,6 +98,7 @@
 		E9090D3624FA9F7800020390 /* ios_rentorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_rentorUITests.swift; sourceTree = "<group>"; };
 		E9090D3824FA9F7800020390 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E90986E52582500D0089525F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E9190C7625DD321500C804B5 /* CoreMockedManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMockedManager.swift; sourceTree = "<group>"; };
 		E9209C9225227E8700EDC0A9 /* SimmulatorCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimmulatorCellView.swift; sourceTree = "<group>"; };
 		E923EDE025D5B33A0076DD92 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		E923EDE525D5B3E00076DD92 /* AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
@@ -456,6 +458,7 @@
 				E9B45C9F24FD5ED400A79ECC /* rentorCoreData.xcdatamodeld */,
 				E99042CB25043BBA0062B493 /* CoreDataManager.swift */,
 				E9090D4F24FAA49F00020390 /* Model */,
+				E9190C7625DD321500C804B5 /* CoreMockedManager.swift */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -750,6 +753,7 @@
 				E923EDF725D5B4DE0076DD92 /* HomeAction.swift in Sources */,
 				E9B45CA124FD5ED400A79ECC /* rentorCoreData.xcdatamodeld in Sources */,
 				E9090D1424FA9F7600020390 /* SceneDelegate.swift in Sources */,
+				E9190C7725DD321500C804B5 /* CoreMockedManager.swift in Sources */,
 				E9D8D15F24FAF98300DF5ABC /* SimmulatorView.swift in Sources */,
 				E960CF4225D5F0920037A26B /* HomeReducer.swift in Sources */,
 				E9B20D4B25913E2100EC52D5 /* Models+CoreData.swift in Sources */,

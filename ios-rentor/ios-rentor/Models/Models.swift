@@ -9,7 +9,7 @@
 import Foundation
 import SwiftUI
 
-internal struct Rentor: Codable, Hashable {
+internal struct Rentor: Codable, Hashable, MockedProtocol {
     let date: Date?
     let name: String?
     let price: Double

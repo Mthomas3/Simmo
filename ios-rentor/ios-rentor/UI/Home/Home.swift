@@ -24,9 +24,9 @@ struct Home: View {
     //**END
     
     // MARK: ViewModel
-    private let homeViewModel: HomeViewModel
-    private let output: HomeViewModel.Output
-    private let onDelete: PassthroughSubject<Rentor, Never>
+    private let homeViewModel: HomeViewModel?
+    private let output: HomeViewModel.Output?
+    private let onDelete: PassthroughSubject<Rentor, Never>?
         
     // MARK: Drawing Constants
     private let navigationBarTitle: String = "Home 🏡"
@@ -34,19 +34,27 @@ struct Home: View {
     private let fontScaleFactor: CGFloat = 0.04
         
     init() {
-        self.onDelete = PassthroughSubject<Rentor, Never>()
-        self.homeViewModel = HomeViewModel()
-        self.output = self.homeViewModel.transform(
-            HomeViewModel.Input(onDeleteSource: self.onDelete.eraseToAnyPublisher()))
+        //self.onDelete = PassthroughSubject<Rentor, Never>()
+        //self.homeViewModel = HomeViewModel()
+        //self.output = self.homeViewModel.transform(
+          //  HomeViewModel.Input(onDeleteSource: self.onDelete.eraseToAnyPublisher()))
         
         UITableView.appearance().backgroundColor = .clear
         UITableViewCell.appearance().backgroundColor = .clear
+        self.homeViewModel = nil
+        self.onDelete = nil
+        self.output = nil
+        
+        //self.store.dispatch(.action(action: .fetch))
     }
 
     var body: some View {
         NavigationView {
             if self.store.state.homeState.fetchInProgress {
                 ProgressView("Loading...")
+                    .onAppear {
+                        self.triggerLoadingData()
+                    }
             } else {
                 GeometryReader { geometry in
                     self.body(with: geometry.size)
@@ -54,6 +62,10 @@ struct Home: View {
             }
         }
 
+    }
+    
+    private func triggerLoadingData() {
+        self.store.dispatch(.action(action: .fetch))
     }
     
     func reloadView() {
@@ -115,7 +127,7 @@ struct Home: View {
     
     private func headerListView() -> some View {
         Text(self.headerList.concat(string: "$US / month 💵"))
-            .onReceive(self.output.headerListValue) { (value) in
+            .onReceive(self.output!.headerListValue) { (value) in
                 self.headerList = value
         }.foregroundColor(Color.init("LightBlue"))
         .font(.system(size: 16, weight: .bold))
@@ -155,7 +167,7 @@ struct Home: View {
             }.listRowBackground(Color.clear)
         }.onDelete { deleteIndex in
             if let currentIndex = deleteIndex.first {
-                self.onDelete.send(self.dataSources[currentIndex])
+                self.onDelete!.send(self.dataSources[currentIndex])
             }
         }
     }
@@ -173,16 +185,16 @@ struct Home: View {
             }.listRowBackground(Color.clear)
         }.onDelete { indexSet in
             if let currentIndex = indexSet.first {
-                self.onDelete.send(self.dataSources[currentIndex])
+                self.onDelete!.send(self.dataSources[currentIndex])
             }
         }.alert(isPresented: self.$displayAlert) {
             Alert(title: Text(self.alertErrorTitle),
             message: Text(self.messageAlert),
             primaryButton: .cancel(), secondaryButton: .destructive(Text("Retry")))
-        }.onReceive(self.output.errorMessage) { messageValue in
+        }.onReceive(self.output!.errorMessage) { messageValue in
             self.messageAlert = messageValue
-        }.onReceive(self.output.dataSources) { self.dataSources = $0 }
-        .onReceive(self.output.onUpdate) { updateValue in
+        }.onReceive(self.output!.dataSources) { self.dataSources = $0 }
+        .onReceive(self.output!.onUpdate) { updateValue in
             if let update = updateValue {
                 self.dataSources.append(update)
             }

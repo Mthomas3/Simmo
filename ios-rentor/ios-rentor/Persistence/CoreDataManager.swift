@@ -25,69 +25,26 @@ internal final class CoreDataManager<Entity> where Entity: NSManagedObject {
         self.subject = PassthroughSubject<Entity, Never>()
     }
     
-    internal func fetchTest() -> AnyPublisher<[Entity], CoreDataError> {
-        let number = Double.random(in: 0..<5)
-        
-        return Future<[Entity], CoreDataError> { promise in
-            DispatchQueue.main.asyncAfter(deadline: .now() + number) {
-                let randomError = Int.random(in: 0..<2)
-                if randomError == 0 {
-                    do {
-                        promise(.success(try self.context.fetch(self.request)))
-                    } catch {
-                        promise(.failure(.fetchError))
-                    }
-                } else {
-                    promise(.failure(.fetchError))
-                }
-            }
-        }.eraseToAnyPublisher()
-    }
-    
-    private func fetchCoreMocked() -> AnyPublisher<[Entity], CoreDataError> {
-        let randomLoadingTime = Double.random(in: 0..<5)
-        
-        return Future<[Entity], CoreDataError> { promise in
-            DispatchQueue.main.asyncAfter(deadline: .now() + randomLoadingTime) {
-                let generateRandomError = Int.random(in: 0..<2)
-                if generateRandomError == 0 {
-                    do {
-                        
-                        let path = Bundle.main.path(forResource: "Home", ofType: "json")
-                        
-                        print("SHOWING PATH = \(path)")
-                        
-                        promise(.success(try self.context.fetch(self.request)))
-                    } catch { promise(.failure(.fetchError)) }
-                }
-            }
-        }.eraseToAnyPublisher()
-    }
-    
-    private func fetchCore() -> AnyPublisher<[Entity], CoreDataError> {
-        Future<[Entity], CoreDataError> {
+    internal func fetch() -> AnyPublisher<[Entity], CoreError> {
+        Future<[Entity], CoreError> {
             do {
                 $0(.success(try self.context.fetch(self.request)))
-            } catch { $0(.failure(.fetchError)) }
+            } catch { $0(.failure(.fetchCoreError)) }
         }.eraseToAnyPublisher()
-    }
-    
-    internal func fetch() -> AnyPublisher<[Entity], CoreDataError> {
-        UserDefaults.standard.bool(forKey: "DEBUG") ? self.fetchCoreMocked() : self.fetchCore()
     }
     
     internal func onUpdate() -> AnyPublisher<Entity, Never> {
         return self.subject.eraseToAnyPublisher()
     }
     
-    internal func create(with item: Entity) -> AnyPublisher<Void, CoreDataError> {
-        Future<Void, CoreDataError> {
+    internal func create(with item: Entity) -> AnyPublisher<Void, CoreError> {
+        Future<Void, CoreError> {
             do {
                 self.context.insert(item)
                 self.subject.send(item)
                 $0(.success(try self.context.save() as Void))
             } catch {
-                $0(.failure(.createError))
+                $0(.failure(.createCoreError))
             }
         }.eraseToAnyPublisher()
     }
@@ -97,13 +54,13 @@ internal final class CoreDataManager<Entity> where Entity: NSManagedObject {
         try self.context.save()
     }
     
-    internal func deleteOn(with data: Entity) -> AnyPublisher<Void, CoreDataError> {
-        Future<Void, CoreDataError> {
+    internal func deleteOn(with data: Entity) -> AnyPublisher<Void, CoreError> {
+        Future<Void, CoreError> {
             do {
                 self.context.delete(data)
                 $0(.success(try self.context.save() as Void))
             } catch {
-                $0(.failure(.deleteError))
+                $0(.failure(.deleteCoreError))
             }
         }.eraseToAnyPublisher()
     }

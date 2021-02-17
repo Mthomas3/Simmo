@@ -8,10 +8,17 @@
 
 import Foundation
 
-internal enum CoreDataError: Error, CaseIterable {
-    case fetchError
-    case updateError
-    case deleteError
-    case createError
+internal enum CoreError: Error, CaseIterable {
+    
+    case fetchCoreError
+    case updateCoreError
+    case deleteCoreError
+    case createCoreError
+    
+    case fetchMockedError
+    case updateMockedError
+    case deleteMockedError
+    case createMockedError
+    
     case unknown
 }
