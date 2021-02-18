@@ -13,7 +13,7 @@ internal protocol MockedProtocol {
     
 }
 
-internal final class CoreMockedManager<Entity> where Entity: MockedProtocol {
+internal final class CoreMockedManager<Entity> where Entity: Decodable {
     private var generateError: Bool = false
     private let fileName: String
     
@@ -31,17 +31,10 @@ internal final class CoreMockedManager<Entity> where Entity: MockedProtocol {
                         if let path = Bundle.main.path(forResource: "Home", ofType: "json") {
                             do {
                                 let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-                                let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
-                                print(jsonResult)
-                                let rentor = Rentor(date: Date(), name: "toto", price: 120.0, rentPrice: 120.0, cashFlow: 120.0, percentage: 12.0, offset: 10, isSwiped: false)
-                                let rentor2 = Rentor(date: Date(), name: "toto", price: 120.0, rentPrice: 120.0, cashFlow: 120.0, percentage: 12.0, offset: 10, isSwiped: false)
-                                let rentor3 = Rentor(date: Date(), name: "toto", price: 120.0, rentPrice: 120.0, cashFlow: 120.0, percentage: 12.0, offset: 10, isSwiped: false)
-                                var x_Rentor: [Rentor] = []
-                                x_Rentor.append(rentor)
-                                x_Rentor.append(rentor2)
-                                x_Rentor.append(rentor3)
-                                promise(.success(x_Rentor as! [Entity]))
-                            } catch { print("mdr toi")
+                                let jsonResult = try JSONDecoder().decode([Rentor].self, from: data)
+                                promise(.success(jsonResult as! [Entity]))
+                            } catch {
+                                print("error")
                                 promise(.failure(.fetchMockedError))
                             }
                         }

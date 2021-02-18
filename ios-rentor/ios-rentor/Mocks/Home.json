@@ -1,19 +1,64 @@
 [ {
-   "id" : 1,
-   "cashFlow" : 120.0,
-   "createDate" : "2019-09-05T00:00:00.000",
-   "name" : "Thomas Big Test",
-   "PercentageEffiency" : 93.0,
-   "price" : 30.0,
-   "rentPrice" : 30.0,
+   "name" : "Thomas Small Test",
+   "price" : 50.0,
+   "rentPrice" : 50.0,
+   "cashFlow" : 50.0,
+   "percentage" : 50.0,
+   "offset" : 0,
+   "isSwiped" : true
  },
 {
-   "id" : 2,
-   "cashFlow" : 120.0,
-   "createDate" : "2019-09-05T00:00:00.000",
-   "name" : "Thomas small Test",
-   "PercentageEffiency" : 93.0,
-   "price" : 30.0,
-   "rentPrice" : 30.0,
+    "name" : "Thomas Small Test",
+    "price" : 50.0,
+    "rentPrice" : 50.0,
+    "cashFlow" : 50.0,
+    "percentage" : 50.0,
+    "offset" : 0,
+    "isSwiped" : true
+ },
+{
+    "name" : "Thomas Small Test",
+    "price" : 50.0,
+    "rentPrice" : 50.0,
+    "cashFlow" : 50.0,
+    "percentage" : 50.0,
+    "offset" : 0,
+    "isSwiped" : true
+ },
+{
+    "name" : "Thomas Small Test",
+    "price" : 50.0,
+    "rentPrice" : 50.0,
+    "cashFlow" : 50.0,
+    "percentage" : 50.0,
+    "offset" : 0,
+    "isSwiped" : true
+ },
+{
+    "name" : "Thomas Small Test",
+    "price" : 50.0,
+    "rentPrice" : 50.0,
+    "cashFlow" : 50.0,
+    "percentage" : 50.0,
+    "offset" : 0,
+    "isSwiped" : true
+ },
+{
+    "name" : "Thomas Small Test",
+    "price" : 50.0,
+    "rentPrice" : 50.0,
+    "cashFlow" : 50.0,
+    "percentage" : 50.0,
+    "offset" : 0,
+    "isSwiped" : true
+ },
+{
+    "name" : "Thomas Small Test",
+    "price" : 50.0,
+    "rentPrice" : 50.0,
+    "cashFlow" : 50.0,
+    "percentage" : 50.0,
+    "offset" : 0,
+    "isSwiped" : true
  }
 ]
