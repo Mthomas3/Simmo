@@ -21,10 +21,12 @@ struct BackgroundView: View {
 
 struct HomeListView: View {
     
-    private let navigationBarTitle: String = "Home"
+    private let navigationBarTitle: String = "Home 🏡"
     
     public var properties: [Rentor]
     public let onDelete: (IndexSet) -> Void
+    
+    @State var showingAddForm = false
     
     var body: some View {
         ZStack {
@@ -32,6 +34,7 @@ struct HomeListView: View {
             NavigationView {
                 propertyList
                     .navigationBarTitle(Text(self.navigationBarTitle))
+                    .navigationBarItems(trailing: addButton)
             }
         }
     }
@@ -43,14 +46,41 @@ struct HomeListView_Previews: PreviewProvider {
     }
 }
 
-
 extension HomeListView {
     var propertyList: some View {
         Group {
-            if (properties.count > 0) {
-                Text("Something inside bro \(properties[0].name ?? "")")
+            if properties.count > 0 {
+                List {
+                    ForEach(properties) { property in
+                        ZStack {
+                            HomeRowView(rentor: property)
+                                .listRowBackground(Color.clear)
+                                .listRowInsets(EdgeInsets())
+                            
+                            NavigationLink(destination: HomeDetailView(with: property)) {
+                                EmptyView()
+                            }.frame(width: 0)
+                            .opacity(0)
+                            .buttonStyle(PlainButtonStyle())
+                            .background(Color.red)
+                            
+                        }.listRowBackground(Color.clear)
+                    }.onDelete(perform: onDelete)
+                }.listStyle(PlainListStyle())
             } else {
                 Text("Nothing inside")
+            }
+        }
+    }
+    
+    var addButton: some View {
+        Group {
+            Button(action: { showingAddForm.toggle() }) {
+                Image(systemName: "plus.circle")
+                    .imageScale(.large)
+                    .foregroundColor(Color.init("LightBlue"))
+            }.sheet(isPresented: $showingAddForm) {
+                SimmulatorView($showingAddForm)
             }
         }
     }

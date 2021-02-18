@@ -82,10 +82,8 @@ internal final class RealRentalDBRepository: DBRepositoryProtocol {
     
     internal func fetch() -> AnyPublisher<[Rentor], CoreError> {
         if UserDefaults.standard.bool(forKey: "DEBUG") {
-            print("** fetching from mocked **")
             return self.fetchFromMocked()
         } else {
-            print("** fetching from core **")
             return self.fetchFromCore()
         }
     }
