@@ -40,6 +40,7 @@ internal final class CoreDataManager<Entity> where Entity: NSManagedObject {
     internal func create(with item: Entity) -> AnyPublisher<Void, CoreError> {
         Future<Void, CoreError> {
             do {
+                print("we add something here \(item)")
                 self.context.insert(item)
                 self.subject.send(item)
                 $0(.success(try self.context.save() as Void))
@@ -49,9 +50,17 @@ internal final class CoreDataManager<Entity> where Entity: NSManagedObject {
         }.eraseToAnyPublisher()
     }
         
-    internal func delete(with item: Entity) throws {
-        self.context.delete(item)
-        try self.context.save()
+    internal func delete(with item: Entity) -> AnyPublisher<Void, CoreError> {
+        Future<Void, CoreError> {
+            do {
+                self.context.delete(item)
+                $0(.success(try self.context.save() as Void))
+            } catch {
+                $0(.failure(.deleteCoreError))
+            }
+        }.eraseToAnyPublisher()
+//        self.context.delete(item)
+//        try self.context.save()
     }
     
     internal func deleteOn(with data: Entity) -> AnyPublisher<Void, CoreError> {

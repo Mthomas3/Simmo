@@ -8,20 +8,10 @@
 
 import SwiftUI
 
-struct BackgroundView: View {
-    let color1 = Color(red: 0.235, green: 0.267, blue: 0.318)
-    let color2 = Color(red: 0.07, green: 0.078, blue: 0.092)
-    
-    var body: some View {
-        LinearGradient(gradient: Gradient(colors: [color1, color2]),
-                       startPoint: .top,
-                       endPoint: .bottom).edgesIgnoringSafeArea(.all)
-    }
-}
-
 struct HomeListView: View {
     
     private let navigationBarTitle: String = "Home 🏡"
+    @EnvironmentObject private var store: AppStore
     
     public var properties: [Rentor]
     public let onDelete: (IndexSet) -> Void
@@ -29,14 +19,13 @@ struct HomeListView: View {
     @State var showingAddForm = false
     
     var body: some View {
-        ZStack {
-            BackgroundView()
-            NavigationView {
-                propertyList
-                    .navigationBarTitle(Text(self.navigationBarTitle))
-                    .navigationBarItems(trailing: addButton)
-            }
-        }
+        NavigationView {
+             ZStack {
+                Color.black.opacity(0.05).edgesIgnoringSafeArea(.all)
+                propertyImproved
+             }.navigationBarTitle(Text(self.navigationBarTitle))
+             .navigationBarItems(trailing: addButton)
+         }
     }
 }
 
@@ -47,11 +36,39 @@ struct HomeListView_Previews: PreviewProvider {
 }
 
 extension HomeListView {
-    var propertyList: some View {
+    
+    var propertyImproved: some View {
         Group {
             if properties.count > 0 {
                 List {
                     ForEach(properties) { property in
+                        ZStack {
+                            HomeRowView(rentor: property)
+                                .padding()
+                                .background(Color.white)
+                                .cornerRadius(20)
+                                .listRowInsets(EdgeInsets())
+                            
+                            NavigationLink(destination: HomeDetailView(with: property)) {
+                                EmptyView()
+                            }.frame(width: 0)
+                            .opacity(0)
+                            
+                        }.listRowBackground(Color.clear)
+                    }.onDelete(perform: onDelete)
+                }.listStyle(PlainListStyle())
+            } else {
+                Text("No properties \(properties.count)")
+            }
+        }
+    }
+    
+    var propertyList: some View {
+        Group {
+            if properties.count > 0 {
+                List {
+                    ForEach(store.state.homeState.homeRentors) { property in
+                        //HomeRowView(rentor: property)
                         ZStack {
                             HomeRowView(rentor: property)
                                 .listRowBackground(Color.clear)
@@ -65,10 +82,27 @@ extension HomeListView {
                             .background(Color.red)
                             
                         }.listRowBackground(Color.clear)
+                        .background(Color.pink)
+                        .listRowBackground(Color.green)
                     }.onDelete(perform: onDelete)
                 }.listStyle(PlainListStyle())
+                .background(Color.gray)
             } else {
                 Text("Nothing inside")
+            }
+        }.background(Color.green)
+    }
+    
+    
+    var testButton: some View {
+        Group {
+            Button(action: {
+                    store.dispatch(.action(action: .fetch))
+                print("current = \(store.state.homeState.homeRentors.count)")
+            }) {
+                Image(systemName: "plus")
+                    .imageScale(.large)
+                    .foregroundColor(Color.init("LightBlue"))
             }
         }
     }
@@ -81,6 +115,7 @@ extension HomeListView {
                     .foregroundColor(Color.init("LightBlue"))
             }.sheet(isPresented: $showingAddForm) {
                 SimmulatorView($showingAddForm)
+                    .environmentObject(store)
             }
         }
     }

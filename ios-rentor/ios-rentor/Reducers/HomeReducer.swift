@@ -23,24 +23,12 @@ final class HomeReducer: ReducerProtocol {
     
     func reducer(state: inout HomeState, action: HomeAction) {
         switch action {
-        case .fetch:
-            state.fetchError = nil
-            state.fetchInProgress = true
-            
-        case .fetchComplete(let home):
-            state.fetchInProgress = false
-            state.current = home
-            state.headerTitle = "20.0$"
-            
-        case .fetchError(let error):
-            state.fetchInProgress = false
-            
-            switch error {
-            case .networkError:
-                    state.fetchError = "Opps. ERROR NETWORK"
-            default:
-                    state.fetchError = "ERROR UNKNOWN"
-            }
+        case .fetchComplete(let rentors):
+            print("INSIDE REDUCEER **************************************")
+            print(rentors)
+            state.homeRentors = rentors
+        default:
+            break
         }
     }
 }

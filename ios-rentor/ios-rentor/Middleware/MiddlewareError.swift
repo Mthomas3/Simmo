@@ -11,4 +11,6 @@ import Foundation
 internal enum MiddlewareError: Error {
     case unknown
     case networkError
+    case deleteError
+    case updateError
 }

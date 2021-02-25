@@ -10,16 +10,18 @@ import SwiftUI
 
 struct HomeContainerView: View {
     private let progressTitle: String = "Loading..."
-    
+        
     @EnvironmentObject var store: AppStore
     
+    init() {
+        UITableView.appearance().backgroundColor = .clear
+        UITableViewCell.appearance().backgroundColor = .clear
+    }
+    
     var body: some View {
-        if store.state.homeState.fetchInProgress {
-            ProgressView(self.progressTitle)
-        } else {
-            HomeListView(properties: store.state.homeState.current,
-                         onDelete: deleteProperty(at:))
-        }
+        HomeListView(properties: store.state.homeState.homeRentors,
+                     onDelete: deleteProperty(at:))
+            .environmentObject(store)
     }
 }
 
@@ -31,8 +33,8 @@ struct HomeContainerView_Previews: PreviewProvider {
 
 extension HomeContainerView {
     func deleteProperty(at offsets: IndexSet) {
-        for o in offsets {
-            print("delete \(o)")
+        if let first = offsets.first {
+            print("[we should delete this = \(store.state.homeState.homeRentors[first])]")
         }
     }
 }

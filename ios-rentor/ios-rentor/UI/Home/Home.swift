@@ -47,23 +47,16 @@ struct Home: View {
     }
 
     var body: some View {
-        NavigationView {
-            if self.store.state.homeState.fetchInProgress {
-                ProgressView("Loading...")
-            } else {
-                GeometryReader { geometry in
-                    //self.body(with: geometry.size)
-                    self.newerBody(with: geometry.size)
-                }
+        return NavigationView {
+            GeometryReader { geometry in
+                //self.body(with: geometry.size)
+                Text("")
             }
-        }.onAppear {
-            self.store.dispatch(.action(action: .fetch))
         }
-
     }
     
     private func triggerLoadingData() {
-        self.store.dispatch(.action(action: .fetch))
+        //self.store.dispatch(.action(action: .fetch))
     }
     
     func reloadView() {
@@ -77,26 +70,28 @@ struct Home: View {
             set: { _ in self.store.dispatch(.action(action: .fetchError(error: nil))) }
         )
         
-        return ZStack {
-            if self.store.state.homeState.fetchInProgress {
-                ProgressView("Fetching database...")
-            } else {
-                VStack {
-                    List {
-                        ForEach(self.store.state.homeState.current) { property in
-                            Text(property.name ?? "")
-                        }
-                    }
-                    Button("Tap me", action: { self.reloadView() })
-                }
-            }
-        }.alert(isPresented: shouldDisplayError) {
-            Alert(title: Text("An error has Ocurred"),
-                  message: Text(store.state.homeState.fetchError ?? ""),
-                  dismissButton: .default(Text("Retry...")) {
-                    self.reloadView()
-                  })
-        }
+        return Text("")
+        
+//        return ZStack {
+//            if self.store.state.homeState.fetchInProgress {
+//                ProgressView("Fetching database...")
+//            } else {
+//                VStack {
+//                    List {
+//                        ForEach(self.store.state.homeState.current) { property in
+//                            Text(property.name ?? "")
+//                        }
+//                    }
+//                    Button("Tap me", action: { self.reloadView() })
+//                }
+//            }
+//        }.alert(isPresented: shouldDisplayError) {
+//            Alert(title: Text("An error has Ocurred"),
+//                  message: Text(store.state.homeState.fetchError ?? ""),
+//                  dismissButton: .default(Text("Retry...")) {
+//                    self.reloadView()
+//                  })
+//        }
     }
     
     private func fontSize(for size: CGSize) -> CGFloat {
@@ -188,9 +183,9 @@ struct Home: View {
     }
         
     private func newerDisplayRentalProperties() -> some View {
-        ForEach(0 ..< self.store.state.homeState.current.count) { indexProperty in
+        ForEach(0 ..< self.store.state.homeState.homeRentors.count) { indexProperty in
             ZStack {
-                let rental = self.store.state.homeState.current[indexProperty]
+                let rental = self.store.state.homeState.homeRentors[indexProperty]
                 RentalContentView(with: rental)
                 NavigationLink(destination: HomeDetailView(with: rental)) {
                     EmptyView()

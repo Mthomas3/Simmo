@@ -7,14 +7,14 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct AppState {
     var homeState: HomeState
 }
 
-struct HomeState {
-    var current: [Rentor] = []
+class HomeState {
+    var homeRentors: [Rentor] = []
     var headerTitle: String = "0"
     var fetchError: String?
-    var fetchInProgress: Bool = false
 }

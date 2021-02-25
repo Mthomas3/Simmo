@@ -16,8 +16,39 @@ final class HomeMiddleware: MiddlewareProtocol {
         return service.fetch()
             .subscribe(on: DispatchQueue.main)
             .map {
-                print("[SERVICE] = complete ")
                 return AppAction.action(action: .fetchComplete(home: $0))
+            }
+            .catch {(error: CoreError) -> Just<AppAction> in
+                switch error {
+                case .fetchCoreError, .fetchMockedError:
+                    return Just(AppAction.action(action: .fetchError(error: MiddlewareError.networkError)))
+                default:
+                    return Just(AppAction.action(action: .fetchError(error: MiddlewareError.unknown)))
+                }
+            }.eraseToAnyPublisher()
+    }
+    
+    private func addProperty(with service: RealRentalDBRepository, new item: Rentor) -> AnyPublisher<AppAction, Never> {
+        return service.create(with: item)
+            .map {
+                return AppAction.action(action: .fetch)
+            }
+            .catch { (error: CoreError) -> Just<AppAction> in
+                switch error {
+                case .createMockedError, .createCoreError:
+                    return Just(AppAction.action(action: .fetchError(error: MiddlewareError.networkError)))
+                default:
+                    return Just(AppAction.action(action: .fetchError(error: MiddlewareError.unknown)))
+                }
+            }.eraseToAnyPublisher()
+    }
+    
+    private func deleteProperty(with service: RealRentalDBRepository) -> AnyPublisher<AppAction, Never> {
+        
+        return service.fetch()
+            .subscribe(on: DispatchQueue.main)
+            .map { _ in
+                return AppAction.action(action: .fetch)
             }
             .catch {(error: CoreError) -> Just<AppAction> in
                 switch error {
@@ -33,8 +64,11 @@ final class HomeMiddleware: MiddlewareProtocol {
         return { state, action in
             switch action {
             case .action(action: .fetch):
-                print("MIDDLE WARE ACTION = \(action)")
                 return self.fetchHome(with: service)
+            case .action(action: .add(item: let newRentor)):
+                return self.addProperty(with: service, new: newRentor)
+            case .action(action: .delete):
+                return self.deleteProperty(with: service)
             default:
                 break
             }

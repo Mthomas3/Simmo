@@ -28,20 +28,31 @@ struct SettingView: View {
         self.settingViewModel = SettingViewModel()
         self.output = self.settingViewModel.transform(SettingViewModel.Input())
         
-        UITableView.appearance().backgroundColor = UIColor.black.withAlphaComponent(0.05)
-        UITableViewCell.appearance().backgroundColor = UIColor.clear
+        //UITableView.appearance().backgroundColor = UIColor.black.withAlphaComponent(0.05)
+        //UITableViewCell.appearance().backgroundColor = UIColor.clear
+    }
+    
+    var temporaryBody: some View {
+        NavigationView {
+            List {
+                Text("Setting A")
+                Text("Setting B")
+                Text("Setting C")
+            }.navigationBarTitle(Text(self.navigationBarTitle), displayMode: .automatic)
+
+        }
     }
     
     var body: some View {
-        
-        NavigationView {
+        temporaryBody
+        /*NavigationView {
             GeometryReader { geometry in
                 ZStack {
                     self.body(with: geometry.size)
                         .background(Color.clear)
                 }
             }
-        }
+        }*/
     }
     
     private func fontSize(for size: CGSize) -> CGFloat {

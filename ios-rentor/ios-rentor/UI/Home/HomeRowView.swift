@@ -65,8 +65,8 @@ struct HomeRowView: View {
         VStack(alignment: .leading, spacing: 0) {
             self.headerCell(with: self.rentor.name ?? "")
             self.contentCell(with: self.rentor)
-        }.padding()
-        .background(Color.white)
-        .cornerRadius(20)
+        }
+//        .background(Color.white)
+//        .cornerRadius(20)
     }
 }

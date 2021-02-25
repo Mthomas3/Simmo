@@ -18,7 +18,7 @@ protocol DBRepositoryProtocol {
     associatedtype MockedCoreEntity
     
     func create(with item: ModelEntity) -> AnyPublisher<Void, CoreError>
-    func delete(with item: ModelEntity) throws
+    func delete(with item: ModelEntity) -> AnyPublisher<Void, CoreError>
     func fetch() -> AnyPublisher<[ModelEntity], CoreError>
     func refresh() -> AnyPublisher<ModelEntity?, Never>
     func deleteOn(with item: ModelEntity) -> AnyPublisher<Void, CoreError>
@@ -59,13 +59,19 @@ internal final class RealRentalDBRepository: DBRepositoryProtocol {
             .eraseToAnyPublisher()
     }
     
-    internal func delete(with item: Rentor) throws {
+    internal func delete(with item: Rentor) -> AnyPublisher<Void, CoreError> {
         if let request = RentorEntity.fetchRequest() as? NSFetchRequest<RentorEntity> {
             request.predicate = NSPredicate(format: "name == %@", item.name ?? "")
-            if let item = try self.context.fetch(request).first {
-                try self.coreDataManager.delete(with: item)
+            do {
+                if let item = try self.context.fetch(request).first {
+                    print("[INSIDE BIG DELETE = \(item)]")
+                    return self.coreDataManager.delete(with: item)
+                }
+            } catch {
+                return AnyPublisher(Fail<Void, CoreError>(error: .deleteCoreError))
             }
         }
+        return AnyPublisher(Fail<Void, CoreError>(error: .deleteCoreError))
     }
     
     private func fetchFromCore() -> AnyPublisher<[Rentor], CoreError> {
