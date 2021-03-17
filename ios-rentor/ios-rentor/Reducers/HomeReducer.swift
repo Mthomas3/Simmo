@@ -25,6 +25,7 @@ final class HomeReducer: ReducerProtocol {
         switch action {
         case .fetchComplete(let rentors):
             state.homeRentors = rentors
+            state.headerTitle = "1000"
         default:
             break
         }
