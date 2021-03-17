@@ -19,11 +19,9 @@ struct HomeListView: View {
     
     var body: some View {
         NavigationView {
-             ZStack {
-                BackgroundView()
-                propertyList
-             }.navigationBarTitle(Text(self.navigationBarTitle))
-             .navigationBarItems(trailing: addButton)
+            propertyList
+                .navigationBarTitle(Text(self.navigationBarTitle))
+                .navigationBarItems(trailing: addButton)
          }
     }
 }

@@ -34,19 +34,13 @@ struct MainView: View {
                     }
                     .accentColor(.blue)
                     .environmentObject(store)
-            Text("")
+            SettingView()
                 .tabItem {
-                    Image(systemName: "house")
-                    Text("house")
-                }
+                    Image(systemName: "person")
+                    Text("Setting")
+                }.accentColor(.blue)
+                .environmentObject(store)
         }
-//                SettingView()
-//                    .tabItem {
-//                        Image(systemName: "person")
-//                        Text("Setting")
-//                    }.accentColor(.blue)
-//                    .environmentObject(store)
-//            }.edgesIgnoringSafeArea(.top)
     }
 }
 
