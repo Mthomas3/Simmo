@@ -13,11 +13,6 @@ struct HomeContainerView: View {
         
     @EnvironmentObject var store: AppStore
     
-    init() {
-        UITableView.appearance().backgroundColor = .clear
-        UITableViewCell.appearance().backgroundColor = .clear
-    }
-    
     var body: some View {
         HomeListView(properties: store.state.homeState.homeRentors,
                      onDelete: deleteProperty(at:))
@@ -34,7 +29,18 @@ struct HomeContainerView_Previews: PreviewProvider {
 extension HomeContainerView {
     func deleteProperty(at offsets: IndexSet) {
         if let first = offsets.first {
-            print("[we should delete this = \(store.state.homeState.homeRentors[first])]")
+            store.dispatch(.action(action: .delete(item: store.state.homeState.homeRentors[first])))
         }
+    }
+}
+
+struct BackgroundView: View {
+    
+    let color1 = Color(red: 0.235, green: 0.267, blue: 0.318)
+    let color2 = Color(red: 0.07, green: 0.078, blue: 0.092)
+    
+    var body: some View {
+        LinearGradient(gradient: Gradient(colors: [color1, color2]),
+                       startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
     }
 }

@@ -18,11 +18,17 @@ struct HomeListView: View {
     
     @State var showingAddForm = false
     
+    init(properties: [Rentor], onDelete: @escaping (IndexSet) -> Void) {
+        self.properties = properties
+        self.onDelete = onDelete
+        //UITableView.appearance().backgroundColor = UIColor.purple
+    }
+    
     var body: some View {
         NavigationView {
              ZStack {
-                Color.black.opacity(0.05).edgesIgnoringSafeArea(.all)
-                propertyImproved
+                BackgroundView()
+                propertyList
              }.navigationBarTitle(Text(self.navigationBarTitle))
              .navigationBarItems(trailing: addButton)
          }
@@ -37,62 +43,35 @@ struct HomeListView_Previews: PreviewProvider {
 
 extension HomeListView {
     
-    var propertyImproved: some View {
-        Group {
-            if properties.count > 0 {
-                List {
-                    ForEach(properties) { property in
-                        ZStack {
-                            HomeRowView(rentor: property)
-                                .padding()
-                                .background(Color.white)
-                                .cornerRadius(20)
-                                .listRowInsets(EdgeInsets())
-                            
-                            NavigationLink(destination: HomeDetailView(with: property)) {
-                                EmptyView()
-                            }.frame(width: 0)
-                            .opacity(0)
-                            
-                        }.listRowBackground(Color.clear)
-                    }.onDelete(perform: onDelete)
-                }.listStyle(PlainListStyle())
-            } else {
-                Text("No properties \(properties.count)")
-            }
-        }
+    var headerView: some View {
+        Text("1000$US / month 💵")
     }
     
     var propertyList: some View {
         Group {
             if properties.count > 0 {
                 List {
-                    ForEach(store.state.homeState.homeRentors) { property in
-                        //HomeRowView(rentor: property)
-                        ZStack {
-                            HomeRowView(rentor: property)
-                                .listRowBackground(Color.clear)
-                                .listRowInsets(EdgeInsets())
-                            
-                            NavigationLink(destination: HomeDetailView(with: property)) {
-                                EmptyView()
-                            }.frame(width: 0)
-                            .opacity(0)
-                            .buttonStyle(PlainButtonStyle())
-                            .background(Color.red)
-                            
-                        }.listRowBackground(Color.clear)
-                        .background(Color.pink)
-                        .listRowBackground(Color.green)
-                    }.onDelete(perform: onDelete)
-                }.listStyle(PlainListStyle())
-                .background(Color.gray)
+                    Section(header: self.headerView) {
+                        ForEach(self.properties) { property in
+                            ZStack {
+                                HomeRowView(rentor: property)
+                                NavigationLink(destination: HomeDetailView(with: property)) {
+                                    EmptyView()
+                                }.frame(width: 0)
+                                .opacity(0)
+                                .buttonStyle(PlainButtonStyle())
+                            }.listRowInsets(EdgeInsets())
+                            .padding(.all, 8)
+                            .listRowBackground(Color.black.opacity(0.05))
+                        }.onDelete(perform: onDelete)
+                    }
+                }.listStyle(GroupedListStyle())
+                
             } else {
                 Text("Nothing inside")
             }
-        }.background(Color.green)
+        }
     }
-    
     
     var testButton: some View {
         Group {

@@ -9,29 +9,23 @@
 import SwiftUI
 
 struct MainView: View {
-    
+
     private let homeMiddleware: HomeMiddleware
     private let store: AppStore
     private let appReducer: AppReducer
-    
+
     init() {
-        //UITabBar.appearance().shadowImage = UIImage()
-        //UITabBar.appearance().backgroundImage = UIImage()
-        //UITabBar.appearance().isTranslucent = false
-        //UITabBar.appearance().backgroundColor = UIColor.black.withAlphaComponent(0.05)
-        
         self.homeMiddleware = HomeMiddleware()
         self.appReducer = AppReducer()
+        
         self.store = AppStore(initialState: .init(homeState: HomeState()),
                               reducer: self.appReducer.reducer(state:action:),
-                               middlewares: [self.homeMiddleware.middleware(service: RealRentalDBRepository()),
-                                             MiddlewareHelper.logMiddleware()])
-        
-        self.store.dispatch(.action(action: .fetch))
-        self.store.dispatch(.action(action: .fetch))
+                              middlewares: [self.homeMiddleware.middleware(service: RealRentalDBRepository()),
+                                            MiddlewareHelper.logMiddleware()])
+        store.dispatch(.action(action: .fetch))
     }
-    
-    var body: some View {
+
+    var body: some View {        
         TabView {
                 HomeContainerView()
                     .tabItem {
@@ -40,14 +34,19 @@ struct MainView: View {
                     }
                     .accentColor(.blue)
                     .environmentObject(store)
-
-                SettingView()
-                    .tabItem {
-                        Image(systemName: "person")
-                        Text("Setting")
-                    }.accentColor(.blue)
-                    .environmentObject(store)
-            }.edgesIgnoringSafeArea(.top)
+            Text("")
+                .tabItem {
+                    Image(systemName: "house")
+                    Text("house")
+                }
+        }
+//                SettingView()
+//                    .tabItem {
+//                        Image(systemName: "person")
+//                        Text("Setting")
+//                    }.accentColor(.blue)
+//                    .environmentObject(store)
+//            }.edgesIgnoringSafeArea(.top)
     }
 }
 

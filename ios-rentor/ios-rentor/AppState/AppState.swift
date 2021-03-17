@@ -13,7 +13,7 @@ struct AppState {
     var homeState: HomeState
 }
 
-class HomeState {
+struct HomeState {
     var homeRentors: [Rentor] = []
     var headerTitle: String = "0"
     var fetchError: String?

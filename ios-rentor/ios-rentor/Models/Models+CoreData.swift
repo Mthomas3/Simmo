@@ -54,7 +54,7 @@ extension Rentor: ModelsManagedEntity {
     }
     
     init?(managedObject: RentorEntity) {
-        self.init(date: managedObject.createDate,
+        self.init(id: UUID(), date: managedObject.createDate,
                   name: managedObject.name,
                   price: managedObject.price,
                   rentPrice: managedObject.rentPrice,

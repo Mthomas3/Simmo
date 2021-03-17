@@ -17,8 +17,7 @@ final class HomeMiddleware: MiddlewareProtocol {
             .subscribe(on: DispatchQueue.main)
             .map {
                 return AppAction.action(action: .fetchComplete(home: $0))
-            }
-            .catch {(error: CoreError) -> Just<AppAction> in
+            }.catch {(error: CoreError) -> Just<AppAction> in
                 switch error {
                 case .fetchCoreError, .fetchMockedError:
                     return Just(AppAction.action(action: .fetchError(error: MiddlewareError.networkError)))
@@ -31,9 +30,9 @@ final class HomeMiddleware: MiddlewareProtocol {
     private func addProperty(with service: RealRentalDBRepository, new item: Rentor) -> AnyPublisher<AppAction, Never> {
         return service.create(with: item)
             .map {
+                print("** [func ADDProperty()] - [we shall fetch now] **")
                 return AppAction.action(action: .fetch)
-            }
-            .catch { (error: CoreError) -> Just<AppAction> in
+            }.catch { (error: CoreError) -> Just<AppAction> in
                 switch error {
                 case .createMockedError, .createCoreError:
                     return Just(AppAction.action(action: .fetchError(error: MiddlewareError.networkError)))
@@ -43,16 +42,14 @@ final class HomeMiddleware: MiddlewareProtocol {
             }.eraseToAnyPublisher()
     }
     
-    private func deleteProperty(with service: RealRentalDBRepository) -> AnyPublisher<AppAction, Never> {
-        
-        return service.fetch()
-            .subscribe(on: DispatchQueue.main)
-            .map { _ in
+    private func deleteProperty(with service: RealRentalDBRepository,
+                                delete item: Rentor) -> AnyPublisher<AppAction, Never> {
+        return service.delete(with: item)
+            .map {
                 return AppAction.action(action: .fetch)
-            }
-            .catch {(error: CoreError) -> Just<AppAction> in
+            }.catch { (error: CoreError) -> Just<AppAction> in
                 switch error {
-                case .fetchCoreError, .fetchMockedError:
+                case .deleteCoreError, .deleteMockedError:
                     return Just(AppAction.action(action: .fetchError(error: MiddlewareError.networkError)))
                 default:
                     return Just(AppAction.action(action: .fetchError(error: MiddlewareError.unknown)))
@@ -67,8 +64,8 @@ final class HomeMiddleware: MiddlewareProtocol {
                 return self.fetchHome(with: service)
             case .action(action: .add(item: let newRentor)):
                 return self.addProperty(with: service, new: newRentor)
-            case .action(action: .delete):
-                return self.deleteProperty(with: service)
+            case .action(action: .delete(item: let deleteItem)):
+                return self.deleteProperty(with: service, delete: deleteItem)
             default:
                 break
             }

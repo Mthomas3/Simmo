@@ -12,15 +12,14 @@ import Combine
 typealias AppStore = Store<AppState, AppAction>
 
 final class Store<State, Action>: ObservableObject {
+
     @Published private(set) var state: State
-    
+
     var tasks = [AnyCancellable]()
-    let serialQueue = DispatchQueue(label: "redux.serial.queue")
-    let middlewares: [Middleware<State, Action>]
-    
     private let reducer: Reducer<State, Action>
-    private var middlewareDisposables: Set<AnyCancellable> = []
-    
+    let middlewares: [Middleware<State, Action>]
+    private var middlewareCancellables: Set<AnyCancellable> = []
+
     init(initialState: State,
          reducer: @escaping Reducer<State, Action>,
          middlewares: [Middleware<State, Action>] = []) {
@@ -28,18 +27,18 @@ final class Store<State, Action>: ObservableObject {
         self.reducer = reducer
         self.middlewares = middlewares
     }
-    
+
     func dispatch(_ action: Action) {
         reducer(&state, action)
-        
+
         for mw in middlewares {
             guard let middleware = mw(state, action) else {
                 break
             }
-            middleware.receive(on: DispatchQueue.main)
+            middleware
+                .receive(on: DispatchQueue.main)
                 .sink(receiveValue: dispatch)
-                .store(in: &self.middlewareDisposables)
+                .store(in: &middlewareCancellables)
         }
     }
-    
 }

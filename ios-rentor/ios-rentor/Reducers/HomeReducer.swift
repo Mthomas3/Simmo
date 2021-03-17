@@ -24,8 +24,6 @@ final class HomeReducer: ReducerProtocol {
     func reducer(state: inout HomeState, action: HomeAction) {
         switch action {
         case .fetchComplete(let rentors):
-            print("INSIDE REDUCEER **************************************")
-            print(rentors)
             state.homeRentors = rentors
         default:
             break

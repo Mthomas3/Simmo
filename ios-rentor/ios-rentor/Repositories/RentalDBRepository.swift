@@ -64,7 +64,6 @@ internal final class RealRentalDBRepository: DBRepositoryProtocol {
             request.predicate = NSPredicate(format: "name == %@", item.name ?? "")
             do {
                 if let item = try self.context.fetch(request).first {
-                    print("[INSIDE BIG DELETE = \(item)]")
                     return self.coreDataManager.delete(with: item)
                 }
             } catch {
