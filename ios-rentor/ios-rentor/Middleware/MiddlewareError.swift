@@ -10,7 +10,8 @@ import Foundation
 
 internal enum MiddlewareError: Error {
     case unknown
-    case networkError
+    case fetchError
     case deleteError
-    case updateError
+    case createError
+    case networkError
 }
