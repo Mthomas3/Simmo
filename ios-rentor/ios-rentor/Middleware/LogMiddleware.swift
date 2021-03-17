@@ -12,7 +12,7 @@ import Combine
 final class MiddlewareHelper {
     static func logMiddleware() -> Middleware<AppState, AppAction> {
         return { state, action in
-            //print("Triggered action: \(action)")
+            print("Triggered action: \(action)")
             return Empty().eraseToAnyPublisher()
         }
     }
