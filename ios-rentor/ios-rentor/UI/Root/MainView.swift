@@ -9,20 +9,38 @@
 import SwiftUI
 
 struct MainView: View {
-    @State private var index = 0
-    
-    var body: some View {
+
+    private let homeMiddleware: HomeMiddleware
+    private let store: AppStore
+    private let appReducer: AppReducer
+
+    init() {
+        self.homeMiddleware = HomeMiddleware()
+        self.appReducer = AppReducer()
+        
+        self.store = AppStore(initialState: .init(homeState: HomeState()),
+                              reducer: self.appReducer.reducer(state:action:),
+                              middlewares: [self.homeMiddleware.middleware(service: RealRentalDBRepository()),
+                                            MiddlewareHelper.logMiddleware()])
+        store.dispatch(.action(action: .fetch))
+    }
+
+    var body: some View {        
         TabView {
-            Home().tabItem {
-                Image(systemName: "house")
-                Text("house")
-            }.accentColor(.blue)
-            
-            SettingView().tabItem {
-                Image(systemName: "person")
-                Text("Setting")
-            }.accentColor(.blue)
-        }.accentColor(Color.init("LightBlue"))
+                HomeContainerView()
+                    .tabItem {
+                        Image(systemName: "house")
+                        Text("house")
+                    }
+                    .accentColor(.blue)
+                    .environmentObject(store)
+            SettingView()
+                .tabItem {
+                    Image(systemName: "person")
+                    Text("Setting")
+                }.accentColor(.blue)
+                .environmentObject(store)
+        }
     }
 }
 

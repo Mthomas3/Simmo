@@ -25,13 +25,11 @@ internal final class CoreDataManager<Entity> where Entity: NSManagedObject {
         self.subject = PassthroughSubject<Entity, Never>()
     }
     
-    internal func fetch() -> AnyPublisher<[Entity], CoreDataError> {
-        Future<[Entity], CoreDataError> {
+    internal func fetch() -> AnyPublisher<[Entity], CoreError> {
+        Future<[Entity], CoreError> {
             do {
                 $0(.success(try self.context.fetch(self.request)))
-            } catch {
-                $0(.failure(.fetchError))
-            }
+            } catch { $0(.failure(.fetchCoreError)) }
         }.eraseToAnyPublisher()
     }
     
@@ -39,30 +37,36 @@ internal final class CoreDataManager<Entity> where Entity: NSManagedObject {
         return self.subject.eraseToAnyPublisher()
     }
     
-    internal func create(with item: Entity) -> AnyPublisher<Void, CoreDataError> {
-        Future<Void, CoreDataError> {
+    internal func create(with item: Entity) -> AnyPublisher<Void, CoreError> {
+        Future<Void, CoreError> {
             do {
                 self.context.insert(item)
                 self.subject.send(item)
                 $0(.success(try self.context.save() as Void))
             } catch {
-                $0(.failure(.createError))
+                $0(.failure(.createCoreError))
             }
         }.eraseToAnyPublisher()
     }
         
-    internal func delete(with item: Entity) throws {
-        self.context.delete(item)
-        try self.context.save()
+    internal func delete(with item: Entity) -> AnyPublisher<Void, CoreError> {
+        Future<Void, CoreError> {
+            do {
+                self.context.delete(item)
+                $0(.success(try self.context.save() as Void))
+            } catch {
+                $0(.failure(.deleteCoreError))
+            }
+        }.eraseToAnyPublisher()
     }
     
-    internal func deleteOn(with data: Entity) -> AnyPublisher<Void, CoreDataError> {
-        Future<Void, CoreDataError> {
+    internal func deleteOn(with data: Entity) -> AnyPublisher<Void, CoreError> {
+        Future<Void, CoreError> {
             do {
                 self.context.delete(data)
                 $0(.success(try self.context.save() as Void))
             } catch {
-                $0(.failure(.deleteError))
+                $0(.failure(.deleteCoreError))
             }
         }.eraseToAnyPublisher()
     }

@@ -15,7 +15,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        #if DEBUG
+            UserDefaults.standard.set(true, forKey: "DEBUG")
+            UserDefaults.standard.set(false, forKey: "RELEASE")
+            print("*/ Debug is activated */")
+        #else
+            UserDefaults.standard.set(true, forKey: "RELEASE")
+            UserDefaults.standard.set(false, forKey: "DEBUG")
+            print("*/ Release is activated */")
+        #endif
+        
         FirebaseApp.configure()
+        
         return true
     }
 

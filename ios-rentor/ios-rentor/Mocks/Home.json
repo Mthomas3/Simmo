@@ -1,0 +1,57 @@
+[ {
+    "id" : "1",
+   "name" : "Thomas Small Test",
+   "price" : 50.0,
+   "rentPrice" : 50.0,
+   "cashFlow" : 50.0,
+   "percentage" : 50.0
+ },
+{
+    "id" : "2",
+    "name" : "Thomas Small Test",
+    "price" : 50.0,
+    "rentPrice" : 50.0,
+    "cashFlow" : 50.0,
+    "percentage" : 50.0
+ },
+{
+    "id" : "3",
+    "name" : "Thomas Small Test",
+    "price" : 50.0,
+    "rentPrice" : 50.0,
+    "cashFlow" : 50.0,
+    "percentage" : 50.0
+ },
+{
+    "id" : "4",
+    "name" : "Thomas Small Test",
+    "price" : 50.0,
+    "rentPrice" : 50.0,
+    "cashFlow" : 50.0,
+    "percentage" : 50.0
+ },
+{
+    "id" : "5",
+    "name" : "Thomas Small Test",
+    "price" : 50.0,
+    "rentPrice" : 50.0,
+    "cashFlow" : 50.0,
+    "percentage" : 50.0
+ },
+{
+    "id" : "6",
+    "name" : "Thomas Small Test",
+    "price" : 50.0,
+    "rentPrice" : 50.0,
+    "cashFlow" : 50.0,
+    "percentage" : 50.0
+ },
+{
+    "id" : "7",
+    "name" : "Thomas Small Test",
+    "price" : 50.0,
+    "rentPrice" : 50.0,
+    "cashFlow" : 50.0,
+    "percentage" : 50.0
+ }
+]

@@ -15,6 +15,8 @@ internal struct SimmulatorView: View {
     @State private var isFormValid: Bool = false
     @Binding internal var isViewOpen: Bool
     
+    @EnvironmentObject var store: AppStore
+    
     // MARK: ViewModel
     private let simmulatorViewModel: SimmulatorViewModel
     private let output: SimmulatorViewModel.Output
@@ -47,6 +49,9 @@ internal struct SimmulatorView: View {
                 self.isViewOpen = false
                }, trailing:
                Button("Done") {
+                let rentor: Rentor = Rentor(id: UUID(), date: Date(), name: "TITI?", price: 10.0, rentPrice: 12.0, cashFlow: 12.0, percentage: 1.0)
+                self.store.dispatch(.action(action: .add(item: rentor)))
+
                 self.doneEvent.send(())
                 self.isViewOpen = false
                }.disabled(!self.isFormValid)

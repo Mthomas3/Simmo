@@ -19,8 +19,20 @@
 		E9090D2C24FA9F7800020390 /* ios_rentorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9090D2B24FA9F7800020390 /* ios_rentorTests.swift */; };
 		E9090D3724FA9F7800020390 /* ios_rentorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9090D3624FA9F7800020390 /* ios_rentorUITests.swift */; };
 		E90986E62582500D0089525F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E90986E52582500D0089525F /* GoogleService-Info.plist */; };
+		E9190C7725DD321500C804B5 /* CoreMockedManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9190C7625DD321500C804B5 /* CoreMockedManager.swift */; };
 		E9209C9325227E8700EDC0A9 /* SimmulatorCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9209C9225227E8700EDC0A9 /* SimmulatorCellView.swift */; };
+		E923EDE125D5B33A0076DD92 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E923EDE025D5B33A0076DD92 /* AppState.swift */; };
+		E923EDE625D5B3E00076DD92 /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E923EDE525D5B3E00076DD92 /* AppStore.swift */; };
+		E923EDEC25D5B4810076DD92 /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E923EDEB25D5B4810076DD92 /* AppReducer.swift */; };
+		E923EDF225D5B4BD0076DD92 /* AppAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E923EDF125D5B4BD0076DD92 /* AppAction.swift */; };
+		E923EDF725D5B4DE0076DD92 /* HomeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E923EDF625D5B4DE0076DD92 /* HomeAction.swift */; };
+		E923EDFD25D5B51E0076DD92 /* LogMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = E923EDFC25D5B51E0076DD92 /* LogMiddleware.swift */; };
+		E923EE0525D5B57A0076DD92 /* HomeMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = E923EE0425D5B57A0076DD92 /* HomeMiddleware.swift */; };
 		E94492EF258BEC7F00B94481 /* RentalDBRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94492EE258BEC7F00B94481 /* RentalDBRepository.swift */; };
+		E95ECF4A25DD80BA0071C97D /* HomeContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95ECF4925DD80BA0071C97D /* HomeContainerView.swift */; };
+		E95ECF4F25DD81230071C97D /* HomeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95ECF4E25DD81230071C97D /* HomeListView.swift */; };
+		E95ECF5425DD87BB0071C97D /* HomeRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95ECF5325DD87BB0071C97D /* HomeRowView.swift */; };
+		E960CF4225D5F0920037A26B /* HomeReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E960CF4125D5F0920037A26B /* HomeReducer.swift */; };
 		E9665536250033B2003BC212 /* RentorEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9665535250033B2003BC212 /* RentorEntity.swift */; };
 		E9878556250BB0C200CF8519 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9878555250BB0C200CF8519 /* String+Ext.swift */; };
 		E98C257D252B922000E06E73 /* HomeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98C257C252B922000E06E73 /* HomeDetailView.swift */; };
@@ -39,10 +51,13 @@
 		E9B45CA124FD5ED400A79ECC /* rentorCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9B45C9F24FD5ED400A79ECC /* rentorCoreData.xcdatamodeld */; };
 		E9C3A0AE25570A1D003BF79F /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C3A0AD25570A1D003BF79F /* SettingViewModel.swift */; };
 		E9C3A0B425570D43003BF79F /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C3A0B325570D43003BF79F /* SettingCell.swift */; };
+		E9C47BA925D6E5520082C0D6 /* Middleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C47BA825D6E5520082C0D6 /* Middleware.swift */; };
 		E9D8D15D24FAF7B800DF5ABC /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D8D15C24FAF7B800DF5ABC /* MainView.swift */; };
 		E9D8D15F24FAF98300DF5ABC /* SimmulatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D8D15E24FAF98200DF5ABC /* SimmulatorView.swift */; };
 		E9D8D16124FAF9D000DF5ABC /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D8D16024FAF9D000DF5ABC /* SettingView.swift */; };
 		E9D8D16324FC353700DF5ABC /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D8D16224FC353700DF5ABC /* Home.swift */; };
+		E9DE7BE325DABECD00EB68A2 /* MiddlewareError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DE7BE225DABECD00EB68A2 /* MiddlewareError.swift */; };
+		E9F40B4725DADC6B008BA828 /* Home.json in Resources */ = {isa = PBXBuildFile; fileRef = E9F40B4625DADC6B008BA828 /* Home.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,8 +101,20 @@
 		E9090D3624FA9F7800020390 /* ios_rentorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_rentorUITests.swift; sourceTree = "<group>"; };
 		E9090D3824FA9F7800020390 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E90986E52582500D0089525F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E9190C7625DD321500C804B5 /* CoreMockedManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMockedManager.swift; sourceTree = "<group>"; };
 		E9209C9225227E8700EDC0A9 /* SimmulatorCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimmulatorCellView.swift; sourceTree = "<group>"; };
+		E923EDE025D5B33A0076DD92 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		E923EDE525D5B3E00076DD92 /* AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
+		E923EDEB25D5B4810076DD92 /* AppReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
+		E923EDF125D5B4BD0076DD92 /* AppAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAction.swift; sourceTree = "<group>"; };
+		E923EDF625D5B4DE0076DD92 /* HomeAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAction.swift; sourceTree = "<group>"; };
+		E923EDFC25D5B51E0076DD92 /* LogMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogMiddleware.swift; sourceTree = "<group>"; };
+		E923EE0425D5B57A0076DD92 /* HomeMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMiddleware.swift; sourceTree = "<group>"; };
 		E94492EE258BEC7F00B94481 /* RentalDBRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentalDBRepository.swift; sourceTree = "<group>"; };
+		E95ECF4925DD80BA0071C97D /* HomeContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContainerView.swift; sourceTree = "<group>"; };
+		E95ECF4E25DD81230071C97D /* HomeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListView.swift; sourceTree = "<group>"; };
+		E95ECF5325DD87BB0071C97D /* HomeRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRowView.swift; sourceTree = "<group>"; };
+		E960CF4125D5F0920037A26B /* HomeReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeReducer.swift; sourceTree = "<group>"; };
 		E9665535250033B2003BC212 /* RentorEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentorEntity.swift; sourceTree = "<group>"; };
 		E9878555250BB0C200CF8519 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		E98C257C252B922000E06E73 /* HomeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailView.swift; sourceTree = "<group>"; };
@@ -106,10 +133,13 @@
 		E9B45CA024FD5ED400A79ECC /* Simmulations.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Simmulations.xcdatamodel; sourceTree = "<group>"; };
 		E9C3A0AD25570A1D003BF79F /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		E9C3A0B325570D43003BF79F /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
+		E9C47BA825D6E5520082C0D6 /* Middleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Middleware.swift; sourceTree = "<group>"; };
 		E9D8D15C24FAF7B800DF5ABC /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		E9D8D15E24FAF98200DF5ABC /* SimmulatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimmulatorView.swift; sourceTree = "<group>"; };
 		E9D8D16024FAF9D000DF5ABC /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		E9D8D16224FC353700DF5ABC /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		E9DE7BE225DABECD00EB68A2 /* MiddlewareError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiddlewareError.swift; sourceTree = "<group>"; };
+		E9F40B4625DADC6B008BA828 /* Home.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Home.json; sourceTree = "<group>"; };
 		F0B73656C48975407BCA3632 /* Pods-ios-rentorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-rentorTests.release.xcconfig"; path = "Target Support Files/Pods-ios-rentorTests/Pods-ios-rentorTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -189,6 +219,11 @@
 		E9090D1024FA9F7600020390 /* ios-rentor */ = {
 			isa = PBXGroup;
 			children = (
+				E9DE7C1225DADBF900EB68A2 /* Mocks */,
+				E923EDFB25D5B50E0076DD92 /* Middleware */,
+				E923EDF025D5B4B30076DD92 /* Actions */,
+				E923EDEA25D5B4670076DD92 /* Reducers */,
+				E923EDDF25D5B3320076DD92 /* AppState */,
 				E9B20D4925913E1100EC52D5 /* Models */,
 				E9449303258C094F00B94481 /* Interactors */,
 				E94492FF258C08C300B94481 /* UI */,
@@ -255,6 +290,44 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		E923EDDF25D5B3320076DD92 /* AppState */ = {
+			isa = PBXGroup;
+			children = (
+				E923EDE025D5B33A0076DD92 /* AppState.swift */,
+				E923EDE525D5B3E00076DD92 /* AppStore.swift */,
+			);
+			path = AppState;
+			sourceTree = "<group>";
+		};
+		E923EDEA25D5B4670076DD92 /* Reducers */ = {
+			isa = PBXGroup;
+			children = (
+				E923EDEB25D5B4810076DD92 /* AppReducer.swift */,
+				E960CF4125D5F0920037A26B /* HomeReducer.swift */,
+			);
+			path = Reducers;
+			sourceTree = "<group>";
+		};
+		E923EDF025D5B4B30076DD92 /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				E923EDF125D5B4BD0076DD92 /* AppAction.swift */,
+				E923EDF625D5B4DE0076DD92 /* HomeAction.swift */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+		E923EDFB25D5B50E0076DD92 /* Middleware */ = {
+			isa = PBXGroup;
+			children = (
+				E923EDFC25D5B51E0076DD92 /* LogMiddleware.swift */,
+				E923EE0425D5B57A0076DD92 /* HomeMiddleware.swift */,
+				E9C47BA825D6E5520082C0D6 /* Middleware.swift */,
+				E9DE7BE225DABECD00EB68A2 /* MiddlewareError.swift */,
+			);
+			path = Middleware;
+			sourceTree = "<group>";
+		};
 		E94492EC258BEAD200B94481 /* System */ = {
 			isa = PBXGroup;
 			children = (
@@ -299,6 +372,9 @@
 			children = (
 				E99042C92502A16C0062B493 /* RentalEntityView.swift */,
 				E9D8D16224FC353700DF5ABC /* Home.swift */,
+				E95ECF4925DD80BA0071C97D /* HomeContainerView.swift */,
+				E95ECF4E25DD81230071C97D /* HomeListView.swift */,
+				E95ECF5325DD87BB0071C97D /* HomeRowView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -391,8 +467,17 @@
 				E9B45C9F24FD5ED400A79ECC /* rentorCoreData.xcdatamodeld */,
 				E99042CB25043BBA0062B493 /* CoreDataManager.swift */,
 				E9090D4F24FAA49F00020390 /* Model */,
+				E9190C7625DD321500C804B5 /* CoreMockedManager.swift */,
 			);
 			path = Persistence;
+			sourceTree = "<group>";
+		};
+		E9DE7C1225DADBF900EB68A2 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				E9F40B4625DADC6B008BA828 /* Home.json */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -507,6 +592,7 @@
 			files = (
 				E9090D2124FA9F7800020390 /* LaunchScreen.storyboard in Resources */,
 				E90986E62582500D0089525F /* GoogleService-Info.plist in Resources */,
+				E9F40B4725DADC6B008BA828 /* Home.json in Resources */,
 				E9090D1E24FA9F7800020390 /* Preview Assets.xcassets in Resources */,
 				E9090D1B24FA9F7800020390 /* Assets.xcassets in Resources */,
 			);
@@ -660,7 +746,10 @@
 				E9878556250BB0C200CF8519 /* String+Ext.swift in Sources */,
 				E94492EF258BEC7F00B94481 /* RentalDBRepository.swift in Sources */,
 				E9C3A0AE25570A1D003BF79F /* SettingViewModel.swift in Sources */,
+				E923EDF225D5B4BD0076DD92 /* AppAction.swift in Sources */,
+				E9DE7BE325DABECD00EB68A2 /* MiddlewareError.swift in Sources */,
 				E9209C9325227E8700EDC0A9 /* SimmulatorCellView.swift in Sources */,
+				E9C47BA925D6E5520082C0D6 /* Middleware.swift in Sources */,
 				E9090D1224FA9F7600020390 /* AppDelegate.swift in Sources */,
 				E9AAA95525210CF1009841B8 /* SimmulatorCellViewModel.swift in Sources */,
 				E9090D1724FA9F7600020390 /* ios_rentor.xcdatamodeld in Sources */,
@@ -670,14 +759,25 @@
 				E9665536250033B2003BC212 /* RentorEntity.swift in Sources */,
 				E9D8D16124FAF9D000DF5ABC /* SettingView.swift in Sources */,
 				E9A8C6692517B4BC000E8A28 /* HomeViewModel.swift in Sources */,
+				E923EDF725D5B4DE0076DD92 /* HomeAction.swift in Sources */,
 				E9B45CA124FD5ED400A79ECC /* rentorCoreData.xcdatamodeld in Sources */,
 				E9090D1424FA9F7600020390 /* SceneDelegate.swift in Sources */,
+				E95ECF4A25DD80BA0071C97D /* HomeContainerView.swift in Sources */,
+				E9190C7725DD321500C804B5 /* CoreMockedManager.swift in Sources */,
 				E9D8D15F24FAF98300DF5ABC /* SimmulatorView.swift in Sources */,
+				E960CF4225D5F0920037A26B /* HomeReducer.swift in Sources */,
 				E9B20D4B25913E2100EC52D5 /* Models+CoreData.swift in Sources */,
 				E9C3A0B425570D43003BF79F /* SettingCell.swift in Sources */,
 				E99042CA2502A16C0062B493 /* RentalEntityView.swift in Sources */,
+				E923EDE125D5B33A0076DD92 /* AppState.swift in Sources */,
+				E95ECF5425DD87BB0071C97D /* HomeRowView.swift in Sources */,
+				E923EDFD25D5B51E0076DD92 /* LogMiddleware.swift in Sources */,
+				E923EDEC25D5B4810076DD92 /* AppReducer.swift in Sources */,
 				E9B20D552591403B00EC52D5 /* MockedData.swift in Sources */,
 				E9AAA950251B9244009841B8 /* SimmulatorModel.swift in Sources */,
+				E923EE0525D5B57A0076DD92 /* HomeMiddleware.swift in Sources */,
+				E923EDE625D5B3E00076DD92 /* AppStore.swift in Sources */,
+				E95ECF4F25DD81230071C97D /* HomeListView.swift in Sources */,
 				E9AAA953251BDA4B009841B8 /* InteractorsProtocol.swift in Sources */,
 				E9AAA94E251A1031009841B8 /* SimmulatorViewModel.swift in Sources */,
 			);
@@ -784,6 +884,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -835,9 +936,11 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
