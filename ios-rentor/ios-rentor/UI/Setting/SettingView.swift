@@ -44,15 +44,15 @@ struct SettingView: View {
     }
     
     var body: some View {
-        temporaryBody
-        /*NavigationView {
+        //temporaryBody
+        NavigationView {
             GeometryReader { geometry in
                 ZStack {
                     self.body(with: geometry.size)
                         .background(Color.clear)
                 }
             }
-        }*/
+        }
     }
     
     private func fontSize(for size: CGSize) -> CGFloat {

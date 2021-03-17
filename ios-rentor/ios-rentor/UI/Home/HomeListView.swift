@@ -26,12 +26,6 @@ struct HomeListView: View {
     }
 }
 
-struct HomeListView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeListView(onDelete: {_ in })
-    }
-}
-
 extension HomeListView {
     
     var headerView: some View {
@@ -53,7 +47,7 @@ extension HomeListView {
                                 .buttonStyle(PlainButtonStyle())
                             }.listRowInsets(EdgeInsets())
                             .padding(.all, 8)
-                            .listRowBackground(Color.black.opacity(0.05))
+                            .listRowBackground(Color.init("GraySystem"))
                         }.onDelete(perform: onDelete)
                     }
                 }.listStyle(GroupedListStyle())
@@ -75,5 +69,11 @@ extension HomeListView {
                     .environmentObject(store)
             }
         }
+    }
+}
+
+struct HomeListView_Previews: PreviewProvider {
+    static var previews: some View {
+        HomeListView(onDelete: {_ in })
     }
 }
