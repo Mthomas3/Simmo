@@ -32,7 +32,10 @@ internal final class CoreMockedManager<Entity> where Entity: Decodable {
                             do {
                                 let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
                                 let jsonResult = try JSONDecoder().decode([Rentor].self, from: data)
-                                promise(.success(jsonResult as! [Entity]))
+                                if let json = jsonResult as? [Entity] {
+                                    promise(.success(json))
+                                }
+                                promise(.failure(.fetchMockedError))
                             } catch {
                                 print("error")
                                 promise(.failure(.fetchMockedError))

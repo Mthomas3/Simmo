@@ -52,7 +52,6 @@ internal final class CoreDataManager<Entity> where Entity: NSManagedObject {
     internal func delete(with item: Entity) -> AnyPublisher<Void, CoreError> {
         Future<Void, CoreError> {
             do {
-                print("[A] INSIDE THIS DELETE")
                 self.context.delete(item)
                 $0(.success(try self.context.save() as Void))
             } catch {
