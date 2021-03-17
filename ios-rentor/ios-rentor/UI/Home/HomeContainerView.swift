@@ -14,8 +14,7 @@ struct HomeContainerView: View {
     @EnvironmentObject var store: AppStore
     
     var body: some View {
-        HomeListView(properties: store.state.homeState.homeRentors,
-                     onDelete: deleteProperty(at:))
+        HomeListView(onDelete: deleteProperty(at:))
             .environmentObject(store)
     }
 }

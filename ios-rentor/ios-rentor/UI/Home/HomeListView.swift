@@ -13,16 +13,9 @@ struct HomeListView: View {
     private let navigationBarTitle: String = "Home 🏡"
     @EnvironmentObject private var store: AppStore
     
-    public var properties: [Rentor]
     public let onDelete: (IndexSet) -> Void
     
-    @State var showingAddForm = false
-    
-    init(properties: [Rentor], onDelete: @escaping (IndexSet) -> Void) {
-        self.properties = properties
-        self.onDelete = onDelete
-        //UITableView.appearance().backgroundColor = UIColor.purple
-    }
+    @State private var showingAddForm = false
     
     var body: some View {
         NavigationView {
@@ -37,7 +30,7 @@ struct HomeListView: View {
 
 struct HomeListView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeListView(properties: [], onDelete: {_ in })
+        HomeListView(onDelete: {_ in })
     }
 }
 
@@ -49,10 +42,10 @@ extension HomeListView {
     
     var propertyList: some View {
         Group {
-            if properties.count > 0 {
+            if store.state.homeState.homeRentors.count > 0 {
                 List {
                     Section(header: self.headerView) {
-                        ForEach(self.properties) { property in
+                        ForEach(store.state.homeState.homeRentors) { property in
                             ZStack {
                                 HomeRowView(rentor: property)
                                 NavigationLink(destination: HomeDetailView(with: property)) {
@@ -68,20 +61,7 @@ extension HomeListView {
                 }.listStyle(GroupedListStyle())
                 
             } else {
-                Text("Nothing inside")
-            }
-        }
-    }
-    
-    var testButton: some View {
-        Group {
-            Button(action: {
-                    store.dispatch(.action(action: .fetch))
-                print("current = \(store.state.homeState.homeRentors.count)")
-            }) {
-                Image(systemName: "plus")
-                    .imageScale(.large)
-                    .foregroundColor(Color.init("LightBlue"))
+                Text("Please add a property... \(store.state.homeState.homeRentors.count)")
             }
         }
     }
