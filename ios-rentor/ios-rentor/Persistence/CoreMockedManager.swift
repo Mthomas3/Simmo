@@ -26,18 +26,19 @@ internal final class CoreMockedManager<Entity> where Entity: Decodable {
         return Future<[Entity], CoreError> { promise in
             DispatchQueue.main.asyncAfter(deadline: .now() + loadingTimeRandom) {
                 self.generateError = !self.generateError
-                if self.generateError {
+                if self.generateError || !self.generateError {
                     do {
                         if let path = Bundle.main.path(forResource: "Home", ofType: "json") {
                             do {
                                 let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
                                 let jsonResult = try JSONDecoder().decode([Rentor].self, from: data)
-                                if let json = jsonResult as? [Entity] {
+                                promise(.success(jsonResult as! [Entity]))
+                                /*if let json = jsonResult as? [Entity] {
                                     promise(.success(json))
                                 }
-                                promise(.failure(.fetchMockedError))
+                                promise(.failure(.fetchMockedError))*/
                             } catch {
-                                print("error")
+                                print("error = \(error)")
                                 promise(.failure(.fetchMockedError))
                             }
                         }
