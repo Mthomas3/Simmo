@@ -27,7 +27,8 @@ final class HomeMiddleware: MiddlewareProtocol {
             }.eraseToAnyPublisher()
     }
     
-    private func createProperty(with service: RealRentalDBRepository, new item: Rentor) -> AnyPublisher<AppAction, Never> {
+    private func createProperty(with service: RealRentalDBRepository,
+                                new item: Rentor) -> AnyPublisher<AppAction, Never> {
         return service.create(with: item)
             .map {
                 return AppAction.action(action: .fetch)

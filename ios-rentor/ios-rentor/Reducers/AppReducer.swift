@@ -17,9 +17,7 @@ internal protocol AppReducerProtocol {
 internal final class AppReducer: AppReducerProtocol {
     private let homeReducer: HomeReducer
     
-    init() {
-        self.homeReducer = HomeReducer()
-    }
+    init() { self.homeReducer = HomeReducer() }
     
     func reducer(state: inout AppState, action: AppAction) {
         switch action {
