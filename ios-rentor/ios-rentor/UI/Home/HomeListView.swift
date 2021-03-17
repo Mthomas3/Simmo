@@ -21,7 +21,9 @@ struct HomeListView: View {
         NavigationView {
             propertyList
                 .navigationBarTitle(Text(self.navigationBarTitle))
-                .navigationBarItems(trailing: addButton)
+                .navigationBarItems(trailing: HStack { addButton
+                    testButton
+                })
          }
     }
 }
@@ -29,7 +31,7 @@ struct HomeListView: View {
 extension HomeListView {
     
     var headerView: some View {
-        Text("1000$US / month 💵")
+        Text("\(store.state.homeState.headerTitle)$US / month 💵")
     }
     
     var propertyList: some View {
@@ -54,6 +56,17 @@ extension HomeListView {
                 
             } else {
                 Text("Please add a property... \(store.state.homeState.homeRentors.count)")
+            }
+        }
+    }
+    
+    var testButton: some View {
+        Group {
+            Button(action: {
+                print("do something crazy ")
+                store.dispatch(.action(action: .fetch))
+            }) {
+                Text("|¢|")
             }
         }
     }

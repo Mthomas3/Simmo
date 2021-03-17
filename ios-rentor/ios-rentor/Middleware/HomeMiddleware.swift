@@ -9,6 +9,8 @@
 import Foundation
 import Combine
 
+var launch: Bool = false
+
 final class HomeMiddleware: MiddlewareProtocol {
     internal typealias EntityService = RealRentalDBRepository
     
@@ -57,11 +59,17 @@ final class HomeMiddleware: MiddlewareProtocol {
             }.eraseToAnyPublisher()
     }
     
+    private func fetchSomethingHeader() -> AnyPublisher<AppAction, Never> {
+        var value = launch ? "10000":"0"
+        launch = !launch
+        return Just(AppAction.action(action: .setHeaderName(name: value))).eraseToAnyPublisher()
+    }
+    
     internal func middleware(service: RealRentalDBRepository) -> Middleware<AppState, AppAction> {
         return { state, action in
             switch action {
             case .action(action: .fetch):
-                return self.fetchHome(with: service)
+                return self.fetchHome(with: service).merge(with: self.fetchSomethingHeader()).eraseToAnyPublisher()
             case .action(action: .add(item: let newRentor)):
                 return self.createProperty(with: service, new: newRentor)
             case .action(action: .delete(item: let deleteItem)):
