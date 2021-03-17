@@ -47,7 +47,7 @@ extension HomeListView {
                                 .buttonStyle(PlainButtonStyle())
                             }.listRowInsets(EdgeInsets())
                             .padding(.all, 8)
-                            .listRowBackground(Color.init("GraySystem"))
+                            .listRowBackground(Color.init("TableViewGray"))
                         }.onDelete(perform: onDelete)
                     }
                 }.listStyle(GroupedListStyle())
