@@ -9,22 +9,29 @@
 import Foundation
 import Combine
 
+var launch: Bool = false
+
 final class HomeMiddleware: MiddlewareProtocol {
     internal typealias EntityService = RealRentalDBRepository
+    
+    private func numberX(value: [Rentor]) -> String {
+        return "\(value.map { $0.cashFlow }.reduce(0,{$0 + $1}))"
+    }
     
     private func fetchHome(with service: RealRentalDBRepository) -> AnyPublisher<AppAction, Never> {
         return service.fetch()
             .subscribe(on: DispatchQueue.main)
-            .map {
-                return AppAction.action(action: .fetchComplete(home: $0))
-            }.catch {(error: CoreError) -> Just<AppAction> in
-                switch error {
-                case .fetchCoreError, .fetchMockedError:
-                    return Just(AppAction.action(action: .fetchError(error: MiddlewareError.fetchError)))
-                default:
-                    return Just(AppAction.action(action: .fetchError(error: MiddlewareError.unknown)))
-                }
-            }.eraseToAnyPublisher()
+            .flatMap { (value: [Rentor]) in
+            return Publishers.Merge(Just(AppAction.action(action:
+                                                            .setHeaderName(name: self.numberX(value: value)))), Just(AppAction.action(action: .fetchComplete(home: value))))
+        }.catch { (error: CoreError) -> Just<AppAction> in
+            switch error {
+            case .fetchCoreError, .fetchMockedError:
+                return Just(AppAction.action(action: .fetchError(error: .fetchError)))
+            default:
+                return Just(AppAction.action(action: .fetchError(error: .unknown)))
+            }
+        }.eraseToAnyPublisher()
     }
     
     private func createProperty(with service: RealRentalDBRepository,
