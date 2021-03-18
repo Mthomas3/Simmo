@@ -14,19 +14,24 @@ var launch: Bool = false
 final class HomeMiddleware: MiddlewareProtocol {
     internal typealias EntityService = RealRentalDBRepository
     
+    private func numberX(value: [Rentor]) -> String {
+        return "\(value.map { $0.cashFlow }.reduce(0,{$0 + $1}))"
+    }
+    
     private func fetchHome(with service: RealRentalDBRepository) -> AnyPublisher<AppAction, Never> {
         return service.fetch()
             .subscribe(on: DispatchQueue.main)
-            .map {
-                return AppAction.action(action: .fetchComplete(home: $0))
-            }.catch {(error: CoreError) -> Just<AppAction> in
-                switch error {
-                case .fetchCoreError, .fetchMockedError:
-                    return Just(AppAction.action(action: .fetchError(error: MiddlewareError.fetchError)))
-                default:
-                    return Just(AppAction.action(action: .fetchError(error: MiddlewareError.unknown)))
-                }
-            }.eraseToAnyPublisher()
+            .flatMap { (value: [Rentor]) in
+            return Publishers.Merge(Just(AppAction.action(action:
+                                                            .setHeaderName(name: self.numberX(value: value)))), Just(AppAction.action(action: .fetchComplete(home: value))))
+        }.catch { (error: CoreError) -> Just<AppAction> in
+            switch error {
+            case .fetchCoreError, .fetchMockedError:
+                return Just(AppAction.action(action: .fetchError(error: .fetchError)))
+            default:
+                return Just(AppAction.action(action: .fetchError(error: .unknown)))
+            }
+        }.eraseToAnyPublisher()
     }
     
     private func createProperty(with service: RealRentalDBRepository,
@@ -59,17 +64,11 @@ final class HomeMiddleware: MiddlewareProtocol {
             }.eraseToAnyPublisher()
     }
     
-    private func fetchSomethingHeader() -> AnyPublisher<AppAction, Never> {
-        var value = launch ? "10000":"0"
-        launch = !launch
-        return Just(AppAction.action(action: .setHeaderName(name: value))).eraseToAnyPublisher()
-    }
-    
     internal func middleware(service: RealRentalDBRepository) -> Middleware<AppState, AppAction> {
         return { state, action in
             switch action {
             case .action(action: .fetch):
-                return self.fetchHome(with: service).merge(with: self.fetchSomethingHeader()).eraseToAnyPublisher()
+                return self.fetchHome(with: service)
             case .action(action: .add(item: let newRentor)):
                 return self.createProperty(with: service, new: newRentor)
             case .action(action: .delete(item: let deleteItem)):
