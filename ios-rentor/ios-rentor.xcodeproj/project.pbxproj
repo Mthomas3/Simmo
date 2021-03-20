@@ -39,6 +39,8 @@
 		E98C2582252B96E700E06E73 /* HomeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98C2581252B96E700E06E73 /* HomeDetailViewModel.swift */; };
 		E99042CA2502A16C0062B493 /* RentalEntityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99042C92502A16C0062B493 /* RentalEntityView.swift */; };
 		E99042CC25043BBA0062B493 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99042CB25043BBA0062B493 /* CoreDataManager.swift */; };
+		E999D67926052FF400C5011C /* SettingMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = E999D67826052FF400C5011C /* SettingMiddleware.swift */; };
+		E999D67E26061C2E00C5011C /* SettingsDBRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E999D67D26061C2E00C5011C /* SettingsDBRepository.swift */; };
 		E9A8C6692517B4BC000E8A28 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A8C6682517B4BC000E8A28 /* HomeViewModel.swift */; };
 		E9A8C66E25194095000E8A28 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A8C66D25194095000E8A28 /* Errors.swift */; };
 		E9AAA94E251A1031009841B8 /* SimmulatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AAA94D251A1031009841B8 /* SimmulatorViewModel.swift */; };
@@ -121,6 +123,8 @@
 		E98C2581252B96E700E06E73 /* HomeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailViewModel.swift; sourceTree = "<group>"; };
 		E99042C92502A16C0062B493 /* RentalEntityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentalEntityView.swift; sourceTree = "<group>"; };
 		E99042CB25043BBA0062B493 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		E999D67826052FF400C5011C /* SettingMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMiddleware.swift; sourceTree = "<group>"; };
+		E999D67D26061C2E00C5011C /* SettingsDBRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDBRepository.swift; sourceTree = "<group>"; };
 		E9A8C6682517B4BC000E8A28 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		E9A8C66D25194095000E8A28 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		E9AAA94D251A1031009841B8 /* SimmulatorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimmulatorViewModel.swift; sourceTree = "<group>"; };
@@ -322,6 +326,7 @@
 			children = (
 				E923EDFC25D5B51E0076DD92 /* LogMiddleware.swift */,
 				E923EE0425D5B57A0076DD92 /* HomeMiddleware.swift */,
+				E999D67826052FF400C5011C /* SettingMiddleware.swift */,
 				E9C47BA825D6E5520082C0D6 /* Middleware.swift */,
 				E9DE7BE225DABECD00EB68A2 /* MiddlewareError.swift */,
 			);
@@ -341,6 +346,7 @@
 			isa = PBXGroup;
 			children = (
 				E94492EE258BEC7F00B94481 /* RentalDBRepository.swift */,
+				E999D67D26061C2E00C5011C /* SettingsDBRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -754,6 +760,7 @@
 				E9AAA95525210CF1009841B8 /* SimmulatorCellViewModel.swift in Sources */,
 				E9090D1724FA9F7600020390 /* ios_rentor.xcdatamodeld in Sources */,
 				E98C2582252B96E700E06E73 /* HomeDetailViewModel.swift in Sources */,
+				E999D67E26061C2E00C5011C /* SettingsDBRepository.swift in Sources */,
 				E9A8C66E25194095000E8A28 /* Errors.swift in Sources */,
 				E98C257D252B922000E06E73 /* HomeDetailView.swift in Sources */,
 				E9665536250033B2003BC212 /* RentorEntity.swift in Sources */,
@@ -769,6 +776,7 @@
 				E9B20D4B25913E2100EC52D5 /* Models+CoreData.swift in Sources */,
 				E9C3A0B425570D43003BF79F /* SettingCell.swift in Sources */,
 				E99042CA2502A16C0062B493 /* RentalEntityView.swift in Sources */,
+				E999D67926052FF400C5011C /* SettingMiddleware.swift in Sources */,
 				E923EDE125D5B33A0076DD92 /* AppState.swift in Sources */,
 				E95ECF5425DD87BB0071C97D /* HomeRowView.swift in Sources */,
 				E923EDFD25D5B51E0076DD92 /* LogMiddleware.swift in Sources */,

@@ -15,12 +15,13 @@ struct MainView: View {
     private let appReducer: AppReducer
 
     init() {
-        self.homeMiddleware = HomeMiddleware()
+        self.homeMiddleware = HomeMiddleware(with: RealRentalDBRepository())
         self.appReducer = AppReducer()
         
-        self.store = AppStore(initialState: .init(homeState: HomeState()),
+        self.store = AppStore(initialState: .init(homeState: HomeState(),
+                                                  settingsState: SettingsState()),
                               reducer: self.appReducer.reducer(state:action:),
-                              middlewares: [self.homeMiddleware.middleware(service: RealRentalDBRepository()),
+                              middlewares: [self.homeMiddleware.middleware(),
                                             MiddlewareHelper.logMiddleware()])
         store.dispatch(.action(action: .fetch))
     }

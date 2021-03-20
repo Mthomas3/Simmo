@@ -12,18 +12,25 @@ import Combine
 var launch: Bool = false
 
 final class HomeMiddleware: MiddlewareProtocol {
-    internal typealias EntityService = RealRentalDBRepository
+    //internal typealias EntityService = RealRentalDBRepository
+    
+    private let homeRepository: RealRentalDBRepository
+    
+    init(with repository: RealRentalDBRepository) {
+        self.homeRepository = repository
+    }
     
     private func numberX(value: [Rentor]) -> String {
         return "\(value.map { $0.cashFlow }.reduce(0,{$0 + $1}))"
     }
     
-    private func fetchHome(with service: RealRentalDBRepository) -> AnyPublisher<AppAction, Never> {
-        return service.fetch()
+    private func fetchHome() -> AnyPublisher<AppAction, Never> {
+        return self.homeRepository.fetch()
             .subscribe(on: DispatchQueue.main)
             .flatMap { (value: [Rentor]) in
             return Publishers.Merge(Just(AppAction.action(action:
-                                                            .setHeaderName(name: self.numberX(value: value)))), Just(AppAction.action(action: .fetchComplete(home: value))))
+                                                            .setHeaderName(name: self.numberX(value: value)))),
+                                    Just(AppAction.action(action: .fetchComplete(home: value))))
         }.catch { (error: CoreError) -> Just<AppAction> in
             switch error {
             case .fetchCoreError, .fetchMockedError:
@@ -34,9 +41,8 @@ final class HomeMiddleware: MiddlewareProtocol {
         }.eraseToAnyPublisher()
     }
     
-    private func createProperty(with service: RealRentalDBRepository,
-                                new item: Rentor) -> AnyPublisher<AppAction, Never> {
-        return service.create(with: item)
+    private func createProperty(new item: Rentor) -> AnyPublisher<AppAction, Never> {
+        return self.homeRepository.create(with: item)
             .map {
                 return AppAction.action(action: .fetch)
             }.catch { (error: CoreError) -> Just<AppAction> in
@@ -49,9 +55,8 @@ final class HomeMiddleware: MiddlewareProtocol {
             }.eraseToAnyPublisher()
     }
     
-    private func deleteProperty(with service: RealRentalDBRepository,
-                                delete item: Rentor) -> AnyPublisher<AppAction, Never> {
-        return service.delete(with: item)
+    private func deleteProperty(delete item: Rentor) -> AnyPublisher<AppAction, Never> {
+        return self.homeRepository.delete(with: item)
             .map {
                 return AppAction.action(action: .fetch)
             }.catch { (error: CoreError) -> Just<AppAction> in
@@ -64,15 +69,15 @@ final class HomeMiddleware: MiddlewareProtocol {
             }.eraseToAnyPublisher()
     }
     
-    internal func middleware(service: RealRentalDBRepository) -> Middleware<AppState, AppAction> {
+    internal func middleware() -> Middleware<AppState, AppAction> {
         return { state, action in
             switch action {
             case .action(action: .fetch):
-                return self.fetchHome(with: service)
+                return self.fetchHome()
             case .action(action: .add(item: let newRentor)):
-                return self.createProperty(with: service, new: newRentor)
+                return self.createProperty(new: newRentor)
             case .action(action: .delete(item: let deleteItem)):
-                return self.deleteProperty(with: service, delete: deleteItem)
+                return self.deleteProperty(delete: deleteItem)
             default:
                 break
             }
