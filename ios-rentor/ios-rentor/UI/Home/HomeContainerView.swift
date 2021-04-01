@@ -28,7 +28,7 @@ struct HomeContainerView_Previews: PreviewProvider {
 extension HomeContainerView {
     func deleteProperty(at offsets: IndexSet) {
         if let first = offsets.first {
-            store.dispatch(.action(action: .delete(item: store.state.homeState.homeRentors[first])))
+            store.dispatch(.homeAction(action: .delete(item: store.state.homeState.homeRentors[first])))
         }
     }
 }

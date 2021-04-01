@@ -9,17 +9,10 @@
 import Foundation
 import SwiftUI
 
-internal protocol ReducerProtocol {
-    associatedtype StateType
-    associatedtype ActionType
-    
-    func reducer(state: inout StateType, action: ActionType)
-}
-
 final class HomeReducer: ReducerProtocol {
     
     typealias State = HomeState
-    typealias Actin = HomeAction
+    typealias Action = HomeAction
     
     func reducer(state: inout HomeState, action: HomeAction) {
         switch action {

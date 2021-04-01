@@ -50,7 +50,7 @@ internal struct SimmulatorView: View {
                }, trailing:
                Button("Done") {
                 let rentor: Rentor = Rentor(id: UUID(), date: Date(), name: "TITI?", price: 10.0, rentPrice: 12.0, cashFlow: 12.0, percentage: 1.0)
-                self.store.dispatch(.action(action: .add(item: rentor)))
+                self.store.dispatch(.homeAction(action: .add(item: rentor)))
 
                 self.doneEvent.send(())
                 self.isViewOpen = false

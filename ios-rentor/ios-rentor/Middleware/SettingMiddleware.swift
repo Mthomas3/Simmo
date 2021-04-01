@@ -11,6 +11,26 @@ import Combine
 
 final class SettingMiddleware: MiddlewareProtocol {
     
-    init(with repository: ) {}
+    private let repository: SettingsDBRepository
+    
+    init(with repository: SettingsDBRepository) {
+        self.repository = repository
+    }
+    
+    func middleware() -> Middleware<AppState, AppAction> {
+        return { state, action in
+            switch action {
+            case .settingsAction(action: .fetch):
+                return Just(AppAction.settingsAction(action: .setHasLaunchedApp(status:
+                                                                                    self.repository.hasLaunchedApp)))
+                    .eraseToAnyPublisher()
+            case .settingsAction(action: .setHasLaunchedApp(status: let status)):
+                self.repository.hasLaunchedApp = status
+            default:
+                break
+            }
+            return Empty().eraseToAnyPublisher()
+        }
+    }
     
 }

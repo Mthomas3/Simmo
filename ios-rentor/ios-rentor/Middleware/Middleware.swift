@@ -15,5 +15,6 @@ internal protocol MiddlewareProtocol {
     //associatedtype EntityService: DBRepositoryProtocol
     
     func middleware() -> Middleware<AppState, AppAction>
-    //func middleware(service: EntityService) -> Middleware<AppState, AppAction>
+
+
 }

@@ -8,21 +8,21 @@
 
 import Foundation
 
-typealias Reducer<State, Action> = (inout State, Action) -> Void
-
-internal protocol AppReducerProtocol {
-    func reducer(state: inout AppState, action: AppAction)
-}
-
 internal final class AppReducer: AppReducerProtocol {
     private let homeReducer: HomeReducer
+    private let settingReducer: SettingsReducer
     
-    init() { self.homeReducer = HomeReducer() }
+    init() {
+        self.homeReducer = HomeReducer()
+        self.settingReducer = SettingsReducer()
+    }
     
     func reducer(state: inout AppState, action: AppAction) {
         switch action {
-        case .action(action: let action):
+        case .homeAction(action: let action):
             self.homeReducer.reducer(state: &state.homeState, action: action)
+        case .settingsAction(action: let action):
+            self.settingReducer.reducer(state: &state.settingsState, action: action)
         }
     }
 }

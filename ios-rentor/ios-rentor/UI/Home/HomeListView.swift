@@ -64,7 +64,7 @@ extension HomeListView {
         Group {
             Button(action: {
                 print("do something crazy ")
-                store.dispatch(.action(action: .fetch))
+                store.dispatch(.homeAction(action: .fetch))
             }) {
                 Text("|¢|")
             }
