@@ -12,7 +12,9 @@ import Combine
 internal typealias Middleware<State, Action> = (State, Action) -> AnyPublisher<Action, Never>?
 
 internal protocol MiddlewareProtocol {
-    associatedtype EntityService: DBRepositoryProtocol
+    //associatedtype EntityService: DBRepositoryProtocol
     
-    func middleware(service: EntityService) -> Middleware<AppState, AppAction>
+    func middleware() -> Middleware<AppState, AppAction>
+
+
 }

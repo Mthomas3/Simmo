@@ -11,18 +11,27 @@ import SwiftUI
 struct MainView: View {
 
     private let homeMiddleware: HomeMiddleware
+    private let settingsMiddleware: SettingMiddleware
     private let store: AppStore
     private let appReducer: AppReducer
 
     init() {
-        self.homeMiddleware = HomeMiddleware()
+        self.homeMiddleware = HomeMiddleware(with: RealRentalDBRepository())
+        self.settingsMiddleware = SettingMiddleware(with: SettingsDBRepository(with: UserDefaults.standard))
         self.appReducer = AppReducer()
         
-        self.store = AppStore(initialState: .init(homeState: HomeState()),
+        self.store = AppStore(initialState: .init(homeState: HomeState(),
+                                                  settingsState: SettingsState()),
                               reducer: self.appReducer.reducer(state:action:),
-                              middlewares: [self.homeMiddleware.middleware(service: RealRentalDBRepository()),
+                              middlewares: [self.homeMiddleware.middleware(),
+                                            self.settingsMiddleware.middleware(),
                                             MiddlewareHelper.logMiddleware()])
-        store.dispatch(.action(action: .fetch))
+        
+        store.dispatch(.homeAction(action: .fetch))
+        store.dispatch(.settingsAction(action: .fetch))
+        
+        store.dispatch(AppAction.settingsAction(action: .setHasLaunchedApp(status: false)))
+        print("HAS LAUNCH = \(store.state.settingsState.hasLaunchedApp)")
     }
 
     var body: some View {        

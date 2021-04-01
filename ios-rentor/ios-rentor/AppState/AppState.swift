@@ -9,12 +9,17 @@
 import Foundation
 import SwiftUI
 
-struct AppState {
+internal struct AppState {
     var homeState: HomeState
+    var settingsState: SettingsState
 }
 
-struct HomeState {
+internal struct HomeState {
     var homeRentors: [Rentor] = []
     var headerTitle: String = "0"
     var fetchError: String?
+}
+
+internal struct SettingsState {
+    var hasLaunchedApp: Bool = false
 }
