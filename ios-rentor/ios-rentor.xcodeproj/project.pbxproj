@@ -42,6 +42,7 @@
 		E991819D2615C62C00D971A1 /* SettingAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E991819C2615C62C00D971A1 /* SettingAction.swift */; };
 		E99181A22615CD6400D971A1 /* SettingsReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99181A12615CD6400D971A1 /* SettingsReducer.swift */; };
 		E99181A72615CD9300D971A1 /* ReducerProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99181A62615CD9300D971A1 /* ReducerProtocols.swift */; };
+		E996F2E226187C9C00447EA0 /* TutorialContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996F2E126187C9C00447EA0 /* TutorialContainer.swift */; };
 		E999D67926052FF400C5011C /* SettingMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = E999D67826052FF400C5011C /* SettingMiddleware.swift */; };
 		E999D67E26061C2E00C5011C /* SettingsDBRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E999D67D26061C2E00C5011C /* SettingsDBRepository.swift */; };
 		E9A8C6692517B4BC000E8A28 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A8C6682517B4BC000E8A28 /* HomeViewModel.swift */; };
@@ -129,6 +130,7 @@
 		E991819C2615C62C00D971A1 /* SettingAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingAction.swift; sourceTree = "<group>"; };
 		E99181A12615CD6400D971A1 /* SettingsReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsReducer.swift; sourceTree = "<group>"; };
 		E99181A62615CD9300D971A1 /* ReducerProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReducerProtocols.swift; sourceTree = "<group>"; };
+		E996F2E126187C9C00447EA0 /* TutorialContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialContainer.swift; sourceTree = "<group>"; };
 		E999D67826052FF400C5011C /* SettingMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMiddleware.swift; sourceTree = "<group>"; };
 		E999D67D26061C2E00C5011C /* SettingsDBRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDBRepository.swift; sourceTree = "<group>"; };
 		E9A8C6682517B4BC000E8A28 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -363,6 +365,7 @@
 		E94492FF258C08C300B94481 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				E996F2E026187C8400447EA0 /* Tutorial */,
 				E9090D4824FAA45D00020390 /* LaunchScreen */,
 				E9449314258C0A2300B94481 /* HomeDetail */,
 				E9449308258C099C00B94481 /* Root */,
@@ -463,6 +466,14 @@
 				E98C257C252B922000E06E73 /* HomeDetailView.swift */,
 			);
 			path = HomeDetail;
+			sourceTree = "<group>";
+		};
+		E996F2E026187C8400447EA0 /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				E996F2E126187C9C00447EA0 /* TutorialContainer.swift */,
+			);
+			path = Tutorial;
 			sourceTree = "<group>";
 		};
 		E9B20D4925913E1100EC52D5 /* Models */ = {
@@ -789,6 +800,7 @@
 				E99042CA2502A16C0062B493 /* RentalEntityView.swift in Sources */,
 				E999D67926052FF400C5011C /* SettingMiddleware.swift in Sources */,
 				E99181A72615CD9300D971A1 /* ReducerProtocols.swift in Sources */,
+				E996F2E226187C9C00447EA0 /* TutorialContainer.swift in Sources */,
 				E923EDE125D5B33A0076DD92 /* AppState.swift in Sources */,
 				E95ECF5425DD87BB0071C97D /* HomeRowView.swift in Sources */,
 				E923EDFD25D5B51E0076DD92 /* LogMiddleware.swift in Sources */,

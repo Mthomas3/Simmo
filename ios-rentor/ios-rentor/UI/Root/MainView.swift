@@ -30,25 +30,33 @@ struct MainView: View {
         store.dispatch(.homeAction(action: .fetch))
         store.dispatch(.settingsAction(action: .fetch))
         
-        store.dispatch(AppAction.settingsAction(action: .setHasLaunchedApp(status: false)))
-        print("HAS LAUNCH = \(store.state.settingsState.hasLaunchedApp)")
+        print("IS IT TRUE = \(store.state.settingsState.hasLaunchedApp)")
+        store.dispatch(.settingsAction(action: .setHasLaunchedApp(status: true)))
+        print("IS IT TRUE = \(store.state.settingsState.hasLaunchedApp)")
     }
 
-    var body: some View {        
-        TabView {
-                HomeContainerView()
-                    .tabItem {
-                        Image(systemName: "house")
-                        Text("house")
-                    }
-                    .accentColor(.blue)
+    var body: some View {
+        Group {
+            if store.state.settingsState.hasLaunchedApp == true {
+                TabView {
+                        HomeContainerView()
+                            .tabItem {
+                                Image(systemName: "house")
+                                Text("house")
+                            }
+                            .accentColor(.blue)
+                            .environmentObject(store)
+                    SettingView()
+                        .tabItem {
+                            Image(systemName: "person")
+                            Text("Setting")
+                        }.accentColor(.blue)
+                        .environmentObject(store)
+                }
+            } else {
+                TutorialContainer()
                     .environmentObject(store)
-            SettingView()
-                .tabItem {
-                    Image(systemName: "person")
-                    Text("Setting")
-                }.accentColor(.blue)
-                .environmentObject(store)
+            }
         }
     }
 }
