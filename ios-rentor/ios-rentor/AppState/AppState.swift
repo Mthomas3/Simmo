@@ -22,5 +22,5 @@ internal struct HomeState {
 }
 
 internal struct SettingsState {
-    var hasLaunchedApp: Bool = false
+    var hasLaunchedApp: Bool = true
 }

@@ -1,4 +1,5 @@
 PODS:
+  - ConcentricOnboarding (0.0.6)
   - Firebase/Analytics (6.33.0):
     - Firebase/Core
   - Firebase/Core (6.33.0):
@@ -65,11 +66,13 @@ PODS:
   - SwiftLint (0.40.3)
 
 DEPENDENCIES:
+  - ConcentricOnboarding
   - Firebase/Analytics
   - SwiftLint
 
 SPEC REPOS:
   trunk:
+    - ConcentricOnboarding
     - Firebase
     - FirebaseAnalytics
     - FirebaseCore
@@ -83,6 +86,7 @@ SPEC REPOS:
     - SwiftLint
 
 SPEC CHECKSUMS:
+  ConcentricOnboarding: 954a4c5486a96f446f38ebe96c4d5c7899315508
   Firebase: 8db6f2d1b2c5e2984efba4949a145875a8f65fe5
   FirebaseAnalytics: 5dd088bd2e67bb9d13dbf792d1164ceaf3052193
   FirebaseCore: d889d9e12535b7f36ac8bfbf1713a0836a3012cd
@@ -95,6 +99,6 @@ SPEC CHECKSUMS:
   PromisesObjC: b14b1c6b68e306650688599de8a45e49fae81151
   SwiftLint: dfd554ff0dff17288ee574814ccdd5cea85d76f7
 
-PODFILE CHECKSUM: 9eb5d050d95ed75dddbc4d89efcdda0d38ac28b3
+PODFILE CHECKSUM: c013ba1185721d228805ab2fc5a4a094b0182e73
 
 COCOAPODS: 1.10.0

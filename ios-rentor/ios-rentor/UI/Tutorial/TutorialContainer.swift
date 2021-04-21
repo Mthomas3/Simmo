@@ -12,15 +12,7 @@ struct TutorialContainer: View {
     @EnvironmentObject var store: AppStore
     
     var body: some View {
-        VStack {
-            Text("Tutorial web view")
-            Button {
-                store.dispatch(.settingsAction(action: .setHasLaunchedApp(status: true)))
-            } label: {
-                Text("COMPLETE TUTORIAL")
-            }
-
-        }
+        TutorialPagesView().environmentObject(store)
     }
 }
 
