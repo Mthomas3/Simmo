@@ -26,16 +26,8 @@ internal final class SettingsDBRepository: SettingsDBRepositoryProtocol {
     }
     
     var hasLaunchedApp: Bool {
-        get {
-            let valueX = value(for: "")
-            print("USER DEFAULT GET VALUE = \(valueX)")
-            return value(for: SettingRepositoryKeys.hasLaunchedApp.rawValue) ?? false
-        }
-        set {
-            updateDefaults(for: SettingRepositoryKeys.hasLaunchedApp.rawValue, value: newValue)
-            print("USER DEFAULT SET = \(newValue)")
-            print("USER DEFAULT SET VALUE = \(value(forKey: SettingRepositoryKeys.hasLaunchedApp.RawValue))")
-        }
+        get { return value(for: SettingRepositoryKeys.hasLaunchedApp.rawValue) ?? false }
+        set { updateDefaults(for: SettingRepositoryKeys.hasLaunchedApp.rawValue, value: newValue) }
     }
     
 }

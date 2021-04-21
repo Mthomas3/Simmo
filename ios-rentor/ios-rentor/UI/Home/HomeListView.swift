@@ -65,6 +65,8 @@ extension HomeListView {
             Button(action: {
                 print("do something crazy ")
                 store.dispatch(.homeAction(action: .fetch))
+                
+                store.dispatch(.settingsAction(action: .setHasLaunchedApp(status: false)))
             }) {
                 Text("|¢|")
             }

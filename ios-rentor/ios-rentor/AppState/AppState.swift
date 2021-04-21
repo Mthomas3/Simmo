@@ -18,6 +18,7 @@ internal struct HomeState {
     var homeRentors: [Rentor] = []
     var headerTitle: String = "0"
     var fetchError: String?
+    var testSomething: Bool = false
 }
 
 internal struct SettingsState {

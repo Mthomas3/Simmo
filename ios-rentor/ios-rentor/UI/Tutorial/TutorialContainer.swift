@@ -16,10 +16,8 @@ struct TutorialContainer: View {
             Text("Tutorial web view")
             Button {
                 store.dispatch(.settingsAction(action: .setHasLaunchedApp(status: true)))
-                store.dispatch(.settingsAction(action: .fetch))
-                print("DO SOMETHING")
             } label: {
-                Text("DO CRAZY!")
+                Text("COMPLETE TUTORIAL")
             }
 
         }

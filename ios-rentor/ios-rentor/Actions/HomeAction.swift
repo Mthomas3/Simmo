@@ -18,6 +18,8 @@ internal enum HomeAction: HomeActionProtocol {
     case setHeaderName(name: String)
     case fetchComplete(home: [Rentor])
     
+    case testSomething(value: Bool)
+    
     case fetchError(error: MiddlewareError?)
     case add(item: Rentor)
     case addError(error: MiddlewareError)

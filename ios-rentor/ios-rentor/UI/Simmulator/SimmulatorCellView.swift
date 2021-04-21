@@ -58,7 +58,6 @@ internal struct SimmulatorCellView: View {
                 .truncationMode(.tail)
                 
         }.padding(.trailing, 40)
-        
     }
     
     private func bodyViewCell(with value: SimmulatorFormCellData) -> some View {

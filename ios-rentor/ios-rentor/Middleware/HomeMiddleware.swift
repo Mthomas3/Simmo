@@ -9,25 +9,19 @@
 import Foundation
 import Combine
 
-var launch: Bool = false
-
 final class HomeMiddleware: MiddlewareProtocol {
     private let homeRepository: RealRentalDBRepository
     
     init(with repository: RealRentalDBRepository) {
         self.homeRepository = repository
     }
-    
-    private func numberX(value: [Rentor]) -> String {
-        return "\(value.map { $0.cashFlow }.reduce(0,{$0 + $1}))"
-    }
-    
+
     private func fetchHome() -> AnyPublisher<AppAction, Never> {
         return self.homeRepository.fetch()
             .subscribe(on: DispatchQueue.main)
             .flatMap { (value: [Rentor]) in
             return Publishers.Merge(Just(AppAction.homeAction(action:
-                                                            .setHeaderName(name: self.numberX(value: value)))),
+                                    .setHeaderName(name: "\(value.map { $0.cashFlow }.reduce(0, { $0 + $1}))"))),
                                     Just(AppAction.homeAction(action: .fetchComplete(home: value))))
         }.catch { (error: CoreError) -> Just<AppAction> in
             switch error {
@@ -67,6 +61,10 @@ final class HomeMiddleware: MiddlewareProtocol {
             }.eraseToAnyPublisher()
     }
     
+    private func testSomething(with value: Bool) -> AnyPublisher<AppAction, Never> {
+        return Just(AppAction.homeAction(action: .testSomething(value: value))).eraseToAnyPublisher()
+    }
+    
     internal func middleware() -> Middleware<AppState, AppAction> {
         return { state, action in
             switch action {
@@ -76,6 +74,8 @@ final class HomeMiddleware: MiddlewareProtocol {
                 return self.createProperty(new: newRentor)
             case .homeAction(action: .delete(item: let deleteItem)):
                 return self.deleteProperty(delete: deleteItem)
+            case .homeAction(action: .testSomething(value: let value)):
+                return self.testSomething(with: value)
             default:
                 break
             }

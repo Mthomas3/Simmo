@@ -1,5 +1,5 @@
 //
-//  MainView.swift
+//  RootView.swift
 //  ios-rentor
 //
 //  Created by Thomas on 29/08/2020.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct MainView: View {
+struct RootView: View {
 
     private let homeMiddleware: HomeMiddleware
     private let settingsMiddleware: SettingMiddleware
@@ -29,15 +29,25 @@ struct MainView: View {
         
         store.dispatch(.homeAction(action: .fetch))
         store.dispatch(.settingsAction(action: .fetch))
-        
-        print("IS IT TRUE = \(store.state.settingsState.hasLaunchedApp)")
-        store.dispatch(.settingsAction(action: .setHasLaunchedApp(status: true)))
-        print("IS IT TRUE = \(store.state.settingsState.hasLaunchedApp)")
     }
 
     var body: some View {
+        BaseView().environmentObject(store)
+    }
+}
+
+struct RootView_Previews: PreviewProvider {
+    static var previews: some View {
+        RootView()
+    }
+}
+
+struct BaseView: View {
+    @EnvironmentObject var store: AppStore
+    
+    var body: some View {
         Group {
-            if store.state.settingsState.hasLaunchedApp == true {
+            if store.state.settingsState.hasLaunchedApp {
                 TabView {
                         HomeContainerView()
                             .tabItem {
@@ -54,15 +64,8 @@ struct MainView: View {
                         .environmentObject(store)
                 }
             } else {
-                TutorialContainer()
-                    .environmentObject(store)
+                TutorialContainer().environmentObject(store)
             }
         }
-    }
-}
-
-struct MainView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainView()
     }
 }
