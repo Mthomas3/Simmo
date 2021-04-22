@@ -16,4 +16,5 @@ internal protocol SettingActionProtocol {
 internal enum SettingsAction: SettingActionProtocol {
     case fetch
     case setHasLaunchedApp(status: Bool)
+    case setOnBoardingPages(pages: [OnBoardingPagesData])
 }

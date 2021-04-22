@@ -9,12 +9,6 @@
 import SwiftUI
 import ConcentricOnboarding
 
-struct PageData {
-    let title: String
-    let image: String
-    let content: String
-}
-
 struct TutorialPagesView: View {
     @EnvironmentObject var store: AppStore
       
@@ -24,19 +18,17 @@ struct TutorialPagesView: View {
         ].map { Color(hex: $0) }
     
     var body: some View {
-        let values: [PageData] = [.init(title: "Lorem Ipsum", image: "OnBoarding-project", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse iaculis egestas semper."),.init(title: "Lorem Ipsum", image: "OnBoarding-House", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse iaculis egestas semper")]
         
-        let pages = values.enumerated().map { (i, element) in
+        let pages = store.state.settingsState.onBoardingPages.enumerated().map { (i, element) in
             AnyView(PageView(numberPage: i, title: element.title, imageName: element.image, content: element.content))
         }
-        
-        let backgroundColor: [Color] = [.init("OnBoardingBackground"), .init("OnBoardingBackground")]
         
         var loadingPagesViews = ConcentricOnboardingView(pages: pages, bgColors: colors)
         
         loadingPagesViews.insteadOfCyclingToFirstPage = {
             store.dispatch(.settingsAction(action: .setHasLaunchedApp(status: true)))
         }
+        
         return loadingPagesViews
     }
 }

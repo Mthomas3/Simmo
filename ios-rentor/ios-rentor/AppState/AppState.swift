@@ -23,4 +23,5 @@ internal struct HomeState {
 
 internal struct SettingsState {
     var hasLaunchedApp: Bool = true
+    var onBoardingPages: [OnBoardingPagesData] = []
 }

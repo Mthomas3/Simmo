@@ -7,6 +7,13 @@
 //
 
 import Foundation
+import Combine
+
+internal struct OnBoardingPagesData {
+    let title: String
+    let image: String
+    let content: String
+}
 
 internal protocol SettingsDBRepositoryProtocol {
     var userDefaults: UserDefaults { get set }
@@ -28,6 +35,14 @@ internal final class SettingsDBRepository: SettingsDBRepositoryProtocol {
     var hasLaunchedApp: Bool {
         get { return value(for: SettingRepositoryKeys.hasLaunchedApp.rawValue) ?? false }
         set { updateDefaults(for: SettingRepositoryKeys.hasLaunchedApp.rawValue, value: newValue) }
+    }
+    
+    internal func generateOnBoardPages() -> AnyPublisher<[OnBoardingPagesData], Never> {
+        var pages: [OnBoardingPagesData] = []
+        pages.append(OnBoardingPagesData(title: "REPOSITORY A", image: "OnBoarding-House", content: "FROM REPO"))
+        pages.append(OnBoardingPagesData(title: "REPOSITORY B", image: "OnBoarding-House", content: "FROM REPO"))
+        
+        return Just(pages).eraseToAnyPublisher()
     }
     
 }

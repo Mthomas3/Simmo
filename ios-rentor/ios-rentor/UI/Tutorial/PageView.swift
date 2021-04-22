@@ -52,6 +52,6 @@ struct PageView_Previews: PreviewProvider {
     static var previews: some View {
         PageView(numberPage: 0, title: "Lorem Ipsum",
                  imageName: "OnBoarding-House",
-                 content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse iaculis egestas semper. ")
+                 content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse iaculis egestas semper.")
     }
 }

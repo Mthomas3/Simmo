@@ -17,13 +17,24 @@ final class SettingMiddleware: MiddlewareProtocol {
         self.repository = repository
     }
     
+    private func fetchOnBoardingPages() -> AnyPublisher<AppAction, Never> {
+        return self.repository.generateOnBoardPages()
+            .subscribe(on: DispatchQueue.main)
+            .flatMap { (onBoardingPages)  in
+                Just(AppAction.settingsAction(action: .setOnBoardingPages(pages: onBoardingPages)))
+            }.eraseToAnyPublisher()
+    }
+    
+    private func fetchHasLaunchedApp() -> AnyPublisher<AppAction, Never> {
+        return Just(AppAction.settingsAction(
+                        action: .setHasLaunchedApp(status: self.repository.hasLaunchedApp))).eraseToAnyPublisher()
+    }
+    
     func middleware() -> Middleware<AppState, AppAction> {
         return { state, action in
             switch action {
             case .settingsAction(action: .fetch):
-                return Just(AppAction.settingsAction(action: .setHasLaunchedApp(status:
-                                                                                    self.repository.hasLaunchedApp)))
-                    .eraseToAnyPublisher()
+                return Publishers.Merge(self.fetchHasLaunchedApp(), self.fetchOnBoardingPages()).eraseToAnyPublisher()
             case .settingsAction(action: .setHasLaunchedApp(status: let status)):
                 self.repository.hasLaunchedApp = status
             default:

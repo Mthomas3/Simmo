@@ -16,6 +16,8 @@ final class SettingsReducer: ReducerProtocol {
         switch action {
         case .setHasLaunchedApp(status: let status):
             state.hasLaunchedApp = status
+        case .setOnBoardingPages(pages: let pages):
+            state.onBoardingPages = pages
         default:
             break
         }
