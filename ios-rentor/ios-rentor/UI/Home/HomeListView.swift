@@ -84,37 +84,28 @@ extension HomeListView {
                 List {
                     ForEach(store.state.homeState.homeRentors.filter { ($0.name ?? "")
                                 .hasPrefix(searchText) || searchText == ""}) { property in
-                        /*ZStack {
+                        ZStack {
                             HomeRowView(rentor: property)
                                 .padding(.top, 10)
-                                .background(Color.pink)
                             
                             NavigationLink(destination: HomeDetailView(with: property)) {
                                 EmptyView()
                                     .background(Color.gray)
                             }.frame(width: 0)
                             .opacity(0)
-                            //.buttonStyle(PlainButtonStyle())
+                            .buttonStyle(PlainButtonStyle())
                             .padding(.top, 10)
-                            .background(Color.black)
                             
                         }.listRowInsets(EdgeInsets())
                         .padding(.all, 8)
-                        .listRowBackground(Color.init("TableViewGray"))
-                        .background(Color.green)*/
-                        
-                        HomeRowView(rentor: property)
-                            .listRowBackground(Color.init("gray"))
-                            .padding(.leading, 10)
-                            .padding(.trailing, 10)
-                        
-                        
+                        .listRowBackground(Color.init("gray"))
                     }.onDelete(perform: onDelete)
                 }.listStyle(PlainListStyle())
+                .background(Color.init("gray"))
             } else {
                 Text("Please add a property... \(store.state.homeState.homeRentors.count)")
             }
-        }.padding(.all, -20)
+        }
         
     }
     
