@@ -18,15 +18,19 @@ struct HomeRowView: View {
     private let percentageTitle: String = "Rendement Brut:"
     
     private func headerCell(with name: String) -> some View {
-        VStack(alignment: .leading, spacing: 0) {
-            Text("\(name) 👏")
-                .font(.system(size: 18))
-                .fontWeight(.bold)
-            Divider()
-                .frame(height: 2).background(Color.init("Blue").opacity(0.5))
-                .padding(.top, 5)
-                .padding(.bottom, 5)
-        }
+        HStack {
+            Image("HomeTabBar")
+            Text("Appartement à Toulouse")
+                .font(.title2)
+        }.frame(height: 50)
+    }
+    
+    private func subHeaderTitle(with rental: Rentor) -> some View {
+        HStack {
+            Text("Coût d'acquisition")
+            Spacer()
+            Text("123 456,78€")
+        }.frame(height: 50)
     }
     
     private func contentCell(with rental: Rentor) -> some View {
@@ -58,15 +62,37 @@ struct HomeRowView: View {
                     .foregroundColor(.green)
                     .fontWeight(.bold)
             }
-        }
+        }.frame(height: 150)
     }
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             self.headerCell(with: self.rentor.name ?? "")
+            Divider()
+                .frame(height: 1).background(Color.init("gray").opacity(0.5))
+                .padding(.top, 5)
+                .padding(.bottom, 5)
+            self.subHeaderTitle(with: self.rentor)
+            CustomDivider(height: 1, color: Color.init("PrimaryViolet"), opacity: 0.2)
             self.contentCell(with: self.rentor)
         }.padding()
         .background(Color.white)
         .cornerRadius(20)
+    }
+}
+
+struct CustomDivider: View {
+    let height: CGFloat
+    let color: Color
+    let opacity: Double
+    
+    var body: some View {
+        Group {
+            Rectangle()
+                .strokeBorder(style: StrokeStyle(lineWidth: 1, dash: [3]))
+                .frame(height: 1)
+        }.frame(height: height)
+        .foregroundColor(color)
+        .opacity(opacity)
     }
 }
