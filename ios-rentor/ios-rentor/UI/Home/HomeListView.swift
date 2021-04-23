@@ -21,57 +21,10 @@ struct HomeListView: View {
 
     var body: some View {
         NavigationView {
-            /*VStack {
-                HStack {
-                    HStack {
-                        Image(systemName: "magnifyingglass")
-                        TextField("search", text: $searchText, onEditingChanged: { _ in
-                            self.showCancelButton = true
-                        }, onCommit: {
-                            print("onCommit")
-                        }).foregroundColor(.primary)
-
-                        Button(action: {
-                            self.searchText = ""
-                        }) {
-                            Image(systemName: "xmark.circle.fill").opacity(searchText == "" ? 0 : 1)
-                        }
-                    }.padding(EdgeInsets(top: 8, leading: 6, bottom: 8, trailing: 6))
-                    .foregroundColor(.secondary)
-                    .background(Color(.secondarySystemBackground))
-                    .cornerRadius(10.0)
-                    if showCancelButton {
-                        Button("Cancel") {
-                            UIApplication.shared.endEditing(true)
-                            self.searchText = ""
-                            self.showCancelButton = false
-                        }
-                        .foregroundColor(Color(.systemBlue))
-                    }
-                }.padding(.horizontal)
-                .navigationBarHidden(showCancelButton)
-//
-//                propertyList
-//                    .navigationBarTitle(Text(self.navigationBarTitle))
-//                    .navigationBarItems(trailing: addButton)
-
-
-                List {
-                    
-                    ForEach(store.state.homeState.homeRentors.filter { ($0.name ?? "").hasPrefix(searchText) || searchText == ""}) {
-                        searchText in Text(searchText.name ?? "")
-                    }
-                    /*ForEach(store.state.homeState.homeRentors.filter{ $0.hasPrefix(searchText) || searchText == ""}, id:\.self) {
-                        searchText in Text(searchText)
-                    }*/
-                }
-                .navigationBarTitle(Text("Search"))
-                .resignKeyboardOnDragGesture()
-            }
-         }*/propertyList
-            .navigationBarTitle(Text(self.navigationBarTitle))
-            .navigationBarItems(trailing: addButton)
-            .add(self.searchBar)
+            propertyList
+                .navigationBarTitle(Text(self.navigationBarTitle))
+                .navigationBarItems(trailing: addButton)
+                .add(self.searchBar)
         }
     }
 }
@@ -95,18 +48,15 @@ extension HomeListView {
                             .opacity(0)
                             .buttonStyle(PlainButtonStyle())
                             .padding(.top, 10)
-                            
                         }.listRowInsets(EdgeInsets())
                         .padding(.all, 8)
                         .listRowBackground(Color.init("gray"))
                     }.onDelete(perform: onDelete)
                 }.listStyle(PlainListStyle())
-                .background(Color.init("gray"))
             } else {
                 Text("Please add a property... \(store.state.homeState.homeRentors.count)")
             }
         }
-        
     }
     
     var addButton: some View {

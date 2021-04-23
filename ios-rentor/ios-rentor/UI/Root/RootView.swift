@@ -54,16 +54,19 @@ struct BaseView: View {
                                 Image(systemName: "house.fill")
                                 Text("Mes Simulations")
                             }.environmentObject(store)
+                            .accentColor(.blue)
                     SettingView()
                         .tabItem {
                             Image(systemName: "plus.square")
                             Text("Ajouter")
                         }.environmentObject(store)
+                        .accentColor(.blue)
                     SettingView()
                         .tabItem {
                             Image(systemName: "slider.horizontal.3")
                             Text("Paramètres")
                         }.environmentObject(store)
+                        .accentColor(.blue)
                 }.accentColor(Color.init("PrimaryViolet"))
             } else {
                 TutorialContainer().environmentObject(store)
