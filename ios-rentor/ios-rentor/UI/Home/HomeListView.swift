@@ -107,8 +107,7 @@ extension HomeListView {
                             .listRowBackground(Color.init("gray"))
                             .padding(.leading, 10)
                             .padding(.trailing, 10)
-                        /*StoreRow(rentor: property)
-                            .listRowBackground(Color.init("gray"))*/
+                        
                         
                     }.onDelete(perform: onDelete)
                 }.listStyle(PlainListStyle())
@@ -138,32 +137,5 @@ extension HomeListView {
 struct HomeListView_Previews: PreviewProvider {
     static var previews: some View {
         HomeListView(onDelete: {_ in })
-    }
-}
-
-struct StoreRow: View {
-    
-    public var rentor: Rentor
-    
-    var body: some View {
-        ZStack(alignment: .leading) {
-            Color.red
-            HStack {
-                ZStack {
-                    VStack {
-                        Text("30km")
-                            .font(.system(size: 20, weight: .bold))
-                            .foregroundColor(.white)
-                        
-                        Text("km")
-                            .font(.caption)
-                            .foregroundColor(.white)
-                    }
-                }
-                .frame(width: 70, height: 70, alignment: .center)
-            }
-            .padding(15)
-        }.padding(.all, 0)
-        //.clipShape(RoundedRectangle(cornerRadius: 15))
     }
 }
