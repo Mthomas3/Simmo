@@ -51,18 +51,25 @@ struct BaseView: View {
                 TabView {
                         HomeContainerView()
                             .tabItem {
-                                Image(systemName: "house")
-                                Text("house")
+                                Image(systemName: "house.fill")
+                                Text("Mes Simulations")
                             }
-                            .accentColor(.blue)
+                            .accentColor(Color.yellow)
                             .environmentObject(store)
                     SettingView()
                         .tabItem {
-                            Image(systemName: "person")
-                            Text("Setting")
-                        }.accentColor(.blue)
+                            Image(systemName: "plus.square")
+                            Text("Ajouter")
+                        }.accentColor(Color.init("PrimaryViolet"))
                         .environmentObject(store)
-                }
+                    
+                    SettingView()
+                        .tabItem {
+                            Image(systemName: "slider.horizontal.3")
+                            Text("Paramètres")
+                        }.accentColor(Color.init("PrimaryViolet"))
+                        .environmentObject(store)
+                }.accentColor(Color.init("PrimaryViolet"))
             } else {
                 TutorialContainer().environmentObject(store)
             }

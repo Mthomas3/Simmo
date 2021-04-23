@@ -103,38 +103,15 @@ extension HomeListView {
                         .listRowBackground(Color.init("TableViewGray"))
                         .background(Color.green)*/
                         
-                        //HomeRowView(rentor: property)
-                        StoreRow(title: property.name ?? "", address: "MDR?", city: "TOTO", categories: ["NOTHING"], kilometres: 30)
+                        HomeRowView(rentor: property)
+                            .listRowBackground(Color.init("gray"))
+                            .padding(.leading, 10)
+                            .padding(.trailing, 10)
+                        /*StoreRow(rentor: property)
+                            .listRowBackground(Color.init("gray"))*/
                         
                     }.onDelete(perform: onDelete)
-                }
-                /*List {
-                    ForEach(store.state.homeState.homeRentors.filter { ($0.name ?? "")
-                                .hasPrefix(searchText) || searchText == ""}) { property in
-                        /*ZStack {
-                            HomeRowView(rentor: property)
-                                .padding(.top, 10)
-                                .background(Color.pink)
-                            
-                            NavigationLink(destination: HomeDetailView(with: property)) {
-                                EmptyView()
-                                    .background(Color.gray)
-                            }.frame(width: 0)
-                            .opacity(0)
-                            //.buttonStyle(PlainButtonStyle())
-                            .padding(.top, 10)
-                            .background(Color.black)
-                            
-                        }.listRowInsets(EdgeInsets())
-                        .padding(.all, 8)
-                        .listRowBackground(Color.init("TableViewGray"))
-                        .background(Color.green)*/
-                        
-                        //HomeRowView(rentor: property)
-                        StoreRow(title: property.name ?? "", address: "MDR?", city: "TOTO", categories: ["NOTHING"], kilometres: 30)
-                            .listRowBackground(Color.black)
-                    }.onDelete(perform: onDelete)
-                }.resignKeyboardOnDragGesture()*/
+                }.listStyle(PlainListStyle())
             } else {
                 Text("Please add a property... \(store.state.homeState.homeRentors.count)")
             }
@@ -145,8 +122,7 @@ extension HomeListView {
     var addButton: some View {
         Group {
             Button(action: {
-                //showingAddForm.toggle()
-                store.dispatch(.settingsAction(action: .setHasLaunchedApp(status: false)))
+                showingAddForm.toggle()
             }) {
                 Image(systemName: "plus")
                     .imageScale(.large)
@@ -167,29 +143,15 @@ struct HomeListView_Previews: PreviewProvider {
 
 struct StoreRow: View {
     
-    var title: String
-    var address: String
-    var city: String
-    var categories: [String]
-    var kilometres: Double
+    public var rentor: Rentor
     
     var body: some View {
         ZStack(alignment: .leading) {
-            
-            Color.yellow
+            Color.red
             HStack {
                 ZStack {
-                    Circle()
-                        .fill(
-                            LinearGradient(
-                                gradient: Gradient(colors: [.red, .blue]),
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            )
-                        )
-                    
                     VStack {
-                        Text("\(kilometres)")
+                        Text("30km")
                             .font(.system(size: 20, weight: .bold))
                             .foregroundColor(.white)
                         
@@ -199,34 +161,9 @@ struct StoreRow: View {
                     }
                 }
                 .frame(width: 70, height: 70, alignment: .center)
-                
-                VStack(alignment: .leading) {
-                    Text(title)
-                        .font(.headline)
-                        .fontWeight(.bold)
-                        .lineLimit(2)
-                        .padding(.bottom, 5)
-                    
-                    Text(address)
-                        .padding(.bottom, 5)
-                    
-                    HStack(alignment: .center) {
-                        Image(systemName: "mappin")
-                        Text(city)
-                    }
-                    .padding(.bottom, 5)
-                    
-                    HStack {
-                        ForEach(categories, id: \.self) { category in
-                            //CategoryPill(categoryName: category)
-                        }
-                    }
-                    
-                }
-                .padding(.horizontal, 5)
             }
             .padding(15)
-        }
-        .clipShape(RoundedRectangle(cornerRadius: 15))
+        }.padding(.all, 0)
+        //.clipShape(RoundedRectangle(cornerRadius: 15))
     }
 }
