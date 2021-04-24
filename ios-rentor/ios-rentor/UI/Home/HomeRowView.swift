@@ -18,18 +18,31 @@ struct HomeRowView: View {
     private let percentageTitle: String = "Rendement Brut:"
     
     private func headerCell(with name: String) -> some View {
-        HStack {
-            Image("HomeTabBar")
+        HStack(alignment: .center) {
+            ZStack {
+                Color.init("PrimaryBlue")
+                Image("Home-appartment")
+            }.frame(width: 60, height: 60)
+            .cornerRadius(15)
+            .padding(.trailing, 10)
             Text("Appartement à Toulouse")
                 .font(.title2)
-        }.frame(height: 50)
+        }.frame(height: 70)
     }
     
     private func subHeaderTitle(with rental: Rentor) -> some View {
-        HStack {
+        HStack(alignment: .center) {
             Text("Coût d'acquisition")
             Spacer()
             Text("123 456,78€")
+        }.frame(height: 50)
+    }
+    
+    private func anotherSubHeader(with rental: Rentor) -> some View {
+        HStack(alignment: .center) {
+            Text("Rendement brut")
+            Spacer()
+            Text("5,11 %")
         }.frame(height: 50)
     }
     
@@ -65,6 +78,22 @@ struct HomeRowView: View {
         }.frame(height: 150)
     }
     
+    private func testContentCell(with rentor: Rentor) -> some View {
+        Text("Le rendement est le niveau de rentabilité d’une some d’argent investie, placée ou de capitaux employés lors d’une opération d’investissement ou de placement. Le rendement brut est le rendement avant impôt et charges.")
+            .multilineTextAlignment(.leading)
+            .font(.body)
+            .frame(height: 100)
+    }
+    
+    private func anotherTestContent(with rentor: Rentor) -> some View {
+        HStack(alignment: .center) {
+            Text("Cash flow")
+            Spacer()
+            Text("322,57 €")
+                .foregroundColor(Color.green)
+        }.frame(height: 50)
+    }
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             self.headerCell(with: self.rentor.name ?? "")
@@ -74,7 +103,11 @@ struct HomeRowView: View {
                 .padding(.bottom, 5)
             self.subHeaderTitle(with: self.rentor)
             CustomDivider(height: 1, color: Color.init("PrimaryViolet"), opacity: 0.2)
-            self.contentCell(with: self.rentor)
+            self.anotherSubHeader(with: self.rentor)
+            self.testContentCell(with: rentor)
+            CustomDivider(height: 1, color: Color.init("PrimaryViolet"), opacity: 0.2)
+            self.anotherTestContent(with: rentor)
+            //self.contentCell(with: self.rentor)
         }.padding()
         .background(Color.white)
         .cornerRadius(20)
