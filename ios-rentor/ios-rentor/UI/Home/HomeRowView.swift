@@ -63,16 +63,9 @@ struct HomeRowView: View {
             Spacer()
             Text("322,57 €")
                 .foregroundColor(Color.green)
-        }.frame(height: 50)
-    }
-    
-    private func anotherTestContent(with rentor: Rentor) -> some View {
-        HStack(alignment: .center) {
-            Text("Cash flow")
-            Spacer()
-            Text("322,57 €")
-                .foregroundColor(Color.green)
-        }.frame(height: 50)
+                .font(.system(size: 28))
+                .fontWeight(.medium)
+        }.frame(height: 65)
     }
     
     var body: some View {
