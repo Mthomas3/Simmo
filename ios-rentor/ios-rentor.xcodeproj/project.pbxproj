@@ -21,6 +21,7 @@
 		E90986E62582500D0089525F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E90986E52582500D0089525F /* GoogleService-Info.plist */; };
 		E9190C7725DD321500C804B5 /* CoreMockedManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9190C7625DD321500C804B5 /* CoreMockedManager.swift */; };
 		E9209C9325227E8700EDC0A9 /* SimmulatorCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9209C9225227E8700EDC0A9 /* SimmulatorCellView.swift */; };
+		E921275F2635FC590001E2B8 /* View+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E921275E2635FC590001E2B8 /* View+Ext.swift */; };
 		E923EDE125D5B33A0076DD92 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E923EDE025D5B33A0076DD92 /* AppState.swift */; };
 		E923EDE625D5B3E00076DD92 /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E923EDE525D5B3E00076DD92 /* AppStore.swift */; };
 		E923EDEC25D5B4810076DD92 /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E923EDEB25D5B4810076DD92 /* AppReducer.swift */; };
@@ -114,6 +115,7 @@
 		E90986E52582500D0089525F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E9190C7625DD321500C804B5 /* CoreMockedManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMockedManager.swift; sourceTree = "<group>"; };
 		E9209C9225227E8700EDC0A9 /* SimmulatorCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimmulatorCellView.swift; sourceTree = "<group>"; };
+		E921275E2635FC590001E2B8 /* View+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Ext.swift"; sourceTree = "<group>"; };
 		E923EDE025D5B33A0076DD92 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		E923EDE525D5B3E00076DD92 /* AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
 		E923EDEB25D5B4810076DD92 /* AppReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 			children = (
 				E9878555250BB0C200CF8519 /* String+Ext.swift */,
 				E944702B26303139009A5E5B /* Color+Ext.swift */,
+				E921275E2635FC590001E2B8 /* View+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -809,6 +812,7 @@
 				E944702626302B6F009A5E5B /* TutorialPagesView.swift in Sources */,
 				E9A8C66E25194095000E8A28 /* Errors.swift in Sources */,
 				E98C257D252B922000E06E73 /* HomeDetailView.swift in Sources */,
+				E921275F2635FC590001E2B8 /* View+Ext.swift in Sources */,
 				E9665536250033B2003BC212 /* RentorEntity.swift in Sources */,
 				E9D8D16124FAF9D000DF5ABC /* SettingView.swift in Sources */,
 				E9A8C6692517B4BC000E8A28 /* HomeViewModel.swift in Sources */,

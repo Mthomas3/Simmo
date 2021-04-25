@@ -82,12 +82,12 @@ struct HomeRowView: View {
                 .padding(.top, 5)
                 .padding(.bottom, 5)
             self.drawSubTitle(with: self.rentor)
-            CustomDivider(height: 1, color: Color.init("PrimaryViolet"), opacity: 0.2)
+            DashedDivider(height: 1, color: Color.init("PrimaryViolet"), opacity: 0.2)
                 .padding(.top, 4)
                 .padding(.bottom, 4)
             self.drawContentTitle(with: self.rentor)
             self.drawContent(with: self.rentor)
-            CustomDivider(height: 1, color: Color.init("PrimaryViolet"), opacity: 0.2)
+            DashedDivider(height: 1, color: Color.init("PrimaryViolet"), opacity: 0.2)
                 .padding(.bottom, 10)
                 .padding(.top, 18)
             self.drawFooter(with: self.rentor)
@@ -97,21 +97,5 @@ struct HomeRowView: View {
         .padding(.bottom, 4)
         .background(Color.white)
         .cornerRadius(20)
-    }
-}
-
-struct CustomDivider: View {
-    let height: CGFloat
-    let color: Color
-    let opacity: Double
-    
-    var body: some View {
-        Group {
-            Rectangle()
-                .strokeBorder(style: StrokeStyle(lineWidth: 1, dash: [4]))
-                .frame(height: 1)
-        }.frame(height: height)
-        .foregroundColor(color)
-        .opacity(opacity)
     }
 }
