@@ -22,12 +22,12 @@ struct HomeRowView: View {
             ZStack {
                 Color.init("PrimaryBlue")
                 Image("Home-appartment")
-            }.frame(width: 60, height: 60)
-            .cornerRadius(15)
+            }.frame(width: 65, height: 65)
+            .cornerRadius(18)
             .padding(.trailing, 10)
             Text("Appartement à Toulouse")
                 .font(.title2)
-        }.frame(height: 70)
+        }.frame(height: 75)
     }
     
     private func subHeaderTitle(with rental: Rentor) -> some View {
@@ -75,14 +75,14 @@ struct HomeRowView: View {
                     .foregroundColor(.green)
                     .fontWeight(.bold)
             }
-        }.frame(height: 150)
+        }.frame(height: 170)
     }
     
     private func testContentCell(with rentor: Rentor) -> some View {
         Text("Le rendement est le niveau de rentabilité d’une some d’argent investie, placée ou de capitaux employés lors d’une opération d’investissement ou de placement. Le rendement brut est le rendement avant impôt et charges.")
             .multilineTextAlignment(.leading)
             .font(.body)
-            .frame(height: 100)
+            .frame(height: 120)
     }
     
     private func anotherTestContent(with rentor: Rentor) -> some View {
@@ -103,12 +103,19 @@ struct HomeRowView: View {
                 .padding(.bottom, 5)
             self.subHeaderTitle(with: self.rentor)
             CustomDivider(height: 1, color: Color.init("PrimaryViolet"), opacity: 0.2)
+                .padding(.top, 4)
+                .padding(.bottom, 4)
             self.anotherSubHeader(with: self.rentor)
             self.testContentCell(with: rentor)
             CustomDivider(height: 1, color: Color.init("PrimaryViolet"), opacity: 0.2)
+                .padding(.bottom, 10)
+                .padding(.top, 18)
             self.anotherTestContent(with: rentor)
             //self.contentCell(with: self.rentor)
-        }.padding()
+        }.padding(.leading, 12)
+        .padding(.trailing, 12)
+        .padding(.top, 8)
+        .padding(.bottom, 4)
         .background(Color.white)
         .cornerRadius(20)
     }
@@ -122,7 +129,7 @@ struct CustomDivider: View {
     var body: some View {
         Group {
             Rectangle()
-                .strokeBorder(style: StrokeStyle(lineWidth: 1, dash: [3]))
+                .strokeBorder(style: StrokeStyle(lineWidth: 1, dash: [4]))
                 .frame(height: 1)
         }.frame(height: height)
         .foregroundColor(color)

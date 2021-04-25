@@ -40,6 +40,8 @@ extension HomeListView {
                         ZStack {
                             HomeRowView(rentor: property)
                                 .padding(.top, 10)
+                                .shadow(color: Color.gray.opacity(0.2), radius: 5, x: 14, y: 10)
+
                             NavigationLink(destination: HomeDetailView(with: property)) {
                                 EmptyView()
                                     .background(Color.gray)
