@@ -27,6 +27,7 @@ struct HomeRowView: View {
             .padding(.trailing, 10)
             Text("Appartement à Toulouse")
                 .font(.title2)
+                .fontWeight(.medium)
         }.frame(height: 75)
     }
     
@@ -34,7 +35,7 @@ struct HomeRowView: View {
         HStack(alignment: .center) {
             Text("Coût d'acquisition")
             Spacer()
-            Text("123 456,78€")
+            Text("123 456,78 €")
                 .foregroundColor(Color.gray)
         }.frame(height: 50)
     }
