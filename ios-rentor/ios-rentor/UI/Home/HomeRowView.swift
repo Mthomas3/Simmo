@@ -98,6 +98,5 @@ struct HomeRowView: View {
         .padding(.bottom, 4)
         .background(Color.white)
         .cornerRadius(20)
-        
     }
 }
