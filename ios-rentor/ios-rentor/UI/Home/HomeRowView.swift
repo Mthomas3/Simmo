@@ -17,7 +17,7 @@ struct HomeRowView: View {
     private let cashFlowTitle: String = "Cash-flow mensuel:"
     private let percentageTitle: String = "Rendement Brut:"
     
-    private func headerCell(with name: String) -> some View {
+    private func drawHeader(with rentor: Rentor) -> some View {
         HStack(alignment: .center) {
             ZStack {
                 Color.init("PrimaryBlue")
@@ -30,59 +30,39 @@ struct HomeRowView: View {
         }.frame(height: 75)
     }
     
-    private func subHeaderTitle(with rental: Rentor) -> some View {
+    private func drawSubTitle(with rentor: Rentor) -> some View {
         HStack(alignment: .center) {
             Text("Coût d'acquisition")
             Spacer()
             Text("123 456,78€")
+                .foregroundColor(Color.gray)
         }.frame(height: 50)
     }
     
-    private func anotherSubHeader(with rental: Rentor) -> some View {
+    private func drawContentTitle(with rentor: Rentor) -> some View {
         HStack(alignment: .center) {
             Text("Rendement brut")
             Spacer()
             Text("5,11 %")
+                .foregroundColor(Color.gray)
         }.frame(height: 50)
     }
     
-    private func contentCell(with rental: Rentor) -> some View {
-        HStack {
-            VStack(alignment: .leading) {
-                Text(self.priceTitle)
-                Text(self.rentPriceTitle)
-                Text(self.percentageTitle)
-                Text(self.cashFlowTitle)
-                    .fontWeight(.medium)
-            }
-            Spacer()
-            VStack(alignment: .trailing) {
-                Text("\(rental.price)"
-                    .numberFormatting(formatterDigit: 2, isDecimal: true)
-                    .currencyFormatting())
-                    
-                Text("\(rental.rentPrice)"
-                    .numberFormatting(formatterDigit: 2, isDecimal: true)
-                    .currencyFormatting())
-                
-                Text("\(rental.percentage)"
-                    .numberFormatting(formatterDigit: 2, isDecimal: true)
-                    .currencyFormatting())
-                
-                Text("\(rental.cashFlow)"
-                    .numberFormatting(formatterDigit: 2, isDecimal: true)
-                    .currencyFormatting())
-                    .foregroundColor(.green)
-                    .fontWeight(.bold)
-            }
-        }.frame(height: 170)
-    }
-    
-    private func testContentCell(with rentor: Rentor) -> some View {
+    private func drawContent(with rentor: Rentor) -> some View {
         Text("Le rendement est le niveau de rentabilité d’une some d’argent investie, placée ou de capitaux employés lors d’une opération d’investissement ou de placement. Le rendement brut est le rendement avant impôt et charges.")
             .multilineTextAlignment(.leading)
             .font(.body)
             .frame(height: 120)
+            .foregroundColor(Color.gray)
+    }
+    
+    private func drawFooter(with rentor: Rentor) -> some View {
+        HStack(alignment: .center) {
+            Text("Cash flow")
+            Spacer()
+            Text("322,57 €")
+                .foregroundColor(Color.green)
+        }.frame(height: 50)
     }
     
     private func anotherTestContent(with rentor: Rentor) -> some View {
@@ -96,22 +76,26 @@ struct HomeRowView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            self.headerCell(with: self.rentor.name ?? "")
+            //self.headerCell(with: self.rentor.name ?? "")
+            self.drawHeader(with: rentor)
             Divider()
                 .frame(height: 1).background(Color.init("gray").opacity(0.5))
                 .padding(.top, 5)
                 .padding(.bottom, 5)
-            self.subHeaderTitle(with: self.rentor)
+            //self.subHeaderTitle(with: self.rentor)
+            self.drawSubTitle(with: self.rentor)
             CustomDivider(height: 1, color: Color.init("PrimaryViolet"), opacity: 0.2)
                 .padding(.top, 4)
                 .padding(.bottom, 4)
-            self.anotherSubHeader(with: self.rentor)
-            self.testContentCell(with: rentor)
+            self.drawContentTitle(with: self.rentor)
+            self.drawContent(with: self.rentor)
+            //self.anotherSubHeader(with: self.rentor)
+            //self.testContentCell(with: rentor)
             CustomDivider(height: 1, color: Color.init("PrimaryViolet"), opacity: 0.2)
                 .padding(.bottom, 10)
                 .padding(.top, 18)
-            self.anotherTestContent(with: rentor)
-            //self.contentCell(with: self.rentor)
+            //self.anotherTestContent(with: rentor)
+            self.drawFooter(with: self.rentor)
         }.padding(.leading, 12)
         .padding(.trailing, 12)
         .padding(.top, 8)
