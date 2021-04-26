@@ -24,7 +24,7 @@ struct HomeListView: View {
             propertyList
                 .navigationBarTitle(Text(self.navigationBarTitle))
                 //.navigationBarItems(trailing: addButton)
-//                .add(self.searchBar)
+                .add(self.searchBar)
         }
     }
 }

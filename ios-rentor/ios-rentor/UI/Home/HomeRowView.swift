@@ -23,39 +23,46 @@ struct HomeRowView: View {
             ZStack {
                 Color.init("PrimaryBlue")
                 Image("Home-appartment")
-            }.frame(width: 65, height: 65)
+            }.frame(width: 60, height: 60)
             .cornerRadius(18)
             .padding(.trailing, 10)
             Text("Appartement à Toulouse")
                 .font(.title3)
                 .fontWeight(.medium)
-        }.frame(height: 75)
+                .font(.system(size: 15))
+        }.frame(height: 70)
     }
     
     private func drawPrice(with rentor: Rentor) -> some View {
         HStack(alignment: .center) {
             Text("Coût d'acquisition")
+                .font(.system(size: 15))
             Spacer()
             Text("123 456,78 €")
                 .foregroundColor(Color.gray)
+                .font(.system(size: 15))
         }.frame(height: 50)
     }
     
     private func drawNet(with rentor: Rentor) -> some View {
         HStack(alignment: .center) {
             Text("Rendement Net")
+                .font(.system(size: 15))
             Spacer()
             Text("1,23 %")
                 .foregroundColor(Color.gray)
+                .font(.system(size: 15))
         }.frame(height: 50)
     }
     
     private func drawBrut(with rentor: Rentor) -> some View {
         HStack(alignment: .center) {
             Text("Rendement brut")
+                .font(.system(size: 15))
             Spacer()
             Text("5,11 %")
                 .foregroundColor(Color.gray)
+                .font(.system(size: 15))
         }.frame(height: 50)
     }
     
@@ -64,8 +71,8 @@ struct HomeRowView: View {
             Text("Cash flow")
             Spacer()
             Text("322,57 €")
-                .foregroundColor(Color.green)
-                .font(.system(size: 28))
+                .foregroundColor(Color.init("Green"))
+                .font(.system(size: 24))
                 .fontWeight(.medium)
         }.frame(height: 55)
     }
