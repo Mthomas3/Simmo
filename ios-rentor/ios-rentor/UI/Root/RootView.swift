@@ -55,7 +55,7 @@ struct BaseView: View {
                                 Text("Mes Simulations")
                             }.environmentObject(store)
                             .accentColor(.blue)
-                    SettingView()
+                    SimmulatorView()
                         .tabItem {
                             Image(systemName: "plus.square")
                             Text("Ajouter")
@@ -67,7 +67,7 @@ struct BaseView: View {
                             Text("Paramètres")
                         }.environmentObject(store)
                         .accentColor(.blue)
-                }.accentColor(Color.init("PrimaryViolet"))
+                }.accentColor(Color.init("TabGray"))
             } else {
                 TutorialContainer().environmentObject(store)
             }

@@ -13,7 +13,6 @@ internal struct SimmulatorView: View {
     // MARK: State
     @State private var dataSources: [GlobalFormCell] = []
     @State private var isFormValid: Bool = false
-    @Binding internal var isViewOpen: Bool
     
     @EnvironmentObject var store: AppStore
     
@@ -28,8 +27,7 @@ internal struct SimmulatorView: View {
     private let navigationBarTitle: String = "Simmulations 🏗"
     private let saveButtonTitle: String = "Done"
     
-    init(_ isViewOpen: Binding<Bool>) {
-        _isViewOpen = isViewOpen
+    init() {
         self.simmulatorViewModel = SimmulatorViewModel()
         self.output = self.simmulatorViewModel
             .transform(SimmulatorViewModel.Input(doneForm:
@@ -46,14 +44,14 @@ internal struct SimmulatorView: View {
             }.navigationBarTitle(Text(self.navigationBarTitle), displayMode: .inline)
             .navigationBarItems(leading:
                Button("Cancel") {
-                self.isViewOpen = false
+                //self.isViewOpen = false
                }, trailing:
                Button("Done") {
                 let rentor: Rentor = Rentor(id: UUID(), date: Date(), name: "TITI?", price: 10.0, rentPrice: 12.0, cashFlow: 12.0, percentage: 1.0)
                 self.store.dispatch(.homeAction(action: .add(item: rentor)))
 
                 self.doneEvent.send(())
-                self.isViewOpen = false
+                //self.isViewOpen = false
                }.disabled(!self.isFormValid)
                 .onReceive(self.output.isFormValid) { isValid in
                     self.isFormValid = isValid

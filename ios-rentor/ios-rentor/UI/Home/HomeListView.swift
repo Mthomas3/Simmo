@@ -94,7 +94,7 @@ extension HomeListView {
                     .imageScale(.large)
                     .foregroundColor(Color.init("PrimaryViolet"))
             }.sheet(isPresented: $showingAddForm) {
-                SimmulatorView($showingAddForm)
+                SimmulatorView()
                     .environmentObject(store)
             }
         }
