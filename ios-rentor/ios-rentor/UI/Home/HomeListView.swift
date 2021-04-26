@@ -42,8 +42,7 @@ extension HomeListView {
                                 .padding(.top, 10)
                                 .padding(.leading, 8)
                                 .padding(.trailing, 8)
-                                .shadow(color: Color.gray.opacity(0.1), radius: 5, x: 14, y: 10)
-
+                                .shadow(color: Color.gray.opacity(0.08), radius: 5, x: 4, y: 4)
                             NavigationLink(destination: HomeDetailView(with: property)) {
                                 EmptyView()
                                     .background(Color.gray)

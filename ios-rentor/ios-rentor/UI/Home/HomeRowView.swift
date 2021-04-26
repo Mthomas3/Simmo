@@ -51,16 +51,11 @@ struct HomeRowView: View {
     }
     
     private func drawContent(with rentor: Rentor) -> some View {
-        GeometryReader { geometry in
-            Text("Le rendement est le niveau de rentabilité d’une some d’argent investie, placée ou de capitaux employés lors d’une opération d’investissement ou de placement. Le rendement brut est le rendement avant impôt et charges.")
-                .multilineTextAlignment(.leading)
-                .font(.body)
-                .frame(height: 120)
-                .foregroundColor(Color.gray)
-                .font(Font.system(size: self.fontSize(for: geometry.size)))
-                
-        }.frame(height: 120)
-        
+        Text("Le rendement est le niveau de rentabilité d’une some d’argent investie, placée ou de capitaux employés lors d’une opération d’investissement ou de placement. Le rendement brut est le rendement avant impôt et charges.")
+            .multilineTextAlignment(.leading)
+            .font(.body)
+            .frame(height: 140)
+            .foregroundColor(Color.gray)
     }
     
     private func drawFooter(with rentor: Rentor) -> some View {
