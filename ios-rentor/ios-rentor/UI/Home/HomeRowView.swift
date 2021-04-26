@@ -16,6 +16,7 @@ struct HomeRowView: View {
     private let rentPriceTitle: String = "Loyer mensuel:"
     private let cashFlowTitle: String = "Cash-flow mensuel:"
     private let percentageTitle: String = "Rendement Brut:"
+    private let fontScaleFactor: CGFloat = 5
     
     private func drawHeader(with rentor: Rentor) -> some View {
         HStack(alignment: .center) {
@@ -50,11 +51,16 @@ struct HomeRowView: View {
     }
     
     private func drawContent(with rentor: Rentor) -> some View {
-        Text("Le rendement est le niveau de rentabilité d’une some d’argent investie, placée ou de capitaux employés lors d’une opération d’investissement ou de placement. Le rendement brut est le rendement avant impôt et charges.")
-            .multilineTextAlignment(.leading)
-            .font(.body)
-            .frame(height: 120)
-            .foregroundColor(Color.gray)
+        GeometryReader { geometry in
+            Text("Le rendement est le niveau de rentabilité d’une some d’argent investie, placée ou de capitaux employés lors d’une opération d’investissement ou de placement. Le rendement brut est le rendement avant impôt et charges.")
+                .multilineTextAlignment(.leading)
+                .font(.body)
+                .frame(height: 120)
+                .foregroundColor(Color.gray)
+                .font(Font.system(size: self.fontSize(for: geometry.size)))
+                
+        }.frame(height: 120)
+        
     }
     
     private func drawFooter(with rentor: Rentor) -> some View {
@@ -66,6 +72,10 @@ struct HomeRowView: View {
                 .font(.system(size: 28))
                 .fontWeight(.medium)
         }.frame(height: 65)
+    }
+    
+    private func fontSize(for size: CGSize) -> CGFloat {
+        min(size.width, size.height) * self.fontScaleFactor
     }
     
     var body: some View {
