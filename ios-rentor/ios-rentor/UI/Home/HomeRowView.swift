@@ -27,7 +27,7 @@ struct HomeRowView: View {
             .cornerRadius(18)
             .padding(.trailing, 10)
             Text("Appartement à Toulouse")
-                .font(.title2)
+                .font(.title3)
                 .fontWeight(.medium)
         }.frame(height: 75)
     }
