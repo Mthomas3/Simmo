@@ -21,10 +21,14 @@ struct HomeListView: View {
 
     var body: some View {
         NavigationView {
-            propertyList
-                .navigationBarTitle(Text(self.navigationBarTitle))
-                //.navigationBarItems(trailing: addButton)
-                //.add(self.searchBar)
+            ZStack {
+                
+                propertyList
+                    .navigationBarTitle(Text(self.navigationBarTitle))
+                    //.navigationBarItems(trailing: addButton)
+                    //.add(self.searchBar)
+            }
+            
         }
     }
 }
@@ -54,33 +58,40 @@ extension HomeListView {
     var propertyList: some View {
         Group {
             if store.state.homeState.homeRentors.count > 0 {
-                List {
-                    ForEach(store.state.homeState.homeRentors.filter { searchBar.text.isEmpty ||
-                                ($0.name ?? "").lowercased().contains(searchBar.text.lowercased()) }) { property in
-                        ZStack {
-                            HomeRowView(rentor: property)
+                ZStack {
+                    Color.init("BackgroundHome").edgesIgnoringSafeArea(.all)
+                    List {
+                        ForEach(store.state.homeState.homeRentors.filter { searchBar.text.isEmpty ||
+                                    ($0.name ?? "").lowercased().contains(searchBar.text.lowercased()) }) { property in
+                            ZStack {
+                                HomeRowView(rentor: property)
+                                    .padding(.top, 10)
+                                    .padding(.leading, 8)
+                                    .padding(.trailing, 8)
+                                    .shadow(color: Color.init("ShadowHomeCell").opacity(1), radius: 5, x: 2, y: 2)
+                                    .background(Color.clear)
+                                NavigationLink(destination: HomeDetailView(with: property)) {
+                                    EmptyView()
+                                }.frame(width: 0)
+                                .opacity(0)
+                                .buttonStyle(PlainButtonStyle())
                                 .padding(.top, 10)
-                                .padding(.leading, 8)
-                                .padding(.trailing, 8)
-                                .shadow(color: Color.gray.opacity(0.4), radius: 5, x: 2, y: 2)
-                            NavigationLink(destination: HomeDetailView(with: property)) {
-                                EmptyView()
-                                    .background(Color.gray)
-                            }.frame(width: 0)
-                            .opacity(0)
-                            .buttonStyle(PlainButtonStyle())
-                            .padding(.top, 10)
-                        }.listRowInsets(EdgeInsets())
-                        .padding(.all, 8)
-                        .listRowBackground(Color.init("gray"))
-                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-                        .listRowInsets(EdgeInsets())
-                        .background(Color.init("gray"))
-                    }.onDelete(perform: onDelete)
-                }.listStyle(PlainListStyle())
+                            }.listRowInsets(EdgeInsets())
+                            .padding(.all, 8)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                            .listRowInsets(EdgeInsets())
+                            .listRowBackground(Color.clear)
+                            .background(Color.init("BackgroundHomeListCell"))
+                        }.onDelete(perform: onDelete)
+                    }.listStyle(PlainListStyle())
+                }
                 //.add(self.searchBar)
             } else {
-                self.renderOnBoardingHome()
+                ZStack {
+                    Color.init("BackgroundHome").edgesIgnoringSafeArea(.all)
+                    self.renderOnBoardingHome()
+
+                }
             }
         }
     }

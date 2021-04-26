@@ -16,6 +16,10 @@ struct RootView: View {
     private let appReducer: AppReducer
 
     init() {
+        
+        UITableView.appearance().backgroundColor = .clear
+        UITableViewCell.appearance().backgroundColor = .clear
+        
         self.homeMiddleware = HomeMiddleware(with: RealRentalDBRepository())
         self.settingsMiddleware = SettingMiddleware(with: SettingsDBRepository(with: UserDefaults.standard))
         self.appReducer = AppReducer()
@@ -76,6 +80,6 @@ struct BaseView: View {
             } else {
                 TutorialContainer().environmentObject(store)
             }
-        }.background(Color.yellow)
+        }
     }
 }

@@ -39,7 +39,7 @@ struct HomeRowView: View {
                 .font(.system(size: 15))
             Spacer()
             Text("123 456,78 €")
-                .foregroundColor(Color.gray)
+                .foregroundColor(Color.init("HomeRowFontGray"))
                 .font(.system(size: 15))
         }.frame(height: 50)
     }
@@ -50,7 +50,7 @@ struct HomeRowView: View {
                 .font(.system(size: 15))
             Spacer()
             Text("1,23 %")
-                .foregroundColor(Color.gray)
+                .foregroundColor(Color.init("HomeRowFontGray"))
                 .font(.system(size: 15))
         }.frame(height: 50)
     }
@@ -61,7 +61,7 @@ struct HomeRowView: View {
                 .font(.system(size: 15))
             Spacer()
             Text("5,11 %")
-                .foregroundColor(Color.gray)
+                .foregroundColor(Color.init("HomeRowFontGray"))
                 .font(.system(size: 15))
         }.frame(height: 50)
     }
@@ -86,19 +86,19 @@ struct HomeRowView: View {
             VStack(alignment: .leading, spacing: 0) {
                 self.drawTitle(with: rentor)
                 Divider()
-                    .frame(height: 1).background(Color.init("gray").opacity(0.2))
+                    .frame(height: 1).background(Color.init("HomeRowFontGray").opacity(0.2))
                     .padding(.top, 5)
                     .padding(.bottom, 5)
                 self.drawPrice(with: rentor)
-                DashedDivider(height: 1, color: Color.init("PrimaryViolet"), opacity: 0.2)
+                DashedDivider(height: 1, color: Color.init("HomeRowFontGray"), opacity: 0.2)
                     .padding(.top, 4)
                     .padding(.bottom, 4)
                 self.drawBrut(with: rentor)
-                DashedDivider(height: 1, color: Color.init("PrimaryViolet"), opacity: 0.2)
+                DashedDivider(height: 1, color: Color.init("HomeRowFontGray"), opacity: 0.2)
                     .padding(.top, 4)
                     .padding(.bottom, 4)
                 self.drawNet(with: rentor)
-                DashedDivider(height: 1, color: Color.init("PrimaryViolet"), opacity: 0.2)
+                DashedDivider(height: 1, color: Color.init("HomeRowFontGray"), opacity: 0.2)
                     .padding(.top, 4)
                     .padding(.bottom, 4)
             }
@@ -109,7 +109,7 @@ struct HomeRowView: View {
         .padding(.trailing, 12)
         .padding(.top, 8)
         .padding(.bottom, 4)
-        .background(Color.white)
+        .background(Color.init("BackgroundHomeCell"))
         .cornerRadius(20)
     }
 }
