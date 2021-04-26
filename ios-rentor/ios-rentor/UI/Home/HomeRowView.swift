@@ -38,11 +38,8 @@ struct HomeRowView: View {
         HStack(alignment: .center) {
             Text("Coût d'acquisition")
             Spacer()
-            HStack {
-                Text("123 456,78 €")
-                    .foregroundColor(Color.gray)
-                Image(systemName: self.collapsed ? "chevron.down" : "chevron.up")
-            }
+            Text("123 456,78 €")
+                .foregroundColor(Color.gray)
         }.frame(height: 50)
     }
     
@@ -50,11 +47,8 @@ struct HomeRowView: View {
         HStack(alignment: .center) {
             Text("Rendement brut")
             Spacer()
-            HStack {
-                Text("5,11 %")
-                    .foregroundColor(Color.gray)
-                Image(systemName: self.collapsed ? "chevron.down" : "chevron.up")
-            }
+            Text("5,11 %")
+                .foregroundColor(Color.gray)
         }.frame(height: 50)
     }
     
@@ -70,13 +64,10 @@ struct HomeRowView: View {
         HStack(alignment: .center) {
             Text("Cash flow")
             Spacer()
-            HStack {
-                Text("322,57 €")
-                    .foregroundColor(Color.green)
-                    .font(.system(size: 28))
-                    .fontWeight(.medium)
-                Image(systemName: self.collapsed ? "chevron.down" : "chevron.up")
-            }
+            Text("322,57 €")
+                .foregroundColor(Color.green)
+                .font(.system(size: 28))
+                .fontWeight(.medium)
         }.frame(height: 65)
     }
     
@@ -92,11 +83,13 @@ struct HomeRowView: View {
                 .padding(.top, 5)
                 .padding(.bottom, 5)
             self.drawSubTitle(with: self.rentor)
-            DashedDivider(height: 1, color: Color.init("PrimaryViolet"), opacity: 0.2)
+            /*DashedDivider(height: 1, color: Color.init("PrimaryViolet"), opacity: 0.2)
                 .padding(.top, 4)
-                .padding(.bottom, 4)
+                .padding(.bottom, 4)*/
             self.drawContentTitle(with: self.rentor)
-            self.drawContent(with: self.rentor)
+            self.drawContentTitle(with: self.rentor)
+            self.drawSubTitle(with: self.rentor)
+            //self.drawContent(with: self.rentor)
             DashedDivider(height: 1, color: Color.init("PrimaryViolet"), opacity: 0.2)
                 .padding(.bottom, 10)
                 .padding(.top, 18)
