@@ -55,7 +55,7 @@ extension HomeListView {
                         .listRowBackground(Color.init("gray"))
                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                         .listRowInsets(EdgeInsets())
-                        .background(Color.white)
+                        .background(Color.init("gray"))
                     }.onDelete(perform: onDelete)
                 }.listStyle(PlainListStyle())
             } else {

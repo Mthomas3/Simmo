@@ -18,6 +18,8 @@ struct HomeRowView: View {
     private let percentageTitle: String = "Rendement Brut:"
     private let fontScaleFactor: CGFloat = 5
     
+    @State private var collapsed: Bool = false
+    
     private func drawHeader(with rentor: Rentor) -> some View {
         HStack(alignment: .center) {
             ZStack {
@@ -36,8 +38,11 @@ struct HomeRowView: View {
         HStack(alignment: .center) {
             Text("Coût d'acquisition")
             Spacer()
-            Text("123 456,78 €")
-                .foregroundColor(Color.gray)
+            HStack {
+                Text("123 456,78 €")
+                    .foregroundColor(Color.gray)
+                Image(systemName: self.collapsed ? "chevron.down" : "chevron.up")
+            }
         }.frame(height: 50)
     }
     
@@ -45,8 +50,11 @@ struct HomeRowView: View {
         HStack(alignment: .center) {
             Text("Rendement brut")
             Spacer()
-            Text("5,11 %")
-                .foregroundColor(Color.gray)
+            HStack {
+                Text("5,11 %")
+                    .foregroundColor(Color.gray)
+                Image(systemName: self.collapsed ? "chevron.down" : "chevron.up")
+            }
         }.frame(height: 50)
     }
     
@@ -62,10 +70,13 @@ struct HomeRowView: View {
         HStack(alignment: .center) {
             Text("Cash flow")
             Spacer()
-            Text("322,57 €")
-                .foregroundColor(Color.green)
-                .font(.system(size: 28))
-                .fontWeight(.medium)
+            HStack {
+                Text("322,57 €")
+                    .foregroundColor(Color.green)
+                    .font(.system(size: 28))
+                    .fontWeight(.medium)
+                Image(systemName: self.collapsed ? "chevron.down" : "chevron.up")
+            }
         }.frame(height: 65)
     }
     

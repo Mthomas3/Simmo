@@ -43,7 +43,6 @@
 		E9878556250BB0C200CF8519 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9878555250BB0C200CF8519 /* String+Ext.swift */; };
 		E98C257D252B922000E06E73 /* HomeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98C257C252B922000E06E73 /* HomeDetailView.swift */; };
 		E98C2582252B96E700E06E73 /* HomeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98C2581252B96E700E06E73 /* HomeDetailViewModel.swift */; };
-		E99042CA2502A16C0062B493 /* RentalEntityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99042C92502A16C0062B493 /* RentalEntityView.swift */; };
 		E99042CC25043BBA0062B493 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99042CB25043BBA0062B493 /* CoreDataManager.swift */; };
 		E991819D2615C62C00D971A1 /* SettingAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E991819C2615C62C00D971A1 /* SettingAction.swift */; };
 		E99181A22615CD6400D971A1 /* SettingsReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99181A12615CD6400D971A1 /* SettingsReducer.swift */; };
@@ -67,7 +66,6 @@
 		E9D8D15D24FAF7B800DF5ABC /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D8D15C24FAF7B800DF5ABC /* RootView.swift */; };
 		E9D8D15F24FAF98300DF5ABC /* SimmulatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D8D15E24FAF98200DF5ABC /* SimmulatorView.swift */; };
 		E9D8D16124FAF9D000DF5ABC /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D8D16024FAF9D000DF5ABC /* SettingView.swift */; };
-		E9D8D16324FC353700DF5ABC /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D8D16224FC353700DF5ABC /* Home.swift */; };
 		E9DE7BE325DABECD00EB68A2 /* MiddlewareError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DE7BE225DABECD00EB68A2 /* MiddlewareError.swift */; };
 		E9F40B4725DADC6B008BA828 /* Home.json in Resources */ = {isa = PBXBuildFile; fileRef = E9F40B4625DADC6B008BA828 /* Home.json */; };
 /* End PBXBuildFile section */
@@ -137,7 +135,6 @@
 		E9878555250BB0C200CF8519 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		E98C257C252B922000E06E73 /* HomeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailView.swift; sourceTree = "<group>"; };
 		E98C2581252B96E700E06E73 /* HomeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailViewModel.swift; sourceTree = "<group>"; };
-		E99042C92502A16C0062B493 /* RentalEntityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentalEntityView.swift; sourceTree = "<group>"; };
 		E99042CB25043BBA0062B493 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		E991819C2615C62C00D971A1 /* SettingAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingAction.swift; sourceTree = "<group>"; };
 		E99181A12615CD6400D971A1 /* SettingsReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsReducer.swift; sourceTree = "<group>"; };
@@ -161,7 +158,6 @@
 		E9D8D15C24FAF7B800DF5ABC /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		E9D8D15E24FAF98200DF5ABC /* SimmulatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimmulatorView.swift; sourceTree = "<group>"; };
 		E9D8D16024FAF9D000DF5ABC /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
-		E9D8D16224FC353700DF5ABC /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		E9DE7BE225DABECD00EB68A2 /* MiddlewareError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiddlewareError.swift; sourceTree = "<group>"; };
 		E9F40B4625DADC6B008BA828 /* Home.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Home.json; sourceTree = "<group>"; };
 		F0B73656C48975407BCA3632 /* Pods-ios-rentorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-rentorTests.release.xcconfig"; path = "Target Support Files/Pods-ios-rentorTests/Pods-ios-rentorTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -403,8 +399,6 @@
 			isa = PBXGroup;
 			children = (
 				E94BA9952632F864002725B8 /* SearchBar */,
-				E99042C92502A16C0062B493 /* RentalEntityView.swift */,
-				E9D8D16224FC353700DF5ABC /* Home.swift */,
 				E95ECF4925DD80BA0071C97D /* HomeContainerView.swift */,
 				E95ECF4E25DD81230071C97D /* HomeListView.swift */,
 				E95ECF5325DD87BB0071C97D /* HomeRowView.swift */,
@@ -791,7 +785,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E9D8D16324FC353700DF5ABC /* Home.swift in Sources */,
 				E9B20D502591403200EC52D5 /* Models.swift in Sources */,
 				E99042CC25043BBA0062B493 /* CoreDataManager.swift in Sources */,
 				E9D8D15D24FAF7B800DF5ABC /* RootView.swift in Sources */,
@@ -826,7 +819,6 @@
 				E960CF4225D5F0920037A26B /* HomeReducer.swift in Sources */,
 				E9B20D4B25913E2100EC52D5 /* Models+CoreData.swift in Sources */,
 				E9C3A0B425570D43003BF79F /* SettingCell.swift in Sources */,
-				E99042CA2502A16C0062B493 /* RentalEntityView.swift in Sources */,
 				E999D67926052FF400C5011C /* SettingMiddleware.swift in Sources */,
 				E99181A72615CD9300D971A1 /* ReducerProtocols.swift in Sources */,
 				E996F2E226187C9C00447EA0 /* TutorialContainer.swift in Sources */,
