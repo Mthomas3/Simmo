@@ -24,7 +24,7 @@ struct HomeListView: View {
             propertyList
                 .navigationBarTitle(Text(self.navigationBarTitle))
                 .navigationBarItems(trailing: addButton)
-                .add(self.searchBar)
+//                .add(self.searchBar)
         }
     }
 }
@@ -35,8 +35,8 @@ extension HomeListView {
         Group {
             if store.state.homeState.homeRentors.count > 0 {
                 List {
-                    ForEach(store.state.homeState.homeRentors.filter { ($0.name ?? "")
-                                .hasPrefix(searchText) || searchText == ""}) { property in
+                    ForEach(store.state.homeState.homeRentors.filter { searchBar.text.isEmpty ||
+                                ($0.name ?? "").lowercased().contains(searchBar.text.lowercased()) }) { property in
                         ZStack {
                             HomeRowView(rentor: property)
                                 .padding(.top, 10)
@@ -58,6 +58,7 @@ extension HomeListView {
                         .background(Color.init("gray"))
                     }.onDelete(perform: onDelete)
                 }.listStyle(PlainListStyle())
+                .add(self.searchBar)
             } else {
                 Text("Please add a property... \(store.state.homeState.homeRentors.count)")
             }
