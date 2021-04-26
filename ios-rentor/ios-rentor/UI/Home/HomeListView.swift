@@ -24,7 +24,7 @@ struct HomeListView: View {
             propertyList
                 .navigationBarTitle(Text(self.navigationBarTitle))
                 //.navigationBarItems(trailing: addButton)
-                .add(self.searchBar)
+                //.add(self.searchBar)
         }
     }
 }
@@ -63,13 +63,13 @@ extension HomeListView {
                                 .padding(.leading, 8)
                                 .padding(.trailing, 8)
                                 .shadow(color: Color.gray.opacity(0.4), radius: 5, x: 2, y: 2)
-                            /*NavigationLink(destination: HomeDetailView(with: property)) {
+                            NavigationLink(destination: HomeDetailView(with: property)) {
                                 EmptyView()
                                     .background(Color.gray)
                             }.frame(width: 0)
                             .opacity(0)
                             .buttonStyle(PlainButtonStyle())
-                            .padding(.top, 10)*/
+                            .padding(.top, 10)
                         }.listRowInsets(EdgeInsets())
                         .padding(.all, 8)
                         .listRowBackground(Color.init("gray"))

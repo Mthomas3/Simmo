@@ -33,8 +33,8 @@ internal struct SimmulatorView: View {
             .transform(SimmulatorViewModel.Input(doneForm:
                                                     self.doneEvent.eraseToAnyPublisher(), refreshEvent:
                                                         self.refreshEvent.eraseToAnyPublisher()))
-        UITableView.appearance().backgroundColor = UIColor.black.withAlphaComponent(0.05)
-        UITableViewCell.appearance().backgroundColor = UIColor.clear
+        //UITableView.appearance().backgroundColor = UIColor.black.withAlphaComponent(0.05)
+        //UITableViewCell.appearance().backgroundColor = UIColor.clear
     }
     
     var body: some View {
