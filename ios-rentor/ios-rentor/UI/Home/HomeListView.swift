@@ -42,7 +42,7 @@ extension HomeListView {
                                 .padding(.top, 10)
                                 .padding(.leading, 8)
                                 .padding(.trailing, 8)
-                                .shadow(color: Color.gray.opacity(0.08), radius: 5, x: 4, y: 4)
+                                .shadow(color: Color.gray.opacity(0.4), radius: 5, x: 2, y: 2)
                             NavigationLink(destination: HomeDetailView(with: property)) {
                                 EmptyView()
                                     .background(Color.gray)
@@ -53,6 +53,9 @@ extension HomeListView {
                         }.listRowInsets(EdgeInsets())
                         .padding(.all, 8)
                         .listRowBackground(Color.init("gray"))
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                        .listRowInsets(EdgeInsets())
+                        .background(Color.white)
                     }.onDelete(perform: onDelete)
                 }.listStyle(PlainListStyle())
             } else {
