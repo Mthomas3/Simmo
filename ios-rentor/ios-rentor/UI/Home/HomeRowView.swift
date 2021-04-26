@@ -20,6 +20,47 @@ struct HomeRowView: View {
     
     @State private var collapsed: Bool = false
     
+    private func drawTitle(with rentor: Rentor) -> some View {
+        HStack(alignment: .center) {
+            ZStack {
+                Color.init("PrimaryBlue")
+                Image("Home-appartment")
+            }.frame(width: 65, height: 65)
+            .cornerRadius(18)
+            .padding(.trailing, 10)
+            Text("Appartement à Toulouse")
+                .font(.title3)
+                .fontWeight(.medium)
+        }.frame(height: 75)
+    }
+    
+    private func drawPrice(with rentor: Rentor) -> some View {
+        HStack(alignment: .center) {
+            Text("Coût d'acquisition")
+            Spacer()
+            Text("123 456,78 €")
+                .foregroundColor(Color.gray)
+        }.frame(height: 50)
+    }
+    
+    private func drawNet(with rentor: Rentor) -> some View {
+        HStack(alignment: .center) {
+            Text("Rendement Net")
+            Spacer()
+            Text("1,23 %")
+                .foregroundColor(Color.gray)
+        }.frame(height: 50)
+    }
+    
+    private func drawBrut(with rentor: Rentor) -> some View {
+        HStack(alignment: .center) {
+            Text("Rendement brut")
+            Spacer()
+            Text("5,11 %")
+                .foregroundColor(Color.gray)
+        }.frame(height: 50)
+    }
+    
     private func drawHeader(with rentor: Rentor) -> some View {
         HStack(alignment: .center) {
             ZStack {
@@ -78,27 +119,28 @@ struct HomeRowView: View {
     var body: some View {
         VStack {
             VStack(alignment: .leading, spacing: 0) {
-                self.drawHeader(with: rentor)
+                //self.drawHeader(with: rentor)
+                self.drawTitle(with: rentor)
                 Divider()
                     .frame(height: 1).background(Color.init("gray").opacity(0.2))
                     .padding(.top, 5)
                     .padding(.bottom, 5)
-                self.drawSubTitle(with: self.rentor)
+                //self.drawSubTitle(with: self.rentor)
+                self.drawPrice(with: rentor)
                 DashedDivider(height: 1, color: Color.init("PrimaryViolet"), opacity: 0.2)
                     .padding(.top, 4)
                     .padding(.bottom, 4)
-                self.drawContentTitle(with: self.rentor)
+                //self.drawContentTitle(with: self.rentor)
+                self.drawBrut(with: rentor)
                 DashedDivider(height: 1, color: Color.init("PrimaryViolet"), opacity: 0.2)
                     .padding(.top, 4)
                     .padding(.bottom, 4)
-                self.drawContentTitle(with: self.rentor)
+                //self.drawContentTitle(with: self.rentor)
+                self.drawNet(with: rentor)
                 DashedDivider(height: 1, color: Color.init("PrimaryViolet"), opacity: 0.2)
                     .padding(.top, 4)
                     .padding(.bottom, 4)
-                self.drawSubTitle(with: self.rentor)
-                DashedDivider(height: 1, color: Color.init("PrimaryViolet"), opacity: 0.2)
-                    .padding(.bottom, 6)
-                    .padding(.top, 10)
+                //self.drawSubTitle(with: self.rentor)
             }
             VStack(alignment: .leading, spacing: 0) {
                 self.drawFooter(with: self.rentor)
