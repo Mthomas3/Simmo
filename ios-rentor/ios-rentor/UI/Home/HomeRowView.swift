@@ -68,7 +68,7 @@ struct HomeRowView: View {
                 .foregroundColor(Color.green)
                 .font(.system(size: 28))
                 .fontWeight(.medium)
-        }.frame(height: 65)
+        }.frame(height: 55)
     }
     
     private func fontSize(for size: CGSize) -> CGFloat {
@@ -76,24 +76,33 @@ struct HomeRowView: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            self.drawHeader(with: rentor)
-            Divider()
-                .frame(height: 1).background(Color.init("gray").opacity(0.5))
-                .padding(.top, 5)
-                .padding(.bottom, 5)
-            self.drawSubTitle(with: self.rentor)
-            /*DashedDivider(height: 1, color: Color.init("PrimaryViolet"), opacity: 0.2)
-                .padding(.top, 4)
-                .padding(.bottom, 4)*/
-            self.drawContentTitle(with: self.rentor)
-            self.drawContentTitle(with: self.rentor)
-            self.drawSubTitle(with: self.rentor)
-            //self.drawContent(with: self.rentor)
-            DashedDivider(height: 1, color: Color.init("PrimaryViolet"), opacity: 0.2)
-                .padding(.bottom, 10)
-                .padding(.top, 18)
-            self.drawFooter(with: self.rentor)
+        VStack {
+            VStack(alignment: .leading, spacing: 0) {
+                self.drawHeader(with: rentor)
+                Divider()
+                    .frame(height: 1).background(Color.init("gray").opacity(0.2))
+                    .padding(.top, 5)
+                    .padding(.bottom, 5)
+                self.drawSubTitle(with: self.rentor)
+                DashedDivider(height: 1, color: Color.init("PrimaryViolet"), opacity: 0.2)
+                    .padding(.top, 4)
+                    .padding(.bottom, 4)
+                self.drawContentTitle(with: self.rentor)
+                DashedDivider(height: 1, color: Color.init("PrimaryViolet"), opacity: 0.2)
+                    .padding(.top, 4)
+                    .padding(.bottom, 4)
+                self.drawContentTitle(with: self.rentor)
+                DashedDivider(height: 1, color: Color.init("PrimaryViolet"), opacity: 0.2)
+                    .padding(.top, 4)
+                    .padding(.bottom, 4)
+                self.drawSubTitle(with: self.rentor)
+                DashedDivider(height: 1, color: Color.init("PrimaryViolet"), opacity: 0.2)
+                    .padding(.bottom, 6)
+                    .padding(.top, 10)
+            }
+            VStack(alignment: .leading, spacing: 0) {
+                self.drawFooter(with: self.rentor)
+            }
         }.padding(.leading, 12)
         .padding(.trailing, 12)
         .padding(.top, 8)
