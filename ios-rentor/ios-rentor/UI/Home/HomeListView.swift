@@ -51,7 +51,7 @@ extension HomeListView {
         }.padding(.leading, 16)
         .padding(.trailing, 16)
         .onTapGesture {
-            print("Shall start the Simmo add here")
+            store.dispatch(.settingsAction(action: .setHasLaunchedApp(status: false)))
         }
     }
     

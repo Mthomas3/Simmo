@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "house_searching.png",
+      "filename" : "Illustration.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "house_searching@2x.png",
+      "filename" : "Illustration@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "house_searching@3x.png",
+      "filename" : "Illustration@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

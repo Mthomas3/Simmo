@@ -39,8 +39,9 @@ internal final class SettingsDBRepository: SettingsDBRepositoryProtocol {
     
     internal func generateOnBoardPages() -> AnyPublisher<[OnBoardingPagesData], Never> {
         var pages: [OnBoardingPagesData] = []
-        pages.append(OnBoardingPagesData(title: "REPOSITORY A", image: "OnBoarding-House", content: "FROM REPO"))
-        pages.append(OnBoardingPagesData(title: "REPOSITORY B", image: "OnBoarding-project", content: "FROM REPO"))
+        pages.append(OnBoardingPagesData(title: "Lorem ipsum", image: "OnBoarding1", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eleifend ultrices tellus non auctor."))
+        pages.append(OnBoardingPagesData(title: "Lorem ipsum", image: "OnBoarding2", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eleifend ultrices tellus non auctor."))
+        pages.append(OnBoardingPagesData(title: "Lorem ipsum", image: "OnBoarding3", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eleifend ultrices tellus non auctor."))
         
         return Just(pages).eraseToAnyPublisher()
     }

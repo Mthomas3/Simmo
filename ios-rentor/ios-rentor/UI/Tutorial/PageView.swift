@@ -13,9 +13,10 @@ struct PageView: View {
     let title: String
     let imageName: String
     let content: String
+    let textColor: Color
     
     let textWidth: CGFloat = 350
-    let imageWidth: CGFloat = 150
+    let imageWidth: CGFloat = 120
 
     var body: some View {
         
@@ -23,11 +24,13 @@ struct PageView: View {
         let aspect = size.width / size.height
 
         return
-            VStack(alignment: .center, spacing: 50) {
+            VStack(alignment: .center, spacing: 40) {
                 Text(title)
-                    .font(Font.system(size: 40, weight: .bold, design: .rounded))
+                    .font(Font.system(size: 40, weight: .bold))
                     .frame(width: textWidth)
                     .multilineTextAlignment(.center)
+                    .font(.title)
+                    .foregroundColor(textColor)
                 
                 Image(imageName)
                     .resizable()
@@ -36,15 +39,21 @@ struct PageView: View {
                     
                 VStack(alignment: .center, spacing: 5) {
                     Text("Step \(numberPage + 1)")
-                        .font(Font.system(size: 25, weight: .bold, design: .rounded))
+                        .font(Font.system(size: 16, weight: .bold))
                         .frame(width: 300, alignment: .center)
                         .multilineTextAlignment(.center)
+                        .foregroundColor(textColor)
+                    
                     Text(content)
-                        .font(Font.system(size: 18, weight: .bold, design: .rounded))
+                        .font(Font.system(size: 16))
                         .frame(width: 300, alignment: .center)
                         .multilineTextAlignment(.center)
+                        .foregroundColor(textColor)
+                        .fixedSize(horizontal: false, vertical: true)
+
+                        
                 }
-            }.padding(60)
+            }
     }
 }
 
@@ -52,6 +61,6 @@ struct PageView_Previews: PreviewProvider {
     static var previews: some View {
         PageView(numberPage: 0, title: "Lorem Ipsum",
                  imageName: "OnBoarding-House",
-                 content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse iaculis egestas semper.")
+                 content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse iaculis egestas semper.", textColor: Color.white)
     }
 }
