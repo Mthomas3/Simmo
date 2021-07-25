@@ -20,6 +20,7 @@ struct SimulatorRowView: View {
                     HStack {
                         Text(name)
                             .foregroundColor(Color.init("DarkGray"))
+                            .fontWeight(.medium)
                         Spacer()
                         Image("check")
                         
@@ -33,15 +34,38 @@ struct SimulatorRowView: View {
                     }).buttonStyle(PlainButtonStyle())
                 }
             } else {
-                VStack(alignment: .leading) {
-                    HStack {
-                        Text(name)
-                            .foregroundColor(Color.init("DarkGray"))
-                        Spacer()
-                        Image("check")
-                        
+                Group {
+                    if testValue == 3 {
+                        VStack(alignment: .leading) {
+                            HStack {
+                                VStack(alignment: .leading) {
+                                    Text(name)
+                                        .foregroundColor(Color.init("HomeRowFontGray"))
+                                    Text("Cette fonctionnalité sera bientôt disponible")
+                                        .foregroundColor(Color.init("HomeRowFontGray"))
+                                        .font(.system(size: 16))
+                                        .multilineTextAlignment(.leading)
+                                        .lineLimit(2)
+                                        .frame(height: 50, alignment: .leading)
+                                    
+                                }
+                                Spacer()
+                                Image("check")
+                                
+                            }
+                        }.frame(height: 70, alignment: .leading)
+                    } else {
+                        VStack(alignment: .leading) {
+                            HStack {
+                                Text(name)
+                                    .foregroundColor(Color.init("HomeRowFontGray"))
+                                Spacer()
+                                Image("check")
+                                
+                            }
+                        }.frame(height: 35, alignment: .leading)
                     }
-                }.frame(height: 40, alignment: .leading)
+                }
             }
         }.padding(.leading, 25)
         .padding(.trailing, 25)
