@@ -18,7 +18,7 @@ struct HomeListView: View {
     @State private var showCancelButton: Bool = false
     @State private var searchText = ""
     @ObservedObject var searchBar: SearchBar = SearchBar()
-
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -51,7 +51,7 @@ extension HomeListView {
         }.padding(.leading, 16)
         .padding(.trailing, 16)
         .onTapGesture {
-            store.dispatch(.settingsAction(action: .setHasLaunchedApp(status: false)))
+            SimmulatorContainer()
         }
     }
     

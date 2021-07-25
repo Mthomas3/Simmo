@@ -35,9 +35,12 @@
 		E94492EF258BEC7F00B94481 /* RentalDBRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94492EE258BEC7F00B94481 /* RentalDBRepository.swift */; };
 		E94BA99D2632F877002725B8 /* ViewControllerResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94BA99C2632F877002725B8 /* ViewControllerResolver.swift */; };
 		E94BA9A22632F88A002725B8 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94BA9A12632F88A002725B8 /* SearchBar.swift */; };
+		E95C97A72681DF6100F5A625 /* SimmulatorContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95C97A62681DF6100F5A625 /* SimmulatorContainer.swift */; };
+		E95C97A92681DF7C00F5A625 /* SimmulatorListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95C97A82681DF7C00F5A625 /* SimmulatorListView.swift */; };
 		E95ECF4A25DD80BA0071C97D /* HomeContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95ECF4925DD80BA0071C97D /* HomeContainerView.swift */; };
 		E95ECF4F25DD81230071C97D /* HomeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95ECF4E25DD81230071C97D /* HomeListView.swift */; };
 		E95ECF5425DD87BB0071C97D /* HomeRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95ECF5325DD87BB0071C97D /* HomeRowView.swift */; };
+		E960C8F92684BA6A000AD450 /* SimulatorRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E960C8F82684BA6A000AD450 /* SimulatorRowView.swift */; };
 		E960CF4225D5F0920037A26B /* HomeReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E960CF4125D5F0920037A26B /* HomeReducer.swift */; };
 		E9665536250033B2003BC212 /* RentorEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9665535250033B2003BC212 /* RentorEntity.swift */; };
 		E9878556250BB0C200CF8519 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9878555250BB0C200CF8519 /* String+Ext.swift */; };
@@ -127,9 +130,12 @@
 		E94492EE258BEC7F00B94481 /* RentalDBRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentalDBRepository.swift; sourceTree = "<group>"; };
 		E94BA99C2632F877002725B8 /* ViewControllerResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerResolver.swift; sourceTree = "<group>"; };
 		E94BA9A12632F88A002725B8 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		E95C97A62681DF6100F5A625 /* SimmulatorContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimmulatorContainer.swift; sourceTree = "<group>"; };
+		E95C97A82681DF7C00F5A625 /* SimmulatorListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimmulatorListView.swift; sourceTree = "<group>"; };
 		E95ECF4925DD80BA0071C97D /* HomeContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContainerView.swift; sourceTree = "<group>"; };
 		E95ECF4E25DD81230071C97D /* HomeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListView.swift; sourceTree = "<group>"; };
 		E95ECF5325DD87BB0071C97D /* HomeRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRowView.swift; sourceTree = "<group>"; };
+		E960C8F82684BA6A000AD450 /* SimulatorRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorRowView.swift; sourceTree = "<group>"; };
 		E960CF4125D5F0920037A26B /* HomeReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeReducer.swift; sourceTree = "<group>"; };
 		E9665535250033B2003BC212 /* RentorEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentorEntity.swift; sourceTree = "<group>"; };
 		E9878555250BB0C200CF8519 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
@@ -389,8 +395,10 @@
 		E9449300258C08F800B94481 /* Simmulator */ = {
 			isa = PBXGroup;
 			children = (
-				E9D8D15E24FAF98200DF5ABC /* SimmulatorView.swift */,
-				E9209C9225227E8700EDC0A9 /* SimmulatorCellView.swift */,
+				E95C97AA2681DFF100F5A625 /* old */,
+				E95C97A62681DF6100F5A625 /* SimmulatorContainer.swift */,
+				E960C8F82684BA6A000AD450 /* SimulatorRowView.swift */,
+				E95C97A82681DF7C00F5A625 /* SimmulatorListView.swift */,
 			);
 			path = Simmulator;
 			sourceTree = "<group>";
@@ -484,6 +492,15 @@
 				E94BA9A12632F88A002725B8 /* SearchBar.swift */,
 			);
 			path = SearchBar;
+			sourceTree = "<group>";
+		};
+		E95C97AA2681DFF100F5A625 /* old */ = {
+			isa = PBXGroup;
+			children = (
+				E9D8D15E24FAF98200DF5ABC /* SimmulatorView.swift */,
+				E9209C9225227E8700EDC0A9 /* SimmulatorCellView.swift */,
+			);
+			path = old;
 			sourceTree = "<group>";
 		};
 		E996F2E026187C8400447EA0 /* Tutorial */ = {
@@ -801,6 +818,7 @@
 				E9AAA95525210CF1009841B8 /* SimmulatorCellViewModel.swift in Sources */,
 				E9090D1724FA9F7600020390 /* ios_rentor.xcdatamodeld in Sources */,
 				E98C2582252B96E700E06E73 /* HomeDetailViewModel.swift in Sources */,
+				E95C97A72681DF6100F5A625 /* SimmulatorContainer.swift in Sources */,
 				E999D67E26061C2E00C5011C /* SettingsDBRepository.swift in Sources */,
 				E944702626302B6F009A5E5B /* TutorialPagesView.swift in Sources */,
 				E9A8C66E25194095000E8A28 /* Errors.swift in Sources */,
@@ -826,6 +844,7 @@
 				E95ECF5425DD87BB0071C97D /* HomeRowView.swift in Sources */,
 				E923EDFD25D5B51E0076DD92 /* LogMiddleware.swift in Sources */,
 				E923EDEC25D5B4810076DD92 /* AppReducer.swift in Sources */,
+				E960C8F92684BA6A000AD450 /* SimulatorRowView.swift in Sources */,
 				E9B20D552591403B00EC52D5 /* MockedData.swift in Sources */,
 				E9AAA950251B9244009841B8 /* SimmulatorModel.swift in Sources */,
 				E944702C26303139009A5E5B /* Color+Ext.swift in Sources */,
@@ -835,6 +854,7 @@
 				E923EDE625D5B3E00076DD92 /* AppStore.swift in Sources */,
 				E95ECF4F25DD81230071C97D /* HomeListView.swift in Sources */,
 				E9AAA953251BDA4B009841B8 /* InteractorsProtocol.swift in Sources */,
+				E95C97A92681DF7C00F5A625 /* SimmulatorListView.swift in Sources */,
 				E9AAA94E251A1031009841B8 /* SimmulatorViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

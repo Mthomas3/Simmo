@@ -48,7 +48,8 @@ struct RootView_Previews: PreviewProvider {
 
 struct BaseView: View {
     @EnvironmentObject var store: AppStore
-    
+    @State private var isPresented = false
+
     var body: some View {
         Group {
             if store.state.settingsState.hasLaunchedApp {
@@ -61,7 +62,7 @@ struct BaseView: View {
                         }.environmentObject(store)
                         .accentColor(.blue)
                     
-                    SimmulatorView()
+                    SimmulatorContainer()
                         .tabItem {
                             Image(systemName: "plus.square")
                             Text("Ajouter")
