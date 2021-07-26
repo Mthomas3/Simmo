@@ -43,6 +43,7 @@
 		E960C8F92684BA6A000AD450 /* SimulatorRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E960C8F82684BA6A000AD450 /* SimulatorRowView.swift */; };
 		E960CF4225D5F0920037A26B /* HomeReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E960CF4125D5F0920037A26B /* HomeReducer.swift */; };
 		E9665536250033B2003BC212 /* RentorEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9665535250033B2003BC212 /* RentorEntity.swift */; };
+		E974EC3E26AE0E4D000B0017 /* SimmulatorListView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = E974EC3D26AE0E4D000B0017 /* SimmulatorListView1.swift */; };
 		E9878556250BB0C200CF8519 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9878555250BB0C200CF8519 /* String+Ext.swift */; };
 		E98C257D252B922000E06E73 /* HomeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98C257C252B922000E06E73 /* HomeDetailView.swift */; };
 		E98C2582252B96E700E06E73 /* HomeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98C2581252B96E700E06E73 /* HomeDetailViewModel.swift */; };
@@ -138,6 +139,7 @@
 		E960C8F82684BA6A000AD450 /* SimulatorRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorRowView.swift; sourceTree = "<group>"; };
 		E960CF4125D5F0920037A26B /* HomeReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeReducer.swift; sourceTree = "<group>"; };
 		E9665535250033B2003BC212 /* RentorEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentorEntity.swift; sourceTree = "<group>"; };
+		E974EC3D26AE0E4D000B0017 /* SimmulatorListView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimmulatorListView1.swift; sourceTree = "<group>"; };
 		E9878555250BB0C200CF8519 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		E98C257C252B922000E06E73 /* HomeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailView.swift; sourceTree = "<group>"; };
 		E98C2581252B96E700E06E73 /* HomeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailViewModel.swift; sourceTree = "<group>"; };
@@ -399,6 +401,7 @@
 				E95C97A62681DF6100F5A625 /* SimmulatorContainer.swift */,
 				E960C8F82684BA6A000AD450 /* SimulatorRowView.swift */,
 				E95C97A82681DF7C00F5A625 /* SimmulatorListView.swift */,
+				E974EC3D26AE0E4D000B0017 /* SimmulatorListView1.swift */,
 			);
 			path = Simmulator;
 			sourceTree = "<group>";
@@ -814,6 +817,7 @@
 				E9209C9325227E8700EDC0A9 /* SimmulatorCellView.swift in Sources */,
 				E9C47BA925D6E5520082C0D6 /* Middleware.swift in Sources */,
 				E9090D1224FA9F7600020390 /* AppDelegate.swift in Sources */,
+				E974EC3E26AE0E4D000B0017 /* SimmulatorListView1.swift in Sources */,
 				E94BA9A22632F88A002725B8 /* SearchBar.swift in Sources */,
 				E9AAA95525210CF1009841B8 /* SimmulatorCellViewModel.swift in Sources */,
 				E9090D1724FA9F7600020390 /* ios_rentor.xcdatamodeld in Sources */,

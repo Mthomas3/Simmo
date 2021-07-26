@@ -13,16 +13,17 @@ struct SimmulatorListView: View {
     var item: [Int] = [0, 1, 2]
     
     @EnvironmentObject private var store: AppStore
-
+    @EnvironmentObject private var modalView: MainTabBarData
+    
     var headerView: some View {
         VStack(alignment: .leading) {
-//            Button {
-//                print("CLOSE TAB")
-//            } label: {
-//                Text("Fermer")
-//                    .foregroundColor(Color.white)
-//            }
-//            Spacer()
+            Button {
+                self.modalView.close()
+            } label: {
+                Text("Fermer")
+                    .foregroundColor(Color.white)
+            }
+            Spacer()
             Text("Ajoutons votre simulation")
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .ignoresSafeArea()
@@ -61,11 +62,5 @@ struct SimmulatorListView: View {
                 Spacer()
             }
         }
-    }
-}
-
-struct SimmulatorListView_Previews: PreviewProvider {
-    static var previews: some View {
-        SimmulatorListView()
     }
 }

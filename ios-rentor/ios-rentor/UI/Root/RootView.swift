@@ -7,6 +7,35 @@
 //
 
 import SwiftUI
+import Combine
+
+final class MainTabBarData: ObservableObject {
+
+    let customActionteminidex: Int
+    let objectWillChange = PassthroughSubject<MainTabBarData, Never>()
+
+    var itemSelected: Int {
+        didSet {
+            if itemSelected == customActionteminidex {
+                itemSelected = oldValue
+                isCustomItemSelected = true
+            }
+            objectWillChange.send(self)
+        }
+    }
+    
+    internal func close() {
+        self.isCustomItemSelected = false
+        self.itemSelected = 1
+    }
+    
+    var isCustomItemSelected: Bool = false
+
+    init(initialIndex: Int = 1, customItemIndex: Int) {
+        self.customActionteminidex = customItemIndex
+        self.itemSelected = initialIndex
+    }
+}
 
 struct RootView: View {
 
@@ -48,26 +77,35 @@ struct RootView_Previews: PreviewProvider {
 
 struct BaseView: View {
     @EnvironmentObject var store: AppStore
-    @State private var isPresented = false
+    @Environment(\.presentationMode) var presentationMode
+    @ObservedObject private var tabData = MainTabBarData(initialIndex: 1, customItemIndex: 2)
+    @State private var showingDetail = false
+
 
     var body: some View {
         Group {
             if store.state.settingsState.hasLaunchedApp {
-                TabView {
-                    
+                TabView(selection: $tabData.itemSelected) {
                     HomeContainerView()
                         .tabItem {
                             Image(systemName: "house.fill")
                             Text("Mes Simulations")
                         }.environmentObject(store)
                         .accentColor(.blue)
+                        .tag(1)
                     
-                    SimmulatorContainer()
+                    /*SimmulatorContainer()
                         .tabItem {
                             Image(systemName: "plus.square")
                             Text("Ajouter")
                         }.environmentObject(store)
-                        .accentColor(.blue)
+                        .accentColor(.blue)*/
+                    
+                    Text("Custom Action")
+                    .tabItem {
+                        Image(systemName: "plus.square")
+                        Text("Ajouter")
+                    }.tag(2)
                     
                     SettingView()
                         .tabItem {
@@ -75,9 +113,14 @@ struct BaseView: View {
                             Text("Paramètres")
                         }.environmentObject(store)
                         .accentColor(.blue)
+                        .tag(3)
                     
                 }.accentColor(Color.init("TabGray"))
-                
+                .fullScreenCover(isPresented: $tabData.isCustomItemSelected) {
+                    SimmulatorContainer()
+                        .environmentObject(tabData)
+                        .environmentObject(store)
+                    }
             } else {
                 TutorialContainer().environmentObject(store)
             }

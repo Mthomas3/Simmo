@@ -51,7 +51,7 @@ extension HomeListView {
         }.padding(.leading, 16)
         .padding(.trailing, 16)
         .onTapGesture {
-            SimmulatorContainer()
+            //SimmulatorContainer()
         }
     }
     
