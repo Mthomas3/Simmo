@@ -69,18 +69,9 @@ struct RootView: View {
     }
 }
 
-struct RootView_Previews: PreviewProvider {
-    static var previews: some View {
-        RootView()
-    }
-}
-
 struct BaseView: View {
     @EnvironmentObject var store: AppStore
-    @Environment(\.presentationMode) var presentationMode
     @ObservedObject private var tabData = MainTabBarData(initialIndex: 1, customItemIndex: 2)
-    @State private var showingDetail = false
-
 
     var body: some View {
         Group {
@@ -93,13 +84,6 @@ struct BaseView: View {
                         }.environmentObject(store)
                         .accentColor(.blue)
                         .tag(1)
-                    
-                    /*SimmulatorContainer()
-                        .tabItem {
-                            Image(systemName: "plus.square")
-                            Text("Ajouter")
-                        }.environmentObject(store)
-                        .accentColor(.blue)*/
                     
                     Text("Custom Action")
                     .tabItem {
