@@ -10,8 +10,21 @@ import SwiftUI
 import Combine
 
 struct SimmulatorListView1: View {
+    @State private var isActive = false
+    
     var body: some View {
-        Text("SOMETHING HERE")
+        NavigationView {
+            Button(action: {
+                isActive = true
+            }, label: {
+                Text("Continue")
+                    .frame(width: 133, height: 56, alignment: .center)
+                    .foregroundColor(Color.white)
+                    .background(Color.init("PrimaryBlue"))
+                    .cornerRadius(12)
+            }).buttonStyle(PlainButtonStyle())
+            .fullScreenCover(isPresented: $isActive, content: { SimmulatorListView2() })
+        }
     }
 }
 

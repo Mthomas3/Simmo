@@ -62,6 +62,7 @@ struct RootView: View {
         
         store.dispatch(.homeAction(action: .fetch))
         store.dispatch(.settingsAction(action: .fetch))
+        store.dispatch(.homeAction(action: .add(item: Rentor(id: UUID(), date: Date(), name: "YOLO", price: 130.0, rentPrice: 30.0, cashFlow: 30.0, percentage: 20.0))))
     }
 
     var body: some View {

@@ -52,6 +52,7 @@
 		E99181A22615CD6400D971A1 /* SettingsReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99181A12615CD6400D971A1 /* SettingsReducer.swift */; };
 		E99181A72615CD9300D971A1 /* ReducerProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99181A62615CD9300D971A1 /* ReducerProtocols.swift */; };
 		E996F2E226187C9C00447EA0 /* TutorialContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996F2E126187C9C00447EA0 /* TutorialContainer.swift */; };
+		E997C3C126AF56FF00CB6E68 /* SimmulatorListView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E997C3C026AF56FF00CB6E68 /* SimmulatorListView2.swift */; };
 		E999D67926052FF400C5011C /* SettingMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = E999D67826052FF400C5011C /* SettingMiddleware.swift */; };
 		E999D67E26061C2E00C5011C /* SettingsDBRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E999D67D26061C2E00C5011C /* SettingsDBRepository.swift */; };
 		E9A8C6692517B4BC000E8A28 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A8C6682517B4BC000E8A28 /* HomeViewModel.swift */; };
@@ -148,6 +149,7 @@
 		E99181A12615CD6400D971A1 /* SettingsReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsReducer.swift; sourceTree = "<group>"; };
 		E99181A62615CD9300D971A1 /* ReducerProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReducerProtocols.swift; sourceTree = "<group>"; };
 		E996F2E126187C9C00447EA0 /* TutorialContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialContainer.swift; sourceTree = "<group>"; };
+		E997C3C026AF56FF00CB6E68 /* SimmulatorListView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimmulatorListView2.swift; sourceTree = "<group>"; };
 		E999D67826052FF400C5011C /* SettingMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMiddleware.swift; sourceTree = "<group>"; };
 		E999D67D26061C2E00C5011C /* SettingsDBRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDBRepository.swift; sourceTree = "<group>"; };
 		E9A8C6682517B4BC000E8A28 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -402,6 +404,7 @@
 				E960C8F82684BA6A000AD450 /* SimulatorRowView.swift */,
 				E95C97A82681DF7C00F5A625 /* SimmulatorListView.swift */,
 				E974EC3D26AE0E4D000B0017 /* SimmulatorListView1.swift */,
+				E997C3C026AF56FF00CB6E68 /* SimmulatorListView2.swift */,
 			);
 			path = Simmulator;
 			sourceTree = "<group>";
@@ -807,6 +810,7 @@
 			files = (
 				E9B20D502591403200EC52D5 /* Models.swift in Sources */,
 				E99042CC25043BBA0062B493 /* CoreDataManager.swift in Sources */,
+				E997C3C126AF56FF00CB6E68 /* SimmulatorListView2.swift in Sources */,
 				E9D8D15D24FAF7B800DF5ABC /* RootView.swift in Sources */,
 				E9878556250BB0C200CF8519 /* String+Ext.swift in Sources */,
 				E94492EF258BEC7F00B94481 /* RentalDBRepository.swift in Sources */,

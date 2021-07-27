@@ -10,8 +10,9 @@ import SwiftUI
 
 struct SimulatorRowView: View {
     
-    let testValue: Int
-    let name: String
+    internal let testValue: Int
+    internal let name: String
+    @State private var nextStep = false
     
     var body: some View {
         Group {
@@ -23,15 +24,23 @@ struct SimulatorRowView: View {
                             .fontWeight(.medium)
                         Spacer()
                         Image("check")
-                        
                     }
-                    Button(action: { }, label: {
-                        Text("Continue")
-                            .frame(width: 133, height: 56, alignment: .center)
-                            .foregroundColor(Color.white)
-                            .background(Color.init("PrimaryBlue"))
-                            .cornerRadius(12)
-                    }).buttonStyle(PlainButtonStyle())
+                    ZStack {
+                        Button(action: { self.nextStep.toggle() }, label: {
+                            Text("Continuer")
+                                .frame(width: 133, height: 56, alignment: .center)
+                                .background(Color.blue)
+                                .foregroundColor(Color.white)
+                                .buttonStyle(PlainButtonStyle())
+                                .cornerRadius(12)
+                        })
+                        NavigationLink(
+                            destination: SimmulatorListView2(),
+                            isActive: $nextStep,
+                            label: {
+                                EmptyView().opacity(0)
+                            })
+                    }
                 }
             } else {
                 Group {
@@ -69,7 +78,6 @@ struct SimulatorRowView: View {
             }
         }.padding(.leading, 25)
         .padding(.trailing, 25)
-        
     }
 }
 

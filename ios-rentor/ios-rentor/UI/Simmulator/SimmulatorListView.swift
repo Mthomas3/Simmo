@@ -43,7 +43,7 @@ struct SimmulatorListView: View {
             .padding(.trailing, 25)
     }
 
-    var body: some View {
+    var displayBody: some View {
         ZStack {
             VStack {
                 ZStack {
@@ -61,6 +61,14 @@ struct SimmulatorListView: View {
                 SimulatorRowView(testValue: 3, name: "Fiscalité")
                 Spacer()
             }
+        }
+    }
+
+    var body: some View {
+        NavigationView {
+            displayBody
+                .navigationTitle(Text("SOMETHING HERE"))
+                .navigationBarHidden(true)
         }
     }
 }
