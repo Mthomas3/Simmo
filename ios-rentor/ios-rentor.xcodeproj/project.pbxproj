@@ -18,6 +18,8 @@
 		E9090D2124FA9F7800020390 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9090D1F24FA9F7800020390 /* LaunchScreen.storyboard */; };
 		E9090D2C24FA9F7800020390 /* ios_rentorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9090D2B24FA9F7800020390 /* ios_rentorTests.swift */; };
 		E9090D3724FA9F7800020390 /* ios_rentorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9090D3624FA9F7800020390 /* ios_rentorUITests.swift */; };
+		E9095ECA26B9869B0085331E /* SimmulatorListView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9095EC926B9869B0085331E /* SimmulatorListView3.swift */; };
+		E9095ECD26B988C30085331E /* ButtonOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9095ECC26B988C30085331E /* ButtonOption.swift */; };
 		E90986E62582500D0089525F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E90986E52582500D0089525F /* GoogleService-Info.plist */; };
 		E9190C7725DD321500C804B5 /* CoreMockedManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9190C7625DD321500C804B5 /* CoreMockedManager.swift */; };
 		E9209C9325227E8700EDC0A9 /* SimmulatorCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9209C9225227E8700EDC0A9 /* SimmulatorCellView.swift */; };
@@ -115,6 +117,8 @@
 		E9090D3224FA9F7800020390 /* ios-rentorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ios-rentorUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9090D3624FA9F7800020390 /* ios_rentorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_rentorUITests.swift; sourceTree = "<group>"; };
 		E9090D3824FA9F7800020390 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E9095EC926B9869B0085331E /* SimmulatorListView3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimmulatorListView3.swift; sourceTree = "<group>"; };
+		E9095ECC26B988C30085331E /* ButtonOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonOption.swift; sourceTree = "<group>"; };
 		E90986E52582500D0089525F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E9190C7625DD321500C804B5 /* CoreMockedManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMockedManager.swift; sourceTree = "<group>"; };
 		E9209C9225227E8700EDC0A9 /* SimmulatorCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimmulatorCellView.swift; sourceTree = "<group>"; };
@@ -322,6 +326,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		E9095ECB26B988BA0085331E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E9095ECC26B988C30085331E /* ButtonOption.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		E923EDDF25D5B3320076DD92 /* AppState */ = {
 			isa = PBXGroup;
 			children = (
@@ -399,12 +411,14 @@
 		E9449300258C08F800B94481 /* Simmulator */ = {
 			isa = PBXGroup;
 			children = (
+				E9095ECB26B988BA0085331E /* View */,
 				E95C97AA2681DFF100F5A625 /* old */,
 				E95C97A62681DF6100F5A625 /* SimmulatorContainer.swift */,
 				E960C8F82684BA6A000AD450 /* SimulatorRowView.swift */,
 				E95C97A82681DF7C00F5A625 /* SimmulatorListView.swift */,
 				E974EC3D26AE0E4D000B0017 /* SimmulatorListView1.swift */,
 				E997C3C026AF56FF00CB6E68 /* SimmulatorListView2.swift */,
+				E9095EC926B9869B0085331E /* SimmulatorListView3.swift */,
 			);
 			path = Simmulator;
 			sourceTree = "<group>";
@@ -809,6 +823,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9B20D502591403200EC52D5 /* Models.swift in Sources */,
+				E9095ECA26B9869B0085331E /* SimmulatorListView3.swift in Sources */,
 				E99042CC25043BBA0062B493 /* CoreDataManager.swift in Sources */,
 				E997C3C126AF56FF00CB6E68 /* SimmulatorListView2.swift in Sources */,
 				E9D8D15D24FAF7B800DF5ABC /* RootView.swift in Sources */,
@@ -851,6 +866,7 @@
 				E923EDE125D5B33A0076DD92 /* AppState.swift in Sources */,
 				E95ECF5425DD87BB0071C97D /* HomeRowView.swift in Sources */,
 				E923EDFD25D5B51E0076DD92 /* LogMiddleware.swift in Sources */,
+				E9095ECD26B988C30085331E /* ButtonOption.swift in Sources */,
 				E923EDEC25D5B4810076DD92 /* AppReducer.swift in Sources */,
 				E960C8F92684BA6A000AD450 /* SimulatorRowView.swift in Sources */,
 				E9B20D552591403B00EC52D5 /* MockedData.swift in Sources */,

@@ -27,7 +27,6 @@ struct SimmulatorListView: View {
             Text("Ajoutons votre simulation")
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .ignoresSafeArea()
-                .background(Color.blue)
                 .foregroundColor(Color.white)
                 .font(.system(size: 36))
                 .multilineTextAlignment(.leading)
@@ -38,7 +37,8 @@ struct SimmulatorListView: View {
     
     var SimulatorDivider: some View {
         Divider()
-            .frame(height: 2, alignment: .center)
+            .background(Color.init("DividerColor"))
+            .frame(height: 3, alignment: .center)
             .padding(.leading, 25)
             .padding(.trailing, 25)
     }
@@ -47,7 +47,7 @@ struct SimmulatorListView: View {
         ZStack {
             VStack {
                 ZStack {
-                    Color.blue.edgesIgnoringSafeArea(.all)
+                    Color.init("Blue").edgesIgnoringSafeArea(.all)
                     headerView
                 }.frame(height: 130, alignment: .leading)
                 .padding(.bottom, 8)
@@ -61,13 +61,13 @@ struct SimmulatorListView: View {
                 SimulatorRowView(testValue: 3, name: "Fiscalité")
                 Spacer()
             }
-        }
+        }.background(Color.init("DefaultBackground").edgesIgnoringSafeArea(.all))
     }
 
     var body: some View {
         NavigationView {
             displayBody
-                .navigationTitle(Text("SOMETHING HERE"))
+                .navigationTitle(Text("Retour"))
                 .navigationBarHidden(true)
         }
     }

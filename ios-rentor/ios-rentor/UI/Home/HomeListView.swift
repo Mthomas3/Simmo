@@ -81,7 +81,7 @@ extension HomeListView {
                             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                             .listRowInsets(EdgeInsets())
                             .listRowBackground(Color.clear)
-                            .background(Color.init("BackgroundHomeListCell"))
+                            .background(Color.init("DefaultBackground"))
                         }.onDelete(perform: onDelete)
                     }.listStyle(PlainListStyle())
                 }

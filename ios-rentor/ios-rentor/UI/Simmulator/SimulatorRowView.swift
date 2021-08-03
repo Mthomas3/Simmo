@@ -29,7 +29,7 @@ struct SimulatorRowView: View {
                         Button(action: { self.nextStep.toggle() }, label: {
                             Text("Continuer")
                                 .frame(width: 133, height: 56, alignment: .center)
-                                .background(Color.blue)
+                                .background(Color.init("Blue"))
                                 .foregroundColor(Color.white)
                                 .buttonStyle(PlainButtonStyle())
                                 .cornerRadius(12)

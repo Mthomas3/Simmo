@@ -13,14 +13,14 @@ struct TutorialPagesView: View {
     @EnvironmentObject var store: AppStore
       
     let colors = [
-        Color.init("OnBoardingBlue"),
+        Color.init("Blue"),
         Color.init("OnBoardingRed"),
         Color.init("OnBoardingViolet")
         ]
     
     let buttonColors = [
         Color.init("OnBoardingRed"),
-        Color.init("OnBoardingBlue"),
+        Color.init("Blue"),
         Color.init("DarkGray")
     ]
     
@@ -34,7 +34,7 @@ struct TutorialPagesView: View {
         //loadingPagesViews.clipShape(Circle())
         loadingPagesViews.iconNextColor = Color.white
         loadingPagesViews.buttonBackground = [Color.init("OnBoardingRed"),
-                                              Color.init("OnBoardingBlue"),
+                                              Color.init("Blue"),
                                               Color.init("DarkGray")]
         
         loadingPagesViews.buttonBackground = [Color.red, Color.yellow, Color.black]
