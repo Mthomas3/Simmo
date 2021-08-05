@@ -25,7 +25,7 @@ struct ButtonOption: View {
                 if self.eventButtonSelect == index {
                     Text(self.title)
                         .frame(width: 155, height: 56)
-                        .foregroundColor(Color.init("DarkGray"))
+                        .foregroundColor(Color.white)
                         .background(Color.init("Blue"))
                         .cornerRadius(12)
                 } else {
