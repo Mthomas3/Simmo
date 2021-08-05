@@ -9,26 +9,27 @@
 import SwiftUI
 
 struct ButtonOption: View {
-    @Binding internal var isButtonSelected: Bool
-    @Binding internal var isCurrentSelected: Int
-    
-    let title: String
+    @Binding internal var eventButtonSelect: Int?
+    @Binding internal var nextButton: Bool
+    internal let title: String
+    internal let index: Int
     
     var body: some View {
-        return Button(action: {
-            print("yo button is trigger")
-            //self.isCurrentSelected = index
-            //self.isButtonSelected.toggle()
+        Button(action: {
+            self.eventButtonSelect = self.index
+            if !self.nextButton {
+                self.nextButton.toggle()    
+            }
         }, label: {
-            /*Group {
-                if isButtonSelected && isCurrentSelected == index {
-                    Text(title)
+            Group {
+                if self.eventButtonSelect == index {
+                    Text(self.title)
                         .frame(width: 155, height: 56)
                         .foregroundColor(Color.init("DarkGray"))
                         .background(Color.init("Blue"))
                         .cornerRadius(12)
                 } else {
-                    Text(title)
+                    Text(self.title)
                         .frame(width: 155, height: 56)
                         .foregroundColor(Color.init("DarkGray"))
                         .background(Color.init("DefaultBackground"))
@@ -36,8 +37,7 @@ struct ButtonOption: View {
                             RoundedRectangle(cornerRadius: 15)
                                 .stroke(lineWidth: 2).foregroundColor(Color.init("ButtonBorder")))
                 }
-            }*/
-            Text("YO")
+            }
         })
     }
 }
