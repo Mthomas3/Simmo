@@ -35,11 +35,11 @@ struct SimulatorRowView: View {
                                 .cornerRadius(12)
                         })
                         NavigationLink(
-                            destination: SimmulatorListView2(),
+                            destination: SimmulatorListView2(shouldPopToRootView: self.$nextStep),
                             isActive: $nextStep,
                             label: {
                                 EmptyView().opacity(0)
-                            })
+                            }).isDetailLink(false)
                     }
                 }
             } else {

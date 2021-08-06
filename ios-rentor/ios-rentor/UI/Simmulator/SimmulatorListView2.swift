@@ -10,6 +10,7 @@ import SwiftUI
 
 struct SimmulatorListView2: View {
     
+    @Binding var shouldPopToRootView: Bool
     @State private var cardSelected: Int?
     @State private var isCurrentSelected: Int?
     @State private var nextButton: Bool = false
@@ -80,18 +81,12 @@ struct SimmulatorListView2: View {
                     .animation(.easeInOut(duration: 0.5))
                     
                     NavigationLink(
-                        destination: SimmulatorListView3(),
+                        destination: SimmulatorListView3(shouldPopToRootView: self.$shouldPopToRootView),
                         isActive: $nexStep,
                         label: {
                             EmptyView().opacity(0)
-                        })
+                        }).isDetailLink(false)
             }).allowsHitTesting(nextButton) }, alignment: .bottomTrailing)
     }
 
-}
-
-struct SimmulatorListView2_Previews: PreviewProvider {
-    static var previews: some View {
-        SimmulatorListView2()
-    }
 }
