@@ -1,7 +1,9 @@
 # 🏡 Welome to Simmo 🏡
 
 ### 🧐 Preface
-The rental simmulator 🏗 which helps you evaluate better your projects 🏢 
+The rental simmulator 🏗 which helps you evaluate better your projects 🏢
+
+![](ReadMeAssets/demosimmo.gif)
 
 ### 🏗 Installation
 
