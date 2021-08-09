@@ -28,9 +28,12 @@ struct SimmulatorListView4: View {
     @State private var nextButton: Bool = false
     @State private var nexStep: Bool = false
     @State internal var name: String = ""
+        
+    @State private var colorSelected: Int = 0
+    @State private var imageSelected: Int = 0
     
     let dataColor: [Color] = (0...11).map { Color.init("Color\($0)") }
-    let dataImage = (1...20).map { "Item \($0)" }
+    let dataImage: [String] = (0...19).map { "Image\($0)" }
     
     let columns = [
         GridItem(.flexible()),
@@ -39,19 +42,53 @@ struct SimmulatorListView4: View {
         GridItem(.flexible())
     ]
 
-    func customSelectView(with color: Color) -> some View {
+    private func colorRoundedView(with color: Color, and index: Int) -> some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 12)
+            RoundedRectangle(cornerRadius: 12, style: .continuous)
+                .strokeBorder(colorSelected == index ? Color.init("Blue")
+                                : Color.clear, lineWidth: colorSelected == index ? 2 : 0)
+                .background(RoundedRectangle(cornerRadius: 12, style: .continuous)
+                                .foregroundColor(color))
                 .frame(width: 66, height: 66)
-                .foregroundColor(color)
+        }.onTapGesture {
+            self.colorSelected = index
         }
     }
     
-    func customText() -> some View {
+    private func imageRoundedView(with image: String, and index: Int) -> some View {
+        ZStack(alignment: .center) {
+            RoundedRectangle(cornerRadius: 12, style: .continuous)
+                .strokeBorder(imageSelected == index ? Color.init("Blue")
+                                : Color.clear, lineWidth: imageSelected == index ? 2 : 0)
+                .background(RoundedRectangle(cornerRadius: 12, style: .continuous)
+                                .foregroundColor(Color.white))
+                .frame(width: 66, height: 66)
+            Image(image)
+                .resizable()
+                .frame(width: 30, height: 31)
+                .aspectRatio(contentMode: .fill)
+        }.onTapGesture {
+            self.imageSelected = index
+        }
+    }
+    
+    private func simulatorTitleEvent() -> some View {
         TextField("T2 dans le centre de Montpellier", text: $name)
             .multilineTextAlignment(.leading)
             .lineLimit(2)
-            .overlay(VStack{Divider().offset(x: 0, y: 15)})
+            .overlay(VStack { Divider().offset(x: 0, y: 15) })
+    }
+    
+    private func currentSelectedRoundedView() -> some View {
+        ZStack(alignment: .center) {
+            RoundedRectangle(cornerRadius: 12)
+                .frame(width: 66, height: 66)
+                .foregroundColor(self.dataColor[self.colorSelected])
+            Image(self.dataImage[self.imageSelected])
+                .resizable()
+                .frame(width: 30, height: 31)
+                .aspectRatio(contentMode: .fit)
+        }
     }
  
     var body: some View {
@@ -69,27 +106,32 @@ struct SimmulatorListView4: View {
                     
                     HStack(alignment: .center) {
                         Spacer()
-                        customSelectView(with: Color.init("Color1"))
-                        customText()
+                        currentSelectedRoundedView()
+                        simulatorTitleEvent()
                         Spacer()
                     }.padding([.leading, .trailing], 18)
                     .padding(.bottom, 12)
                     
                     LazyVGrid(columns: columns, spacing: 20) {
-                        ForEach(dataColor, id: \.self) { color in
-                            customSelectView(with: color)
+                        ForEach(0..<self.dataColor.count) { index in
+                            colorRoundedView(with: self.dataColor[index], and: index)
                         }
                     }.padding(.horizontal)
                     .padding(.bottom, 24)
                     
                     LazyVGrid(columns: columns, spacing: 20) {
-                        ForEach(dataImage, id: \.self) { _ in
-                            customSelectView(with: Color.init("Color0"))
+                        ForEach(0..<self.dataImage.count) { index in
+                            imageRoundedView(with: self.dataImage[index], and: index)
                         }
                     }.padding(.horizontal)
                 }
             }
         }.navigationBarTitle(Text(""), displayMode: .inline)
         .background(Color.init("BackgroundHome").edgesIgnoringSafeArea(.all))
+        .navigationBarItems(trailing: Button(action: {
+            self.shouldPopToRootView = false
+        }, label: {
+            Text("Enregistrer et quitter")
+        }).disabled(!(self.name.count > 0)))
     }
 }

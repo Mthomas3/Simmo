@@ -91,14 +91,8 @@ struct SimmulatorListView3: View {
                 Spacer()
             }
         }.navigationBarTitle(Text(""), displayMode: .inline)
-        .navigationBarItems(trailing: Button(action: {
-            //self.presentation.wrappedValue.dismiss()
-            self.shouldPopToRootView = false
-        }, label: {
-            Text("Enregistrer et quitter")
-        }).disabled(!self.nextButton).opacity(self.nextButton ? 1 : 0) )
         .overlay(ZStack {
-                    Button(action: { print("YOOO")
+                    Button(action: {
                         self.nextStep.toggle()
                     }, label: { Text("Suivant")
                         .frame(width: 140, height: 56)

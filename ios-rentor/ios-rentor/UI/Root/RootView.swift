@@ -54,7 +54,8 @@ struct RootView: View {
         self.appReducer = AppReducer()
         
         self.store = AppStore(initialState: .init(homeState: HomeState(),
-                                                  settingsState: SettingsState()),
+                                                  settingsState: SettingsState(),
+                                                  simulatorState: SimulatorState()),
                               reducer: self.appReducer.reducer(state:action:),
                               middlewares: [self.homeMiddleware.middleware(),
                                             self.settingsMiddleware.middleware(),

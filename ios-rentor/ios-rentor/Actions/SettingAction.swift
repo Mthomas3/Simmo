@@ -11,6 +11,7 @@ import Foundation
 internal protocol SettingActionProtocol {
     static var fetch: Self { get }
     static func setHasLaunchedApp(status: Bool) -> Self
+    static func setOnBoardingPages(pages: [OnBoardingPagesData]) -> Self
 }
 
 internal enum SettingsAction: SettingActionProtocol {

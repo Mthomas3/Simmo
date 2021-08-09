@@ -11,9 +11,11 @@ import Foundation
 internal protocol ActionProtocol {
     static func homeAction(action: HomeAction) -> Self
     static func settingsAction(action: SettingsAction) -> Self
+    static func simulatorAction(action: SimulatorAction) -> Self
 }
 
 internal enum AppAction: ActionProtocol {
     case homeAction(action: HomeAction)
     case settingsAction(action: SettingsAction)
+    case simulatorAction(action: SimulatorAction)
 }

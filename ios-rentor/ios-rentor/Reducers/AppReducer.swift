@@ -11,10 +11,12 @@ import Foundation
 internal final class AppReducer: AppReducerProtocol {
     private let homeReducer: HomeReducer
     private let settingReducer: SettingsReducer
+    private let simulatorReducer: SimulatorReducer
     
     init() {
         self.homeReducer = HomeReducer()
         self.settingReducer = SettingsReducer()
+        self.simulatorReducer = SimulatorReducer()
     }
     
     func reducer(state: inout AppState, action: AppAction) {
@@ -23,6 +25,8 @@ internal final class AppReducer: AppReducerProtocol {
             self.homeReducer.reducer(state: &state.homeState, action: action)
         case .settingsAction(action: let action):
             self.settingReducer.reducer(state: &state.settingsState, action: action)
+        case .simulatorAction(action: let action):
+            self.simulatorReducer.reducer(state: &state.simulatorState, action: action)
         }
     }
 }

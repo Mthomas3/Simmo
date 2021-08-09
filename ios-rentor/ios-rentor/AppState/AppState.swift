@@ -12,6 +12,7 @@ import SwiftUI
 internal struct AppState {
     var homeState: HomeState
     var settingsState: SettingsState
+    var simulatorState: SimulatorState
 }
 
 internal struct HomeState {
@@ -24,4 +25,11 @@ internal struct HomeState {
 internal struct SettingsState {
     var hasLaunchedApp: Bool = true
     var onBoardingPages: [OnBoardingPagesData] = []
+}
+
+internal struct SimulatorState {
+    var informations: [String] = []
+    var funding: [String] = []
+    var fees: [String] = []
+    var tax: [String] = []
 }

@@ -67,6 +67,10 @@
 		E9B20D502591403200EC52D5 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B20D4F2591403200EC52D5 /* Models.swift */; };
 		E9B20D552591403B00EC52D5 /* MockedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B20D542591403B00EC52D5 /* MockedData.swift */; };
 		E9B45CA124FD5ED400A79ECC /* rentorCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9B45C9F24FD5ED400A79ECC /* rentorCoreData.xcdatamodeld */; };
+		E9BD8DFE26C168ED00AB1D16 /* SimulatorReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BD8DFD26C168ED00AB1D16 /* SimulatorReducer.swift */; };
+		E9BD8E0026C169D800AB1D16 /* SimulatorAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BD8DFF26C169D800AB1D16 /* SimulatorAction.swift */; };
+		E9BD8E0226C16CB200AB1D16 /* SimulatorMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BD8E0126C16CB200AB1D16 /* SimulatorMiddleware.swift */; };
+		E9BD8E0426C16D1600AB1D16 /* SimulatorDBRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BD8E0326C16D1600AB1D16 /* SimulatorDBRepository.swift */; };
 		E9C3A0AE25570A1D003BF79F /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C3A0AD25570A1D003BF79F /* SettingViewModel.swift */; };
 		E9C3A0B425570D43003BF79F /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C3A0B325570D43003BF79F /* SettingCell.swift */; };
 		E9C47BA925D6E5520082C0D6 /* Middleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C47BA825D6E5520082C0D6 /* Middleware.swift */; };
@@ -167,6 +171,10 @@
 		E9B20D4F2591403200EC52D5 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		E9B20D542591403B00EC52D5 /* MockedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedData.swift; sourceTree = "<group>"; };
 		E9B45CA024FD5ED400A79ECC /* Simmulations.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Simmulations.xcdatamodel; sourceTree = "<group>"; };
+		E9BD8DFD26C168ED00AB1D16 /* SimulatorReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorReducer.swift; sourceTree = "<group>"; };
+		E9BD8DFF26C169D800AB1D16 /* SimulatorAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorAction.swift; sourceTree = "<group>"; };
+		E9BD8E0126C16CB200AB1D16 /* SimulatorMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorMiddleware.swift; sourceTree = "<group>"; };
+		E9BD8E0326C16D1600AB1D16 /* SimulatorDBRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorDBRepository.swift; sourceTree = "<group>"; };
 		E9C3A0AD25570A1D003BF79F /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		E9C3A0B325570D43003BF79F /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		E9C47BA825D6E5520082C0D6 /* Middleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Middleware.swift; sourceTree = "<group>"; };
@@ -353,6 +361,7 @@
 				E99181A12615CD6400D971A1 /* SettingsReducer.swift */,
 				E960CF4125D5F0920037A26B /* HomeReducer.swift */,
 				E99181A62615CD9300D971A1 /* ReducerProtocols.swift */,
+				E9BD8DFD26C168ED00AB1D16 /* SimulatorReducer.swift */,
 			);
 			path = Reducers;
 			sourceTree = "<group>";
@@ -363,6 +372,7 @@
 				E923EDF125D5B4BD0076DD92 /* AppAction.swift */,
 				E923EDF625D5B4DE0076DD92 /* HomeAction.swift */,
 				E991819C2615C62C00D971A1 /* SettingAction.swift */,
+				E9BD8DFF26C169D800AB1D16 /* SimulatorAction.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -375,6 +385,7 @@
 				E999D67826052FF400C5011C /* SettingMiddleware.swift */,
 				E9C47BA825D6E5520082C0D6 /* Middleware.swift */,
 				E9DE7BE225DABECD00EB68A2 /* MiddlewareError.swift */,
+				E9BD8E0126C16CB200AB1D16 /* SimulatorMiddleware.swift */,
 			);
 			path = Middleware;
 			sourceTree = "<group>";
@@ -393,6 +404,7 @@
 			children = (
 				E94492EE258BEC7F00B94481 /* RentalDBRepository.swift */,
 				E999D67D26061C2E00C5011C /* SettingsDBRepository.swift */,
+				E9BD8E0326C16D1600AB1D16 /* SimulatorDBRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -833,9 +845,11 @@
 				E9878556250BB0C200CF8519 /* String+Ext.swift in Sources */,
 				E94492EF258BEC7F00B94481 /* RentalDBRepository.swift in Sources */,
 				E991819D2615C62C00D971A1 /* SettingAction.swift in Sources */,
+				E9BD8E0426C16D1600AB1D16 /* SimulatorDBRepository.swift in Sources */,
 				E9C3A0AE25570A1D003BF79F /* SettingViewModel.swift in Sources */,
 				E923EDF225D5B4BD0076DD92 /* AppAction.swift in Sources */,
 				E9DE7BE325DABECD00EB68A2 /* MiddlewareError.swift in Sources */,
+				E9BD8DFE26C168ED00AB1D16 /* SimulatorReducer.swift in Sources */,
 				E9209C9325227E8700EDC0A9 /* SimmulatorCellView.swift in Sources */,
 				E9C47BA925D6E5520082C0D6 /* Middleware.swift in Sources */,
 				E9090D1224FA9F7600020390 /* AppDelegate.swift in Sources */,
@@ -871,10 +885,12 @@
 				E923EDFD25D5B51E0076DD92 /* LogMiddleware.swift in Sources */,
 				E9095ECD26B988C30085331E /* ButtonOption.swift in Sources */,
 				E923EDEC25D5B4810076DD92 /* AppReducer.swift in Sources */,
+				E9BD8E0026C169D800AB1D16 /* SimulatorAction.swift in Sources */,
 				E960C8F92684BA6A000AD450 /* SimulatorRowView.swift in Sources */,
 				E9B20D552591403B00EC52D5 /* MockedData.swift in Sources */,
 				E9AAA950251B9244009841B8 /* SimmulatorModel.swift in Sources */,
 				E944702C26303139009A5E5B /* Color+Ext.swift in Sources */,
+				E9BD8E0226C16CB200AB1D16 /* SimulatorMiddleware.swift in Sources */,
 				E9F93C8B26BA654D003FD30E /* CardView.swift in Sources */,
 				E923EE0525D5B57A0076DD92 /* HomeMiddleware.swift in Sources */,
 				E944703626309BA3009A5E5B /* PageView.swift in Sources */,
