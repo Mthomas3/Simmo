@@ -28,8 +28,10 @@ internal struct SettingsState {
 }
 
 internal struct SimulatorState {
-    var informations: [String] = []
-    var funding: [String] = []
+    var informations: SimulatorInformation?
+    var funding: SimulatorFunding?
     var fees: [String] = []
     var tax: [String] = []
+    
+    var currentEvent: CurrentEvent = .eventInformation
 }

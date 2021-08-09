@@ -41,6 +41,7 @@ struct RootView: View {
 
     private let homeMiddleware: HomeMiddleware
     private let settingsMiddleware: SettingMiddleware
+    private let simulatorMiddleware: SimulatorMiddleware
     private let store: AppStore
     private let appReducer: AppReducer
 
@@ -51,6 +52,7 @@ struct RootView: View {
         
         self.homeMiddleware = HomeMiddleware(with: RealRentalDBRepository())
         self.settingsMiddleware = SettingMiddleware(with: SettingsDBRepository(with: UserDefaults.standard))
+        self.simulatorMiddleware = SimulatorMiddleware(with: SimulatorDBRepository())
         self.appReducer = AppReducer()
         
         self.store = AppStore(initialState: .init(homeState: HomeState(),
@@ -59,6 +61,7 @@ struct RootView: View {
                               reducer: self.appReducer.reducer(state:action:),
                               middlewares: [self.homeMiddleware.middleware(),
                                             self.settingsMiddleware.middleware(),
+                                            self.simulatorMiddleware.middleware(),
                                             MiddlewareHelper.logMiddleware()])
         
         store.dispatch(.homeAction(action: .fetch))

@@ -9,15 +9,17 @@
 import Foundation
 
 internal protocol SimulatorActionProtocol {
-    static func setInformations(informations: [String]) -> Self
-    static func setFunding(funding: [String]) -> Self
+    static func setInformations(informations: SimulatorInformation) -> Self
+    static func setFunding(funding: SimulatorFunding) -> Self
     static func setFees(fees: [String]) -> Self
     static func setTax(tax: [String]) -> Self
 }
 
 internal enum SimulatorAction: SimulatorActionProtocol {
-    case setInformations(informations: [String])
-    case setFunding(funding: [String])
+    case setInformations(informations: SimulatorInformation)
+    case setFunding(funding: SimulatorFunding)
     case setFees(fees: [String])
     case setTax(tax: [String])
+    case fetchActivities
+    case fetchActivitiesCompleted(events: CurrentEvent)
 }

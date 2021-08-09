@@ -12,11 +12,14 @@ struct SimulatorRowView: View {
     
     internal let testValue: Int
     internal let name: String
+    internal let index: Int
+    
     @State private var nextStep = false
+    @EnvironmentObject private var store: AppStore
     
     var body: some View {
         Group {
-            if testValue == 0 {
+            if testValue == self.index {
                 VStack(alignment: .leading) {
                     HStack {
                         Text(name)
@@ -26,7 +29,9 @@ struct SimulatorRowView: View {
                         Image("check")
                     }
                     ZStack {
-                        Button(action: { self.nextStep.toggle() }, label: {
+                        Button(action: {
+                                print("CURRENT EVENT = \(store.state.simulatorState.currentEvent)")
+                                self.nextStep.toggle() }, label: {
                             Text("Continuer")
                                 .frame(width: 133, height: 56, alignment: .center)
                                 .background(Color.init("Blue"))
@@ -83,6 +88,6 @@ struct SimulatorRowView: View {
 
 struct SimulatorRowView_Previews: PreviewProvider {
     static var previews: some View {
-        SimulatorRowView(testValue: 0, name: "TEST")
+        SimulatorRowView(testValue: 0, name: "TEST", index: 0)
     }
 }

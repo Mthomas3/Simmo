@@ -22,6 +22,9 @@ final class SimulatorReducer: ReducerProtocol {
             state.fees = fees
         case .setTax(let tax):
             state.tax = tax
+        case .fetchActivitiesCompleted(events: let events):
+            state.currentEvent = events
+        default: break
         }
     }
 }

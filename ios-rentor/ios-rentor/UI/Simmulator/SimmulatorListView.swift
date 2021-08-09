@@ -10,7 +10,6 @@ import SwiftUI
 
 struct SimmulatorListView: View {
     private let navigationBarTitle: String = "Simumation"
-    var item: [Int] = [0, 1, 2]
     
     @EnvironmentObject private var store: AppStore
     @EnvironmentObject private var modalView: MainTabBarData
@@ -52,13 +51,13 @@ struct SimmulatorListView: View {
                 }.frame(height: 130, alignment: .leading)
                 .padding(.bottom, 8)
                 
-                SimulatorRowView(testValue: 0, name: "Information sur le bien")
+                SimulatorRowView(testValue: store.state.simulatorState.currentEvent.rawValue, name: "Information sur le bien", index: 0)
                 SimulatorDivider
-                SimulatorRowView(testValue: 1, name: "Financement")
+                SimulatorRowView(testValue: store.state.simulatorState.currentEvent.rawValue, name: "Financement", index: 1)
                 SimulatorDivider
-                SimulatorRowView(testValue: 2, name: "Frais et charges")
+                SimulatorRowView(testValue: store.state.simulatorState.currentEvent.rawValue, name: "Frais et charges", index: 2)
                 SimulatorDivider
-                SimulatorRowView(testValue: 3, name: "Fiscalité")
+                SimulatorRowView(testValue: store.state.simulatorState.currentEvent.rawValue, name: "Fiscalité", index: 3)
                 Spacer()
             }
         }.background(Color.init("DefaultBackground").edgesIgnoringSafeArea(.all))

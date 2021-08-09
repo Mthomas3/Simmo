@@ -35,7 +35,7 @@ struct TextView: View {
 
 struct SimmulatorListView3: View {
     
-    @Binding var shouldPopToRootView : Bool
+    @Binding var shouldPopToRootView: Bool
     
     @State internal var isCurrentSelected: Int?
     @State internal var nextButton: Bool = false
@@ -43,8 +43,17 @@ struct SimmulatorListView3: View {
     @State private var shouldLeave: Bool = true
     @Environment(\.presentationMode) var presentation
     @State internal var nextStep: Bool = false
+    @EnvironmentObject private var store: AppStore
+    @State internal var name: String = ""
 
-
+    func displayText() -> some View {
+        return TextField("1 200 000 €", text: $name)
+            .multilineTextAlignment(.trailing)
+            .textFieldStyle(OvalTextFieldStyle())
+            .padding(.leading, 24)
+            .padding(.trailing, 24)
+    }
+    
     func displayPrice() -> some View {
         VStack(alignment: .leading) {
             Text("Quel est le prix du bien?")
@@ -93,6 +102,13 @@ struct SimmulatorListView3: View {
         }.navigationBarTitle(Text(""), displayMode: .inline)
         .overlay(ZStack {
                     Button(action: {
+                        if var simulator = store.state.simulatorState.informations {
+                            simulator.owner = (self.isCurrentSelected ?? 0) == 0
+                            if (self.isCurrentSelected ?? 0) == 0 {
+                                simulator.price = Double(name)
+                            }
+                            self.store.dispatch(.simulatorAction(action: .setInformations(informations: simulator)))
+                        }
                         self.nextStep.toggle()
                     }, label: { Text("Suivant")
                         .frame(width: 140, height: 56)

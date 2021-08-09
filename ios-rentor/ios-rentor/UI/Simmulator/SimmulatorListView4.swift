@@ -28,6 +28,8 @@ struct SimmulatorListView4: View {
     @State private var nextButton: Bool = false
     @State private var nexStep: Bool = false
     @State internal var name: String = ""
+    
+    @EnvironmentObject private var store: AppStore
         
     @State private var colorSelected: Int = 0
     @State private var imageSelected: Int = 0
@@ -129,6 +131,16 @@ struct SimmulatorListView4: View {
         }.navigationBarTitle(Text(""), displayMode: .inline)
         .background(Color.init("BackgroundHome").edgesIgnoringSafeArea(.all))
         .navigationBarItems(trailing: Button(action: {
+            if var sim = self.store.state.simulatorState.informations {
+                sim.color = "\(self.dataColor[self.colorSelected])"
+                sim.image = self.dataImage[self.imageSelected]
+                sim.name = self.name
+                sim.isDone = true
+                print("A CURRENT EVENT = \(store.state.simulatorState.currentEvent)")
+                self.store.dispatch(.simulatorAction(action: .setInformations(informations: sim)))
+                self.store.dispatch(.simulatorAction(action: .fetchActivities))
+                print("B CURRENT EVENT = \(store.state.simulatorState.currentEvent)")
+            }
             self.shouldPopToRootView = false
         }, label: {
             Text("Enregistrer et quitter")

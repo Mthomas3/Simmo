@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct CardView: View {
+    
+    @EnvironmentObject private var store: AppStore
     @Binding internal var eventSelected: Int?
     internal let index: Int
     internal let name: String

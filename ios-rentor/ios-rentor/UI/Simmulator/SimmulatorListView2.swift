@@ -10,6 +10,7 @@ import SwiftUI
 
 struct SimmulatorListView2: View {
     
+    @EnvironmentObject private var store: AppStore
     @Binding var shouldPopToRootView: Bool
     @State private var cardSelected: Int?
     @State private var isCurrentSelected: Int?
@@ -70,7 +71,11 @@ struct SimmulatorListView2: View {
         .background(Color.init("BackgroundHome").edgesIgnoringSafeArea(.all))
         .overlay(
             ZStack {
-                Button(action: { print("YOOO")
+                Button(action: {
+                    let simulator = SimulatorInformation(type: SimulatorType(rawValue: self.cardSelected ?? 0),
+                                                         rented: (self.isCurrentSelected ?? 0) == 0 ? true : false, owner: nil,
+                                                         price: nil, name: nil, color: nil, image: nil)
+                    self.store.dispatch(.simulatorAction(action: .setInformations(informations: simulator)))
                     self.nexStep.toggle()
                 }, label: { Text("Suivant")
                     .frame(width: 140, height: 56)

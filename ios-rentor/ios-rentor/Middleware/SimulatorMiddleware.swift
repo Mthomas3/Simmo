@@ -15,14 +15,21 @@ final class SimulatorMiddleware: MiddlewareProtocol {
     init(with repository: SimulatorDBRepository) {
         self.repository = repository
     }
+
+    private func fetchActivities() -> AnyPublisher<AppAction, Never> {
+        return Just(AppAction.simulatorAction(action: .fetchActivitiesCompleted(events:
+                                                                                    self.repository.currentEvent()))).eraseToAnyPublisher()
+    }
     
     func middleware() -> Middleware<AppState, AppAction> {
         return { state, action in
             switch action {
+            case .simulatorAction(action: .fetchActivities):
+                return self.fetchActivities()
             case .simulatorAction(action: .setInformations(informations: let informations)):
                 self.repository.saveInformations(with: informations)
             case .simulatorAction(action: .setFunding(funding: let funding)):
-                self.repository.saveFunding(with: funding)
+                    self.repository.saveFunding(with: funding)
             case .simulatorAction(action: .setFees(fees: let fees)):
                 self.repository.saveFees(with: fees)
             case .simulatorAction(action: .setTax(tax: let tax)):
