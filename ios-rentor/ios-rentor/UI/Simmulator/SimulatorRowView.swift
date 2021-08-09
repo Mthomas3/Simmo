@@ -13,6 +13,7 @@ struct SimulatorRowView: View {
     internal let testValue: Int
     internal let name: String
     internal let index: Int
+    internal let isChecked: Bool
     
     @State private var nextStep = false
     @EnvironmentObject private var store: AppStore
@@ -26,11 +27,11 @@ struct SimulatorRowView: View {
                             .foregroundColor(Color.init("DarkGray"))
                             .fontWeight(.medium)
                         Spacer()
-                        Image("check")
+                        
+                        //Image("check")
                     }
                     ZStack {
                         Button(action: {
-                                print("CURRENT EVENT = \(store.state.simulatorState.currentEvent)")
                                 self.nextStep.toggle() }, label: {
                             Text("Continuer")
                                 .frame(width: 133, height: 56, alignment: .center)
@@ -74,8 +75,12 @@ struct SimulatorRowView: View {
                                 Text(name)
                                     .foregroundColor(Color.init("HomeRowFontGray"))
                                 Spacer()
-                                Image("check")
-                                
+                               
+                                Group {
+                                    if isChecked {
+                                        Image("check")
+                                    }
+                                }
                             }
                         }.frame(height: 35, alignment: .leading)
                     }
@@ -88,6 +93,6 @@ struct SimulatorRowView: View {
 
 struct SimulatorRowView_Previews: PreviewProvider {
     static var previews: some View {
-        SimulatorRowView(testValue: 0, name: "TEST", index: 0)
+        SimulatorRowView(testValue: 0, name: "TEST", index: 0, isChecked: true)
     }
 }

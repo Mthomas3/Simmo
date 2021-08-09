@@ -26,10 +26,12 @@ internal struct SimulatorInformation {
     var color: String?
     var image: String?
     var isDone: Bool = false
+    var isChecked: Bool = false
 }
 
 internal struct SimulatorFunding {
     var isDone: Bool = false
+    var isChecked: Bool = false
 }
 
 internal enum CurrentEvent: Int {
@@ -45,7 +47,8 @@ internal final class SimulatorDBRepository: SimulatorDBRepositoryProtocol {
     private var funding: SimulatorFunding
     
     init() {
-        self.information = SimulatorInformation(type: nil, rented: nil, owner: nil, price: nil, name: nil, color: nil, image: nil, isDone: false)
+        self.information = SimulatorInformation(type: nil, rented: nil, owner: nil,
+                                                price: nil, name: nil, color: nil, image: nil, isDone: false)
         self.funding = SimulatorFunding(isDone: false)
     }
     

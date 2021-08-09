@@ -51,13 +51,14 @@ struct SimmulatorListView: View {
                 }.frame(height: 130, alignment: .leading)
                 .padding(.bottom, 8)
                 
-                SimulatorRowView(testValue: store.state.simulatorState.currentEvent.rawValue, name: "Information sur le bien", index: 0)
+                SimulatorRowView(testValue: store.state.simulatorState.currentEvent.rawValue, name: "Information sur le bien", index: 0, isChecked: store.state.simulatorState.informations?.isChecked ?? false)
                 SimulatorDivider
-                SimulatorRowView(testValue: store.state.simulatorState.currentEvent.rawValue, name: "Financement", index: 1)
+                SimulatorRowView(testValue: store.state.simulatorState.currentEvent.rawValue, name: "Financement", index: 1,
+                                 isChecked: store.state.simulatorState.funding?.isChecked ?? false)
                 SimulatorDivider
-                SimulatorRowView(testValue: store.state.simulatorState.currentEvent.rawValue, name: "Frais et charges", index: 2)
+                SimulatorRowView(testValue: store.state.simulatorState.currentEvent.rawValue, name: "Frais et charges", index: 2, isChecked: false)
                 SimulatorDivider
-                SimulatorRowView(testValue: store.state.simulatorState.currentEvent.rawValue, name: "Fiscalité", index: 3)
+                SimulatorRowView(testValue: store.state.simulatorState.currentEvent.rawValue, name: "Fiscalité", index: 3, isChecked: false)
                 Spacer()
             }
         }.background(Color.init("DefaultBackground").edgesIgnoringSafeArea(.all))

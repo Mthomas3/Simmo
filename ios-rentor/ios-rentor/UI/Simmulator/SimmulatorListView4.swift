@@ -136,10 +136,9 @@ struct SimmulatorListView4: View {
                 sim.image = self.dataImage[self.imageSelected]
                 sim.name = self.name
                 sim.isDone = true
-                print("A CURRENT EVENT = \(store.state.simulatorState.currentEvent)")
+                sim.isChecked = true
                 self.store.dispatch(.simulatorAction(action: .setInformations(informations: sim)))
                 self.store.dispatch(.simulatorAction(action: .fetchActivities))
-                print("B CURRENT EVENT = \(store.state.simulatorState.currentEvent)")
             }
             self.shouldPopToRootView = false
         }, label: {
