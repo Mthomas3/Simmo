@@ -35,7 +35,7 @@ internal struct SimulatorFunding {
     var name: String?
 }
 
-internal struct SimulatorFees {
+internal struct SimulatorFee {
     var isDone: Bool
     var isChecked: Bool
     var name: String?
@@ -58,14 +58,14 @@ internal final class SimulatorDBRepository: SimulatorDBRepositoryProtocol {
     
     private var information: SimulatorInformation
     private var funding: SimulatorFunding
-    private var fees: SimulatorFees
+    private var fees: SimulatorFee
     private var tax: SimulatorTax
     
     init() {
         self.information = SimulatorInformation(type: nil, rented: nil, owner: nil,
                                                 price: nil, name: nil, color: nil, image: nil, isDone: false)
         self.funding = SimulatorFunding(isDone: false)
-        self.fees = SimulatorFees(isDone: false, isChecked: false, name: nil)
+        self.fees = SimulatorFee(isDone: false, isChecked: false, name: nil)
         self.tax = SimulatorTax(isDone: false, isChecked: false, name: nil)
     }
     
@@ -88,11 +88,11 @@ internal final class SimulatorDBRepository: SimulatorDBRepositoryProtocol {
         return .eventTax
     }
     
-    internal func saveFees(with fees: [String]) {
-        print("WE SAVE FEES \(fees)")
+    internal func saveFees(with fees: SimulatorFee) {
+        self.fees = fees
     }
     
-    internal func saveTax(with tax: [String]) {
-        print("WE SAVE TAX \(tax)")
+    internal func saveTax(with tax: SimulatorTax) {
+        self.tax = tax
     }
 }

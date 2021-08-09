@@ -30,8 +30,7 @@ internal struct SettingsState {
 internal struct SimulatorState {
     var informations: SimulatorInformation?
     var funding: SimulatorFunding?
-    var fees: [String] = []
-    var tax: [String] = []
-    
+    var fees: SimulatorFee?
+    var tax: SimulatorTax?
     var currentEvent: CurrentEvent = .eventInformation
 }

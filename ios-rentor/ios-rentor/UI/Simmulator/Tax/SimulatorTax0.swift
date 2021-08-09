@@ -9,13 +9,19 @@
 import SwiftUI
 
 struct SimulatorTax0: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+    @EnvironmentObject private var store: AppStore
+    @Binding var shouldPopToRootView: Bool
 
-struct SimulatorTax0_Previews: PreviewProvider {
-    static var previews: some View {
-        SimulatorTax0()
+    var body: some View {
+        VStack {
+            Text("SAVE TAX TRY")
+        }.navigationBarItems(trailing: Button(action: {
+            let tax = SimulatorTax(isDone: true, isChecked: true, name: "TAX DONE")
+            store.dispatch(.simulatorAction(action: .setTax(tax: tax)))
+            store.dispatch(.simulatorAction(action: .fetchActivities))
+            self.shouldPopToRootView = false
+        }, label: {
+            Text("Enregistrer et quitter")
+        }))
     }
 }

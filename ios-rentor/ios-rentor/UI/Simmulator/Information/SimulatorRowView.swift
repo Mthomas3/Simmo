@@ -51,7 +51,7 @@ struct SimulatorRowView: View {
                 }
             } else {
                 Group {
-                    if currentEvent == 3 {
+                    if currentEvent == 99 {
                         VStack(alignment: .leading) {
                             HStack {
                                 VStack(alignment: .leading) {

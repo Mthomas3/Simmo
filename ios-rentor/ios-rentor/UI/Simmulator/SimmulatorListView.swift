@@ -69,13 +69,13 @@ struct SimmulatorListView: View {
                                  name: "Frais et charges",
                                  index: 2,
                                  isChecked: false,
-                                 nextPages: AnyView(SimmulatorListView2(shouldPopToRootView: self.$nextStep)))
+                                 nextPages: AnyView(SimulatorFee0(shouldPopToRootView: self.$nextStep)))
                 SimulatorDivider
                 SimulatorRowView(currentEvent: store.state.simulatorState.currentEvent.rawValue,
                                  name: "Fiscalité",
                                  index: 3,
                                  isChecked: false,
-                                 nextPages: AnyView(SimmulatorListView2(shouldPopToRootView: self.$nextStep)))
+                                 nextPages: AnyView(SimulatorTax0(shouldPopToRootView: self.$nextStep)))
                 Spacer()
             }
         }.background(Color.init("DefaultBackground").edgesIgnoringSafeArea(.all))

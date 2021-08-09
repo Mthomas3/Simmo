@@ -9,13 +9,19 @@
 import SwiftUI
 
 struct SimulatorFee0: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+    @EnvironmentObject private var store: AppStore
+    @Binding var shouldPopToRootView: Bool
 
-struct SimulatorFee0_Previews: PreviewProvider {
-    static var previews: some View {
-        SimulatorFee0()
+    var body: some View {
+        VStack {
+            Text("SAVE FEE TRY")
+        }.navigationBarItems(trailing: Button(action: {
+            let fee = SimulatorFee(isDone: true, isChecked: true, name: "FEE DONE")
+            store.dispatch(.simulatorAction(action: .setFees(fees: fee)))
+            store.dispatch(.simulatorAction(action: .fetchActivities))
+            self.shouldPopToRootView = false
+        }, label: {
+            Text("Enregistrer et quitter")
+        }))
     }
 }

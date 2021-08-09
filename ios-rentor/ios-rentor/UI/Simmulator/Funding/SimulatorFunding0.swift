@@ -14,7 +14,7 @@ struct SimulatorFunding0: View {
 
     var body: some View {
         VStack {
-            Text("HELLO WORLD")
+            Text("SAVE FUNDING TRY")
         }.navigationBarItems(trailing: Button(action: {
             let funding = SimulatorFunding(isDone: true, isChecked: true, name: "FUNDING DONE")
             store.dispatch(.simulatorAction(action: .setFunding(funding: funding)))
