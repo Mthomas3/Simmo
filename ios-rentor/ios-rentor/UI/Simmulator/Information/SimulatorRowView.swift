@@ -10,17 +10,18 @@ import SwiftUI
 
 struct SimulatorRowView: View {
     
-    internal let testValue: Int
+    internal let currentEvent: Int
     internal let name: String
     internal let index: Int
     internal let isChecked: Bool
+    internal let nextPages: AnyView
     
     @State private var nextStep = false
     @EnvironmentObject private var store: AppStore
     
     var body: some View {
         Group {
-            if testValue == self.index {
+            if currentEvent == self.index {
                 VStack(alignment: .leading) {
                     HStack {
                         Text(name)
@@ -41,7 +42,7 @@ struct SimulatorRowView: View {
                                 .cornerRadius(12)
                         })
                         NavigationLink(
-                            destination: SimmulatorListView2(shouldPopToRootView: self.$nextStep),
+                            destination: nextPages,
                             isActive: $nextStep,
                             label: {
                                 EmptyView().opacity(0)
@@ -50,7 +51,7 @@ struct SimulatorRowView: View {
                 }
             } else {
                 Group {
-                    if testValue == 3 {
+                    if currentEvent == 3 {
                         VStack(alignment: .leading) {
                             HStack {
                                 VStack(alignment: .leading) {
@@ -88,11 +89,5 @@ struct SimulatorRowView: View {
             }
         }.padding(.leading, 25)
         .padding(.trailing, 25)
-    }
-}
-
-struct SimulatorRowView_Previews: PreviewProvider {
-    static var previews: some View {
-        SimulatorRowView(testValue: 0, name: "TEST", index: 0, isChecked: true)
     }
 }

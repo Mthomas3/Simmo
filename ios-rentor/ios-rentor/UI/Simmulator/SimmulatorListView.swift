@@ -14,6 +14,8 @@ struct SimmulatorListView: View {
     @EnvironmentObject private var store: AppStore
     @EnvironmentObject private var modalView: MainTabBarData
     
+    @State internal var nextStep: Bool = false
+    
     var headerView: some View {
         VStack(alignment: .leading) {
             Button {
@@ -51,14 +53,29 @@ struct SimmulatorListView: View {
                 }.frame(height: 130, alignment: .leading)
                 .padding(.bottom, 8)
                 
-                SimulatorRowView(testValue: store.state.simulatorState.currentEvent.rawValue, name: "Information sur le bien", index: 0, isChecked: store.state.simulatorState.informations?.isChecked ?? false)
+                SimulatorRowView(currentEvent: store.state.simulatorState.currentEvent.rawValue,
+                                 name: "Information sur le bien",
+                                 index: 0,
+                                 isChecked: store.state.simulatorState.informations?.isChecked ?? false,
+                                 nextPages: AnyView(SimmulatorListView2(shouldPopToRootView: self.$nextStep)))
                 SimulatorDivider
-                SimulatorRowView(testValue: store.state.simulatorState.currentEvent.rawValue, name: "Financement", index: 1,
-                                 isChecked: store.state.simulatorState.funding?.isChecked ?? false)
+                SimulatorRowView(currentEvent:
+                                    store.state.simulatorState.currentEvent.rawValue,
+                                 name: "Financement", index: 1,
+                                 isChecked: store.state.simulatorState.funding?.isChecked ?? false,
+                                 nextPages: AnyView(SimulatorFunding0(shouldPopToRootView: self.$nextStep)))
                 SimulatorDivider
-                SimulatorRowView(testValue: store.state.simulatorState.currentEvent.rawValue, name: "Frais et charges", index: 2, isChecked: false)
+                SimulatorRowView(currentEvent: store.state.simulatorState.currentEvent.rawValue,
+                                 name: "Frais et charges",
+                                 index: 2,
+                                 isChecked: false,
+                                 nextPages: AnyView(SimmulatorListView2(shouldPopToRootView: self.$nextStep)))
                 SimulatorDivider
-                SimulatorRowView(testValue: store.state.simulatorState.currentEvent.rawValue, name: "Fiscalité", index: 3, isChecked: false)
+                SimulatorRowView(currentEvent: store.state.simulatorState.currentEvent.rawValue,
+                                 name: "Fiscalité",
+                                 index: 3,
+                                 isChecked: false,
+                                 nextPages: AnyView(SimmulatorListView2(shouldPopToRootView: self.$nextStep)))
                 Spacer()
             }
         }.background(Color.init("DefaultBackground").edgesIgnoringSafeArea(.all))

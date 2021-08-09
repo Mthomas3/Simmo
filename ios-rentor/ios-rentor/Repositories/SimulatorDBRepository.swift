@@ -32,6 +32,19 @@ internal struct SimulatorInformation {
 internal struct SimulatorFunding {
     var isDone: Bool = false
     var isChecked: Bool = false
+    var name: String?
+}
+
+internal struct SimulatorFees {
+    var isDone: Bool
+    var isChecked: Bool
+    var name: String?
+}
+
+internal struct SimulatorTax {
+    var isDone: Bool
+    var isChecked: Bool
+    var name: String?
 }
 
 internal enum CurrentEvent: Int {
@@ -45,19 +58,19 @@ internal final class SimulatorDBRepository: SimulatorDBRepositoryProtocol {
     
     private var information: SimulatorInformation
     private var funding: SimulatorFunding
+    private var fees: SimulatorFees
+    private var tax: SimulatorTax
     
     init() {
         self.information = SimulatorInformation(type: nil, rented: nil, owner: nil,
                                                 price: nil, name: nil, color: nil, image: nil, isDone: false)
         self.funding = SimulatorFunding(isDone: false)
+        self.fees = SimulatorFees(isDone: false, isChecked: false, name: nil)
+        self.tax = SimulatorTax(isDone: false, isChecked: false, name: nil)
     }
     
     internal func saveInformations(with informations: SimulatorInformation) {
         self.information = informations
-    }
-    
-    internal func getInformation() -> SimulatorInformation? {
-        return self.information
     }
     
     internal func saveFunding(with funding: SimulatorFunding) {
@@ -67,11 +80,12 @@ internal final class SimulatorDBRepository: SimulatorDBRepositoryProtocol {
     internal func currentEvent() -> CurrentEvent {
         if self.information.isDone == false {
             return .eventInformation
-        } else if self.information.isDone == true &&
-                    self.funding.isDone == false {
+        } else if self.funding.isDone == false {
             return .eventFunding
+        } else if self.fees.isDone == false {
+            return .eventFees
         }
-        return .eventFees
+        return .eventTax
     }
     
     internal func saveFees(with fees: [String]) {

@@ -31,6 +31,9 @@
 		E923EDF725D5B4DE0076DD92 /* HomeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E923EDF625D5B4DE0076DD92 /* HomeAction.swift */; };
 		E923EDFD25D5B51E0076DD92 /* LogMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = E923EDFC25D5B51E0076DD92 /* LogMiddleware.swift */; };
 		E923EE0525D5B57A0076DD92 /* HomeMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = E923EE0425D5B57A0076DD92 /* HomeMiddleware.swift */; };
+		E9276C3726C1E553002FEAAC /* SimulatorFunding0.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9276C3626C1E553002FEAAC /* SimulatorFunding0.swift */; };
+		E9276C3E26C1E6A3002FEAAC /* SimulatorFee0.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9276C3D26C1E6A3002FEAAC /* SimulatorFee0.swift */; };
+		E9276C4026C1E6AC002FEAAC /* SimulatorTax0.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9276C3F26C1E6AC002FEAAC /* SimulatorTax0.swift */; };
 		E944702626302B6F009A5E5B /* TutorialPagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E944702526302B6F009A5E5B /* TutorialPagesView.swift */; };
 		E944702C26303139009A5E5B /* Color+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E944702B26303139009A5E5B /* Color+Ext.swift */; };
 		E944703626309BA3009A5E5B /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E944703526309BA3009A5E5B /* PageView.swift */; };
@@ -135,6 +138,9 @@
 		E923EDF625D5B4DE0076DD92 /* HomeAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAction.swift; sourceTree = "<group>"; };
 		E923EDFC25D5B51E0076DD92 /* LogMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogMiddleware.swift; sourceTree = "<group>"; };
 		E923EE0425D5B57A0076DD92 /* HomeMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMiddleware.swift; sourceTree = "<group>"; };
+		E9276C3626C1E553002FEAAC /* SimulatorFunding0.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorFunding0.swift; sourceTree = "<group>"; };
+		E9276C3D26C1E6A3002FEAAC /* SimulatorFee0.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorFee0.swift; sourceTree = "<group>"; };
+		E9276C3F26C1E6AC002FEAAC /* SimulatorTax0.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorTax0.swift; sourceTree = "<group>"; };
 		E944702526302B6F009A5E5B /* TutorialPagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPagesView.swift; sourceTree = "<group>"; };
 		E944702B26303139009A5E5B /* Color+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Ext.swift"; sourceTree = "<group>"; };
 		E944703526309BA3009A5E5B /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
@@ -390,6 +396,41 @@
 			path = Middleware;
 			sourceTree = "<group>";
 		};
+		E9276C3826C1E5BE002FEAAC /* Funding */ = {
+			isa = PBXGroup;
+			children = (
+				E9276C3626C1E553002FEAAC /* SimulatorFunding0.swift */,
+			);
+			path = Funding;
+			sourceTree = "<group>";
+		};
+		E9276C3926C1E5C4002FEAAC /* Information */ = {
+			isa = PBXGroup;
+			children = (
+				E960C8F82684BA6A000AD450 /* SimulatorRowView.swift */,
+				E974EC3D26AE0E4D000B0017 /* SimmulatorListView4.swift */,
+				E997C3C026AF56FF00CB6E68 /* SimmulatorListView2.swift */,
+				E9095EC926B9869B0085331E /* SimmulatorListView3.swift */,
+			);
+			path = Information;
+			sourceTree = "<group>";
+		};
+		E9276C3A26C1E5CD002FEAAC /* Fee */ = {
+			isa = PBXGroup;
+			children = (
+				E9276C3D26C1E6A3002FEAAC /* SimulatorFee0.swift */,
+			);
+			path = Fee;
+			sourceTree = "<group>";
+		};
+		E9276C3C26C1E5E6002FEAAC /* Tax */ = {
+			isa = PBXGroup;
+			children = (
+				E9276C3F26C1E6AC002FEAAC /* SimulatorTax0.swift */,
+			);
+			path = Tax;
+			sourceTree = "<group>";
+		};
 		E94492EC258BEAD200B94481 /* System */ = {
 			isa = PBXGroup;
 			children = (
@@ -426,14 +467,14 @@
 		E9449300258C08F800B94481 /* Simmulator */ = {
 			isa = PBXGroup;
 			children = (
+				E9276C3C26C1E5E6002FEAAC /* Tax */,
+				E9276C3A26C1E5CD002FEAAC /* Fee */,
+				E9276C3926C1E5C4002FEAAC /* Information */,
+				E9276C3826C1E5BE002FEAAC /* Funding */,
 				E9095ECB26B988BA0085331E /* View */,
 				E95C97AA2681DFF100F5A625 /* old */,
 				E95C97A62681DF6100F5A625 /* SimmulatorContainer.swift */,
-				E960C8F82684BA6A000AD450 /* SimulatorRowView.swift */,
 				E95C97A82681DF7C00F5A625 /* SimmulatorListView.swift */,
-				E974EC3D26AE0E4D000B0017 /* SimmulatorListView4.swift */,
-				E997C3C026AF56FF00CB6E68 /* SimmulatorListView2.swift */,
-				E9095EC926B9869B0085331E /* SimmulatorListView3.swift */,
 			);
 			path = Simmulator;
 			sourceTree = "<group>";
@@ -858,6 +899,7 @@
 				E9AAA95525210CF1009841B8 /* SimmulatorCellViewModel.swift in Sources */,
 				E9090D1724FA9F7600020390 /* ios_rentor.xcdatamodeld in Sources */,
 				E98C2582252B96E700E06E73 /* HomeDetailViewModel.swift in Sources */,
+				E9276C3E26C1E6A3002FEAAC /* SimulatorFee0.swift in Sources */,
 				E95C97A72681DF6100F5A625 /* SimmulatorContainer.swift in Sources */,
 				E999D67E26061C2E00C5011C /* SettingsDBRepository.swift in Sources */,
 				E944702626302B6F009A5E5B /* TutorialPagesView.swift in Sources */,
@@ -867,6 +909,7 @@
 				E9665536250033B2003BC212 /* RentorEntity.swift in Sources */,
 				E9D8D16124FAF9D000DF5ABC /* SettingView.swift in Sources */,
 				E9A8C6692517B4BC000E8A28 /* HomeViewModel.swift in Sources */,
+				E9276C4026C1E6AC002FEAAC /* SimulatorTax0.swift in Sources */,
 				E923EDF725D5B4DE0076DD92 /* HomeAction.swift in Sources */,
 				E9B45CA124FD5ED400A79ECC /* rentorCoreData.xcdatamodeld in Sources */,
 				E99181A22615CD6400D971A1 /* SettingsReducer.swift in Sources */,
@@ -882,6 +925,7 @@
 				E996F2E226187C9C00447EA0 /* TutorialContainer.swift in Sources */,
 				E923EDE125D5B33A0076DD92 /* AppState.swift in Sources */,
 				E95ECF5425DD87BB0071C97D /* HomeRowView.swift in Sources */,
+				E9276C3726C1E553002FEAAC /* SimulatorFunding0.swift in Sources */,
 				E923EDFD25D5B51E0076DD92 /* LogMiddleware.swift in Sources */,
 				E9095ECD26B988C30085331E /* ButtonOption.swift in Sources */,
 				E923EDEC25D5B4810076DD92 /* AppReducer.swift in Sources */,
