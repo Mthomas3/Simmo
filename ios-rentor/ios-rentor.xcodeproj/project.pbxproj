@@ -404,9 +404,9 @@
 			isa = PBXGroup;
 			children = (
 				E960C8F82684BA6A000AD450 /* SimulatorRowView.swift */,
-				E974EC3D26AE0E4D000B0017 /* SimmulatorInformation2.swift */,
 				E997C3C026AF56FF00CB6E68 /* SimmulatorInformation0.swift */,
 				E9095EC926B9869B0085331E /* SimmulatorInformation1.swift */,
+				E974EC3D26AE0E4D000B0017 /* SimmulatorInformation2.swift */,
 			);
 			path = Information;
 			sourceTree = "<group>";

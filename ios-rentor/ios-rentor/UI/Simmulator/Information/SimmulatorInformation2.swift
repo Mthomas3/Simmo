@@ -48,7 +48,7 @@ struct SimulatorInformation2: View {
         ZStack {
             RoundedRectangle(cornerRadius: 12, style: .continuous)
                 .strokeBorder(colorSelected == index ? Color.init("Blue")
-                                : Color.clear, lineWidth: colorSelected == index ? 2 : 0)
+                                : Color.clear, lineWidth: colorSelected == index ? 3 : 0)
                 .background(RoundedRectangle(cornerRadius: 12, style: .continuous)
                                 .foregroundColor(color))
                 .frame(width: 66, height: 66)
@@ -61,7 +61,7 @@ struct SimulatorInformation2: View {
         ZStack(alignment: .center) {
             RoundedRectangle(cornerRadius: 12, style: .continuous)
                 .strokeBorder(imageSelected == index ? Color.init("Blue")
-                                : Color.clear, lineWidth: imageSelected == index ? 2 : 0)
+                                : Color.clear, lineWidth: imageSelected == index ? 3 : 0)
                 .background(RoundedRectangle(cornerRadius: 12, style: .continuous)
                                 .foregroundColor(Color.white))
                 .frame(width: 66, height: 66)

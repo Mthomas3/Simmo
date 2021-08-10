@@ -40,7 +40,7 @@ extension SettingListView {
                             NavigationLink(destination: Text("D")) { EmptyView() }
                         }.frame(height: 46)
                     }
-                }
+                }.listRowBackground(Color.init("BackgroundHomeCell"))
                 
                 Section(header: Text("")) {
                     ForEach(item1, id: \.self) { name in
@@ -52,7 +52,11 @@ extension SettingListView {
                         }
                     }
                 }
-            }.listStyle(InsetGroupedListStyle())
+                .listRowBackground(Color.init("BackgroundHomeCell"))
+
+            }
+            .listRowBackground(Color.red)
+            .listStyle(InsetGroupedListStyle())
             .listRowInsets(EdgeInsets())
             .listRowBackground(Color.red)
             
