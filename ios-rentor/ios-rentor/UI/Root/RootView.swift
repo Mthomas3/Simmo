@@ -66,7 +66,6 @@ struct RootView: View {
         
         store.dispatch(.homeAction(action: .fetch))
         store.dispatch(.settingsAction(action: .fetch))
-        store.dispatch(.homeAction(action: .add(item: Rentor(id: UUID(), date: Date(), name: "YOLO", price: 130.0, rentPrice: 30.0, cashFlow: 30.0, percentage: 20.0))))
     }
 
     var body: some View {
@@ -77,28 +76,29 @@ struct RootView: View {
 struct BaseView: View {
     @EnvironmentObject var store: AppStore
     @ObservedObject private var tabData = MainTabBarData(initialIndex: 1, customItemIndex: 2)
-
+    
     var body: some View {
         Group {
             if store.state.settingsState.hasLaunchedApp {
                 TabView(selection: $tabData.itemSelected) {
                     HomeContainerView()
                         .tabItem {
-                            Image(systemName: "house.fill")
-                            Text("Mes Simulations")
+                            Image("HomeTabBar")
+                                .renderingMode(.template)
+                            Text("Simulations")
                         }.environmentObject(store)
                         .accentColor(.blue)
                         .tag(1)
-                    
+                        
                     Text("Custom Action")
                     .tabItem {
-                        Image(systemName: "plus.square")
+                        Image("SquareTabBar")
                         Text("Ajouter")
                     }.tag(2)
                     
-                    SettingView()
+                    SettingContainerView()
                         .tabItem {
-                            Image(systemName: "slider.horizontal.3")
+                            Image("SliderTabBar")
                             Text("Paramètres")
                         }.environmentObject(store)
                         .accentColor(.blue)

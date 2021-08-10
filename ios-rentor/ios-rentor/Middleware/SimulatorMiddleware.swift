@@ -34,6 +34,10 @@ final class SimulatorMiddleware: MiddlewareProtocol {
                 self.repository.saveFees(with: fees)
             case .simulatorAction(action: .setTax(tax: let tax)):
                 self.repository.saveTax(with: tax)
+            case .simulatorAction(action: .done):
+                self.repository.done()
+            case .simulatorAction(action: .clear):
+                self.repository.clear()
             default: break
             }
             return Empty().eraseToAnyPublisher()

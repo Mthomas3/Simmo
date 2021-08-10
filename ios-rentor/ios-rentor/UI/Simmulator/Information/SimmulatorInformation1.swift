@@ -33,7 +33,7 @@ struct TextView: View {
     }
 }
 
-struct SimmulatorListView3: View {
+struct SimulatorInformation1: View {
     
     @Binding var shouldPopToRootView: Bool
     
@@ -119,7 +119,7 @@ struct SimmulatorListView3: View {
                         .animation(.easeInOut(duration: 0.5))
                         
                         NavigationLink(
-                            destination: SimmulatorListView4(shouldPopToRootView: self.$shouldPopToRootView),
+                            destination: SimulatorInformation2(shouldPopToRootView: self.$shouldPopToRootView),
                             isActive: $nextStep,
                             label: {
                                 EmptyView().opacity(0)

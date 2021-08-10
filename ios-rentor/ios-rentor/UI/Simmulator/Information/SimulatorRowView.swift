@@ -28,8 +28,6 @@ struct SimulatorRowView: View {
                             .foregroundColor(Color.init("DarkGray"))
                             .fontWeight(.medium)
                         Spacer()
-                        
-                        //Image("check")
                     }
                     ZStack {
                         Button(action: {

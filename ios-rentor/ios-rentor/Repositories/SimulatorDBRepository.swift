@@ -52,16 +52,21 @@ internal enum CurrentEvent: Int {
     case eventFunding
     case eventFees
     case eventTax
+    case eventDone
 }
 
 internal final class SimulatorDBRepository: SimulatorDBRepositoryProtocol {
     
-    private var information: SimulatorInformation
-    private var funding: SimulatorFunding
-    private var fees: SimulatorFee
-    private var tax: SimulatorTax
+    private var information: SimulatorInformation?
+    private var funding: SimulatorFunding?
+    private var fees: SimulatorFee?
+    private var tax: SimulatorTax?
     
     init() {
+        self.setupData()
+    }
+    
+    internal func setupData() {
         self.information = SimulatorInformation(type: nil, rented: nil, owner: nil,
                                                 price: nil, name: nil, color: nil, image: nil, isDone: false)
         self.funding = SimulatorFunding(isDone: false)
@@ -78,14 +83,16 @@ internal final class SimulatorDBRepository: SimulatorDBRepositoryProtocol {
     }
     
     internal func currentEvent() -> CurrentEvent {
-        if self.information.isDone == false {
+        if self.information?.isDone == false {
             return .eventInformation
-        } else if self.funding.isDone == false {
+        } else if self.funding?.isDone == false {
             return .eventFunding
-        } else if self.fees.isDone == false {
+        } else if self.fees?.isDone == false {
             return .eventFees
+        } else if self.tax?.isDone == false {
+            return .eventTax
         }
-        return .eventTax
+        return .eventDone
     }
     
     internal func saveFees(with fees: SimulatorFee) {
@@ -94,5 +101,14 @@ internal final class SimulatorDBRepository: SimulatorDBRepositoryProtocol {
     
     internal func saveTax(with tax: SimulatorTax) {
         self.tax = tax
+    }
+    
+    internal func done() {
+        print("WE SAVE EVERYTHING HERE")
+        self.setupData()
+    }
+    
+    internal func clear() {
+        self.setupData()
     }
 }

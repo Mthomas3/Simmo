@@ -24,6 +24,9 @@ final class SimulatorReducer: ReducerProtocol {
             state.tax = tax
         case .fetchActivitiesCompleted(events: let events):
             state.currentEvent = events
+        case .done, .clear:
+            print("WE DONE WE CLEAR")
+            state = SimulatorState()
         default: break
         }
     }

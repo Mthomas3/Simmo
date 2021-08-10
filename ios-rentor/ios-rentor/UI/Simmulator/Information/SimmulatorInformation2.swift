@@ -20,7 +20,7 @@ struct LineTextFieldStyle: TextFieldStyle {
     }
 }
 
-struct SimmulatorListView4: View {
+struct SimulatorInformation2: View {
     
     @Binding var shouldPopToRootView: Bool
     @State private var cardSelected: Int?

@@ -18,11 +18,10 @@
 		E9090D2124FA9F7800020390 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9090D1F24FA9F7800020390 /* LaunchScreen.storyboard */; };
 		E9090D2C24FA9F7800020390 /* ios_rentorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9090D2B24FA9F7800020390 /* ios_rentorTests.swift */; };
 		E9090D3724FA9F7800020390 /* ios_rentorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9090D3624FA9F7800020390 /* ios_rentorUITests.swift */; };
-		E9095ECA26B9869B0085331E /* SimmulatorListView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9095EC926B9869B0085331E /* SimmulatorListView3.swift */; };
+		E9095ECA26B9869B0085331E /* SimmulatorInformation1.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9095EC926B9869B0085331E /* SimmulatorInformation1.swift */; };
 		E9095ECD26B988C30085331E /* ButtonOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9095ECC26B988C30085331E /* ButtonOption.swift */; };
 		E90986E62582500D0089525F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E90986E52582500D0089525F /* GoogleService-Info.plist */; };
 		E9190C7725DD321500C804B5 /* CoreMockedManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9190C7625DD321500C804B5 /* CoreMockedManager.swift */; };
-		E9209C9325227E8700EDC0A9 /* SimmulatorCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9209C9225227E8700EDC0A9 /* SimmulatorCellView.swift */; };
 		E921275F2635FC590001E2B8 /* View+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E921275E2635FC590001E2B8 /* View+Ext.swift */; };
 		E923EDE125D5B33A0076DD92 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E923EDE025D5B33A0076DD92 /* AppState.swift */; };
 		E923EDE625D5B3E00076DD92 /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E923EDE525D5B3E00076DD92 /* AppStore.swift */; };
@@ -48,7 +47,7 @@
 		E960C8F92684BA6A000AD450 /* SimulatorRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E960C8F82684BA6A000AD450 /* SimulatorRowView.swift */; };
 		E960CF4225D5F0920037A26B /* HomeReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E960CF4125D5F0920037A26B /* HomeReducer.swift */; };
 		E9665536250033B2003BC212 /* RentorEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9665535250033B2003BC212 /* RentorEntity.swift */; };
-		E974EC3E26AE0E4D000B0017 /* SimmulatorListView4.swift in Sources */ = {isa = PBXBuildFile; fileRef = E974EC3D26AE0E4D000B0017 /* SimmulatorListView4.swift */; };
+		E974EC3E26AE0E4D000B0017 /* SimmulatorInformation2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E974EC3D26AE0E4D000B0017 /* SimmulatorInformation2.swift */; };
 		E9878556250BB0C200CF8519 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9878555250BB0C200CF8519 /* String+Ext.swift */; };
 		E98C257D252B922000E06E73 /* HomeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98C257C252B922000E06E73 /* HomeDetailView.swift */; };
 		E98C2582252B96E700E06E73 /* HomeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98C2581252B96E700E06E73 /* HomeDetailViewModel.swift */; };
@@ -57,7 +56,7 @@
 		E99181A22615CD6400D971A1 /* SettingsReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99181A12615CD6400D971A1 /* SettingsReducer.swift */; };
 		E99181A72615CD9300D971A1 /* ReducerProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99181A62615CD9300D971A1 /* ReducerProtocols.swift */; };
 		E996F2E226187C9C00447EA0 /* TutorialContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996F2E126187C9C00447EA0 /* TutorialContainer.swift */; };
-		E997C3C126AF56FF00CB6E68 /* SimmulatorListView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E997C3C026AF56FF00CB6E68 /* SimmulatorListView2.swift */; };
+		E997C3C126AF56FF00CB6E68 /* SimmulatorInformation0.swift in Sources */ = {isa = PBXBuildFile; fileRef = E997C3C026AF56FF00CB6E68 /* SimmulatorInformation0.swift */; };
 		E999D67926052FF400C5011C /* SettingMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = E999D67826052FF400C5011C /* SettingMiddleware.swift */; };
 		E999D67E26061C2E00C5011C /* SettingsDBRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E999D67D26061C2E00C5011C /* SettingsDBRepository.swift */; };
 		E9A8C6692517B4BC000E8A28 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A8C6682517B4BC000E8A28 /* HomeViewModel.swift */; };
@@ -66,6 +65,8 @@
 		E9AAA950251B9244009841B8 /* SimmulatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AAA94F251B9244009841B8 /* SimmulatorModel.swift */; };
 		E9AAA953251BDA4B009841B8 /* InteractorsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AAA952251BDA4B009841B8 /* InteractorsProtocol.swift */; };
 		E9AAA95525210CF1009841B8 /* SimmulatorCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AAA95425210CF1009841B8 /* SimmulatorCellViewModel.swift */; };
+		E9AF720526C2678000A26B0D /* SettingContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AF720426C2678000A26B0D /* SettingContainerView.swift */; };
+		E9AF720826C267B000A26B0D /* SettingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AF720726C267B000A26B0D /* SettingListView.swift */; };
 		E9B20D4B25913E2100EC52D5 /* Models+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B20D4A25913E2100EC52D5 /* Models+CoreData.swift */; };
 		E9B20D502591403200EC52D5 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B20D4F2591403200EC52D5 /* Models.swift */; };
 		E9B20D552591403B00EC52D5 /* MockedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B20D542591403B00EC52D5 /* MockedData.swift */; };
@@ -75,11 +76,8 @@
 		E9BD8E0226C16CB200AB1D16 /* SimulatorMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BD8E0126C16CB200AB1D16 /* SimulatorMiddleware.swift */; };
 		E9BD8E0426C16D1600AB1D16 /* SimulatorDBRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BD8E0326C16D1600AB1D16 /* SimulatorDBRepository.swift */; };
 		E9C3A0AE25570A1D003BF79F /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C3A0AD25570A1D003BF79F /* SettingViewModel.swift */; };
-		E9C3A0B425570D43003BF79F /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C3A0B325570D43003BF79F /* SettingCell.swift */; };
 		E9C47BA925D6E5520082C0D6 /* Middleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C47BA825D6E5520082C0D6 /* Middleware.swift */; };
 		E9D8D15D24FAF7B800DF5ABC /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D8D15C24FAF7B800DF5ABC /* RootView.swift */; };
-		E9D8D15F24FAF98300DF5ABC /* SimmulatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D8D15E24FAF98200DF5ABC /* SimmulatorView.swift */; };
-		E9D8D16124FAF9D000DF5ABC /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D8D16024FAF9D000DF5ABC /* SettingView.swift */; };
 		E9DE7BE325DABECD00EB68A2 /* MiddlewareError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DE7BE225DABECD00EB68A2 /* MiddlewareError.swift */; };
 		E9F40B4725DADC6B008BA828 /* Home.json in Resources */ = {isa = PBXBuildFile; fileRef = E9F40B4625DADC6B008BA828 /* Home.json */; };
 		E9F93C8B26BA654D003FD30E /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F93C8A26BA654D003FD30E /* CardView.swift */; };
@@ -125,11 +123,10 @@
 		E9090D3224FA9F7800020390 /* ios-rentorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ios-rentorUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9090D3624FA9F7800020390 /* ios_rentorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_rentorUITests.swift; sourceTree = "<group>"; };
 		E9090D3824FA9F7800020390 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E9095EC926B9869B0085331E /* SimmulatorListView3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimmulatorListView3.swift; sourceTree = "<group>"; };
+		E9095EC926B9869B0085331E /* SimmulatorInformation1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimmulatorInformation1.swift; sourceTree = "<group>"; };
 		E9095ECC26B988C30085331E /* ButtonOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonOption.swift; sourceTree = "<group>"; };
 		E90986E52582500D0089525F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E9190C7625DD321500C804B5 /* CoreMockedManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMockedManager.swift; sourceTree = "<group>"; };
-		E9209C9225227E8700EDC0A9 /* SimmulatorCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimmulatorCellView.swift; sourceTree = "<group>"; };
 		E921275E2635FC590001E2B8 /* View+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Ext.swift"; sourceTree = "<group>"; };
 		E923EDE025D5B33A0076DD92 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		E923EDE525D5B3E00076DD92 /* AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
@@ -155,7 +152,7 @@
 		E960C8F82684BA6A000AD450 /* SimulatorRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorRowView.swift; sourceTree = "<group>"; };
 		E960CF4125D5F0920037A26B /* HomeReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeReducer.swift; sourceTree = "<group>"; };
 		E9665535250033B2003BC212 /* RentorEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentorEntity.swift; sourceTree = "<group>"; };
-		E974EC3D26AE0E4D000B0017 /* SimmulatorListView4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimmulatorListView4.swift; sourceTree = "<group>"; };
+		E974EC3D26AE0E4D000B0017 /* SimmulatorInformation2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimmulatorInformation2.swift; sourceTree = "<group>"; };
 		E9878555250BB0C200CF8519 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		E98C257C252B922000E06E73 /* HomeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailView.swift; sourceTree = "<group>"; };
 		E98C2581252B96E700E06E73 /* HomeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailViewModel.swift; sourceTree = "<group>"; };
@@ -164,7 +161,7 @@
 		E99181A12615CD6400D971A1 /* SettingsReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsReducer.swift; sourceTree = "<group>"; };
 		E99181A62615CD9300D971A1 /* ReducerProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReducerProtocols.swift; sourceTree = "<group>"; };
 		E996F2E126187C9C00447EA0 /* TutorialContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialContainer.swift; sourceTree = "<group>"; };
-		E997C3C026AF56FF00CB6E68 /* SimmulatorListView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimmulatorListView2.swift; sourceTree = "<group>"; };
+		E997C3C026AF56FF00CB6E68 /* SimmulatorInformation0.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimmulatorInformation0.swift; sourceTree = "<group>"; };
 		E999D67826052FF400C5011C /* SettingMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMiddleware.swift; sourceTree = "<group>"; };
 		E999D67D26061C2E00C5011C /* SettingsDBRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDBRepository.swift; sourceTree = "<group>"; };
 		E9A8C6682517B4BC000E8A28 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -173,6 +170,8 @@
 		E9AAA94F251B9244009841B8 /* SimmulatorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimmulatorModel.swift; sourceTree = "<group>"; };
 		E9AAA952251BDA4B009841B8 /* InteractorsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractorsProtocol.swift; sourceTree = "<group>"; };
 		E9AAA95425210CF1009841B8 /* SimmulatorCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimmulatorCellViewModel.swift; sourceTree = "<group>"; };
+		E9AF720426C2678000A26B0D /* SettingContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingContainerView.swift; sourceTree = "<group>"; };
+		E9AF720726C267B000A26B0D /* SettingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingListView.swift; sourceTree = "<group>"; };
 		E9B20D4A25913E2100EC52D5 /* Models+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Models+CoreData.swift"; sourceTree = "<group>"; };
 		E9B20D4F2591403200EC52D5 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		E9B20D542591403B00EC52D5 /* MockedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedData.swift; sourceTree = "<group>"; };
@@ -182,11 +181,8 @@
 		E9BD8E0126C16CB200AB1D16 /* SimulatorMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorMiddleware.swift; sourceTree = "<group>"; };
 		E9BD8E0326C16D1600AB1D16 /* SimulatorDBRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorDBRepository.swift; sourceTree = "<group>"; };
 		E9C3A0AD25570A1D003BF79F /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
-		E9C3A0B325570D43003BF79F /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		E9C47BA825D6E5520082C0D6 /* Middleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Middleware.swift; sourceTree = "<group>"; };
 		E9D8D15C24FAF7B800DF5ABC /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
-		E9D8D15E24FAF98200DF5ABC /* SimmulatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimmulatorView.swift; sourceTree = "<group>"; };
-		E9D8D16024FAF9D000DF5ABC /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		E9DE7BE225DABECD00EB68A2 /* MiddlewareError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiddlewareError.swift; sourceTree = "<group>"; };
 		E9F40B4625DADC6B008BA828 /* Home.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Home.json; sourceTree = "<group>"; };
 		E9F93C8A26BA654D003FD30E /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
@@ -408,9 +404,9 @@
 			isa = PBXGroup;
 			children = (
 				E960C8F82684BA6A000AD450 /* SimulatorRowView.swift */,
-				E974EC3D26AE0E4D000B0017 /* SimmulatorListView4.swift */,
-				E997C3C026AF56FF00CB6E68 /* SimmulatorListView2.swift */,
-				E9095EC926B9869B0085331E /* SimmulatorListView3.swift */,
+				E974EC3D26AE0E4D000B0017 /* SimmulatorInformation2.swift */,
+				E997C3C026AF56FF00CB6E68 /* SimmulatorInformation0.swift */,
+				E9095EC926B9869B0085331E /* SimmulatorInformation1.swift */,
 			);
 			path = Information;
 			sourceTree = "<group>";
@@ -472,7 +468,6 @@
 				E9276C3926C1E5C4002FEAAC /* Information */,
 				E9276C3826C1E5BE002FEAAC /* Funding */,
 				E9095ECB26B988BA0085331E /* View */,
-				E95C97AA2681DFF100F5A625 /* old */,
 				E95C97A62681DF6100F5A625 /* SimmulatorContainer.swift */,
 				E95C97A82681DF7C00F5A625 /* SimmulatorListView.swift */,
 			);
@@ -493,8 +488,8 @@
 		E9449302258C090B00B94481 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				E9C3A0B325570D43003BF79F /* SettingCell.swift */,
-				E9D8D16024FAF9D000DF5ABC /* SettingView.swift */,
+				E9AF720426C2678000A26B0D /* SettingContainerView.swift */,
+				E9AF720726C267B000A26B0D /* SettingListView.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -568,15 +563,6 @@
 				E94BA9A12632F88A002725B8 /* SearchBar.swift */,
 			);
 			path = SearchBar;
-			sourceTree = "<group>";
-		};
-		E95C97AA2681DFF100F5A625 /* old */ = {
-			isa = PBXGroup;
-			children = (
-				E9D8D15E24FAF98200DF5ABC /* SimmulatorView.swift */,
-				E9209C9225227E8700EDC0A9 /* SimmulatorCellView.swift */,
-			);
-			path = old;
 			sourceTree = "<group>";
 		};
 		E996F2E026187C8400447EA0 /* Tutorial */ = {
@@ -879,9 +865,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9B20D502591403200EC52D5 /* Models.swift in Sources */,
-				E9095ECA26B9869B0085331E /* SimmulatorListView3.swift in Sources */,
+				E9095ECA26B9869B0085331E /* SimmulatorInformation1.swift in Sources */,
 				E99042CC25043BBA0062B493 /* CoreDataManager.swift in Sources */,
-				E997C3C126AF56FF00CB6E68 /* SimmulatorListView2.swift in Sources */,
+				E997C3C126AF56FF00CB6E68 /* SimmulatorInformation0.swift in Sources */,
 				E9D8D15D24FAF7B800DF5ABC /* RootView.swift in Sources */,
 				E9878556250BB0C200CF8519 /* String+Ext.swift in Sources */,
 				E94492EF258BEC7F00B94481 /* RentalDBRepository.swift in Sources */,
@@ -891,13 +877,13 @@
 				E923EDF225D5B4BD0076DD92 /* AppAction.swift in Sources */,
 				E9DE7BE325DABECD00EB68A2 /* MiddlewareError.swift in Sources */,
 				E9BD8DFE26C168ED00AB1D16 /* SimulatorReducer.swift in Sources */,
-				E9209C9325227E8700EDC0A9 /* SimmulatorCellView.swift in Sources */,
 				E9C47BA925D6E5520082C0D6 /* Middleware.swift in Sources */,
 				E9090D1224FA9F7600020390 /* AppDelegate.swift in Sources */,
-				E974EC3E26AE0E4D000B0017 /* SimmulatorListView4.swift in Sources */,
+				E974EC3E26AE0E4D000B0017 /* SimmulatorInformation2.swift in Sources */,
 				E94BA9A22632F88A002725B8 /* SearchBar.swift in Sources */,
 				E9AAA95525210CF1009841B8 /* SimmulatorCellViewModel.swift in Sources */,
 				E9090D1724FA9F7600020390 /* ios_rentor.xcdatamodeld in Sources */,
+				E9AF720826C267B000A26B0D /* SettingListView.swift in Sources */,
 				E98C2582252B96E700E06E73 /* HomeDetailViewModel.swift in Sources */,
 				E9276C3E26C1E6A3002FEAAC /* SimulatorFee0.swift in Sources */,
 				E95C97A72681DF6100F5A625 /* SimmulatorContainer.swift in Sources */,
@@ -907,7 +893,6 @@
 				E98C257D252B922000E06E73 /* HomeDetailView.swift in Sources */,
 				E921275F2635FC590001E2B8 /* View+Ext.swift in Sources */,
 				E9665536250033B2003BC212 /* RentorEntity.swift in Sources */,
-				E9D8D16124FAF9D000DF5ABC /* SettingView.swift in Sources */,
 				E9A8C6692517B4BC000E8A28 /* HomeViewModel.swift in Sources */,
 				E9276C4026C1E6AC002FEAAC /* SimulatorTax0.swift in Sources */,
 				E923EDF725D5B4DE0076DD92 /* HomeAction.swift in Sources */,
@@ -916,10 +901,8 @@
 				E9090D1424FA9F7600020390 /* SceneDelegate.swift in Sources */,
 				E95ECF4A25DD80BA0071C97D /* HomeContainerView.swift in Sources */,
 				E9190C7725DD321500C804B5 /* CoreMockedManager.swift in Sources */,
-				E9D8D15F24FAF98300DF5ABC /* SimmulatorView.swift in Sources */,
 				E960CF4225D5F0920037A26B /* HomeReducer.swift in Sources */,
 				E9B20D4B25913E2100EC52D5 /* Models+CoreData.swift in Sources */,
-				E9C3A0B425570D43003BF79F /* SettingCell.swift in Sources */,
 				E999D67926052FF400C5011C /* SettingMiddleware.swift in Sources */,
 				E99181A72615CD9300D971A1 /* ReducerProtocols.swift in Sources */,
 				E996F2E226187C9C00447EA0 /* TutorialContainer.swift in Sources */,
@@ -937,6 +920,7 @@
 				E9BD8E0226C16CB200AB1D16 /* SimulatorMiddleware.swift in Sources */,
 				E9F93C8B26BA654D003FD30E /* CardView.swift in Sources */,
 				E923EE0525D5B57A0076DD92 /* HomeMiddleware.swift in Sources */,
+				E9AF720526C2678000A26B0D /* SettingContainerView.swift in Sources */,
 				E944703626309BA3009A5E5B /* PageView.swift in Sources */,
 				E94BA99D2632F877002725B8 /* ViewControllerResolver.swift in Sources */,
 				E923EDE625D5B3E00076DD92 /* AppStore.swift in Sources */,

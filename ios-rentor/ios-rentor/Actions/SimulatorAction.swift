@@ -22,4 +22,6 @@ internal enum SimulatorAction: SimulatorActionProtocol {
     case setTax(tax: SimulatorTax)
     case fetchActivities
     case fetchActivitiesCompleted(events: CurrentEvent)
+    case done
+    case clear
 }

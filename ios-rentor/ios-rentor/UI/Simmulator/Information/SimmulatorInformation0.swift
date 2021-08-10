@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct SimmulatorListView2: View {
+struct SimulatorInformation0: View {
     
     @EnvironmentObject private var store: AppStore
     @Binding var shouldPopToRootView: Bool
@@ -86,7 +86,7 @@ struct SimmulatorListView2: View {
                     .animation(.easeInOut(duration: 0.5))
                     
                     NavigationLink(
-                        destination: SimmulatorListView3(shouldPopToRootView: self.$shouldPopToRootView),
+                        destination: SimulatorInformation1(shouldPopToRootView: self.$shouldPopToRootView),
                         isActive: $nexStep,
                         label: {
                             EmptyView().opacity(0)

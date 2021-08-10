@@ -12,7 +12,7 @@ struct HomeListView: View {
     
     public let onDelete: (IndexSet) -> Void
     
-    private let navigationBarTitle: String = "Mes Simmulations"
+    private let navigationBarTitle: String = "Mes Simulations"
     @EnvironmentObject private var store: AppStore
     @State private var showingAddForm = false
     @State private var showCancelButton: Bool = false
@@ -22,7 +22,6 @@ struct HomeListView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                
                 propertyList
                     .navigationBarTitle(Text(self.navigationBarTitle))
                     //.navigationBarItems(trailing: addButton)
@@ -105,7 +104,7 @@ extension HomeListView {
                     .imageScale(.large)
                     .foregroundColor(Color.init("PrimaryViolet"))
             }.sheet(isPresented: $showingAddForm) {
-                SimmulatorView()
+                SimmulatorContainer()
                     .environmentObject(store)
             }
         }
