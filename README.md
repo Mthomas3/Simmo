@@ -3,9 +3,7 @@
 ### 🧐 Preface
 The rental simmulator 🏗 which helps you evaluate better your projects 🏢
 
-![](ReadMeAssets/demosimmo.gif) ![](ReadMeAssets/darkMode.gif) ![](ReadMeAssets/source.gif)
-
-![](ReadMeAssets/source1.gif) ![](ReadMeAssets/DarkSource.gif)
+![](ReadMeAssets/LightSource.gif) ![](ReadMeAssets/DarkSource.gif)
 
 
 ### 🏗 Installation
