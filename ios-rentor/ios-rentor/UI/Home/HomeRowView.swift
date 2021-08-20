@@ -21,12 +21,12 @@ struct HomeRowView: View {
     private func drawTitle(with rentor: Rentor) -> some View {
         HStack(alignment: .center) {
             ZStack {
-                Color.init("PrimaryBlue")
-                Image("Home-appartment")
+                Color.init(rentor.color ?? "PrimaryBlue")
+                Image(rentor.image ?? "Home-appartment")
             }.frame(width: 60, height: 60)
             .cornerRadius(18)
             .padding(.trailing, 10)
-            Text("Appartement à Toulouse")
+            Text(rentor.name ?? "")
                 .font(.title3)
                 .fontWeight(.medium)
                 .font(.system(size: 15))
@@ -38,7 +38,7 @@ struct HomeRowView: View {
             Text("Coût d'acquisition")
                 .font(.system(size: 15))
             Spacer()
-            Text("123 456,78 €")
+            Text("\(rentor.price)".formatPriceWithCurrency())
                 .foregroundColor(Color.init("HomeRowFontGray"))
                 .font(.system(size: 15))
         }.frame(height: 50)
@@ -111,5 +111,35 @@ struct HomeRowView: View {
         .padding(.bottom, 4)
         .background(Color.init("BackgroundHomeCell"))
         .cornerRadius(20)
+    }
+}
+
+extension String {
+    func formatNumber() -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 2
+    
+        if let value = Double(self) {
+            formatter.string(for: value)
+            return "\(value)"
+        }
+        return ""
+    }
+    
+    func formatPriceWithCurrency() -> String {
+        let numberFormatter = NumberFormatter()
+        
+        let formatter = NumberFormatter()
+        formatter.locale = Locale(identifier: "us_US")
+        formatter.groupingSeparator = " "
+        formatter.usesGroupingSeparator = true
+        formatter.groupingSize = 3
+        
+        if let value = Double(self), let symbol = Locale.current.currencySymbol {
+            numberFormatter.string(for: value)
+            return "\(value) \(symbol)".replacingOccurrences(of: ".", with: ",")
+        }
+        return ""
     }
 }

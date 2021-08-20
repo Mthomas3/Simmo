@@ -20,19 +20,6 @@ struct OvalTextFieldStyle: TextFieldStyle {
     }
 }
 
-struct TextView: View {
-    @State internal var name: String = ""
-    
-    var body: some View {
-        TextField("1 200 000 €", text: $name)
-            .multilineTextAlignment(.trailing)
-            .textFieldStyle(OvalTextFieldStyle())
-            .padding(.leading, 24)
-            .padding(.trailing, 24)
-            
-    }
-}
-
 struct SimulatorInformation1: View {
     
     @Binding var shouldPopToRootView: Bool
@@ -63,7 +50,7 @@ struct SimulatorInformation1: View {
                 .padding([.leading, .trailing, .top], 24)
                 .padding(.bottom, 20)
             
-            TextView()
+            self.displayText()
         }.onAppear {
             withAnimation(Animation.easeInOut(duration: 2).repeatForever(autoreverses: true)) {
                 self.opacity = 1
@@ -106,6 +93,9 @@ struct SimulatorInformation1: View {
                             simulator.owner = (self.isCurrentSelected ?? 0) == 0
                             if (self.isCurrentSelected ?? 0) == 0 {
                                 simulator.price = Double(name)
+                                
+                                print("WHAT IS IT -> \(self.name)")
+                                print("WE DO PRICE HERE -> \(Double(name)) ")
                             }
                             self.store.dispatch(.simulatorAction(action: .setInformations(informations: simulator)))
                         }

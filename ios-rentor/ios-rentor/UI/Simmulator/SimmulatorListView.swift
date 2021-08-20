@@ -28,7 +28,20 @@ struct SimmulatorListView: View {
                 }
                 Spacer()
                 Button {
-                    self.store.dispatch(.simulatorAction(action: .done))
+                    if let 💰 = self.store.state.simulatorState.informations {
+                        
+                        let 🚀 = Rentor(id: UUID(), date: Date(), name: 💰.name,
+                                          price: 💰.price ?? 0.0,
+                                          rentPrice: 💰.price ?? 0.0,
+                                          cashFlow: 💰.price ?? 0.0,
+                                          percentage: 💰.price ?? 0.0,
+                                          color: 💰.color,
+                                          image: 💰.image)
+                        
+                        print("informations = \(💰)")
+                        self.store.dispatch(.homeAction(action: .add(item: 🚀)))
+                        self.store.dispatch(.simulatorAction(action: .done))
+                    }
                     self.modalView.close()
                 } label: {
                     Text("Done")

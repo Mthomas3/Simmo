@@ -17,8 +17,7 @@ final class SimulatorMiddleware: MiddlewareProtocol {
     }
 
     private func fetchActivities() -> AnyPublisher<AppAction, Never> {
-        return Just(AppAction.simulatorAction(action: .fetchActivitiesCompleted(events:
-                                                                                    self.repository.currentEvent()))).eraseToAnyPublisher()
+        return Just(AppAction.simulatorAction(action: .fetchActivitiesCompleted(events:                                                             self.repository.currentEvent()))).eraseToAnyPublisher()
     }
     
     func middleware() -> Middleware<AppState, AppAction> {

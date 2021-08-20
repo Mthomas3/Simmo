@@ -11,7 +11,7 @@ import ConcentricOnboarding
 
 struct TutorialPagesView: View {
     @EnvironmentObject var store: AppStore
-      
+
     let colors = [
         Color.init("Blue"),
         Color.init("OnBoardingRed"),

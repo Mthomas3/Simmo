@@ -34,7 +34,7 @@ struct SimulatorInformation2: View {
     @State private var colorSelected: Int = 0
     @State private var imageSelected: Int = 0
     
-    let dataColor: [Color] = (0...11).map { Color.init("Color\($0)") }
+    let dataColor: [String] = (0...11).map { "Color\($0)" }
     let dataImage: [String] = (0...19).map { "Image\($0)" }
     
     let columns = [
@@ -85,7 +85,7 @@ struct SimulatorInformation2: View {
         ZStack(alignment: .center) {
             RoundedRectangle(cornerRadius: 12)
                 .frame(width: 66, height: 66)
-                .foregroundColor(self.dataColor[self.colorSelected])
+                .foregroundColor(Color.init(self.dataColor[self.colorSelected]))
             Image(self.dataImage[self.imageSelected])
                 .resizable()
                 .frame(width: 30, height: 31)
@@ -116,7 +116,7 @@ struct SimulatorInformation2: View {
                     
                     LazyVGrid(columns: columns, spacing: 20) {
                         ForEach(0..<self.dataColor.count) { index in
-                            colorRoundedView(with: self.dataColor[index], and: index)
+                            colorRoundedView(with: Color.init(self.dataColor[index]), and: index)
                         }
                     }.padding(.horizontal)
                     .padding(.bottom, 24)
@@ -132,7 +132,7 @@ struct SimulatorInformation2: View {
         .background(Color.init("BackgroundHome").edgesIgnoringSafeArea(.all))
         .navigationBarItems(trailing: Button(action: {
             if var sim = self.store.state.simulatorState.informations {
-                sim.color = "\(self.dataColor[self.colorSelected])"
+                sim.color = self.dataColor[self.colorSelected]
                 sim.image = self.dataImage[self.imageSelected]
                 sim.name = self.name
                 sim.isDone = true

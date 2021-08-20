@@ -17,10 +17,14 @@ struct Rentor: Identifiable, Equatable, Codable, MockedProtocol {
     let rentPrice: Double
     let cashFlow: Double
     let percentage: Double
+    let color: String?
+    let image: String?
 
     init(id: UUID?, date: Date?, name: String?,
          price: Double, rentPrice: Double, cashFlow: Double,
-         percentage: Double) {
+         percentage: Double,
+         color: String?,
+         image: String?) {
         self.id = id ?? UUID()
         self.date = date
         self.name = name
@@ -28,5 +32,7 @@ struct Rentor: Identifiable, Equatable, Codable, MockedProtocol {
         self.rentPrice = rentPrice
         self.cashFlow = cashFlow
         self.percentage = percentage
+        self.color = color
+        self.image = image
     }
 }

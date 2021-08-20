@@ -103,8 +103,13 @@ internal final class SimulatorDBRepository: SimulatorDBRepositoryProtocol {
         self.tax = tax
     }
     
+    internal func getInformation() -> SimulatorInformation? {
+        return self.information
+    }
+    
     internal func done() {
         print("WE SAVE EVERYTHING HERE")
+        print("INFORMATION = \(self.information)")
         self.setupData()
     }
     

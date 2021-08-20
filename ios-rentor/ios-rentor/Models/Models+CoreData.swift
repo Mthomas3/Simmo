@@ -49,6 +49,8 @@ extension Rentor: ModelsManagedEntity {
         rentor.createDate = self.date
         rentor.percentageEffiency = self.percentage
         rentor.price = self.price
+        rentor.color = self.color
+        rentor.image = self.image
         
         return rentor
     }
@@ -60,6 +62,8 @@ extension Rentor: ModelsManagedEntity {
                   price: managedObject.price,
                   rentPrice: managedObject.rentPrice,
                   cashFlow: managedObject.cashFlow,
-                  percentage: managedObject.percentageEffiency)
+                  percentage: managedObject.percentageEffiency,
+                  color: managedObject.color,
+                  image: managedObject.image)
     }
 }

@@ -50,9 +50,8 @@ extension SettingListView {
                                 .fontWeight(.medium)
                             NavigationLink(destination: Text("D")) { EmptyView() }
                         }
-                    }
-                }
-                .listRowBackground(Color.init("BackgroundHomeCell"))
+                    }.frame(height: 46)
+                }.listRowBackground(Color.init("BackgroundHomeCell"))
 
             }
             .listRowBackground(Color.red)
