@@ -47,7 +47,16 @@
 		E960C8F92684BA6A000AD450 /* SimulatorRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E960C8F82684BA6A000AD450 /* SimulatorRowView.swift */; };
 		E960CF4225D5F0920037A26B /* HomeReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E960CF4125D5F0920037A26B /* HomeReducer.swift */; };
 		E9665536250033B2003BC212 /* RentorEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9665535250033B2003BC212 /* RentorEntity.swift */; };
+		E966DEF027BD7BC500F23754 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = E966DEEF27BD7BC500F23754 /* Text.swift */; };
+		E966DEF227BE378400F23754 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = E966DEF127BE378400F23754 /* Button.swift */; };
+		E966DEF427BE453400F23754 /* Divider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E966DEF327BE453400F23754 /* Divider.swift */; };
+		E966DEF627BE4F5D00F23754 /* PriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E966DEF527BE4F5D00F23754 /* PriceView.swift */; };
+		E966DEF827BEA45500F23754 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E966DEF727BEA45500F23754 /* OverlayView.swift */; };
 		E974EC3E26AE0E4D000B0017 /* SimmulatorInformation2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E974EC3D26AE0E4D000B0017 /* SimmulatorInformation2.swift */; };
+		E979A4D127BC014900CAB76A /* SimulatorFunding1.swift in Sources */ = {isa = PBXBuildFile; fileRef = E979A4D027BC014900CAB76A /* SimulatorFunding1.swift */; };
+		E979A4D327BC122C00CAB76A /* SimulatorFundingLoan.swift in Sources */ = {isa = PBXBuildFile; fileRef = E979A4D227BC122C00CAB76A /* SimulatorFundingLoan.swift */; };
+		E979A4D527BC124200CAB76A /* SimulatorFundingOwnFunds.swift in Sources */ = {isa = PBXBuildFile; fileRef = E979A4D427BC124200CAB76A /* SimulatorFundingOwnFunds.swift */; };
+		E979A4DA27BD5E5500CAB76A /* TextFieldCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E979A4D927BD5E5500CAB76A /* TextFieldCustomView.swift */; };
 		E9878556250BB0C200CF8519 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9878555250BB0C200CF8519 /* String+Ext.swift */; };
 		E98C257D252B922000E06E73 /* HomeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98C257C252B922000E06E73 /* HomeDetailView.swift */; };
 		E98C2582252B96E700E06E73 /* HomeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98C2581252B96E700E06E73 /* HomeDetailViewModel.swift */; };
@@ -55,6 +64,7 @@
 		E991819D2615C62C00D971A1 /* SettingAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E991819C2615C62C00D971A1 /* SettingAction.swift */; };
 		E99181A22615CD6400D971A1 /* SettingsReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99181A12615CD6400D971A1 /* SettingsReducer.swift */; };
 		E99181A72615CD9300D971A1 /* ReducerProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99181A62615CD9300D971A1 /* ReducerProtocols.swift */; };
+		E9941E9927C568C5003474CC /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9941E9827C568C5003474CC /* Constant.swift */; };
 		E996F2E226187C9C00447EA0 /* TutorialContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996F2E126187C9C00447EA0 /* TutorialContainer.swift */; };
 		E997C3C126AF56FF00CB6E68 /* SimmulatorInformation0.swift in Sources */ = {isa = PBXBuildFile; fileRef = E997C3C026AF56FF00CB6E68 /* SimmulatorInformation0.swift */; };
 		E999D67926052FF400C5011C /* SettingMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = E999D67826052FF400C5011C /* SettingMiddleware.swift */; };
@@ -79,6 +89,8 @@
 		E9C47BA925D6E5520082C0D6 /* Middleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C47BA825D6E5520082C0D6 /* Middleware.swift */; };
 		E9D8D15D24FAF7B800DF5ABC /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D8D15C24FAF7B800DF5ABC /* RootView.swift */; };
 		E9DE7BE325DABECD00EB68A2 /* MiddlewareError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DE7BE225DABECD00EB68A2 /* MiddlewareError.swift */; };
+		E9EA611D27BFE9E300E2E1B5 /* SimulatorFee01.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EA611C27BFE9E300E2E1B5 /* SimulatorFee01.swift */; };
+		E9EA611F27BFEBCB00E2E1B5 /* SimulatorBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EA611E27BFEBCB00E2E1B5 /* SimulatorBackground.swift */; };
 		E9F40B4725DADC6B008BA828 /* Home.json in Resources */ = {isa = PBXBuildFile; fileRef = E9F40B4625DADC6B008BA828 /* Home.json */; };
 		E9F93C8B26BA654D003FD30E /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F93C8A26BA654D003FD30E /* CardView.swift */; };
 /* End PBXBuildFile section */
@@ -152,7 +164,16 @@
 		E960C8F82684BA6A000AD450 /* SimulatorRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorRowView.swift; sourceTree = "<group>"; };
 		E960CF4125D5F0920037A26B /* HomeReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeReducer.swift; sourceTree = "<group>"; };
 		E9665535250033B2003BC212 /* RentorEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentorEntity.swift; sourceTree = "<group>"; };
+		E966DEEF27BD7BC500F23754 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
+		E966DEF127BE378400F23754 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		E966DEF327BE453400F23754 /* Divider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Divider.swift; sourceTree = "<group>"; };
+		E966DEF527BE4F5D00F23754 /* PriceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceView.swift; sourceTree = "<group>"; };
+		E966DEF727BEA45500F23754 /* OverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
 		E974EC3D26AE0E4D000B0017 /* SimmulatorInformation2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimmulatorInformation2.swift; sourceTree = "<group>"; };
+		E979A4D027BC014900CAB76A /* SimulatorFunding1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorFunding1.swift; sourceTree = "<group>"; };
+		E979A4D227BC122C00CAB76A /* SimulatorFundingLoan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorFundingLoan.swift; sourceTree = "<group>"; };
+		E979A4D427BC124200CAB76A /* SimulatorFundingOwnFunds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorFundingOwnFunds.swift; sourceTree = "<group>"; };
+		E979A4D927BD5E5500CAB76A /* TextFieldCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCustomView.swift; sourceTree = "<group>"; };
 		E9878555250BB0C200CF8519 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		E98C257C252B922000E06E73 /* HomeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailView.swift; sourceTree = "<group>"; };
 		E98C2581252B96E700E06E73 /* HomeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailViewModel.swift; sourceTree = "<group>"; };
@@ -160,6 +181,7 @@
 		E991819C2615C62C00D971A1 /* SettingAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingAction.swift; sourceTree = "<group>"; };
 		E99181A12615CD6400D971A1 /* SettingsReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsReducer.swift; sourceTree = "<group>"; };
 		E99181A62615CD9300D971A1 /* ReducerProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReducerProtocols.swift; sourceTree = "<group>"; };
+		E9941E9827C568C5003474CC /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		E996F2E126187C9C00447EA0 /* TutorialContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialContainer.swift; sourceTree = "<group>"; };
 		E997C3C026AF56FF00CB6E68 /* SimmulatorInformation0.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimmulatorInformation0.swift; sourceTree = "<group>"; };
 		E999D67826052FF400C5011C /* SettingMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMiddleware.swift; sourceTree = "<group>"; };
@@ -184,6 +206,8 @@
 		E9C47BA825D6E5520082C0D6 /* Middleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Middleware.swift; sourceTree = "<group>"; };
 		E9D8D15C24FAF7B800DF5ABC /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		E9DE7BE225DABECD00EB68A2 /* MiddlewareError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiddlewareError.swift; sourceTree = "<group>"; };
+		E9EA611C27BFE9E300E2E1B5 /* SimulatorFee01.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorFee01.swift; sourceTree = "<group>"; };
+		E9EA611E27BFEBCB00E2E1B5 /* SimulatorBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorBackground.swift; sourceTree = "<group>"; };
 		E9F40B4625DADC6B008BA828 /* Home.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Home.json; sourceTree = "<group>"; };
 		E9F93C8A26BA654D003FD30E /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		F0B73656C48975407BCA3632 /* Pods-ios-rentorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-rentorTests.release.xcconfig"; path = "Target Support Files/Pods-ios-rentorTests/Pods-ios-rentorTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -265,6 +289,7 @@
 		E9090D1024FA9F7600020390 /* ios-rentor */ = {
 			isa = PBXGroup;
 			children = (
+				E9941E9727C568B6003474CC /* Constant */,
 				E9DE7C1225DADBF900EB68A2 /* Mocks */,
 				E923EDFB25D5B50E0076DD92 /* Middleware */,
 				E923EDF025D5B4B30076DD92 /* Actions */,
@@ -396,6 +421,9 @@
 			isa = PBXGroup;
 			children = (
 				E9276C3626C1E553002FEAAC /* SimulatorFunding0.swift */,
+				E979A4D027BC014900CAB76A /* SimulatorFunding1.swift */,
+				E979A4D227BC122C00CAB76A /* SimulatorFundingLoan.swift */,
+				E979A4D427BC124200CAB76A /* SimulatorFundingOwnFunds.swift */,
 			);
 			path = Funding;
 			sourceTree = "<group>";
@@ -415,6 +443,7 @@
 			isa = PBXGroup;
 			children = (
 				E9276C3D26C1E6A3002FEAAC /* SimulatorFee0.swift */,
+				E9EA611C27BFE9E300E2E1B5 /* SimulatorFee01.swift */,
 			);
 			path = Fee;
 			sourceTree = "<group>";
@@ -449,6 +478,7 @@
 		E94492FF258C08C300B94481 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				E979A4D827BD5E4500CAB76A /* GenericView */,
 				E996F2E026187C8400447EA0 /* Tutorial */,
 				E9090D4824FAA45D00020390 /* LaunchScreen */,
 				E9449314258C0A2300B94481 /* HomeDetail */,
@@ -563,6 +593,28 @@
 				E94BA9A12632F88A002725B8 /* SearchBar.swift */,
 			);
 			path = SearchBar;
+			sourceTree = "<group>";
+		};
+		E979A4D827BD5E4500CAB76A /* GenericView */ = {
+			isa = PBXGroup;
+			children = (
+				E9EA611E27BFEBCB00E2E1B5 /* SimulatorBackground.swift */,
+				E979A4D927BD5E5500CAB76A /* TextFieldCustomView.swift */,
+				E966DEEF27BD7BC500F23754 /* Text.swift */,
+				E966DEF127BE378400F23754 /* Button.swift */,
+				E966DEF327BE453400F23754 /* Divider.swift */,
+				E966DEF527BE4F5D00F23754 /* PriceView.swift */,
+				E966DEF727BEA45500F23754 /* OverlayView.swift */,
+			);
+			path = GenericView;
+			sourceTree = "<group>";
+		};
+		E9941E9727C568B6003474CC /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				E9941E9827C568C5003474CC /* Constant.swift */,
+			);
+			path = Constant;
 			sourceTree = "<group>";
 		};
 		E996F2E026187C8400447EA0 /* Tutorial */ = {
@@ -877,6 +929,7 @@
 				E923EDF225D5B4BD0076DD92 /* AppAction.swift in Sources */,
 				E9DE7BE325DABECD00EB68A2 /* MiddlewareError.swift in Sources */,
 				E9BD8DFE26C168ED00AB1D16 /* SimulatorReducer.swift in Sources */,
+				E966DEF027BD7BC500F23754 /* Text.swift in Sources */,
 				E9C47BA925D6E5520082C0D6 /* Middleware.swift in Sources */,
 				E9090D1224FA9F7600020390 /* AppDelegate.swift in Sources */,
 				E974EC3E26AE0E4D000B0017 /* SimmulatorInformation2.swift in Sources */,
@@ -890,17 +943,27 @@
 				E999D67E26061C2E00C5011C /* SettingsDBRepository.swift in Sources */,
 				E944702626302B6F009A5E5B /* TutorialPagesView.swift in Sources */,
 				E9A8C66E25194095000E8A28 /* Errors.swift in Sources */,
+				E9941E9927C568C5003474CC /* Constant.swift in Sources */,
+				E966DEF827BEA45500F23754 /* OverlayView.swift in Sources */,
+				E9EA611F27BFEBCB00E2E1B5 /* SimulatorBackground.swift in Sources */,
+				E979A4D527BC124200CAB76A /* SimulatorFundingOwnFunds.swift in Sources */,
 				E98C257D252B922000E06E73 /* HomeDetailView.swift in Sources */,
 				E921275F2635FC590001E2B8 /* View+Ext.swift in Sources */,
 				E9665536250033B2003BC212 /* RentorEntity.swift in Sources */,
 				E9A8C6692517B4BC000E8A28 /* HomeViewModel.swift in Sources */,
+				E966DEF627BE4F5D00F23754 /* PriceView.swift in Sources */,
+				E9EA611D27BFE9E300E2E1B5 /* SimulatorFee01.swift in Sources */,
 				E9276C4026C1E6AC002FEAAC /* SimulatorTax0.swift in Sources */,
 				E923EDF725D5B4DE0076DD92 /* HomeAction.swift in Sources */,
+				E979A4DA27BD5E5500CAB76A /* TextFieldCustomView.swift in Sources */,
+				E966DEF227BE378400F23754 /* Button.swift in Sources */,
 				E9B45CA124FD5ED400A79ECC /* rentorCoreData.xcdatamodeld in Sources */,
 				E99181A22615CD6400D971A1 /* SettingsReducer.swift in Sources */,
+				E979A4D127BC014900CAB76A /* SimulatorFunding1.swift in Sources */,
 				E9090D1424FA9F7600020390 /* SceneDelegate.swift in Sources */,
 				E95ECF4A25DD80BA0071C97D /* HomeContainerView.swift in Sources */,
 				E9190C7725DD321500C804B5 /* CoreMockedManager.swift in Sources */,
+				E979A4D327BC122C00CAB76A /* SimulatorFundingLoan.swift in Sources */,
 				E960CF4225D5F0920037A26B /* HomeReducer.swift in Sources */,
 				E9B20D4B25913E2100EC52D5 /* Models+CoreData.swift in Sources */,
 				E999D67926052FF400C5011C /* SettingMiddleware.swift in Sources */,
@@ -916,6 +979,7 @@
 				E960C8F92684BA6A000AD450 /* SimulatorRowView.swift in Sources */,
 				E9B20D552591403B00EC52D5 /* MockedData.swift in Sources */,
 				E9AAA950251B9244009841B8 /* SimmulatorModel.swift in Sources */,
+				E966DEF427BE453400F23754 /* Divider.swift in Sources */,
 				E944702C26303139009A5E5B /* Color+Ext.swift in Sources */,
 				E9BD8E0226C16CB200AB1D16 /* SimulatorMiddleware.swift in Sources */,
 				E9F93C8B26BA654D003FD30E /* CardView.swift in Sources */,
@@ -1025,7 +1089,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1081,7 +1145,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;

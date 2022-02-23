@@ -46,7 +46,6 @@ struct RootView: View {
     private let appReducer: AppReducer
 
     init() {
-        
         UITableView.appearance().backgroundColor = .clear
         UITableViewCell.appearance().backgroundColor = .clear
         
@@ -54,7 +53,7 @@ struct RootView: View {
         self.settingsMiddleware = SettingMiddleware(with: SettingsDBRepository(with: UserDefaults.standard))
         self.simulatorMiddleware = SimulatorMiddleware(with: SimulatorDBRepository())
         self.appReducer = AppReducer()
-        
+
         self.store = AppStore(initialState: .init(homeState: HomeState(),
                                                   settingsState: SettingsState(),
                                                   simulatorState: SimulatorState()),
@@ -63,7 +62,7 @@ struct RootView: View {
                                             self.settingsMiddleware.middleware(),
                                             self.simulatorMiddleware.middleware(),
                                             MiddlewareHelper.logMiddleware()])
-        
+
         store.dispatch(.homeAction(action: .fetch))
         store.dispatch(.settingsAction(action: .fetch))
     }
@@ -87,6 +86,7 @@ struct BaseView: View {
                                 .renderingMode(.template)
                             Text("Simulations")
                         }.environmentObject(store)
+                        .environmentObject(tabData)
                         .accentColor(.blue)
                         .tag(1)
                         

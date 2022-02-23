@@ -51,11 +51,7 @@ internal final class HomeViewModel: ObservableObject, InteractorProtocol {
         let onDeleteSources = input.onDeleteSource
             .receive(on: DispatchQueue.main)
             .flatMap { (item) -> AnyPublisher<[Rentor], Never> in
-                do {
-                    try RealRentalDBRepository.sharedInstance.delete(with: item)
-                } catch {
-                    print("Error on fetch rentals catch = \(error)")
-                }
+                _ = RealRentalDBRepository.sharedInstance.delete(with: item)
                 return self.fetchingRentals()
         }
         

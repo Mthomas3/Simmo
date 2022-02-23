@@ -13,21 +13,25 @@ struct HomeListView: View {
     public let onDelete: (IndexSet) -> Void
     
     private let navigationBarTitle: String = "Mes Simulations"
+    
     @EnvironmentObject private var store: AppStore
+    @EnvironmentObject private var modalView: MainTabBarData
+    
     @State private var showingAddForm = false
     @State private var showCancelButton: Bool = false
     @State private var searchText = ""
     @ObservedObject var searchBar: SearchBar = SearchBar()
+    @State var displaySimmulator: Bool = false
+    @ObservedObject private var tabData = MainTabBarData(initialIndex: 1, customItemIndex: 2)
     
     var body: some View {
         NavigationView {
             ZStack {
                 propertyList
                     .navigationBarTitle(Text(self.navigationBarTitle))
-                    //.navigationBarItems(trailing: addButton)
-                    //.add(self.searchBar)
+//                    .navigationBarItems(trailing: addButton)
+//                    .add(self.searchBar)
             }
-            
         }
     }
 }
@@ -50,7 +54,9 @@ extension HomeListView {
         }.padding(.leading, 16)
         .padding(.trailing, 16)
         .onTapGesture {
-            //SimmulatorContainer()
+            self.modalView.itemSelected = 2
+        }.fullScreenCover(isPresented: $modalView.isCustomItemSelected) {
+            SimmulatorContainer()
         }
     }
     
@@ -68,7 +74,6 @@ extension HomeListView {
                                     .padding(.leading, 8)
                                     .padding(.trailing, 8)
                                     .shadow(color: Color.init("ShadowHomeCell").opacity(1), radius: 5, x: 2, y: 2)
-                                    .background(Color.clear)
                                 NavigationLink(destination: HomeDetailView(with: property)) {
                                     EmptyView()
                                 }.frame(width: 0)
@@ -78,9 +83,8 @@ extension HomeListView {
                             }.listRowInsets(EdgeInsets())
                             .padding(.all, 8)
                             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-                            .listRowInsets(EdgeInsets())
-                            .listRowBackground(Color.clear)
                             .background(Color.init("DefaultBackground"))
+                            .listRowSeparator(.hidden)
                         }.onDelete(perform: onDelete)
                     }.listStyle(PlainListStyle())
                 }

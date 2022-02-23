@@ -23,8 +23,7 @@ struct SimmulatorListView: View {
                     self.store.dispatch(.simulatorAction(action: .clear))
                     self.modalView.close()
                 } label: {
-                    Text("Fermer")
-                        .foregroundColor(Color.white)
+                    TextWhite(title: "Fermer")
                 }
                 Spacer()
                 Button {
@@ -44,29 +43,13 @@ struct SimmulatorListView: View {
                     }
                     self.modalView.close()
                 } label: {
-                    Text("Done")
-                        .foregroundColor(Color.white)
+                    TextWhite(title: "Done")
                 }.disabled(!(store.state.simulatorState.currentEvent == .eventDone))
                 .opacity(store.state.simulatorState.currentEvent == .eventDone ? 1 : 0)
             }
             Spacer()
-            Text("Ajoutons votre simulation")
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .ignoresSafeArea()
-                .foregroundColor(Color.white)
-                .font(.system(size: 36))
-                .multilineTextAlignment(.leading)
-                .lineLimit(2)
-                .frame(height: 100, alignment: .leading)
+            TextTitleModal(title: "Ajoutons votre simulation")
         }.padding(.all, 8)
-    }
-    
-    var SimulatorDivider: some View {
-        Divider()
-            .background(Color.init("DividerColor"))
-            .frame(height: 3, alignment: .center)
-            .padding(.leading, 25)
-            .padding(.trailing, 25)
     }
 
     var displayBody: some View {
@@ -83,19 +66,19 @@ struct SimmulatorListView: View {
                                  index: 0,
                                  isChecked: store.state.simulatorState.informations?.isChecked ?? false,
                                  nextPages: AnyView(SimulatorInformation0(shouldPopToRootView: self.$nextStep)))
-                SimulatorDivider
+                CustomDivider()
                 SimulatorRowView(currentEvent:
                                     store.state.simulatorState.currentEvent.rawValue,
                                  name: "Financement", index: 1,
                                  isChecked: store.state.simulatorState.funding?.isChecked ?? false,
                                  nextPages: AnyView(SimulatorFunding0(shouldPopToRootView: self.$nextStep)))
-                SimulatorDivider
+                CustomDivider()
                 SimulatorRowView(currentEvent: store.state.simulatorState.currentEvent.rawValue,
                                  name: "Frais et charges",
                                  index: 2,
                                  isChecked: store.state.simulatorState.fees?.isChecked ?? false,
                                  nextPages: AnyView(SimulatorFee0(shouldPopToRootView: self.$nextStep)))
-                SimulatorDivider
+                CustomDivider()
                 SimulatorRowView(currentEvent: store.state.simulatorState.currentEvent.rawValue,
                                  name: "Fiscalité",
                                  index: 3,

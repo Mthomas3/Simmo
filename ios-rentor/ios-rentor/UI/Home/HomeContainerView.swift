@@ -12,10 +12,10 @@ struct HomeContainerView: View {
     private let progressTitle: String = "Loading..."
         
     @EnvironmentObject var store: AppStore
+    @EnvironmentObject var tabData: MainTabBarData
     
     var body: some View {
         HomeListView(onDelete: deleteProperty(at:))
-            .environmentObject(store)
     }
 }
 

@@ -51,7 +51,6 @@ struct PageView: View {
                         .foregroundColor(textColor)
                         .fixedSize(horizontal: false, vertical: true)
 
-                        
                 }
             }
     }

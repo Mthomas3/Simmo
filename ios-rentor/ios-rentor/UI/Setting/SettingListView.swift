@@ -31,7 +31,7 @@ extension SettingListView {
             Color.init("BackgroundHome")
                 .edgesIgnoringSafeArea(.all)
             List {
-                Section(header: Text("")) {
+                Section {
                     ForEach(item0, id: \.self) { name in
                         ZStack(alignment: .leading) {
                             Text(name)
@@ -42,7 +42,7 @@ extension SettingListView {
                     }
                 }.listRowBackground(Color.init("BackgroundHomeCell"))
                 
-                Section(header: Text("")) {
+                Section {
                     ForEach(item1, id: \.self) { name in
                         ZStack(alignment: .leading) {
                             Text(name)
@@ -52,13 +52,9 @@ extension SettingListView {
                         }
                     }.frame(height: 46)
                 }.listRowBackground(Color.init("BackgroundHomeCell"))
-
-            }
-            .listRowBackground(Color.red)
+            }.listRowBackground(Color.red)
             .listStyle(InsetGroupedListStyle())
-            .listRowInsets(EdgeInsets())
-            .listRowBackground(Color.red)
-            
+            .listRowInsets(EdgeInsets())    
         }
     }
 }

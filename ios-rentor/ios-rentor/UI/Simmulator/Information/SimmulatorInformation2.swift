@@ -75,7 +75,7 @@ struct SimulatorInformation2: View {
     }
     
     private func simulatorTitleEvent() -> some View {
-        TextField("T2 dans le centre de Montpellier", text: $name)
+        TextField(Constant.title_center_city, text: $name)
             .multilineTextAlignment(.leading)
             .lineLimit(2)
             .overlay(VStack { Divider().offset(x: 0, y: 15) })
@@ -92,44 +92,37 @@ struct SimulatorInformation2: View {
                 .aspectRatio(contentMode: .fit)
         }
     }
+    
+    var content: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            TextTitle(title: Constant.title_set_name_investment)
+            HStack(alignment: .center) {
+                Spacer()
+                currentSelectedRoundedView()
+                simulatorTitleEvent()
+                Spacer()
+            }.padding([.leading, .trailing], 18)
+            .padding(.bottom, 12)
+            
+            LazyVGrid(columns: columns, spacing: 20) {
+                ForEach(0..<self.dataColor.count) { index in
+                    colorRoundedView(with: Color.init(self.dataColor[index]), and: index)
+                }
+            }.padding(.horizontal)
+            .padding(.bottom, 24)
+            
+            LazyVGrid(columns: columns, spacing: 20) {
+                ForEach(0..<self.dataImage.count) { index in
+                    imageRoundedView(with: self.dataImage[index], and: index)
+                }
+            }.padding(.horizontal)
+        }
+    }
  
     var body: some View {
-        ScrollView {
-            ZStack {
-                Color.init("BackgroundHome")
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("Donnez un titre à cet investissement")
-                        .multilineTextAlignment(.leading)
-                        .lineLimit(3)
-                        .font(.system(size: 34))
-                        .frame(height: 140)
-                        .padding(.leading, 24)
-                        .padding(.trailing, 24)
-                    
-                    HStack(alignment: .center) {
-                        Spacer()
-                        currentSelectedRoundedView()
-                        simulatorTitleEvent()
-                        Spacer()
-                    }.padding([.leading, .trailing], 18)
-                    .padding(.bottom, 12)
-                    
-                    LazyVGrid(columns: columns, spacing: 20) {
-                        ForEach(0..<self.dataColor.count) { index in
-                            colorRoundedView(with: Color.init(self.dataColor[index]), and: index)
-                        }
-                    }.padding(.horizontal)
-                    .padding(.bottom, 24)
-                    
-                    LazyVGrid(columns: columns, spacing: 20) {
-                        ForEach(0..<self.dataImage.count) { index in
-                            imageRoundedView(with: self.dataImage[index], and: index)
-                        }
-                    }.padding(.horizontal)
-                }
-            }
-        }.navigationBarTitle(Text(""), displayMode: .inline)
-        .background(Color.init("BackgroundHome").edgesIgnoringSafeArea(.all))
+        SimulatorBackground(content: {
+            content
+        }, barTitle: nil)
         .navigationBarItems(trailing: Button(action: {
             if var sim = self.store.state.simulatorState.informations {
                 sim.color = self.dataColor[self.colorSelected]
@@ -142,7 +135,7 @@ struct SimulatorInformation2: View {
             }
             self.shouldPopToRootView = false
         }, label: {
-            Text("Enregistrer et quitter")
+            Text(Constant.save_and_quit)
         }).disabled(!(self.name.count > 0)))
     }
 }

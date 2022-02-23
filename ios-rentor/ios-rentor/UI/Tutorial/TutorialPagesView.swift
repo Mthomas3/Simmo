@@ -27,7 +27,11 @@ struct TutorialPagesView: View {
     var body: some View {
         
         let pages = store.state.settingsState.onBoardingPages.enumerated().map { (i, element) in
-            AnyView(PageView(numberPage: i, title: element.title, imageName: element.image, content: element.content, textColor: Color.white))
+            AnyView(PageView(numberPage: i,
+                             title: element.title,
+                             imageName: element.image,
+                             content: element.content,
+                             textColor: Color.white))
         }
         
         var loadingPagesViews = ConcentricOnboardingView(pages: pages, bgColors: colors, nextIcon: "arrow.forward")
@@ -38,7 +42,9 @@ struct TutorialPagesView: View {
                                               Color.init("DarkGray")]
         
         loadingPagesViews.buttonBackground = [Color.red, Color.yellow, Color.black]
-        loadingPagesViews.buttonShape = AnyView(Rectangle().foregroundColor(buttonColors.first ?? Color.white).frame(width: 229, height: 68, alignment: .center).cornerRadius(12))
+        loadingPagesViews.buttonShape = AnyView(Rectangle().foregroundColor(buttonColors.first ?? Color.white)
+                                                    .frame(width: 229, height: 68, alignment: .center)
+                                                    .cornerRadius(12))
         
         loadingPagesViews.insteadOfCyclingToFirstPage = {
             store.dispatch(.settingsAction(action: .setHasLaunchedApp(status: true)))

@@ -24,21 +24,19 @@ struct SimulatorRowView: View {
             if currentEvent == self.index {
                 VStack(alignment: .leading) {
                     HStack {
+                        
                         Text(name)
                             .foregroundColor(Color.init("DarkGray"))
                             .fontWeight(.medium)
+                        
                         Spacer()
                     }
                     ZStack {
                         Button(action: {
-                                self.nextStep.toggle() }, label: {
-                            Text("Continuer")
-                                .frame(width: 133, height: 56, alignment: .center)
-                                .background(Color.init("Blue"))
-                                .foregroundColor(Color.white)
-                                .buttonStyle(PlainButtonStyle())
-                                .cornerRadius(12)
-                        })
+                            self.nextStep.toggle() },
+                               label: {
+                            NextButton(title: Constant.title_continue, isHidden: nil)
+                            })
                         NavigationLink(
                             destination: nextPages,
                             isActive: $nextStep,
@@ -55,7 +53,8 @@ struct SimulatorRowView: View {
                                 VStack(alignment: .leading) {
                                     Text(name)
                                         .foregroundColor(Color.init("HomeRowFontGray"))
-                                    Text("Cette fonctionnalité sera bientôt disponible")
+                                    
+                                    Text(Constant.title_soon_available)
                                         .foregroundColor(Color.init("HomeRowFontGray"))
                                         .font(.system(size: 16))
                                         .multilineTextAlignment(.leading)
