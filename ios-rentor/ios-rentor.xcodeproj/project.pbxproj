@@ -53,9 +53,7 @@
 		E966DEF627BE4F5D00F23754 /* PriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E966DEF527BE4F5D00F23754 /* PriceView.swift */; };
 		E966DEF827BEA45500F23754 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E966DEF727BEA45500F23754 /* OverlayView.swift */; };
 		E974EC3E26AE0E4D000B0017 /* SimmulatorInformation2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E974EC3D26AE0E4D000B0017 /* SimmulatorInformation2.swift */; };
-		E979A4D127BC014900CAB76A /* SimulatorFunding1.swift in Sources */ = {isa = PBXBuildFile; fileRef = E979A4D027BC014900CAB76A /* SimulatorFunding1.swift */; };
 		E979A4D327BC122C00CAB76A /* SimulatorFundingLoan.swift in Sources */ = {isa = PBXBuildFile; fileRef = E979A4D227BC122C00CAB76A /* SimulatorFundingLoan.swift */; };
-		E979A4D527BC124200CAB76A /* SimulatorFundingOwnFunds.swift in Sources */ = {isa = PBXBuildFile; fileRef = E979A4D427BC124200CAB76A /* SimulatorFundingOwnFunds.swift */; };
 		E979A4DA27BD5E5500CAB76A /* TextFieldCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E979A4D927BD5E5500CAB76A /* TextFieldCustomView.swift */; };
 		E9878556250BB0C200CF8519 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9878555250BB0C200CF8519 /* String+Ext.swift */; };
 		E98C257D252B922000E06E73 /* HomeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98C257C252B922000E06E73 /* HomeDetailView.swift */; };
@@ -89,7 +87,6 @@
 		E9C47BA925D6E5520082C0D6 /* Middleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C47BA825D6E5520082C0D6 /* Middleware.swift */; };
 		E9D8D15D24FAF7B800DF5ABC /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D8D15C24FAF7B800DF5ABC /* RootView.swift */; };
 		E9DE7BE325DABECD00EB68A2 /* MiddlewareError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DE7BE225DABECD00EB68A2 /* MiddlewareError.swift */; };
-		E9EA611D27BFE9E300E2E1B5 /* SimulatorFee01.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EA611C27BFE9E300E2E1B5 /* SimulatorFee01.swift */; };
 		E9EA611F27BFEBCB00E2E1B5 /* SimulatorBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EA611E27BFEBCB00E2E1B5 /* SimulatorBackground.swift */; };
 		E9F40B4725DADC6B008BA828 /* Home.json in Resources */ = {isa = PBXBuildFile; fileRef = E9F40B4625DADC6B008BA828 /* Home.json */; };
 		E9F93C8B26BA654D003FD30E /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F93C8A26BA654D003FD30E /* CardView.swift */; };
@@ -170,9 +167,7 @@
 		E966DEF527BE4F5D00F23754 /* PriceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceView.swift; sourceTree = "<group>"; };
 		E966DEF727BEA45500F23754 /* OverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
 		E974EC3D26AE0E4D000B0017 /* SimmulatorInformation2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimmulatorInformation2.swift; sourceTree = "<group>"; };
-		E979A4D027BC014900CAB76A /* SimulatorFunding1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorFunding1.swift; sourceTree = "<group>"; };
 		E979A4D227BC122C00CAB76A /* SimulatorFundingLoan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorFundingLoan.swift; sourceTree = "<group>"; };
-		E979A4D427BC124200CAB76A /* SimulatorFundingOwnFunds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorFundingOwnFunds.swift; sourceTree = "<group>"; };
 		E979A4D927BD5E5500CAB76A /* TextFieldCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCustomView.swift; sourceTree = "<group>"; };
 		E9878555250BB0C200CF8519 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		E98C257C252B922000E06E73 /* HomeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailView.swift; sourceTree = "<group>"; };
@@ -206,7 +201,6 @@
 		E9C47BA825D6E5520082C0D6 /* Middleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Middleware.swift; sourceTree = "<group>"; };
 		E9D8D15C24FAF7B800DF5ABC /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		E9DE7BE225DABECD00EB68A2 /* MiddlewareError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiddlewareError.swift; sourceTree = "<group>"; };
-		E9EA611C27BFE9E300E2E1B5 /* SimulatorFee01.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorFee01.swift; sourceTree = "<group>"; };
 		E9EA611E27BFEBCB00E2E1B5 /* SimulatorBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorBackground.swift; sourceTree = "<group>"; };
 		E9F40B4625DADC6B008BA828 /* Home.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Home.json; sourceTree = "<group>"; };
 		E9F93C8A26BA654D003FD30E /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
@@ -421,9 +415,7 @@
 			isa = PBXGroup;
 			children = (
 				E9276C3626C1E553002FEAAC /* SimulatorFunding0.swift */,
-				E979A4D027BC014900CAB76A /* SimulatorFunding1.swift */,
 				E979A4D227BC122C00CAB76A /* SimulatorFundingLoan.swift */,
-				E979A4D427BC124200CAB76A /* SimulatorFundingOwnFunds.swift */,
 			);
 			path = Funding;
 			sourceTree = "<group>";
@@ -443,7 +435,6 @@
 			isa = PBXGroup;
 			children = (
 				E9276C3D26C1E6A3002FEAAC /* SimulatorFee0.swift */,
-				E9EA611C27BFE9E300E2E1B5 /* SimulatorFee01.swift */,
 			);
 			path = Fee;
 			sourceTree = "<group>";
@@ -946,20 +937,17 @@
 				E9941E9927C568C5003474CC /* Constant.swift in Sources */,
 				E966DEF827BEA45500F23754 /* OverlayView.swift in Sources */,
 				E9EA611F27BFEBCB00E2E1B5 /* SimulatorBackground.swift in Sources */,
-				E979A4D527BC124200CAB76A /* SimulatorFundingOwnFunds.swift in Sources */,
 				E98C257D252B922000E06E73 /* HomeDetailView.swift in Sources */,
 				E921275F2635FC590001E2B8 /* View+Ext.swift in Sources */,
 				E9665536250033B2003BC212 /* RentorEntity.swift in Sources */,
 				E9A8C6692517B4BC000E8A28 /* HomeViewModel.swift in Sources */,
 				E966DEF627BE4F5D00F23754 /* PriceView.swift in Sources */,
-				E9EA611D27BFE9E300E2E1B5 /* SimulatorFee01.swift in Sources */,
 				E9276C4026C1E6AC002FEAAC /* SimulatorTax0.swift in Sources */,
 				E923EDF725D5B4DE0076DD92 /* HomeAction.swift in Sources */,
 				E979A4DA27BD5E5500CAB76A /* TextFieldCustomView.swift in Sources */,
 				E966DEF227BE378400F23754 /* Button.swift in Sources */,
 				E9B45CA124FD5ED400A79ECC /* rentorCoreData.xcdatamodeld in Sources */,
 				E99181A22615CD6400D971A1 /* SettingsReducer.swift in Sources */,
-				E979A4D127BC014900CAB76A /* SimulatorFunding1.swift in Sources */,
 				E9090D1424FA9F7600020390 /* SceneDelegate.swift in Sources */,
 				E95ECF4A25DD80BA0071C97D /* HomeContainerView.swift in Sources */,
 				E9190C7725DD321500C804B5 /* CoreMockedManager.swift in Sources */,

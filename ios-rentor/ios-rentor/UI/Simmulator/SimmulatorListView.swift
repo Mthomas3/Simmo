@@ -77,7 +77,7 @@ struct SimmulatorListView: View {
                                  name: "Frais et charges",
                                  index: 2,
                                  isChecked: store.state.simulatorState.fees?.isChecked ?? false,
-                                 nextPages: AnyView(SimulatorFee0(shouldPopToRootView: self.$nextStep)))
+                                 nextPages: AnyView(SimulatorFunding0(shouldPopToRootView: self.$nextStep)))
                 CustomDivider()
                 SimulatorRowView(currentEvent: store.state.simulatorState.currentEvent.rawValue,
                                  name: "Fiscalité",

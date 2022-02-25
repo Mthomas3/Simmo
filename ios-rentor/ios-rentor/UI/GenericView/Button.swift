@@ -22,3 +22,24 @@ struct NextButton: View {
             .animation(.easeInOut, value: 0.5)
     }
 }
+
+struct AskButtonView: View {
+    @Binding var value: ButtonEventType?
+    @Binding var nextButton: Bool
+    let first_title: String
+    let second_title: String
+    
+    var body: some View {
+        HStack(alignment: .center) {
+            Spacer()
+            ButtonOption(eventButtonSelect: $value,
+                         nextButton: $nextButton,
+                         title: first_title, index: 0)
+            
+            ButtonOption(eventButtonSelect: $value,
+                         nextButton: $nextButton,
+                         title: second_title, index: 1)
+            Spacer()
+        }
+    }
+}
