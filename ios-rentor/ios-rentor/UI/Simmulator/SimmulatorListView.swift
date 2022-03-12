@@ -11,8 +11,8 @@ import SwiftUI
 struct SimmulatorListView: View {
     private let navigationBarTitle: String = "Simumation"
     
-    @EnvironmentObject private var store: AppStore
-    @EnvironmentObject private var modalView: MainTabBarData
+    @EnvironmentObject internal var store: AppStore
+    @EnvironmentObject internal var modalView: MainTabBarData
     
     @State internal var nextStep: Bool = false
     
@@ -23,7 +23,7 @@ struct SimmulatorListView: View {
                     self.store.dispatch(.simulatorAction(action: .clear))
                     self.modalView.close()
                 } label: {
-                    TextWhite(title: "Fermer")
+                    TextWhite(title: Constant.title_close)
                 }
                 Spacer()
                 Button {
@@ -37,18 +37,17 @@ struct SimmulatorListView: View {
                                           color: 💰.color,
                                           image: 💰.image)
                         
-                        print("informations = \(💰)")
                         self.store.dispatch(.homeAction(action: .add(item: 🚀)))
                         self.store.dispatch(.simulatorAction(action: .done))
                     }
                     self.modalView.close()
                 } label: {
-                    TextWhite(title: "Done")
+                    TextWhite(title: Constant.title_done)
                 }.disabled(!(store.state.simulatorState.currentEvent == .eventDone))
                 .opacity(store.state.simulatorState.currentEvent == .eventDone ? 1 : 0)
             }
             Spacer()
-            TextTitleModal(title: "Ajoutons votre simulation")
+            TextTitleModal(title: Constant.title_simulator_container_view)
         }.padding(.all, 8)
     }
 
@@ -61,27 +60,27 @@ struct SimmulatorListView: View {
                 }.frame(height: 130, alignment: .leading)
                 .padding(.bottom, 8)
                 
-                SimulatorRowView(currentEvent: store.state.simulatorState.currentEvent.rawValue,
-                                 name: "Information sur le bien",
-                                 index: 0,
+                SimulatorRowView(currentViewType: store.state.simulatorState.currentEvent,
+                                 name: Constant.title_information_container,
+                                 typeView: .eventInformation,
                                  isChecked: store.state.simulatorState.informations?.isChecked ?? false,
                                  nextPages: AnyView(SimulatorInformation0(shouldPopToRootView: self.$nextStep)))
                 CustomDivider()
-                SimulatorRowView(currentEvent:
-                                    store.state.simulatorState.currentEvent.rawValue,
-                                 name: "Financement", index: 1,
+                SimulatorRowView(currentViewType:
+                                    store.state.simulatorState.currentEvent,
+                                 name: Constant.title_funding_container, typeView: .eventFunding,
                                  isChecked: store.state.simulatorState.funding?.isChecked ?? false,
                                  nextPages: AnyView(SimulatorFunding0(shouldPopToRootView: self.$nextStep)))
                 CustomDivider()
-                SimulatorRowView(currentEvent: store.state.simulatorState.currentEvent.rawValue,
-                                 name: "Frais et charges",
-                                 index: 2,
+                SimulatorRowView(currentViewType: store.state.simulatorState.currentEvent,
+                                 name: Constant.title_fee_charges_container,
+                                 typeView: .eventFees,
                                  isChecked: store.state.simulatorState.fees?.isChecked ?? false,
-                                 nextPages: AnyView(SimulatorFunding0(shouldPopToRootView: self.$nextStep)))
+                                 nextPages: AnyView(SimulatorFee0(shouldPopToRootView: self.$nextStep)))
                 CustomDivider()
-                SimulatorRowView(currentEvent: store.state.simulatorState.currentEvent.rawValue,
-                                 name: "Fiscalité",
-                                 index: 3,
+                SimulatorRowView(currentViewType: store.state.simulatorState.currentEvent,
+                                 name: Constant.title_type_funding_container,
+                                 typeView: .eventTax,
                                  isChecked: store.state.simulatorState.tax?.isChecked ?? false,
                                  nextPages: AnyView(SimulatorTax0(shouldPopToRootView: self.$nextStep)))
                 Spacer()
@@ -92,7 +91,7 @@ struct SimmulatorListView: View {
     var body: some View {
         NavigationView {
             displayBody
-                .navigationTitle(Text("Retour"))
+                .navigationTitle(Text(Constant.title_back))
                 .navigationBarHidden(true)
         }
     }

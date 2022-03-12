@@ -49,8 +49,8 @@ struct SimulatorInformation0: View {
     var body: some View {
         SimulatorBackground(content: {
             content
-        }, barTitle: "")
-            .navigationBarTitle(Text(""), displayMode: .inline)
+        }, barTitle: Constant.title_empty)
+            .navigationBarTitle(Text(Constant.title_empty), displayMode: .inline)
             .background(Color.init("BackgroundHome").edgesIgnoringSafeArea(.all))
             .overlay(
                 OverlayView(isActive: $nexStep,

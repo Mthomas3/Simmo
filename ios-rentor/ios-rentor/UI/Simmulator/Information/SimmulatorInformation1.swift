@@ -32,10 +32,14 @@ struct SimulatorInformation1: View {
                               second_title: Constant.title_no)
                     .padding(.bottom, 24)
                 
-                PriceView(title: Constant.title_what_price,
-                          placeHolderTextField: Constant.place_holder_price,
-                          textfieldValue: $name,
-                          opacity: $opacity)
+                Group {
+                    if isCurrentSelected == .yes {
+                        PriceView(title: Constant.title_what_price,
+                                  placeHolderTextField: Constant.place_holder_price,
+                                  textfieldValue: $name,
+                                  opacity: $opacity)
+                    }
+                }
                 Spacer()
             }
             Spacer()
@@ -48,7 +52,9 @@ struct SimulatorInformation1: View {
         }, barTitle: nil)
             .overlay(
                 OverlayView(isActive: $nextStep,
-                            isHidden: !($name.wrappedValue.count > 3),
+                            isHidden: !($name.wrappedValue.count >= 3
+                                        || Int($name.wrappedValue) == 0
+                                        || isCurrentSelected == .no),
                             nextView: AnyView(SimulatorInformation2(shouldPopToRootView: self.$shouldPopToRootView)),
                             nextTitle: Constant.title_next,
                             callback: {

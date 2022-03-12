@@ -10,81 +10,82 @@ import SwiftUI
 
 struct SimulatorRowView: View {
     
-    internal let currentEvent: Int
+    internal let currentViewType: CurrentEvent
     internal let name: String
-    internal let index: Int
+    internal let typeView: CurrentEvent
     internal let isChecked: Bool
     internal let nextPages: AnyView
     
     @State private var nextStep = false
     @EnvironmentObject private var store: AppStore
     
-    var body: some View {
-        Group {
-            if currentEvent == self.index {
+    var bodyCurrentType: some View {
+        VStack(alignment: .leading) {
+            HStack {
+                TextBold(title: name)
+                Spacer()
+            }
+            ZStack {
+                Button(action: {
+                    self.nextStep.toggle() },
+                       label: {
+                    NextButton(title: Constant.title_continue, isHidden: nil)
+                    })
+                NavigationLink(
+                    destination: nextPages,
+                    isActive: $nextStep,
+                    label: {
+                        EmptyView().opacity(0)
+                    }).isDetailLink(false)
+            }
+        }
+    }
+    
+    var bodySpecialEvent: some View {
+        
+        /// Not used yet, special event "available soon"
+        VStack(alignment: .leading) {
+            HStack {
                 VStack(alignment: .leading) {
-                    HStack {
-                        
-                        Text(name)
-                            .foregroundColor(Color.init("DarkGray"))
-                            .fontWeight(.medium)
-                        
-                        Spacer()
-                    }
-                    ZStack {
-                        Button(action: {
-                            self.nextStep.toggle() },
-                               label: {
-                            NextButton(title: Constant.title_continue, isHidden: nil)
-                            })
-                        NavigationLink(
-                            destination: nextPages,
-                            isActive: $nextStep,
-                            label: {
-                                EmptyView().opacity(0)
-                            }).isDetailLink(false)
-                    }
+                    TextLightGray(title: name)
+
+                    Text(Constant.title_soon_available)
+                        .foregroundColor(Color.init("HomeRowFontGray"))
+                        .font(.system(size: 16))
+                        .multilineTextAlignment(.leading)
+                        .lineLimit(2)
+                        .frame(height: 50, alignment: .leading)
+
                 }
-            } else {
+                Spacer()
+                Image("check")
+
+            }
+        }.frame(height: 70, alignment: .leading)
+    }
+    
+    var bodyOthersViewType: some View {
+        VStack(alignment: .leading) {
+            HStack {
+                TextLightGray(title: name)
+                Spacer()
                 Group {
-                    if currentEvent == 99 {
-                        VStack(alignment: .leading) {
-                            HStack {
-                                VStack(alignment: .leading) {
-                                    Text(name)
-                                        .foregroundColor(Color.init("HomeRowFontGray"))
-                                    
-                                    Text(Constant.title_soon_available)
-                                        .foregroundColor(Color.init("HomeRowFontGray"))
-                                        .font(.system(size: 16))
-                                        .multilineTextAlignment(.leading)
-                                        .lineLimit(2)
-                                        .frame(height: 50, alignment: .leading)
-                                    
-                                }
-                                Spacer()
-                                Image("check")
-                                
-                            }
-                        }.frame(height: 70, alignment: .leading)
-                    } else {
-                        VStack(alignment: .leading) {
-                            HStack {
-                                Text(name)
-                                    .foregroundColor(Color.init("HomeRowFontGray"))
-                                Spacer()
-                               
-                                Group {
-                                    if isChecked {
-                                        Image("check")
-                                    }
-                                }
-                            }
-                        }.frame(height: 35, alignment: .leading)
+                    if isChecked {
+                        Image("check")
                     }
                 }
             }
-        }.padding(.leading, 25)
-        .padding(.trailing, 25)
+        }.frame(height: 35, alignment: .leading)
+    }
+    
+    var body: some View {
+        Group {
+            if currentViewType == typeView {
+                bodyCurrentType
+            } else {
+                    bodyOthersViewType
+                }
+            }.padding(.leading, 25)
+            .padding(.trailing, 25)
     }
 }

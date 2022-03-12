@@ -45,6 +45,7 @@ struct SimulatorFundingLoan: View {
                 self.shouldPopToRootView = false
             }, label: {
                 Text(Constant.save_and_quit)
-            }))
+            }).disabled(!($name.wrappedValue.count >= 3
+                          || Int($name.wrappedValue) == 0)))
     }
 }

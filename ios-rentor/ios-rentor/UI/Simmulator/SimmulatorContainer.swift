@@ -9,8 +9,8 @@
 import SwiftUI
 
 struct SimmulatorContainer: View {
-    @EnvironmentObject var modalView: MainTabBarData
-    @EnvironmentObject var store: AppStore
+    @EnvironmentObject internal var modalView: MainTabBarData
+    @EnvironmentObject internal var store: AppStore
     
     var body: some View {
         SimmulatorListView()

@@ -48,6 +48,25 @@ struct TextSub: View {
     }
 }
 
+struct TextBold: View {
+    let title: String
+    
+    var body: some View {
+        Text(title)
+            .foregroundColor(Color.init("DarkGray"))
+            .fontWeight(.medium)
+    }
+}
+
+struct TextLightGray: View {
+    let title: String
+    
+    var body: some View {
+        Text(title)
+            .foregroundColor(Color.init("HomeRowFontGray"))
+    }
+}
+
 struct TextWhite: View {
     let title: String
     var body: some View {

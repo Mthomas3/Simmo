@@ -11,11 +11,13 @@ import SwiftUI
 struct SimulatorFunding0: View {
     @EnvironmentObject private var store: AppStore
     @Binding var shouldPopToRootView: Bool
-    @State private var financementType: ButtonEventType?
+    @State private var financementType: ButtonEventType? = .yes
     @State private var nextButton: Bool = false
     @State private var moveToNextStep: Bool = false
     @State private var opacity: Double = 1
     @State private var text: String = ""
+    
+    /// TODO CHANGE THIS BELOW
     
     private var ownProcessFunding: some View {
         LazyVStack(alignment: .center, spacing: 12) {
@@ -83,7 +85,8 @@ struct SimulatorFunding0: View {
         }, barTitle: nil)
         .overlay(
             OverlayView(isActive: $moveToNextStep,
-                        isHidden: !($text.wrappedValue.count > 3),
+                        isHidden: !($text.wrappedValue.count >= 3
+                                    || Int($text.wrappedValue) == 0),
                         nextView: AnyView(SimulatorFundingLoan(shouldPopToRootView: self.$shouldPopToRootView)),
                         nextTitle: Constant.title_next,
                         callback: {

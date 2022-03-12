@@ -17,6 +17,16 @@ struct Constant {
     static let title_next = "Suivant"
     static let save_and_quit = "Enregistrer et quitter"
     static let title_empty = ""
+    static let title_close = "Fermer"
+    static let title_done = "Terminer"
+    static let title_back = "Retour"
+    
+    /// SimulatorContainer
+    static let title_simulator_container_view = "Ajoutons votre simulation"
+    static let title_information_container = "Information sur le bien"
+    static let title_funding_container = "Financement"
+    static let title_fee_charges_container = "Frais et charges"
+    static let title_type_funding_container = "Fiscalité"
     
     /// SimulatorInformation0
     static let title_new_building = "Bien neuf"

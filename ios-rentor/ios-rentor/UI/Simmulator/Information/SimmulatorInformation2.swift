@@ -125,11 +125,13 @@ struct SimulatorInformation2: View {
         }, barTitle: nil)
         .navigationBarItems(trailing: Button(action: {
             if var sim = self.store.state.simulatorState.informations {
+                
                 sim.color = self.dataColor[self.colorSelected]
                 sim.image = self.dataImage[self.imageSelected]
                 sim.name = self.name
                 sim.isDone = true
                 sim.isChecked = true
+                
                 self.store.dispatch(.simulatorAction(action: .setInformations(informations: sim)))
                 self.store.dispatch(.simulatorAction(action: .fetchActivities))
             }
