@@ -8,21 +8,26 @@
 
 import SwiftUI
 
+internal enum ButtonEventType: Int {
+    case yes = 0
+    case no
+}
+
 struct ButtonOption: View {
-    @Binding internal var eventButtonSelect: Int?
+    @Binding internal var eventButtonSelect: ButtonEventType?
     @Binding internal var nextButton: Bool
     internal let title: String
     internal let index: Int
     
     var body: some View {
         Button(action: {
-            self.eventButtonSelect = self.index
+            self.eventButtonSelect = ButtonEventType(rawValue: index)
             if !self.nextButton {
                 self.nextButton.toggle()    
             }
         }, label: {
             Group {
-                if self.eventButtonSelect == index {
+                if self.eventButtonSelect?.rawValue == index {
                     Text(self.title)
                         .frame(width: 155, height: 56)
                         .foregroundColor(Color.white)

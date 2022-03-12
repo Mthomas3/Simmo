@@ -12,47 +12,37 @@ struct SimulatorInformation0: View {
     
     @EnvironmentObject private var store: AppStore
     @Binding var shouldPopToRootView: Bool
-    @State private var cardSelected: Int?
-    @State private var isCurrentSelected: Int?
+    @State private var cardSelected: CardItemType?
+    @State private var isCurrentSelected: ButtonEventType?
     @State private var nextButton: Bool = false
     @State private var nexStep: Bool = false
     
     var content: some View {
         VStack(alignment: .leading, spacing: 16) {
             TextTitle(title: Constant.title_ask_kind_building)
-            HStack {
-                Spacer()
-                CardView(eventSelected: self.$cardSelected,
-                         index: 0, name: Constant.title_old_building, image: "Old")
-                CardView(eventSelected: self.$cardSelected,
-                         index: 1, name: Constant.title_new_building, image: "New")
-                Spacer()
-            }
             
-            HStack {
-                Spacer()
-                CardView(eventSelected: self.$cardSelected,
-                         index: 2, name: Constant.title_construct_area, image: "Construction")
-                    .multilineTextAlignment(.center)
-                    .lineLimit(2)
-                CardView(eventSelected: self.$cardSelected,
-                         index: 3, name: Constant.title_building_renovate, image: "Renovate")
-                    .multilineTextAlignment(.center)
-                    .lineLimit(2)
-                Spacer()
-            }
+            CardView(cardItem: $cardSelected,
+                     first_index: 0,
+                     second_index: 1,
+                     first_name: Constant.title_old_building,
+                     second_name: Constant.title_new_building,
+                     first_picture: "Old",
+                     second_picture: "New")
             
-            TextSub(title: Constant.title_will_be_rented)
-            
-            HStack(alignment: .center) {
-                Spacer()
+            CardView(cardItem: $cardSelected,
+                     first_index: 2,
+                     second_index: 3,
+                     first_name: Constant.title_construct_area,
+                     second_name: Constant.title_building_renovate,
+                     first_picture: "Construction",
+                     second_picture: "Renovate")
 
-                ButtonOption(eventButtonSelect: self.$isCurrentSelected,
-                             nextButton: self.$nextButton, title: Constant.title_yes, index: 0)
-                ButtonOption(eventButtonSelect: self.$isCurrentSelected,
-                             nextButton: self.$nextButton, title: Constant.title_no, index: 1)
-                Spacer()
-            }
+            TextSub(title: Constant.title_will_be_rented)
+                        
+            AskButtonView(value: $isCurrentSelected,
+                          nextButton: $nextButton,
+                          first_title: Constant.title_yes,
+                          second_title: Constant.title_no)
         }
     }
  
@@ -70,9 +60,9 @@ struct SimulatorInformation0: View {
                                                 .environmentObject(store)),
                             nextTitle: Constant.title_next,
                             callback: {
-                                let simulator = SimulatorInformation(type:
-                                                                        SimulatorType(rawValue: self.cardSelected ?? 0),
-                                                                     rented: (self.isCurrentSelected ?? 0) == 0,
+                                let simulator =
+                                SimulatorInformation(type: SimulatorType(rawValue: cardSelected?.rawValue ?? 0),
+                                                                     rented: (isCurrentSelected?.rawValue ?? 0) == 0,
                                                                      owner: nil,
                                                                      price: nil, name: nil, color: nil, image: nil)
                                 self.store.dispatch(.simulatorAction(action: .setInformations(informations: simulator)))

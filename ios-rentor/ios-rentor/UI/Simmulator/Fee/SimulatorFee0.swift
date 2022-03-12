@@ -11,32 +11,38 @@ import SwiftUI
 struct SimulatorFee0: View {
     @EnvironmentObject private var store: AppStore
     @Binding var shouldPopToRootView: Bool
-    @State private var name: String = ""
+    @State private var text: String = ""
     @State private var opacity: Double = 1
     @State private var nextButton: Bool = false
     
+    var handlePrices: some View {
+        Group {
+            PriceView(title: Constant.title_giving_part,
+                      placeHolderTextField: Constant.place_holder_giving_part,
+                      textfieldValue: $text,
+                      opacity: $opacity)
+            
+            PriceView(title: Constant.title_price_funding,
+                      placeHolderTextField: Constant.place_holder_price_funding,
+                      textfieldValue: $text,
+                      opacity: $opacity)
+            
+            PriceView(title: Constant.title_secure_funding,
+                      placeHolderTextField: Constant.place_holder_secure_funding,
+                      textfieldValue: $text,
+                      opacity: $opacity)
+            
+            PriceView(title: Constant.title_rate_funding,
+                      placeHolderTextField: Constant.place_holder_rate_funding,
+                      textfieldValue: $text,
+                      opacity: $opacity)
+        }
+    }
+    
     var content: some View {
-        LazyVStack(alignment: .leading, spacing: 30) {
-            TextTitle(title: "Quels sont les frais annuels non récupérables?")
-            PriceView(title: "Charge de copropriété: ",
-                      placeHolderTextField: "1 200 000€",
-                      textfieldValue: $name,
-                      opacity: self.$opacity)
-            
-            PriceView(title: "Taxe foncière: ",
-                      placeHolderTextField: "1 200 000€",
-                      textfieldValue: $name,
-                      opacity: self.$opacity)
-            
-            PriceView(title: "Assurance PNO: ",
-                      placeHolderTextField: "1 200 000€",
-                      textfieldValue: $name,
-                      opacity: self.$opacity)
-            
-            PriceView(title: "Assurance loyers impayés: ",
-                      placeHolderTextField: "1 200 000€",
-                      textfieldValue: $name,
-                      opacity: self.$opacity)
+        LazyVStack(alignment: .leading, spacing: 12) {
+            TextTitle(title: "Constant.title_type_funding")
+            handlePrices
         }
     }
 

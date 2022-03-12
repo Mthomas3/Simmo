@@ -14,7 +14,7 @@ struct SimulatorInformation1: View {
     @EnvironmentObject private var store: AppStore
     @Binding var shouldPopToRootView: Bool
     
-    @State internal var isCurrentSelected: Int?
+    @State internal var isCurrentSelected: ButtonEventType?
     @State internal var nextButton: Bool = false
     @State private var opacity: Double = 1
     @State private var nextStep: Bool = false
@@ -25,24 +25,17 @@ struct SimulatorInformation1: View {
             VStack(alignment: .leading, spacing: 0) {
                 TextTitle(title: Constant.title_is_your_building)
                     .padding(.bottom, 8)
-                HStack(alignment: .center) {
-                    Spacer()
-                    ButtonOption(eventButtonSelect: self.$isCurrentSelected,
-                                 nextButton: self.$nextButton, title: Constant.title_yes, index: 0)
-                    ButtonOption(eventButtonSelect: self.$isCurrentSelected,
-                                 nextButton: self.$nextButton, title: Constant.title_no, index: 1)
-                    Spacer()
-                }.padding(.bottom, 12)
-
-                Group {
-                    if isCurrentSelected == 0 {
-                        PriceView(title: Constant.title_what_price,
-                                  placeHolderTextField: Constant.place_holder_price,
-                                  textfieldValue: $name,
-                                  opacity: self.$opacity)
-                    }
-                }
                 
+                AskButtonView(value: $isCurrentSelected,
+                              nextButton: $nextButton,
+                              first_title: Constant.title_yes,
+                              second_title: Constant.title_no)
+                    .padding(.bottom, 24)
+                
+                PriceView(title: Constant.title_what_price,
+                          placeHolderTextField: Constant.place_holder_price,
+                          textfieldValue: $name,
+                          opacity: $opacity)
                 Spacer()
             }
             Spacer()
@@ -60,8 +53,8 @@ struct SimulatorInformation1: View {
                             nextTitle: Constant.title_next,
                             callback: {
                                 if var simulator = store.state.simulatorState.informations {
-                                    simulator.owner = (self.isCurrentSelected ?? 0) == 0
-                                    if (self.isCurrentSelected ?? 0) == 0 {
+                                    simulator.owner = (isCurrentSelected?.rawValue ?? 0) == 0
+                                    if (isCurrentSelected?.rawValue ?? 0) == 0 {
                                         simulator.price = Double(name)
                                     }
                                     self.store.dispatch(

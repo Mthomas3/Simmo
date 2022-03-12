@@ -11,12 +11,10 @@ import SwiftUI
 struct SimulatorFunding0: View {
     @EnvironmentObject private var store: AppStore
     @Binding var shouldPopToRootView: Bool
-    @State private var isCurrentSelected: Int?
-    @State private var financementType: Int?
+    @State private var financementType: ButtonEventType?
     @State private var nextButton: Bool = false
     @State private var moveToNextStep: Bool = false
     @State private var opacity: Double = 1
-    @State internal var name: String = ""
     @State private var text: String = ""
     
     private var ownProcessFunding: some View {
@@ -57,35 +55,32 @@ struct SimulatorFunding0: View {
         }
     }
     
-    private func displayFunding() -> some View {
+    private var switchView: some View {
         Group {
-            if financementType == 0 { bankingProcess } else { ownProcessFunding }
+            if financementType?.rawValue == 0 { bankingProcess } else { ownProcessFunding }
+        }
+    }
+    
+    private var content: some View {
+        VStack(alignment: .leading, spacing: 30) {
+            TextTitle(title: Constant.title_type_funding)
+            
+            AskButtonView(value: $financementType,
+                          nextButton: $nextButton,
+                          first_title: Constant.title_loan,
+                          second_title: Constant.title_own_funding)
+            
+            switchView
+                .transition(.opacity)
+                .animation(.easeInOut, value: 1)
+                .opacity(financementType?.rawValue == 0 || financementType?.rawValue == 1 ? opacity : 0)
         }
     }
     
     var body: some View {
-        ScrollView {
-            ZStack {
-                Color.init("BackgroundHome")
-                VStack(alignment: .leading, spacing: 30) {
-                    TextTitle(title: Constant.title_type_funding)
-                    HStack(alignment: .center) {
-                        Spacer()
-                        ButtonOption(eventButtonSelect: self.$financementType,
-                                     nextButton: self.$nextButton, title: Constant.title_loan, index: 0)
-                        ButtonOption(eventButtonSelect: self.$financementType,
-                                     nextButton: self.$nextButton, title: Constant.title_own_funding, index: 1)
-                        Spacer()
-                    }
-                    
-                    self.displayFunding()
-                        .transition(.opacity)
-                        .animation(.easeInOut, value: 1)
-                        .opacity(financementType == 0 || financementType == 1 ? opacity : 0)
-                }
-            }.padding(.bottom, 70)
-        }.navigationBarTitle(Text(Constant.title_empty), displayMode: .inline)
-        .background(Color.init("BackgroundHome").edgesIgnoringSafeArea(.all))
+        SimulatorBackground(content: {
+            content
+        }, barTitle: nil)
         .overlay(
             OverlayView(isActive: $moveToNextStep,
                         isHidden: !($text.wrappedValue.count > 3),
