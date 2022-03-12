@@ -44,5 +44,14 @@ struct SimulatorFee0: View {
         SimulatorBackground(content: {
             content
         }, barTitle: nil)
+            .navigationBarItems(trailing: Button(action: {
+                let fee = SimulatorFee(isDone: true, isChecked: true)
+                store.dispatch(.simulatorAction(action: .setFees(fees: fee)))
+                store.dispatch(.simulatorAction(action: .fetchActivities))
+                self.shouldPopToRootView = false
+                
+            }, label: {
+                Text(Constant.save_and_quit)
+            }))
     }
 }

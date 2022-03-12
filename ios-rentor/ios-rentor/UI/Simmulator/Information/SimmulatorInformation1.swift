@@ -34,10 +34,15 @@ struct SimulatorInformation1: View {
                     Spacer()
                 }.padding(.bottom, 12)
 
-                PriceView(title: Constant.title_what_price,
-                          placeHolderTextField: Constant.place_holder_price,
-                          textfieldValue: $name,
-                          opacity: self.$opacity)
+                Group {
+                    if isCurrentSelected == 0 {
+                        PriceView(title: Constant.title_what_price,
+                                  placeHolderTextField: Constant.place_holder_price,
+                                  textfieldValue: $name,
+                                  opacity: self.$opacity)
+                    }
+                }
+                
                 Spacer()
             }
             Spacer()
