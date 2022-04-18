@@ -57,4 +57,7 @@ struct Constant {
     static let place_holder_price_funding = "Ex: 12000€"
     static let title_giving_part = "Apport: "
     static let place_holder_giving_part = "Ex: 12000€"
+    
+    ///SimulatorFee0
+    static let title_fee_view = "Quel type de frais avez-vous?"
 }

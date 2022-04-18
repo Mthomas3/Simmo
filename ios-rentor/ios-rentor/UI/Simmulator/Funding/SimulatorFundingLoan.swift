@@ -23,6 +23,7 @@ struct SimulatorFundingLoan: View {
                 
                 TextField(Constant.place_holder_price, text: $name)
                     .textFieldStyle(CustomTextFieldStyle())
+                    .keyboardType(.decimalPad)
                     .padding(.bottom, 8)
                 
                 PriceView(title: Constant.title_what_price,

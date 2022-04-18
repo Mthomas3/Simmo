@@ -19,6 +19,7 @@ struct PriceView: View {
             TextSub(title: title)
             TextField(placeHolderTextField, text: $textfieldValue)
                 .textFieldStyle(CustomTextFieldStyle())
+                .keyboardType(.decimalPad)
         }.onAppear {
             withAnimation(Animation.easeInOut(duration: 2).repeatForever(autoreverses: true)) {
                 self.opacity = 1

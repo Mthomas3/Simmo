@@ -41,7 +41,7 @@ struct SimulatorFee0: View {
     
     var content: some View {
         LazyVStack(alignment: .leading, spacing: 12) {
-            TextTitle(title: "Constant.title_type_funding")
+            TextTitle(title: Constant.title_fee_view)
             handlePrices
         }
     }
@@ -58,6 +58,7 @@ struct SimulatorFee0: View {
                 
             }, label: {
                 Text(Constant.save_and_quit)
-            }))
+            }).disabled(!($text.wrappedValue.count >= 3 ||
+                          Int($text.wrappedValue) == 0)) )
     }
 }

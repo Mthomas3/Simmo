@@ -53,7 +53,7 @@ struct SimulatorInformation0: View {
             .navigationBarTitle(Text(Constant.title_empty), displayMode: .inline)
             .background(Color.init("BackgroundHome").edgesIgnoringSafeArea(.all))
             .overlay(
-                OverlayView(isActive: $nexStep,
+                (OverlayView)(isActive: $nexStep,
                             isHidden: !($nextButton.wrappedValue),
                             nextView: AnyView(SimulatorInformation1(shouldPopToRootView:
                                                                         self.$shouldPopToRootView)
